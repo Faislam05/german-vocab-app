@@ -17,11 +17,11 @@ type VocabularyCard = {
   references: number[];
   tts_text: string;
   image_search: string;
+  emoji?: string;
   examples: Example[];
   article?: string;
   gender?: string;
   plural?: string;
-  emoji?: string;
 };
 
 type LessonData = {
@@ -34,6 +34,7 @@ type LessonData = {
 export default function Home() {
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [index, setIndex] = useState(0);
+
   const [favorites, setFavorites] = useState<string[]>(() => {
     if (typeof window === "undefined") return [];
 
@@ -41,6 +42,9 @@ export default function Home() {
 
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
+
+  const [showFavoritesOnly, setShowFavoritesOnly] =
+    useState(false);
 
   useEffect(() => {
     fetch("/data/lektion_01_enriched_with_emojis.json")
@@ -61,10 +65,55 @@ export default function Home() {
     );
   }
 
-  const word = lessonData.vocabulary[index];
+  const visibleVocabulary = showFavoritesOnly
+    ? lessonData.vocabulary.filter((item) =>
+        favorites.includes(item.word)
+      )
+    : lessonData.vocabulary;
+
+  // Nothing has been favorited yet
+  if (visibleVocabulary.length === 0) {
+    return (
+      <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+        <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
+          <div className="text-6xl mb-6">☆</div>
+
+          <h1 className="text-2xl font-bold mb-3">
+            No favorites yet
+          </h1>
+
+          <p className="text-gray-500 mb-6">
+            Star some vocabulary words first, then you can
+            review them here.
+          </p>
+
+          <button
+            onClick={() => {
+              setShowFavoritesOnly(false);
+              setIndex(0);
+            }}
+            className="px-5 py-2 rounded-full bg-black text-white"
+          >
+            Show All Words
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  const word = visibleVocabulary[index];
+
+  function formatPartOfSpeech(value: string) {
+    return value
+      .replaceAll("_", " ")
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
 
   function speakWord() {
-    const speech = new SpeechSynthesisUtterance(word.tts_text);
+    const speech = new SpeechSynthesisUtterance(
+      word.tts_text
+    );
+
     speech.lang = "de-DE";
 
     window.speechSynthesis.cancel();
@@ -73,6 +122,7 @@ export default function Home() {
 
   function speakText(text: string) {
     const speech = new SpeechSynthesisUtterance(text);
+
     speech.lang = "de-DE";
 
     window.speechSynthesis.cancel();
@@ -80,24 +130,18 @@ export default function Home() {
   }
 
   function nextWord() {
-    if (!lessonData) return;
-
-    setIndex((index + 1) % lessonData.vocabulary.length);
-  }
-
-  function previousWord() {
-    if (!lessonData) return;
-
     setIndex(
-      (index - 1 + lessonData.vocabulary.length) %
-        lessonData.vocabulary.length
+      (currentIndex) =>
+        (currentIndex + 1) % visibleVocabulary.length
     );
   }
 
-  function formatPartOfSpeech(value: string) {
-    return value
-      .replaceAll("_", " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  function previousWord() {
+    setIndex(
+      (currentIndex) =>
+        (currentIndex - 1 + visibleVocabulary.length) %
+        visibleVocabulary.length
+    );
   }
 
   function toggleFavorite() {
@@ -109,7 +153,10 @@ export default function Home() {
           (favorite) => favorite !== word.word
         );
       } else {
-        updatedFavorites = [...currentFavorites, word.word];
+        updatedFavorites = [
+          ...currentFavorites,
+          word.word,
+        ];
       }
 
       localStorage.setItem(
@@ -121,14 +168,22 @@ export default function Home() {
     });
   }
 
+  function toggleFavoritesView() {
+    setShowFavoritesOnly((currentValue) => !currentValue);
+    setIndex(0);
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
-        <div className="mb-6">
+      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md">
+        {/* Lesson + progress */}
+
+        <div className="mb-5">
           <div className="flex justify-between text-sm text-gray-500 mb-2">
             <span>{lessonData.title}</span>
+
             <span>
-              {index + 1} / {lessonData.vocabulary.length}
+              {index + 1} / {visibleVocabulary.length}
             </span>
           </div>
 
@@ -137,20 +192,37 @@ export default function Home() {
               className="h-full bg-black transition-all duration-300"
               style={{
                 width: `${
-                  ((index + 1) / lessonData.vocabulary.length) * 100
+                  ((index + 1) /
+                    visibleVocabulary.length) *
+                  100
                 }%`,
               }}
             />
           </div>
         </div>
 
-        <button
-          onClick={toggleFavorite}
-          className="text-2xl"
-          aria-label="Toggle favorite"
-        >
-          {favorites.includes(word.word) ? "★" : "☆"}
-        </button>
+        {/* Favorites controls */}
+
+        <div className="flex items-center justify-between mb-5">
+          <button
+            onClick={toggleFavoritesView}
+            className="px-3 py-1.5 rounded-full bg-gray-100 text-sm hover:bg-gray-200"
+          >
+            {showFavoritesOnly
+              ? "Show All"
+              : `★ Favorites (${favorites.length})`}
+          </button>
+
+          <button
+            onClick={toggleFavorite}
+            className="text-3xl hover:scale-110 transition-transform"
+            aria-label="Toggle favorite"
+          >
+            {favorites.includes(word.word) ? "★" : "☆"}
+          </button>
+        </div>
+
+        {/* Emoji visual */}
 
         <div className="w-full aspect-[4/3] rounded-2xl mb-6 bg-gray-100 flex items-center justify-center">
           <span className="text-8xl">
@@ -158,56 +230,70 @@ export default function Home() {
           </span>
         </div>
 
+        {/* Part of speech */}
+
         <div className="flex justify-center mb-3">
           <span className="text-xs font-semibold uppercase tracking-wide bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
             {formatPartOfSpeech(word.part_of_speech)}
           </span>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">
-          {word.display}
-        </h1>
+        {/* Word */}
 
-        <button
-          onClick={speakWord}
-          className="mb-6 px-4 py-2 rounded-full bg-black text-white"
-        >
-          🔊 Listen
-        </button>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">
+            {word.display}
+          </h1>
 
-        <p className="text-2xl mb-2">
-          {word.english}
-        </p>
+          <button
+            onClick={speakWord}
+            className="mb-6 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
+          >
+            🔊 Listen
+          </button>
 
-        {word.plural && (
-          <p className="text-gray-500 mb-6">
-            Plural: {word.plural}
+          <p className="text-2xl mb-2">
+            {word.english}
           </p>
-        )}
 
-        <div className="text-left space-y-4">
-          {word.examples.map((example, exampleIndex) => (
-            <div key={exampleIndex}>
-              <div className="flex items-start justify-between gap-3">
-                <p className="font-semibold">
-                  {example.de}
-                </p>
-
-                <button
-                  onClick={() => speakText(example.de)}
-                  className="text-lg hover:scale-110 transition-transform"
-                  aria-label="Listen to sentence"
-                >
-                  🔊
-                </button>
-              </div>
-
-              <p className="text-gray-500">
-                {example.en}
-              </p>
-            </div>
-          ))}
+          {word.plural && (
+            <p className="text-gray-500 mb-6">
+              Plural: {word.plural}
+            </p>
+          )}
         </div>
+
+        {/* Example sentences */}
+
+        <div className="text-left space-y-5 mt-6">
+          {word.examples.map(
+            (example, exampleIndex) => (
+              <div key={exampleIndex}>
+                <div className="flex items-start justify-between gap-3">
+                  <p className="font-semibold">
+                    {example.de}
+                  </p>
+
+                  <button
+                    onClick={() =>
+                      speakText(example.de)
+                    }
+                    className="text-lg hover:scale-110 transition-transform"
+                    aria-label="Listen to sentence"
+                  >
+                    🔊
+                  </button>
+                </div>
+
+                <p className="text-gray-500">
+                  {example.en}
+                </p>
+              </div>
+            )
+          )}
+        </div>
+
+        {/* Navigation */}
 
         <div className="flex justify-between mt-8">
           <button
