@@ -1,0 +1,2475 @@
+{
+  "schema_version": 1,
+  "lesson": 2,
+  "title": "Lektion 2",
+  "source_pages": [
+    19,
+    20
+  ],
+  "language": "de",
+  "translation_language": "en",
+  "cefr": "A1",
+  "generation_notes": [
+    "Vocabulary was extracted from the supplied Lektion 2 pages (19-20) and enriched for app use.",
+    "Funktionswörter from the book were given specific part-of-speech labels (pronoun, conjunction, adverb).",
+    "'zu' is treated as 'too' (zu teuer) based on its use in this lesson; check against pages 28 and 30.",
+    "'s Bild' plural is stored as 'Bilder' (standard form); the photo of the printed list was hard to read there.",
+    "Image searches are suggestions only; for abstract words image_search is null.",
+    "Pronunciation audio can be generated on-device from tts_text using German text-to-speech."
+  ],
+  "vocabulary": [
+    {
+      "word": "antworten",
+      "display": "antworten",
+      "part_of_speech": "verb",
+      "english": "to answer",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "antworten",
+      "image_search": "person answering a question",
+      "examples": [
+        {
+          "de": "Bitte antworten Sie auf Deutsch.",
+          "en": "Please answer in German."
+        },
+        {
+          "de": "Er antwortet nicht.",
+          "en": "He doesn't answer."
+        },
+        {
+          "de": "Ich antworte schnell.",
+          "en": "I answer quickly."
+        }
+      ],
+      "emoji": "💬"
+    },
+    {
+      "word": "bekommen",
+      "display": "bekommen",
+      "part_of_speech": "verb",
+      "english": "to get; to receive",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "bekommen",
+      "image_search": "receiving a package",
+      "examples": [
+        {
+          "de": "Ich bekomme einen Brief.",
+          "en": "I'm getting a letter."
+        },
+        {
+          "de": "Was bekommen Sie?",
+          "en": "What would you like? (in a shop)"
+        },
+        {
+          "de": "Sie bekommt ein Geschenk.",
+          "en": "She gets a present."
+        }
+      ],
+      "emoji": "📦"
+    },
+    {
+      "word": "bieten",
+      "display": "bieten",
+      "part_of_speech": "verb",
+      "english": "to offer; to bid",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        27
+      ],
+      "tts_text": "bieten",
+      "image_search": "offering a price",
+      "examples": [
+        {
+          "de": "Was bieten Sie für das Auto?",
+          "en": "What do you offer for the car?"
+        },
+        {
+          "de": "Ich biete 50 Euro.",
+          "en": "I'll offer 50 euros."
+        },
+        {
+          "de": "Das Geschäft bietet viele Lampen.",
+          "en": "The shop offers many lamps."
+        }
+      ],
+      "emoji": "🏷️"
+    },
+    {
+      "word": "entscheiden",
+      "display": "entscheiden",
+      "part_of_speech": "verb",
+      "english": "to decide",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        22
+      ],
+      "tts_text": "entscheiden",
+      "image_search": "person making a decision",
+      "examples": [
+        {
+          "de": "Du entscheidest.",
+          "en": "You decide."
+        },
+        {
+          "de": "Wir entscheiden heute.",
+          "en": "We'll decide today."
+        },
+        {
+          "de": "Ich kann nicht entscheiden.",
+          "en": "I can't decide."
+        }
+      ],
+      "emoji": "🤔"
+    },
+    {
+      "word": "entschuldigen",
+      "display": "entschuldigen",
+      "part_of_speech": "verb",
+      "english": "to excuse",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "entschuldigen",
+      "image_search": "person apologizing",
+      "examples": [
+        {
+          "de": "Entschuldigen Sie bitte!",
+          "en": "Excuse me, please!"
+        },
+        {
+          "de": "Entschuldigen Sie, wo ist die Küche?",
+          "en": "Excuse me, where is the kitchen?"
+        },
+        {
+          "de": "Ich entschuldige mich.",
+          "en": "I apologize."
+        }
+      ],
+      "emoji": "🙏"
+    },
+    {
+      "word": "fahren",
+      "display": "fahren",
+      "part_of_speech": "verb",
+      "english": "to drive; to go (by vehicle)",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "fahren",
+      "image_search": "driving a car",
+      "examples": [
+        {
+          "de": "Ich fahre nach Berlin.",
+          "en": "I'm going to Berlin."
+        },
+        {
+          "de": "Das Auto fährt nicht.",
+          "en": "The car doesn't run."
+        },
+        {
+          "de": "Fährst du heute?",
+          "en": "Are you driving today?"
+        }
+      ],
+      "emoji": "🚗"
+    },
+    {
+      "word": "funktionieren",
+      "display": "funktionieren",
+      "part_of_speech": "verb",
+      "english": "to work; to function",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "funktionieren",
+      "image_search": "machine working",
+      "examples": [
+        {
+          "de": "Die Lampe funktioniert nicht.",
+          "en": "The lamp doesn't work."
+        },
+        {
+          "de": "Funktioniert der Herd?",
+          "en": "Does the stove work?"
+        },
+        {
+          "de": "Die Uhr funktioniert gut.",
+          "en": "The clock works well."
+        }
+      ],
+      "emoji": "⚙️"
+    },
+    {
+      "word": "gehen",
+      "display": "gehen",
+      "part_of_speech": "verb",
+      "english": "to go; to walk; to work (of a device)",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "gehen",
+      "image_search": "person walking",
+      "examples": [
+        {
+          "de": "Ich gehe nach Hause.",
+          "en": "I'm going home."
+        },
+        {
+          "de": "Wie geht das?",
+          "en": "How does that work?"
+        },
+        {
+          "de": "Der Fernsehapparat geht nicht.",
+          "en": "The TV isn't working."
+        }
+      ],
+      "emoji": "🚶"
+    },
+    {
+      "word": "können",
+      "display": "können",
+      "part_of_speech": "verb",
+      "english": "can; to be able to",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26
+      ],
+      "tts_text": "können",
+      "image_search": "person able to do something",
+      "examples": [
+        {
+          "de": "Ich kann Deutsch sprechen.",
+          "en": "I can speak German."
+        },
+        {
+          "de": "Kann ich das Radio haben?",
+          "en": "Can I have the radio?"
+        },
+        {
+          "de": "Wir können morgen kommen.",
+          "en": "We can come tomorrow."
+        }
+      ],
+      "emoji": "💪"
+    },
+    {
+      "word": "korrigieren",
+      "display": "korrigieren",
+      "part_of_speech": "verb",
+      "english": "to correct",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "korrigieren",
+      "image_search": "correcting mistakes on paper",
+      "examples": [
+        {
+          "de": "Bitte korrigieren Sie den Fehler.",
+          "en": "Please correct the mistake."
+        },
+        {
+          "de": "Der Lehrer korrigiert die Wörter.",
+          "en": "The teacher corrects the words."
+        },
+        {
+          "de": "Ich korrigiere meine Antwort.",
+          "en": "I correct my answer."
+        }
+      ],
+      "emoji": "✏️"
+    },
+    {
+      "word": "kosten",
+      "display": "kosten",
+      "part_of_speech": "verb",
+      "english": "to cost",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25
+      ],
+      "tts_text": "kosten",
+      "image_search": "price tag",
+      "examples": [
+        {
+          "de": "Was kostet die Lampe?",
+          "en": "How much is the lamp?"
+        },
+        {
+          "de": "Der Stuhl kostet 20 Euro.",
+          "en": "The chair costs 20 euros."
+        },
+        {
+          "de": "Das kostet nicht viel.",
+          "en": "That doesn't cost much."
+        }
+      ],
+      "emoji": "💶"
+    },
+    {
+      "word": "sagen",
+      "display": "sagen",
+      "part_of_speech": "verb",
+      "english": "to say; to tell",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "sagen",
+      "image_search": "person speaking",
+      "examples": [
+        {
+          "de": "Was sagst du?",
+          "en": "What are you saying?"
+        },
+        {
+          "de": "Sagen Sie das bitte noch einmal.",
+          "en": "Please say that again."
+        },
+        {
+          "de": "Er sagt: Das ist praktisch.",
+          "en": "He says: That's practical."
+        }
+      ],
+      "emoji": "🗣️"
+    },
+    {
+      "word": "spülen",
+      "display": "spülen",
+      "part_of_speech": "verb",
+      "english": "to wash up (the dishes); to rinse",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "spülen",
+      "image_search": "washing dishes",
+      "examples": [
+        {
+          "de": "Ich spüle heute.",
+          "en": "I'm doing the dishes today."
+        },
+        {
+          "de": "Wer spült das Geschirr?",
+          "en": "Who's washing the dishes?"
+        },
+        {
+          "de": "Sie spült die Töpfe.",
+          "en": "She washes the pots."
+        }
+      ],
+      "emoji": "🧽"
+    },
+    {
+      "word": "stimmen",
+      "display": "stimmen",
+      "part_of_speech": "verb",
+      "english": "to be right; to be correct",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "stimmen",
+      "image_search": "check mark correct",
+      "examples": [
+        {
+          "de": "Das stimmt.",
+          "en": "That's right."
+        },
+        {
+          "de": "Stimmt das?",
+          "en": "Is that right?"
+        },
+        {
+          "de": "Die Antwort stimmt nicht.",
+          "en": "The answer isn't correct."
+        }
+      ],
+      "emoji": "✅"
+    },
+    {
+      "word": "waschen",
+      "display": "waschen",
+      "part_of_speech": "verb",
+      "english": "to wash",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        29,
+        30
+      ],
+      "tts_text": "waschen",
+      "image_search": "washing clothes",
+      "examples": [
+        {
+          "de": "Ich wasche das Auto.",
+          "en": "I'm washing the car."
+        },
+        {
+          "de": "Wäschst du heute?",
+          "en": "Are you doing the washing today?"
+        },
+        {
+          "de": "Die Waschmaschine wäscht gut.",
+          "en": "The washing machine washes well."
+        }
+      ],
+      "emoji": "🫧"
+    },
+    {
+      "word": "wechseln",
+      "display": "wechseln",
+      "part_of_speech": "verb",
+      "english": "to change; to exchange",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "wechseln",
+      "image_search": "changing a battery",
+      "examples": [
+        {
+          "de": "Ich wechsle die Batterie.",
+          "en": "I'm changing the battery."
+        },
+        {
+          "de": "Kannst du Geld wechseln?",
+          "en": "Can you change money?"
+        },
+        {
+          "de": "Wir wechseln die Gruppe.",
+          "en": "We're changing groups."
+        }
+      ],
+      "emoji": "🔄"
+    },
+    {
+      "word": "Antwort",
+      "display": "die Antwort",
+      "part_of_speech": "noun",
+      "english": "answer",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "die Antwort",
+      "image_search": "answer speech bubble",
+      "examples": [
+        {
+          "de": "Die Antwort ist richtig.",
+          "en": "The answer is correct."
+        },
+        {
+          "de": "Ich weiß die Antwort nicht.",
+          "en": "I don't know the answer."
+        },
+        {
+          "de": "Danke für die Antwort.",
+          "en": "Thanks for the answer."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Antworten",
+      "emoji": "💬",
+      "source_text": "e Antwort,-en"
+    },
+    {
+      "word": "Auto",
+      "display": "das Auto",
+      "part_of_speech": "noun",
+      "english": "car",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        29
+      ],
+      "tts_text": "das Auto",
+      "image_search": "car",
+      "examples": [
+        {
+          "de": "Das Auto ist neu.",
+          "en": "The car is new."
+        },
+        {
+          "de": "Mein Auto ist kaputt.",
+          "en": "My car is broken."
+        },
+        {
+          "de": "Wo ist dein Auto?",
+          "en": "Where is your car?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Autos",
+      "emoji": "🚗",
+      "source_text": "s Auto,-s"
+    },
+    {
+      "word": "Batterie",
+      "display": "die Batterie",
+      "part_of_speech": "noun",
+      "english": "battery",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22,
+        23
+      ],
+      "tts_text": "die Batterie",
+      "image_search": "battery",
+      "examples": [
+        {
+          "de": "Die Batterie ist leer.",
+          "en": "The battery is dead."
+        },
+        {
+          "de": "Ich brauche eine Batterie.",
+          "en": "I need a battery."
+        },
+        {
+          "de": "Die Kamera hat keine Batterie.",
+          "en": "The camera has no battery."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Batterien",
+      "emoji": "🔋",
+      "source_text": "e Batterie,-n"
+    },
+    {
+      "word": "Benzin",
+      "display": "das Benzin",
+      "part_of_speech": "noun",
+      "english": "petrol; gasoline",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "das Benzin",
+      "image_search": "petrol station pump",
+      "examples": [
+        {
+          "de": "Das Benzin ist teuer.",
+          "en": "Petrol is expensive."
+        },
+        {
+          "de": "Das Auto hat kein Benzin.",
+          "en": "The car has no petrol."
+        },
+        {
+          "de": "Wir brauchen Benzin.",
+          "en": "We need petrol."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "⛽",
+      "source_text": "s Benzin"
+    },
+    {
+      "word": "Bett",
+      "display": "das Bett",
+      "part_of_speech": "noun",
+      "english": "bed",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "das Bett",
+      "image_search": "bed",
+      "examples": [
+        {
+          "de": "Das Bett ist bequem.",
+          "en": "The bed is comfortable."
+        },
+        {
+          "de": "Mein Bett ist alt.",
+          "en": "My bed is old."
+        },
+        {
+          "de": "Das Bett kostet 300 Euro.",
+          "en": "The bed costs 300 euros."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Betten",
+      "emoji": "🛏️",
+      "source_text": "s Bett,-en"
+    },
+    {
+      "word": "Bild",
+      "display": "das Bild",
+      "part_of_speech": "noun",
+      "english": "picture; painting",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26
+      ],
+      "tts_text": "das Bild",
+      "image_search": "framed picture on wall",
+      "examples": [
+        {
+          "de": "Das Bild ist schön.",
+          "en": "The picture is beautiful."
+        },
+        {
+          "de": "Ist das dein Bild?",
+          "en": "Is that your picture?"
+        },
+        {
+          "de": "Das Bild ist modern.",
+          "en": "The picture is modern."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Bilder",
+      "emoji": "🖼️",
+      "source_text": "s Bild,-er"
+    },
+    {
+      "word": "Fehler",
+      "display": "der Fehler",
+      "part_of_speech": "noun",
+      "english": "mistake; error",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "der Fehler",
+      "image_search": "red cross mistake",
+      "examples": [
+        {
+          "de": "Das ist ein Fehler.",
+          "en": "That's a mistake."
+        },
+        {
+          "de": "Ich mache viele Fehler.",
+          "en": "I make a lot of mistakes."
+        },
+        {
+          "de": "Bitte korrigieren Sie den Fehler.",
+          "en": "Please correct the mistake."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Fehler",
+      "emoji": "❌",
+      "source_text": "r Fehler,-"
+    },
+    {
+      "word": "Fernsehapparat",
+      "display": "der Fernsehapparat",
+      "part_of_speech": "noun",
+      "english": "television set; TV",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        28
+      ],
+      "tts_text": "der Fernsehapparat",
+      "image_search": "television set",
+      "examples": [
+        {
+          "de": "Der Fernsehapparat ist kaputt.",
+          "en": "The TV set is broken."
+        },
+        {
+          "de": "Ist der Fernsehapparat neu?",
+          "en": "Is the TV set new?"
+        },
+        {
+          "de": "Der Fernsehapparat funktioniert nicht.",
+          "en": "The TV set doesn't work."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Fernsehapparate",
+      "emoji": "📺",
+      "source_text": "r Fernsehapparat,-e"
+    },
+    {
+      "word": "Foto",
+      "display": "das Foto",
+      "part_of_speech": "noun",
+      "english": "photo",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22
+      ],
+      "tts_text": "das Foto",
+      "image_search": "printed photos",
+      "examples": [
+        {
+          "de": "Das Foto ist schön.",
+          "en": "The photo is nice."
+        },
+        {
+          "de": "Ist das ein Foto von dir?",
+          "en": "Is that a photo of you?"
+        },
+        {
+          "de": "Ich mache ein Foto.",
+          "en": "I'm taking a photo."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Fotos",
+      "emoji": "📸",
+      "source_text": "s Foto,-s"
+    },
+    {
+      "word": "Fotoapparat",
+      "display": "der Fotoapparat",
+      "part_of_speech": "noun",
+      "english": "camera",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21
+      ],
+      "tts_text": "der Fotoapparat",
+      "image_search": "photo camera",
+      "examples": [
+        {
+          "de": "Der Fotoapparat ist neu.",
+          "en": "The camera is new."
+        },
+        {
+          "de": "Mein Fotoapparat ist kaputt.",
+          "en": "My camera is broken."
+        },
+        {
+          "de": "Ist das dein Fotoapparat?",
+          "en": "Is that your camera?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Fotoapparate",
+      "emoji": "📷",
+      "source_text": "r Fotoapparat,-e"
+    },
+    {
+      "word": "Geld",
+      "display": "das Geld",
+      "part_of_speech": "noun",
+      "english": "money",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        27
+      ],
+      "tts_text": "das Geld",
+      "image_search": "money coins and notes",
+      "examples": [
+        {
+          "de": "Ich habe kein Geld.",
+          "en": "I have no money."
+        },
+        {
+          "de": "Wie viel Geld hast du?",
+          "en": "How much money do you have?"
+        },
+        {
+          "de": "Das kostet viel Geld.",
+          "en": "That costs a lot of money."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "💰",
+      "source_text": "s Geld"
+    },
+    {
+      "word": "Geschäft",
+      "display": "das Geschäft",
+      "part_of_speech": "noun",
+      "english": "shop; store; business",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "das Geschäft",
+      "image_search": "small shop front",
+      "examples": [
+        {
+          "de": "Das Geschäft ist modern.",
+          "en": "The shop is modern."
+        },
+        {
+          "de": "Wo ist das Geschäft?",
+          "en": "Where is the shop?"
+        },
+        {
+          "de": "Das Geschäft hat viele Lampen.",
+          "en": "The shop has many lamps."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Geschäfte",
+      "emoji": "🏪",
+      "source_text": "s Geschäft,-e"
+    },
+    {
+      "word": "Gruppe",
+      "display": "die Gruppe",
+      "part_of_speech": "noun",
+      "english": "group",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "die Gruppe",
+      "image_search": "group of people",
+      "examples": [
+        {
+          "de": "Wir arbeiten in der Gruppe.",
+          "en": "We work in the group."
+        },
+        {
+          "de": "Die Gruppe ist klein.",
+          "en": "The group is small."
+        },
+        {
+          "de": "Die Gruppe ist lustig.",
+          "en": "The group is fun."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Gruppen",
+      "emoji": "👥",
+      "source_text": "e Gruppe,-n"
+    },
+    {
+      "word": "Haus",
+      "display": "das Haus",
+      "part_of_speech": "noun",
+      "english": "house",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "das Haus",
+      "image_search": "house",
+      "examples": [
+        {
+          "de": "Das Haus ist groß.",
+          "en": "The house is big."
+        },
+        {
+          "de": "Mein Haus ist alt.",
+          "en": "My house is old."
+        },
+        {
+          "de": "Wo ist dein Haus?",
+          "en": "Where is your house?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Häuser",
+      "emoji": "🏠",
+      "source_text": "s Haus,¨-er"
+    },
+    {
+      "word": "Haushalt",
+      "display": "der Haushalt",
+      "part_of_speech": "noun",
+      "english": "household; housework",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "der Haushalt",
+      "image_search": "doing housework",
+      "examples": [
+        {
+          "de": "Der Haushalt ist viel Arbeit.",
+          "en": "Housework is a lot of work."
+        },
+        {
+          "de": "Wer macht den Haushalt?",
+          "en": "Who does the housework?"
+        },
+        {
+          "de": "Ich mache den Haushalt.",
+          "en": "I do the housework."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Haushalte",
+      "emoji": "🧹",
+      "source_text": "r Haushalt,-e"
+    },
+    {
+      "word": "Herd",
+      "display": "der Herd",
+      "part_of_speech": "noun",
+      "english": "stove; cooker",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        22,
+        25,
+        26
+      ],
+      "tts_text": "der Herd",
+      "image_search": "kitchen stove",
+      "examples": [
+        {
+          "de": "Der Herd ist neu.",
+          "en": "The stove is new."
+        },
+        {
+          "de": "Der Herd funktioniert nicht.",
+          "en": "The stove doesn't work."
+        },
+        {
+          "de": "Der Herd ist in der Küche.",
+          "en": "The stove is in the kitchen."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Herde",
+      "emoji": "🍳",
+      "source_text": "r Herd,-e"
+    },
+    {
+      "word": "Idee",
+      "display": "die Idee",
+      "part_of_speech": "noun",
+      "english": "idea",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "die Idee",
+      "image_search": "thinking idea",
+      "examples": [
+        {
+          "de": "Das ist eine gute Idee.",
+          "en": "That's a good idea."
+        },
+        {
+          "de": "Hast du eine Idee?",
+          "en": "Do you have an idea?"
+        },
+        {
+          "de": "Die Idee ist originell.",
+          "en": "The idea is original."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Ideen",
+      "emoji": "💭",
+      "source_text": "e Idee,-n"
+    },
+    {
+      "word": "Kamera",
+      "display": "die Kamera",
+      "part_of_speech": "noun",
+      "english": "camera; video camera",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        23
+      ],
+      "tts_text": "die Kamera",
+      "image_search": "video camera",
+      "examples": [
+        {
+          "de": "Die Kamera ist teuer.",
+          "en": "The camera is expensive."
+        },
+        {
+          "de": "Ist die Kamera neu?",
+          "en": "Is the camera new?"
+        },
+        {
+          "de": "Meine Kamera ist kaputt.",
+          "en": "My camera is broken."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Kameras",
+      "emoji": "🎥",
+      "source_text": "e Kamera,-s"
+    },
+    {
+      "word": "Karte",
+      "display": "die Karte",
+      "part_of_speech": "noun",
+      "english": "card; map; ticket",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "die Karte",
+      "image_search": "playing cards",
+      "examples": [
+        {
+          "de": "Ich schreibe eine Karte.",
+          "en": "I'm writing a card."
+        },
+        {
+          "de": "Hast du eine Karte von Berlin?",
+          "en": "Do you have a map of Berlin?"
+        },
+        {
+          "de": "Die Karte kostet 10 Euro.",
+          "en": "The ticket costs 10 euros."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Karten",
+      "emoji": "🃏",
+      "source_text": "e Karte,-n"
+    },
+    {
+      "word": "Kassette",
+      "display": "die Kassette",
+      "part_of_speech": "noun",
+      "english": "cassette",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "die Kassette",
+      "image_search": "cassette tape",
+      "examples": [
+        {
+          "de": "Die Kassette ist alt.",
+          "en": "The cassette is old."
+        },
+        {
+          "de": "Hast du die Kassette?",
+          "en": "Do you have the cassette?"
+        },
+        {
+          "de": "Die Kassette ist kaputt.",
+          "en": "The cassette is broken."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Kassetten",
+      "emoji": "📼",
+      "source_text": "e Kassette,-n"
+    },
+    {
+      "word": "Küche",
+      "display": "die Küche",
+      "part_of_speech": "noun",
+      "english": "kitchen",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        23,
+        24,
+        25
+      ],
+      "tts_text": "die Küche",
+      "image_search": "modern kitchen",
+      "examples": [
+        {
+          "de": "Die Küche ist modern.",
+          "en": "The kitchen is modern."
+        },
+        {
+          "de": "Wo ist die Küche?",
+          "en": "Where is the kitchen?"
+        },
+        {
+          "de": "Die Küche ist sehr praktisch.",
+          "en": "The kitchen is very practical."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Küchen",
+      "emoji": "🧑‍🍳",
+      "source_text": "e Küche,-n"
+    },
+    {
+      "word": "Kugelschreiber",
+      "display": "der Kugelschreiber",
+      "part_of_speech": "noun",
+      "english": "ballpoint pen",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22
+      ],
+      "tts_text": "der Kugelschreiber",
+      "image_search": "ballpoint pen",
+      "examples": [
+        {
+          "de": "Der Kugelschreiber ist leer.",
+          "en": "The pen has run out."
+        },
+        {
+          "de": "Hast du einen Kugelschreiber?",
+          "en": "Do you have a pen?"
+        },
+        {
+          "de": "Das ist mein Kugelschreiber.",
+          "en": "That's my pen."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Kugelschreiber",
+      "emoji": "🖊️",
+      "source_text": "r Kugelschreiber,-"
+    },
+    {
+      "word": "Kühlschrank",
+      "display": "der Kühlschrank",
+      "part_of_speech": "noun",
+      "english": "fridge; refrigerator",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26
+      ],
+      "tts_text": "der Kühlschrank",
+      "image_search": "refrigerator",
+      "examples": [
+        {
+          "de": "Der Kühlschrank ist leer.",
+          "en": "The fridge is empty."
+        },
+        {
+          "de": "Der Kühlschrank ist kaputt.",
+          "en": "The fridge is broken."
+        },
+        {
+          "de": "Der Kühlschrank ist in der Küche.",
+          "en": "The fridge is in the kitchen."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Kühlschränke",
+      "emoji": "🧊",
+      "source_text": "r Kühlschrank,¨-e"
+    },
+    {
+      "word": "Lampe",
+      "display": "die Lampe",
+      "part_of_speech": "noun",
+      "english": "lamp",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22,
+        24,
+        25,
+        26
+      ],
+      "tts_text": "die Lampe",
+      "image_search": "table lamp",
+      "examples": [
+        {
+          "de": "Die Lampe ist modern.",
+          "en": "The lamp is modern."
+        },
+        {
+          "de": "Die Lampe funktioniert nicht.",
+          "en": "The lamp doesn't work."
+        },
+        {
+          "de": "Was kostet die Lampe?",
+          "en": "How much is the lamp?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Lampen",
+      "emoji": "💡",
+      "source_text": "e Lampe,-n"
+    },
+    {
+      "word": "Minute",
+      "display": "die Minute",
+      "part_of_speech": "noun",
+      "english": "minute",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        22
+      ],
+      "tts_text": "die Minute",
+      "image_search": "stopwatch",
+      "examples": [
+        {
+          "de": "Ich komme in fünf Minuten.",
+          "en": "I'll come in five minutes."
+        },
+        {
+          "de": "Eine Minute, bitte!",
+          "en": "One minute, please!"
+        },
+        {
+          "de": "Das dauert zehn Minuten.",
+          "en": "That takes ten minutes."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Minuten",
+      "emoji": "⏱️",
+      "source_text": "e Minute,-n"
+    },
+    {
+      "word": "Person",
+      "display": "die Person",
+      "part_of_speech": "noun",
+      "english": "person",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        31
+      ],
+      "tts_text": "die Person",
+      "image_search": "person",
+      "examples": [
+        {
+          "de": "Die Person ist nett.",
+          "en": "The person is nice."
+        },
+        {
+          "de": "Wie viele Personen sind hier?",
+          "en": "How many people are here?"
+        },
+        {
+          "de": "Der Tisch ist für vier Personen.",
+          "en": "The table is for four people."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Personen",
+      "emoji": "🧑",
+      "source_text": "e Person,-en"
+    },
+    {
+      "word": "Problem",
+      "display": "das Problem",
+      "part_of_speech": "noun",
+      "english": "problem",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "das Problem",
+      "image_search": "warning problem sign",
+      "examples": [
+        {
+          "de": "Das ist kein Problem.",
+          "en": "That's no problem."
+        },
+        {
+          "de": "Wir haben ein Problem.",
+          "en": "We have a problem."
+        },
+        {
+          "de": "Das Problem ist der Herd.",
+          "en": "The problem is the stove."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Probleme",
+      "emoji": "⚠️",
+      "source_text": "s Problem,-e"
+    },
+    {
+      "word": "Programm",
+      "display": "das Programm",
+      "part_of_speech": "noun",
+      "english": "programme; program; (TV) channel",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25
+      ],
+      "tts_text": "das Programm",
+      "image_search": "TV programme guide",
+      "examples": [
+        {
+          "de": "Das Programm ist gut.",
+          "en": "The programme is good."
+        },
+        {
+          "de": "Was gibt es heute im Programm?",
+          "en": "What's on today?"
+        },
+        {
+          "de": "Die Waschmaschine hat viele Programme.",
+          "en": "The washing machine has many programmes."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Programme",
+      "emoji": "📋",
+      "source_text": "s Programm,-e"
+    },
+    {
+      "word": "Radio",
+      "display": "das Radio",
+      "part_of_speech": "noun",
+      "english": "radio",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        28
+      ],
+      "tts_text": "das Radio",
+      "image_search": "radio",
+      "examples": [
+        {
+          "de": "Das Radio ist alt.",
+          "en": "The radio is old."
+        },
+        {
+          "de": "Das Radio funktioniert nicht.",
+          "en": "The radio doesn't work."
+        },
+        {
+          "de": "Ich höre Radio.",
+          "en": "I'm listening to the radio."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Radios",
+      "emoji": "📻",
+      "source_text": "s Radio,-s"
+    },
+    {
+      "word": "Regal",
+      "display": "das Regal",
+      "part_of_speech": "noun",
+      "english": "shelf; shelves",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        24,
+        25
+      ],
+      "tts_text": "das Regal",
+      "image_search": "bookshelf",
+      "examples": [
+        {
+          "de": "Das Regal ist praktisch.",
+          "en": "The shelf is practical."
+        },
+        {
+          "de": "Das Regal ist leer.",
+          "en": "The shelf is empty."
+        },
+        {
+          "de": "Das Regal kostet 50 Euro.",
+          "en": "The shelf costs 50 euros."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Regale",
+      "emoji": "📚",
+      "source_text": "s Regal,-e"
+    },
+    {
+      "word": "Schrank",
+      "display": "der Schrank",
+      "part_of_speech": "noun",
+      "english": "cupboard; wardrobe",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        24,
+        25,
+        26
+      ],
+      "tts_text": "der Schrank",
+      "image_search": "cupboard wardrobe",
+      "examples": [
+        {
+          "de": "Der Schrank ist groß.",
+          "en": "The cupboard is big."
+        },
+        {
+          "de": "Der Schrank ist in der Küche.",
+          "en": "The cupboard is in the kitchen."
+        },
+        {
+          "de": "Ist der Schrank neu?",
+          "en": "Is the cupboard new?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Schränke",
+      "emoji": "🗄️",
+      "source_text": "r Schrank,¨-e"
+    },
+    {
+      "word": "Steckdose",
+      "display": "die Steckdose",
+      "part_of_speech": "noun",
+      "english": "socket; power outlet",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        23
+      ],
+      "tts_text": "die Steckdose",
+      "image_search": "wall power socket",
+      "examples": [
+        {
+          "de": "Wo ist die Steckdose?",
+          "en": "Where is the socket?"
+        },
+        {
+          "de": "Die Steckdose ist kaputt.",
+          "en": "The socket is broken."
+        },
+        {
+          "de": "Die Steckdose ist hier.",
+          "en": "The socket is here."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Steckdosen",
+      "emoji": "⚡",
+      "source_text": "e Steckdose,-n"
+    },
+    {
+      "word": "Stecker",
+      "display": "der Stecker",
+      "part_of_speech": "noun",
+      "english": "plug",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22
+      ],
+      "tts_text": "der Stecker",
+      "image_search": "electric plug",
+      "examples": [
+        {
+          "de": "Der Stecker ist kaputt.",
+          "en": "The plug is broken."
+        },
+        {
+          "de": "Wo ist der Stecker?",
+          "en": "Where is the plug?"
+        },
+        {
+          "de": "Der Stecker passt nicht.",
+          "en": "The plug doesn't fit."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Stecker",
+      "emoji": "🔌",
+      "source_text": "r Stecker,-"
+    },
+    {
+      "word": "Stuhl",
+      "display": "der Stuhl",
+      "part_of_speech": "noun",
+      "english": "chair",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        23,
+        24,
+        25
+      ],
+      "tts_text": "der Stuhl",
+      "image_search": "chair",
+      "examples": [
+        {
+          "de": "Der Stuhl ist bequem.",
+          "en": "The chair is comfortable."
+        },
+        {
+          "de": "Der Stuhl ist kaputt.",
+          "en": "The chair is broken."
+        },
+        {
+          "de": "Wo ist mein Stuhl?",
+          "en": "Where is my chair?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Stühle",
+      "emoji": "🪑",
+      "source_text": "r Stuhl,¨-e"
+    },
+    {
+      "word": "Tisch",
+      "display": "der Tisch",
+      "part_of_speech": "noun",
+      "english": "table",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22,
+        26
+      ],
+      "tts_text": "der Tisch",
+      "image_search": "table",
+      "examples": [
+        {
+          "de": "Der Tisch ist groß.",
+          "en": "The table is big."
+        },
+        {
+          "de": "Der Tisch kostet 100 Euro.",
+          "en": "The table costs 100 euros."
+        },
+        {
+          "de": "Ist das dein Tisch?",
+          "en": "Is that your table?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Tische",
+      "emoji": "🍽️",
+      "source_text": "r Tisch,-e"
+    },
+    {
+      "word": "Topf",
+      "display": "der Topf",
+      "part_of_speech": "noun",
+      "english": "pot; saucepan",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        22,
+        23
+      ],
+      "tts_text": "der Topf",
+      "image_search": "cooking pot",
+      "examples": [
+        {
+          "de": "Der Topf ist neu.",
+          "en": "The pot is new."
+        },
+        {
+          "de": "Der Topf ist leer.",
+          "en": "The pot is empty."
+        },
+        {
+          "de": "Wo ist der Topf?",
+          "en": "Where is the pot?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Töpfe",
+      "emoji": "🍲",
+      "source_text": "r Topf,¨-e"
+    },
+    {
+      "word": "Uhr",
+      "display": "die Uhr",
+      "part_of_speech": "noun",
+      "english": "clock; watch",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        27,
+        28
+      ],
+      "tts_text": "die Uhr",
+      "image_search": "wall clock",
+      "examples": [
+        {
+          "de": "Die Uhr ist kaputt.",
+          "en": "The clock is broken."
+        },
+        {
+          "de": "Die Uhr ist alt.",
+          "en": "The watch is old."
+        },
+        {
+          "de": "Was kostet die Uhr?",
+          "en": "How much is the clock?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Uhren",
+      "emoji": "🕐",
+      "source_text": "e Uhr,-en"
+    },
+    {
+      "word": "Waschbecken",
+      "display": "das Waschbecken",
+      "part_of_speech": "noun",
+      "english": "washbasin; sink",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        22
+      ],
+      "tts_text": "das Waschbecken",
+      "image_search": "bathroom washbasin",
+      "examples": [
+        {
+          "de": "Das Waschbecken ist neu.",
+          "en": "The washbasin is new."
+        },
+        {
+          "de": "Das Waschbecken ist im Bad.",
+          "en": "The washbasin is in the bathroom."
+        },
+        {
+          "de": "Das Waschbecken ist kaputt.",
+          "en": "The washbasin is broken."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Waschbecken",
+      "emoji": "🧼",
+      "source_text": "s Waschbecken,-"
+    },
+    {
+      "word": "Waschmaschine",
+      "display": "die Waschmaschine",
+      "part_of_speech": "noun",
+      "english": "washing machine",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        26,
+        29
+      ],
+      "tts_text": "die Waschmaschine",
+      "image_search": "washing machine",
+      "examples": [
+        {
+          "de": "Die Waschmaschine ist kaputt.",
+          "en": "The washing machine is broken."
+        },
+        {
+          "de": "Die Waschmaschine wäscht gut.",
+          "en": "The washing machine washes well."
+        },
+        {
+          "de": "Ist die Waschmaschine neu?",
+          "en": "Is the washing machine new?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Waschmaschinen",
+      "emoji": "🧺",
+      "source_text": "e Waschmaschine,-n"
+    },
+    {
+      "word": "Wasserhahn",
+      "display": "der Wasserhahn",
+      "part_of_speech": "noun",
+      "english": "tap; faucet",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        21,
+        23
+      ],
+      "tts_text": "der Wasserhahn",
+      "image_search": "water tap",
+      "examples": [
+        {
+          "de": "Der Wasserhahn ist kaputt.",
+          "en": "The tap is broken."
+        },
+        {
+          "de": "Der Wasserhahn ist modern.",
+          "en": "The tap is modern."
+        },
+        {
+          "de": "Wo ist der Wasserhahn?",
+          "en": "Where is the tap?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Wasserhähne",
+      "emoji": "🚰",
+      "source_text": "r Wasserhahn,¨-e"
+    },
+    {
+      "word": "Wert",
+      "display": "der Wert",
+      "part_of_speech": "noun",
+      "english": "value; worth",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "der Wert",
+      "image_search": "valuable gem",
+      "examples": [
+        {
+          "de": "Das Bild hat einen Wert von 100 Euro.",
+          "en": "The picture is worth 100 euros."
+        },
+        {
+          "de": "Der Wert ist hoch.",
+          "en": "The value is high."
+        },
+        {
+          "de": "Was ist der Wert?",
+          "en": "What is the value?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Werte",
+      "emoji": "💎",
+      "source_text": "r Wert,-e"
+    },
+    {
+      "word": "Wort",
+      "display": "das Wort",
+      "part_of_speech": "noun",
+      "english": "word",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        23,
+        31
+      ],
+      "tts_text": "das Wort",
+      "image_search": "letters word",
+      "examples": [
+        {
+          "de": "Das Wort ist neu.",
+          "en": "The word is new."
+        },
+        {
+          "de": "Wie schreibt man das Wort?",
+          "en": "How do you spell the word?"
+        },
+        {
+          "de": "Ich lerne neue Wörter.",
+          "en": "I'm learning new words."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Wörter",
+      "emoji": "🔤",
+      "source_text": "s Wort,¨-er"
+    },
+    {
+      "word": "Zeit",
+      "display": "die Zeit",
+      "part_of_speech": "noun",
+      "english": "time",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        22
+      ],
+      "tts_text": "die Zeit",
+      "image_search": "alarm clock time",
+      "examples": [
+        {
+          "de": "Ich habe keine Zeit.",
+          "en": "I have no time."
+        },
+        {
+          "de": "Hast du heute Zeit?",
+          "en": "Do you have time today?"
+        },
+        {
+          "de": "Wir haben viel Zeit.",
+          "en": "We have a lot of time."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "⏰",
+      "source_text": "e Zeit"
+    },
+    {
+      "word": "ähnlich",
+      "display": "ähnlich",
+      "part_of_speech": "adjective",
+      "english": "similar",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29
+      ],
+      "tts_text": "ähnlich",
+      "image_search": "two similar objects",
+      "examples": [
+        {
+          "de": "Die Lampen sind ähnlich.",
+          "en": "The lamps are similar."
+        },
+        {
+          "de": "Das Bild ist ähnlich.",
+          "en": "The picture is similar."
+        },
+        {
+          "de": "Das ist sehr ähnlich.",
+          "en": "That is very similar."
+        }
+      ],
+      "emoji": "👯"
+    },
+    {
+      "word": "bequem",
+      "display": "bequem",
+      "part_of_speech": "adjective",
+      "english": "comfortable",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25,
+        29
+      ],
+      "tts_text": "bequem",
+      "image_search": "comfortable sofa",
+      "examples": [
+        {
+          "de": "Das Bett ist sehr bequem.",
+          "en": "The bed is very comfortable."
+        },
+        {
+          "de": "Ist das Sofa bequem?",
+          "en": "Is the sofa comfortable?"
+        },
+        {
+          "de": "Die Schuhe sind bequem.",
+          "en": "The shoes are comfortable."
+        }
+      ],
+      "emoji": "🛋️"
+    },
+    {
+      "word": "ehrlich",
+      "display": "ehrlich",
+      "part_of_speech": "adjective",
+      "english": "honest; really",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "ehrlich",
+      "image_search": "honest person",
+      "examples": [
+        {
+          "de": "Er ist sehr ehrlich.",
+          "en": "He is very honest."
+        },
+        {
+          "de": "Sei ehrlich!",
+          "en": "Be honest!"
+        },
+        {
+          "de": "Ehrlich? Das ist toll!",
+          "en": "Really? That's great!"
+        }
+      ],
+      "emoji": "😇"
+    },
+    {
+      "word": "kaputt",
+      "display": "kaputt",
+      "part_of_speech": "adjective",
+      "english": "broken",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "kaputt",
+      "image_search": "broken device",
+      "examples": [
+        {
+          "de": "Die Lampe ist kaputt.",
+          "en": "The lamp is broken."
+        },
+        {
+          "de": "Mein Auto ist kaputt.",
+          "en": "My car is broken."
+        },
+        {
+          "de": "Ist der Fernsehapparat kaputt?",
+          "en": "Is the TV broken?"
+        }
+      ],
+      "emoji": "🛠️"
+    },
+    {
+      "word": "leer",
+      "display": "leer",
+      "part_of_speech": "adjective",
+      "english": "empty",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "leer",
+      "image_search": "empty jar",
+      "examples": [
+        {
+          "de": "Der Kühlschrank ist leer.",
+          "en": "The fridge is empty."
+        },
+        {
+          "de": "Die Batterie ist leer.",
+          "en": "The battery is dead."
+        },
+        {
+          "de": "Das Glas ist leer.",
+          "en": "The glass is empty."
+        }
+      ],
+      "emoji": "🫙"
+    },
+    {
+      "word": "lustig",
+      "display": "lustig",
+      "part_of_speech": "adjective",
+      "english": "funny; fun",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "lustig",
+      "image_search": "people laughing",
+      "examples": [
+        {
+          "de": "Der Film ist lustig.",
+          "en": "The film is funny."
+        },
+        {
+          "de": "Das Bild ist sehr lustig.",
+          "en": "The picture is very funny."
+        },
+        {
+          "de": "Mein Freund ist lustig.",
+          "en": "My friend is funny."
+        }
+      ],
+      "emoji": "😂"
+    },
+    {
+      "word": "modern",
+      "display": "modern",
+      "part_of_speech": "adjective",
+      "english": "modern",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25,
+        29,
+        32
+      ],
+      "tts_text": "modern",
+      "image_search": "modern design furniture",
+      "examples": [
+        {
+          "de": "Die Küche ist modern.",
+          "en": "The kitchen is modern."
+        },
+        {
+          "de": "Das Haus ist sehr modern.",
+          "en": "The house is very modern."
+        },
+        {
+          "de": "Ist die Lampe modern?",
+          "en": "Is the lamp modern?"
+        }
+      ],
+      "emoji": "✨"
+    },
+    {
+      "word": "originell",
+      "display": "originell",
+      "part_of_speech": "adjective",
+      "english": "original; unusual; creative",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "originell",
+      "image_search": "creative unusual design",
+      "examples": [
+        {
+          "de": "Die Idee ist originell.",
+          "en": "The idea is original."
+        },
+        {
+          "de": "Das Bild ist sehr originell.",
+          "en": "The picture is very original."
+        },
+        {
+          "de": "Die Lampe ist originell.",
+          "en": "The lamp is unusual."
+        }
+      ],
+      "emoji": "🎨"
+    },
+    {
+      "word": "praktisch",
+      "display": "praktisch",
+      "part_of_speech": "adjective",
+      "english": "practical",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25,
+        29
+      ],
+      "tts_text": "praktisch",
+      "image_search": "practical tool",
+      "examples": [
+        {
+          "de": "Das Regal ist praktisch.",
+          "en": "The shelf is practical."
+        },
+        {
+          "de": "Die Küche ist sehr praktisch.",
+          "en": "The kitchen is very practical."
+        },
+        {
+          "de": "Ist der Stuhl praktisch?",
+          "en": "Is the chair practical?"
+        }
+      ],
+      "emoji": "👍"
+    },
+    {
+      "word": "auch",
+      "display": "auch",
+      "part_of_speech": "adverb",
+      "english": "also; too",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        29,
+        31
+      ],
+      "tts_text": "auch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme auch.",
+          "en": "I'm coming too."
+        },
+        {
+          "de": "Das ist auch gut.",
+          "en": "That's good too."
+        },
+        {
+          "de": "Hast du auch ein Auto?",
+          "en": "Do you have a car too?"
+        }
+      ],
+      "emoji": "➕"
+    },
+    {
+      "word": "heute",
+      "display": "heute",
+      "part_of_speech": "adverb",
+      "english": "today",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        32
+      ],
+      "tts_text": "heute",
+      "image_search": "calendar today",
+      "examples": [
+        {
+          "de": "Heute ist Montag.",
+          "en": "Today is Monday."
+        },
+        {
+          "de": "Was machst du heute?",
+          "en": "What are you doing today?"
+        },
+        {
+          "de": "Ich habe heute Zeit.",
+          "en": "I have time today."
+        }
+      ],
+      "emoji": "📅"
+    },
+    {
+      "word": "sehr",
+      "display": "sehr",
+      "part_of_speech": "adverb",
+      "english": "very",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25
+      ],
+      "tts_text": "sehr",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist sehr gut.",
+          "en": "That is very good."
+        },
+        {
+          "de": "Die Lampe ist sehr modern.",
+          "en": "The lamp is very modern."
+        },
+        {
+          "de": "Danke sehr!",
+          "en": "Thank you very much!"
+        }
+      ],
+      "emoji": "❗"
+    },
+    {
+      "word": "viel",
+      "display": "viel",
+      "part_of_speech": "adverb",
+      "english": "much; a lot",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        31
+      ],
+      "tts_text": "viel",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das kostet viel.",
+          "en": "That costs a lot."
+        },
+        {
+          "de": "Ich habe viel Zeit.",
+          "en": "I have a lot of time."
+        },
+        {
+          "de": "Viel Glück!",
+          "en": "Good luck!"
+        }
+      ],
+      "emoji": "📈"
+    },
+    {
+      "word": "es",
+      "display": "es",
+      "part_of_speech": "pronoun",
+      "english": "it",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25
+      ],
+      "tts_text": "es",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Es ist kaputt.",
+          "en": "It is broken."
+        },
+        {
+          "de": "Wie ist es?",
+          "en": "How is it?"
+        },
+        {
+          "de": "Es kostet 10 Euro.",
+          "en": "It costs 10 euros."
+        }
+      ],
+      "emoji": "👉"
+    },
+    {
+      "word": "oder",
+      "display": "oder",
+      "part_of_speech": "conjunction",
+      "english": "or",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        24,
+        31
+      ],
+      "tts_text": "oder",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Tee oder Kaffee?",
+          "en": "Tea or coffee?"
+        },
+        {
+          "de": "Kommst du heute oder morgen?",
+          "en": "Are you coming today or tomorrow?"
+        },
+        {
+          "de": "Ist das ein Stuhl oder ein Tisch?",
+          "en": "Is that a chair or a table?"
+        }
+      ],
+      "emoji": "↔️"
+    },
+    {
+      "word": "sondern",
+      "display": "sondern",
+      "part_of_speech": "conjunction",
+      "english": "but (rather) — after a negative",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28
+      ],
+      "tts_text": "sondern",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist kein Stuhl, sondern ein Tisch.",
+          "en": "That's not a chair but a table."
+        },
+        {
+          "de": "Nicht heute, sondern morgen.",
+          "en": "Not today, but tomorrow."
+        },
+        {
+          "de": "Die Lampe ist nicht alt, sondern modern.",
+          "en": "The lamp isn't old but modern."
+        }
+      ],
+      "emoji": "↪️"
+    },
+    {
+      "word": "zu",
+      "display": "zu",
+      "part_of_speech": "adverb",
+      "english": "too (as in 'too expensive')",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        28,
+        30
+      ],
+      "tts_text": "zu",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist zu teuer.",
+          "en": "That's too expensive."
+        },
+        {
+          "de": "Der Stuhl ist zu klein.",
+          "en": "The chair is too small."
+        },
+        {
+          "de": "Die Küche ist zu modern.",
+          "en": "The kitchen is too modern."
+        }
+      ],
+      "emoji": "⬆️"
+    }
+  ],
+  "expressions": [
+    {
+      "text": "alle sein",
+      "english": "to be all gone; to be used up (colloquial)",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "alle sein",
+      "example": "Das Benzin ist alle."
+    },
+    {
+      "text": "aus sein",
+      "english": "to be off; to be over",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        25
+      ],
+      "tts_text": "aus sein",
+      "example": "Das Radio ist aus."
+    },
+    {
+      "text": "raus sein",
+      "english": "to be out (e.g. a plug pulled out; colloquial)",
+      "cefr": "A1",
+      "lesson": 2,
+      "references": [
+        30
+      ],
+      "tts_text": "raus sein",
+      "example": "Der Stecker ist raus."
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Definiter Artikel im Nominativ",
+      "english_topic": "Definite article in the nominative",
+      "section_reference": "§1",
+      "singular": [
+        "der Stuhl",
+        "die Lampe",
+        "das Klavier"
+      ],
+      "plural": [
+        "die Stühle",
+        "die Lampen",
+        "die Klaviere"
+      ]
+    },
+    {
+      "topic": "Indefiniter Artikel im Nominativ",
+      "english_topic": "Indefinite article in the nominative",
+      "section_reference": "§1",
+      "singular": [
+        "ein Stuhl",
+        "eine Lampe",
+        "ein Regal"
+      ],
+      "plural": [
+        "Stühle",
+        "Lampen",
+        "Regale"
+      ],
+      "negative_singular": [
+        "kein Stuhl",
+        "keine Lampe",
+        "kein Regal"
+      ],
+      "negative_plural": [
+        "keine Stühle",
+        "keine Lampen",
+        "keine Regale"
+      ]
+    },
+    {
+      "topic": "Possessivartikel im Nominativ",
+      "english_topic": "Possessive articles in the nominative",
+      "section_reference": "§6a",
+      "forms": {
+        "ich": {
+          "masculine": "mein Stuhl",
+          "feminine": "meine Lampe",
+          "neuter": "mein Regal",
+          "plural": "meine Stühle"
+        },
+        "du": {
+          "masculine": "dein Stuhl",
+          "feminine": "deine Lampe",
+          "neuter": "dein Regal",
+          "plural": "deine Stühle"
+        },
+        "Sie": {
+          "masculine": "Ihr Stuhl",
+          "feminine": "Ihre Lampe",
+          "neuter": "Ihr Regal",
+          "plural": "Ihre Stühle"
+        },
+        "er": {
+          "masculine": "sein Stuhl",
+          "feminine": "seine Lampe",
+          "neuter": "sein Regal",
+          "plural": "seine Stühle"
+        },
+        "sie": {
+          "masculine": "ihr Stuhl",
+          "feminine": "ihre Lampe",
+          "neuter": "ihr Regal",
+          "plural": "ihre Stühle"
+        }
+      }
+    }
+  ]
+}

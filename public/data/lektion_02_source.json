@@ -1,0 +1,667 @@
+{
+  "lesson": 2,
+  "title": "Lektion 2",
+  "source_pages": [
+    19,
+    20
+  ],
+  "status": "clean_source_extraction",
+  "notes": [
+    "references are the page numbers printed next to each vocabulary item in the book",
+    "noun article codes as printed: r = der, e = die, s = das",
+    "plural notation as printed: ,-n adds -n; ,¨-e adds -e with umlaut; ,- means no change",
+    "grammar tables are stored separately from vocabulary"
+  ],
+  "vocabulary": {
+    "verbs": [
+      {
+        "text": "antworten",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "bekommen",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "bieten",
+        "references": [
+          27
+        ]
+      },
+      {
+        "text": "entscheiden",
+        "references": [
+          22
+        ]
+      },
+      {
+        "text": "entschuldigen",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "fahren",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "funktionieren",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "gehen",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "können",
+        "references": [
+          26
+        ]
+      },
+      {
+        "text": "korrigieren",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "kosten",
+        "references": [
+          25
+        ]
+      },
+      {
+        "text": "sagen",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "spülen",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "stimmen",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "waschen",
+        "references": [
+          26,
+          29,
+          30
+        ]
+      },
+      {
+        "text": "wechseln",
+        "references": [
+          31
+        ]
+      }
+    ],
+    "nouns": [
+      {
+        "text": "Antwort",
+        "printed": "e Antwort,-en",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "Auto",
+        "printed": "s Auto,-s",
+        "references": [
+          21,
+          29
+        ]
+      },
+      {
+        "text": "Batterie",
+        "printed": "e Batterie,-n",
+        "references": [
+          21,
+          22,
+          23
+        ]
+      },
+      {
+        "text": "Benzin",
+        "printed": "s Benzin",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "Bett",
+        "printed": "s Bett,-en",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "Bild",
+        "printed": "s Bild,-er",
+        "references": [
+          26
+        ]
+      },
+      {
+        "text": "Fehler",
+        "printed": "r Fehler,-",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "Fernsehapparat",
+        "printed": "r Fernsehapparat,-e",
+        "references": [
+          26,
+          28
+        ]
+      },
+      {
+        "text": "Foto",
+        "printed": "s Foto,-s",
+        "references": [
+          21,
+          22
+        ]
+      },
+      {
+        "text": "Fotoapparat",
+        "printed": "r Fotoapparat,-e",
+        "references": [
+          21
+        ]
+      },
+      {
+        "text": "Geld",
+        "printed": "s Geld",
+        "references": [
+          27
+        ]
+      },
+      {
+        "text": "Geschäft",
+        "printed": "s Geschäft,-e",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "Gruppe",
+        "printed": "e Gruppe,-n",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "Haus",
+        "printed": "s Haus,¨-er",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "Haushalt",
+        "printed": "r Haushalt,-e",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "Herd",
+        "printed": "r Herd,-e",
+        "references": [
+          22,
+          25,
+          26
+        ]
+      },
+      {
+        "text": "Idee",
+        "printed": "e Idee,-n",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "Kamera",
+        "printed": "e Kamera,-s",
+        "references": [
+          23
+        ]
+      },
+      {
+        "text": "Karte",
+        "printed": "e Karte,-n",
+        "references": [
+          31
+        ]
+      },
+      {
+        "text": "Kassette",
+        "printed": "e Kassette,-n",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "Küche",
+        "printed": "e Küche,-n",
+        "references": [
+          23,
+          24,
+          25
+        ]
+      },
+      {
+        "text": "Kugelschreiber",
+        "printed": "r Kugelschreiber,-",
+        "references": [
+          21,
+          22
+        ]
+      },
+      {
+        "text": "Kühlschrank",
+        "printed": "r Kühlschrank,¨-e",
+        "references": [
+          26
+        ]
+      },
+      {
+        "text": "Lampe",
+        "printed": "e Lampe,-n",
+        "references": [
+          21,
+          22,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "text": "Minute",
+        "printed": "e Minute,-n",
+        "references": [
+          22
+        ]
+      },
+      {
+        "text": "Person",
+        "printed": "e Person,-en",
+        "references": [
+          26,
+          31
+        ]
+      },
+      {
+        "text": "Problem",
+        "printed": "s Problem,-e",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "Programm",
+        "printed": "s Programm,-e",
+        "references": [
+          25
+        ]
+      },
+      {
+        "text": "Radio",
+        "printed": "s Radio,-s",
+        "references": [
+          26,
+          28
+        ]
+      },
+      {
+        "text": "Regal",
+        "printed": "s Regal,-e",
+        "references": [
+          24,
+          25
+        ]
+      },
+      {
+        "text": "Schrank",
+        "printed": "r Schrank,¨-e",
+        "references": [
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "text": "Steckdose",
+        "printed": "e Steckdose,-n",
+        "references": [
+          21,
+          23
+        ]
+      },
+      {
+        "text": "Stecker",
+        "printed": "r Stecker,-",
+        "references": [
+          21,
+          22
+        ]
+      },
+      {
+        "text": "Stuhl",
+        "printed": "r Stuhl,¨-e",
+        "references": [
+          21,
+          23,
+          24,
+          25
+        ]
+      },
+      {
+        "text": "Tisch",
+        "printed": "r Tisch,-e",
+        "references": [
+          21,
+          22,
+          26
+        ]
+      },
+      {
+        "text": "Topf",
+        "printed": "r Topf,¨-e",
+        "references": [
+          22,
+          23
+        ]
+      },
+      {
+        "text": "Uhr",
+        "printed": "e Uhr,-en",
+        "references": [
+          26,
+          27,
+          28
+        ]
+      },
+      {
+        "text": "Waschbecken",
+        "printed": "s Waschbecken,-",
+        "references": [
+          21,
+          22
+        ]
+      },
+      {
+        "text": "Waschmaschine",
+        "printed": "e Waschmaschine,-n",
+        "references": [
+          26,
+          29
+        ]
+      },
+      {
+        "text": "Wasserhahn",
+        "printed": "r Wasserhahn,¨-e",
+        "references": [
+          21,
+          23
+        ]
+      },
+      {
+        "text": "Wert",
+        "printed": "r Wert,-e",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "Wort",
+        "printed": "s Wort,¨-er",
+        "references": [
+          23,
+          31
+        ]
+      },
+      {
+        "text": "Zeit",
+        "printed": "e Zeit",
+        "references": [
+          22
+        ]
+      }
+    ],
+    "adjectives": [
+      {
+        "text": "ähnlich",
+        "references": [
+          29
+        ]
+      },
+      {
+        "text": "bequem",
+        "references": [
+          25,
+          29
+        ]
+      },
+      {
+        "text": "ehrlich",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "kaputt",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "leer",
+        "references": [
+          30
+        ]
+      },
+      {
+        "text": "lustig",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "modern",
+        "references": [
+          25,
+          29,
+          32
+        ]
+      },
+      {
+        "text": "originell",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "praktisch",
+        "references": [
+          25,
+          29
+        ]
+      }
+    ],
+    "adverbs": [
+      {
+        "text": "auch",
+        "references": [
+          29,
+          31
+        ]
+      },
+      {
+        "text": "heute",
+        "references": [
+          32
+        ]
+      },
+      {
+        "text": "sehr",
+        "references": [
+          25
+        ]
+      },
+      {
+        "text": "viel",
+        "references": [
+          31
+        ]
+      }
+    ],
+    "function_words": [
+      {
+        "text": "es",
+        "references": [
+          25
+        ]
+      },
+      {
+        "text": "oder",
+        "references": [
+          24,
+          31
+        ]
+      },
+      {
+        "text": "sondern",
+        "references": [
+          28
+        ]
+      },
+      {
+        "text": "zu",
+        "references": [
+          28,
+          30
+        ]
+      }
+    ]
+  },
+  "expressions": [
+    {
+      "text": "alle sein",
+      "references": [
+        30
+      ]
+    },
+    {
+      "text": "aus sein",
+      "references": [
+        25
+      ]
+    },
+    {
+      "text": "raus sein",
+      "references": [
+        30
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Definiter Artikel im Nominativ",
+      "english_topic": "Definite article in the nominative",
+      "section_reference": "§1",
+      "singular": [
+        "der Stuhl",
+        "die Lampe",
+        "das Klavier"
+      ],
+      "plural": [
+        "die Stühle",
+        "die Lampen",
+        "die Klaviere"
+      ]
+    },
+    {
+      "topic": "Indefiniter Artikel im Nominativ",
+      "english_topic": "Indefinite article in the nominative",
+      "section_reference": "§1",
+      "singular": [
+        "ein Stuhl",
+        "eine Lampe",
+        "ein Regal"
+      ],
+      "plural": [
+        "Stühle",
+        "Lampen",
+        "Regale"
+      ],
+      "negative_singular": [
+        "kein Stuhl",
+        "keine Lampe",
+        "kein Regal"
+      ],
+      "negative_plural": [
+        "keine Stühle",
+        "keine Lampen",
+        "keine Regale"
+      ]
+    },
+    {
+      "topic": "Possessivartikel im Nominativ",
+      "english_topic": "Possessive articles in the nominative",
+      "section_reference": "§6a",
+      "forms": {
+        "ich": {
+          "masculine": "mein Stuhl",
+          "feminine": "meine Lampe",
+          "neuter": "mein Regal",
+          "plural": "meine Stühle"
+        },
+        "du": {
+          "masculine": "dein Stuhl",
+          "feminine": "deine Lampe",
+          "neuter": "dein Regal",
+          "plural": "deine Stühle"
+        },
+        "Sie": {
+          "masculine": "Ihr Stuhl",
+          "feminine": "Ihre Lampe",
+          "neuter": "Ihr Regal",
+          "plural": "Ihre Stühle"
+        },
+        "er": {
+          "masculine": "sein Stuhl",
+          "feminine": "seine Lampe",
+          "neuter": "sein Regal",
+          "plural": "seine Stühle"
+        },
+        "sie": {
+          "masculine": "ihr Stuhl",
+          "feminine": "ihre Lampe",
+          "neuter": "ihr Regal",
+          "plural": "ihre Stühle"
+        }
+      }
+    }
+  ]
+}
