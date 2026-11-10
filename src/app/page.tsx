@@ -97,15 +97,22 @@ export default function Home() {
   }
 
   // One button per lesson, plus "All"
-  const lessonButtons: { choice: LessonChoice; label: string; percent: number }[] = [
+  const lessonButtons: {
+    choice: LessonChoice;
+    label: string; // shown in the box: "3" or "All"
+    name: string; // read out by screen readers: "Lektion 3"
+    percent: number;
+  }[] = [
     ...lessons.map((lesson) => ({
       choice: lesson.lesson as LessonChoice,
-      label: `Lektion ${lesson.lesson}`,
+      label: String(lesson.lesson),
+      name: `Lektion ${lesson.lesson}`,
       percent: percentMastered(lesson.vocabulary),
     })),
     {
       choice: "all",
       label: "All",
+      name: "All lessons",
       percent: percentMastered(selectLesson(lessons, "all").vocabulary),
     },
   ];
@@ -133,26 +140,43 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Lesson picker: one button per lesson, with its Mastered %.
-              The chosen lesson is "highlighted" in marker yellow. */}
+          {/* Lesson picker: numbered boxes (6 per row), each with a tiny
+              bar showing how much of that lesson is Mastered. "All" takes
+              two boxes. The chosen lesson is highlighted in marker yellow. */}
 
-          <div className="flex flex-wrap gap-2 mb-4">
-            {lessonButtons.map((button) => (
-              <button
-                key={String(button.choice)}
-                onClick={() => chooseLesson(button.choice)}
-                className={`px-3 py-1.5 rounded-lg text-sm leading-tight text-left border ${pressable} ${
-                  lessonChoice === button.choice
-                    ? "bg-marker border-marker-strong font-semibold"
-                    : "bg-paper border-graphite/15 hover:bg-white"
-                }`}
-              >
-                {button.label}
-                <span className="block text-xs font-normal text-pencil">
-                  {button.percent}% mastered
-                </span>
-              </button>
-            ))}
+          <p className="text-sm text-pencil mb-1.5">Lektion</p>
+
+          <div className="grid grid-cols-6 gap-1.5 mb-4">
+            {lessonButtons.map((button) => {
+              const isChosen = lessonChoice === button.choice;
+
+              return (
+                <button
+                  key={String(button.choice)}
+                  onClick={() => chooseLesson(button.choice)}
+                  aria-label={`${button.name}, ${button.percent}% mastered`}
+                  aria-pressed={isChosen}
+                  title={`${button.name}: ${button.percent}% mastered`}
+                  className={`h-11 px-1.5 pt-1.5 pb-1 rounded-lg border flex flex-col justify-between ${pressable} ${
+                    button.choice === "all" ? "col-span-2" : ""
+                  } ${
+                    isChosen
+                      ? "bg-marker border-marker-strong font-semibold"
+                      : "bg-paper border-graphite/15 hover:bg-white"
+                  }`}
+                >
+                  <span className="text-sm leading-none">{button.label}</span>
+
+                  {/* Mini Mastered bar */}
+                  <span className="block w-full h-1 rounded-full bg-graphite/10 overflow-hidden">
+                    <span
+                      className={`block h-full ${isChosen ? "bg-graphite" : "bg-marker-strong"}`}
+                      style={{ width: `${button.percent}%` }}
+                    />
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Word type dropdown: only types that exist in the chosen lesson */}

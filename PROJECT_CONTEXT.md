@@ -108,7 +108,7 @@ The app has two screens.
 
 The lesson overview. It shows:
 
-- lesson picker: one button per lesson (Lektion 1, Lektion 2, …) plus "All", each with its Mastered %. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
+- lesson picker: numbered boxes under the label "Lektion" (1, 2, … 6 per row) plus "All" (two boxes wide). Each box has a tiny bar showing its Mastered %; the exact % is in its tooltip and screen-reader label. Sized for all 10 lessons of the book: 2 rows, still fits a small phone (tested with 10 test lessons). The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
 - title of the chosen lesson and its word count
 - "Word type" dropdown (see "Word Type Filter")
 - Learning and Mastered counts, Mastered percentage and a progress bar
