@@ -12,6 +12,10 @@
   --color-grid: #e3e7ec; /* the squared-paper lines */
   --color-marker: #ffe066; /* yellow highlighter: selected things */
   --color-marker-strong: #e8b400; /* highlighter for thin bars */
+
+  /* A stronger "ease-out" than Tailwind's default: starts fast, settles
+     gently, so motion feels quick. Used by every "ease-out" class. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @theme inline {
@@ -33,4 +37,66 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-graphite);
   outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Study screen animations. Kept short on purpose: you change cards and
+   reveal answers hundreds of times, so they must never make you wait.
+   --------------------------------------------------------------------- */
+
+/* Changing cards: the new card slides in a little from the side it came
+   from (right for Next, left for Previous) while fading in. */
+.card-in-next {
+  animation: card-in-next 280ms var(--ease-out);
+}
+
+.card-in-previous {
+  animation: card-in-previous 280ms var(--ease-out);
+}
+
+@keyframes card-in-next {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+@keyframes card-in-previous {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+}
+
+/* Revealing the answer: it fades in while rising a little into place. */
+.reveal-fade {
+  transition:
+    opacity 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* "Reduce motion" turned on in the phone/computer settings: keep the
+   gentle fades, but nothing slides. */
+@media (prefers-reduced-motion: reduce) {
+  .card-in-next,
+  .card-in-previous {
+    animation-name: fade-in;
+  }
+
+  .reveal-fade {
+    @starting-style {
+      transform: none;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }

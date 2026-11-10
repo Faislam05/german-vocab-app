@@ -83,6 +83,12 @@ export default function StudySession() {
   // automatically hides the answer again, because the word changes.
   const [revealedWord, setRevealedWord] = useState<string | null>(null);
 
+  // Which way we last moved, so the new card slides in from the right
+  // (Next) or from the left (Previous).
+  const [moveDirection, setMoveDirection] = useState<"next" | "previous">(
+    "next"
+  );
+
   // Shuffle mode: when on, this holds the lesson words in a random order.
   // When off, it is null and the normal textbook order is used.
   // The order is made once when shuffle is turned on, so it stays the
@@ -116,12 +122,14 @@ export default function StudySession() {
       }
 
       if (event.key === "ArrowRight") {
+        setMoveDirection("next");
         setIndex(
           (currentIndex) => (currentIndex + 1) % visibleVocabulary.length
         );
       }
 
       if (event.key === "ArrowLeft") {
+        setMoveDirection("previous");
         setIndex(
           (currentIndex) =>
             (currentIndex - 1 + visibleVocabulary.length) %
@@ -183,12 +191,14 @@ export default function StudySession() {
   const showAnswer = !revealMode || revealedWord === word.word;
 
   function nextWord() {
+    setMoveDirection("next");
     setIndex(
       (currentIndex) => (currentIndex + 1) % visibleVocabulary.length
     );
   }
 
   function previousWord() {
+    setMoveDirection("previous");
     setIndex(
       (currentIndex) =>
         (currentIndex - 1 + visibleVocabulary.length) %
@@ -220,7 +230,7 @@ export default function StudySession() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-2 sm:p-6">
+    <main className="min-h-screen flex items-center justify-center p-2 sm:p-6 overflow-x-clip">
       <div className={`${cardStyle} p-4 sm:p-6`}>
         <StudyTopBar
           filterLabel={filterLabels[studyFilter]}
@@ -232,121 +242,131 @@ export default function StudySession() {
           onToggleRevealMode={() => setRevealMode(!revealMode)}
         />
 
-        {/* Emoji visual. German → English: hidden until revealed, since it
-            hints at the meaning. English → German: always shown as a hint. */}
+        {/* The card content. "key" makes React draw a fresh copy for each
+            word, which plays the slide-in animation (see globals.css). */}
 
-        <div className="w-full h-14 sm:h-20 rounded-xl mb-2 bg-paper border border-grid flex items-center justify-center">
-          <span className="text-4xl sm:text-6xl">
-            {showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓"}
-          </span>
-        </div>
+        <div
+          key={word.word}
+          className={
+            moveDirection === "next" ? "card-in-next" : "card-in-previous"
+          }
+        >
+          {/* Emoji visual. German → English: hidden until revealed, since it
+              hints at the meaning. English → German: always shown as a hint. */}
 
-        {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
+          <div className="w-full h-14 sm:h-20 rounded-xl mb-2 bg-paper border border-grid flex items-center justify-center">
+            <span className="text-4xl sm:text-6xl">
+              {showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓"}
+            </span>
+          </div>
 
-        <div className="text-center">
-          {isEnglishToGerman ? (
-            <>
-              {/* Same size as the English meaning in German → English, so
-                  the German word is always the biggest thing on the card */}
-              <h1 className="text-2xl mb-1">{word.english}</h1>
+          {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
 
-              <p className="text-sm text-pencil mb-3">{partOfSpeech}</p>
-            </>
-          ) : (
-            <>
-              <h1 className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
-                <span className={highlighter}>
-                  <GermanWord word={word} />
-                </span>
-              </h1>
+          <div className="text-center">
+            {isEnglishToGerman ? (
+              <>
+                {/* Same size as the English meaning in German → English, so
+                    the German word is always the biggest thing on the card */}
+                <h1 className="text-2xl mb-1">{word.english}</h1>
 
-              {/* Part of speech and Listen on one row, to save space */}
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <span className="text-sm text-pencil">{partOfSpeech}</span>
-                <ListenButton text={word.tts_text} />
+                <p className="text-sm text-pencil mb-3">{partOfSpeech}</p>
+              </>
+            ) : (
+              <>
+                <h1 className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
+                  <span className={highlighter}>
+                    <GermanWord word={word} />
+                  </span>
+                </h1>
+
+                {/* Part of speech and Listen on one row, to save space */}
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <span className="text-sm text-pencil">{partOfSpeech}</span>
+                  <ListenButton text={word.tts_text} />
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Reveal button (only while the answer is hidden) */}
+
+          {!showAnswer && (
+            <div className="text-center mt-1">
+              <button
+                onClick={() => setRevealedWord(word.word)}
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
+              >
+                {isEnglishToGerman ? "Show German" : "Show meaning"}
+
+                {/* Key hint, only on computers (phones have no Space key) */}
+                <kbd className="hidden pointer-fine:inline px-1.5 py-0.5 rounded border border-paper/30 text-xs font-sans font-normal text-paper/80">
+                  Space
+                </kbd>
+              </button>
+            </div>
+          )}
+
+          {/* Answer: the other side of the card, plural, status buttons and examples */}
+
+          {showAnswer && (
+            <div className="reveal-fade">
+              <div className="text-center">
+                {isEnglishToGerman ? (
+                  <>
+                    <p className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
+                      <span className={highlighter}>
+                        <GermanWord word={word} />
+                      </span>
+                    </p>
+
+                    {/* Listen is only shown now, since it would speak the answer */}
+                    <ListenButton text={word.tts_text} className="mb-2" />
+                  </>
+                ) : (
+                  <p className="text-2xl mb-1">{word.english}</p>
+                )}
+
+                {/* Always shown (N/A when there is none), so every card has
+                    the same layout */}
+                <p className="text-pencil">Plural: {word.plural || "N/A"}</p>
               </div>
-            </>
+
+              {/* Learning / Mastered: one switch with two sides */}
+
+              <div
+                className="grid grid-cols-2 gap-1 p-1 mx-auto max-w-64 mt-3 mb-3 rounded-xl bg-grid text-sm"
+                role="group"
+                aria-label="How well do you know this word?"
+              >
+                <button
+                  onClick={() => updateStudyStatus("learning")}
+                  aria-pressed={(studyStatus[word.word] || "learning") === "learning"}
+                  className={`py-1.5 rounded-lg ${pressable} ${
+                    (studyStatus[word.word] || "learning") === "learning"
+                      ? "bg-white font-semibold shadow-sm"
+                      : "text-pencil hover:text-graphite"
+                  }`}
+                >
+                  Learning
+                </button>
+
+                <button
+                  onClick={() => updateStudyStatus("mastered")}
+                  aria-pressed={studyStatus[word.word] === "mastered"}
+                  className={`py-1.5 rounded-lg ${pressable} ${
+                    studyStatus[word.word] === "mastered"
+                      ? "bg-marker font-semibold shadow-sm"
+                      : "text-pencil hover:text-graphite"
+                  }`}
+                >
+                  Mastered
+                </button>
+              </div>
+
+              <ExampleSentences examples={word.examples} />
+            </div>
           )}
         </div>
-
-        {/* Reveal button (only while the answer is hidden) */}
-
-        {!showAnswer && (
-          <div className="text-center mt-1">
-            <button
-              onClick={() => setRevealedWord(word.word)}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
-            >
-              {isEnglishToGerman ? "Show German" : "Show meaning"}
-
-              {/* Key hint, only on computers (phones have no Space key) */}
-              <kbd className="hidden pointer-fine:inline px-1.5 py-0.5 rounded border border-paper/30 text-xs font-sans font-normal text-paper/80">
-                Space
-              </kbd>
-            </button>
-          </div>
-        )}
-
-        {/* Answer: the other side of the card, plural, status buttons and examples */}
-
-        {showAnswer && (
-          <>
-            <div className="text-center">
-              {isEnglishToGerman ? (
-                <>
-                  <p className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
-                    <span className={highlighter}>
-                      <GermanWord word={word} />
-                    </span>
-                  </p>
-
-                  {/* Listen is only shown now, since it would speak the answer */}
-                  <ListenButton text={word.tts_text} className="mb-2" />
-                </>
-              ) : (
-                <p className="text-2xl mb-1">{word.english}</p>
-              )}
-
-              {/* Always shown (N/A when there is none), so every card has
-                  the same layout */}
-              <p className="text-pencil">Plural: {word.plural || "N/A"}</p>
-            </div>
-
-            {/* Learning / Mastered: one switch with two sides */}
-
-            <div
-              className="grid grid-cols-2 gap-1 p-1 mx-auto max-w-64 mt-3 mb-3 rounded-xl bg-grid text-sm"
-              role="group"
-              aria-label="How well do you know this word?"
-            >
-              <button
-                onClick={() => updateStudyStatus("learning")}
-                aria-pressed={(studyStatus[word.word] || "learning") === "learning"}
-                className={`py-1.5 rounded-lg ${pressable} ${
-                  (studyStatus[word.word] || "learning") === "learning"
-                    ? "bg-white font-semibold shadow-sm"
-                    : "text-pencil hover:text-graphite"
-                }`}
-              >
-                Learning
-              </button>
-
-              <button
-                onClick={() => updateStudyStatus("mastered")}
-                aria-pressed={studyStatus[word.word] === "mastered"}
-                className={`py-1.5 rounded-lg ${pressable} ${
-                  studyStatus[word.word] === "mastered"
-                    ? "bg-marker font-semibold shadow-sm"
-                    : "text-pencil hover:text-graphite"
-                }`}
-              >
-                Mastered
-              </button>
-            </div>
-
-            <ExampleSentences examples={word.examples} />
-          </>
-        )}
 
         {/* Navigation (sticks to the bottom of the screen if the card is
             taller than the screen, so Next is always reachable) */}

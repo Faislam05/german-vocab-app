@@ -506,6 +506,12 @@ The der / die / das colours stay as they were (see "Article Colours").
   - Figtree (default): everything else
 - **Icons:** drawn as small SVGs (speaker, shuffle) so they look the same on every device. Emojis are used only as vocabulary content on the cards.
 - **Buttons** shrink slightly when pressed (`active:scale-[0.97]`); a clear outline shows keyboard focus.
+- **Animations** (in `globals.css`), kept short because they happen hundreds of times per session:
+  - changing cards: the new card slides in 80px from the right (Next) or left (Previous) while fading in, 280ms (`card-in-next` / `card-in-previous`, played by giving the card content `key={word.word}`)
+  - revealing the answer: fades in while rising 12px into place, 300ms (`reveal-fade`)
+  - one shared curve, `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` (overrides Tailwind's default, so all `ease-out` classes use it)
+  - with "Reduce motion" turned on in the device settings, cards and answers only fade (no movement)
+  - no page-turn or flip: too slow for something done this often (decided with Emil Kowalski's `animate` skill)
 - **Text style:** normal case (no ALL CAPS labels), plain wording ("Learning: 3 of 14").
 - Key hints (`Space`, arrows) are shown only on computers (`pointer-fine:`).
 
