@@ -21,6 +21,7 @@ type VocabularyCard = {
   article?: string;
   gender?: string;
   plural?: string;
+  emoji?: string;
 };
 
 type LessonData = {
@@ -35,7 +36,7 @@ export default function Home() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    fetch("/data/lektion_01_enriched.json")
+    fetch("/data/lektion_01_enriched_with_emojis.json")
       .then((response) => response.json())
       .then((data) => {
         setLessonData(data);
@@ -64,10 +65,14 @@ export default function Home() {
   }
 
   function nextWord() {
+    if (!lessonData) return;
+
     setIndex((index + 1) % lessonData.vocabulary.length);
   }
 
   function previousWord() {
+    if (!lessonData) return;
+
     setIndex(
       (index - 1 + lessonData.vocabulary.length) %
         lessonData.vocabulary.length
@@ -84,6 +89,12 @@ export default function Home() {
         <p className="text-sm text-gray-400 mb-4">
           {index + 1} / {lessonData.vocabulary.length}
         </p>
+
+        <div className="w-full aspect-[4/3] rounded-2xl mb-6 bg-gray-100 flex items-center justify-center">
+          <span className="text-8xl">
+            {word.emoji || "📝"}
+          </span>
+        </div>
 
         <h1 className="text-4xl font-bold mb-4">
           {word.display}

@@ -22,6 +22,7 @@
       "display": "arbeiten",
       "part_of_speech": "verb",
       "english": "to work",
+      "emoji": "💼",
       "cefr": "A1",
       "lesson": 1,
       "references": [
@@ -50,6 +51,7 @@
       "display": "buchstabieren",
       "part_of_speech": "verb",
       "english": "to spell",
+      "emoji": "🔤",
       "cefr": "A1",
       "lesson": 1,
       "references": [
@@ -77,6 +79,7 @@
       "display": "fragen",
       "part_of_speech": "verb",
       "english": "to ask",
+      "emoji": "❓",
       "cefr": "A1",
       "lesson": 1,
       "references": [
@@ -1323,6 +1326,7 @@
       "display": "der Monat",
       "part_of_speech": "noun",
       "english": "month",
+      "emoji": "📅",
       "cefr": "A1",
       "lesson": 1,
       "references": [
@@ -1716,6 +1720,7 @@
       "display": "die Straße",
       "part_of_speech": "noun",
       "english": "street",
+      "emoji": "🛣️",
       "cefr": "A1",
       "lesson": 1,
       "references": [
@@ -1839,6 +1844,7 @@
       "display": "das Telefon",
       "part_of_speech": "noun",
       "english": "telephone; phone",
+      "emoji": "📞",
       "cefr": "A1",
       "lesson": 1,
       "references": [
