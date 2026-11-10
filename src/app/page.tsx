@@ -7,7 +7,9 @@ import {
   LessonChoice,
   StudyDirection,
   StudyStatus,
+  WordType,
   countMastered,
+  filterByWordType,
   loadLessonChoiceText,
   loadStudyDirection,
   loadStudyStatus,
@@ -15,6 +17,7 @@ import {
   saveLessonChoice,
   saveStudyDirection,
   selectLesson,
+  wordTypesIn,
 } from "@/lib/vocabulary";
 
 // The Home screen: choose a lesson, see its progress, choose what to study.
@@ -33,6 +36,11 @@ export default function Home() {
   const [lessonChoiceText, setLessonChoiceText] = useState<string | null>(
     loadLessonChoiceText
   );
+
+  // Word type chosen in the dropdown ("all" or e.g. "verb").
+  // Not saved on purpose: it starts at "All types" every visit, so a
+  // forgotten filter never hides words.
+  const [wordTypeChoice, setWordTypeChoice] = useState<WordType>("all");
 
   function chooseDirection(newDirection: StudyDirection) {
     setDirection(newDirection);
@@ -66,14 +74,26 @@ export default function Home() {
     return Math.round((countMastered(words, studyStatus) / words.length) * 100);
   }
 
-  const totalCount = vocabulary.length;
-  const masteredCount = countMastered(vocabulary, studyStatus);
-  const learningCount = totalCount - masteredCount;
-  const masteredPercent = percentMastered(vocabulary);
+  // Word types that exist in the chosen lesson (for the dropdown).
+  // If the chosen type isn't in this lesson (e.g. after switching lesson),
+  // fall back to "All types".
+  const wordTypes = wordTypesIn(vocabulary);
+  const wordType = wordTypes.some((item) => item.type === wordTypeChoice)
+    ? wordTypeChoice
+    : "all";
 
-  // Every study link carries the lesson, filter and direction
+  // The words that will be studied: chosen lesson + chosen word type
+  const studyWords = filterByWordType(vocabulary, wordType);
+
+  const totalCount = studyWords.length;
+  const masteredCount = countMastered(studyWords, studyStatus);
+  const learningCount = totalCount - masteredCount;
+  const masteredPercent = percentMastered(studyWords);
+
+  // Every study link carries the lesson, filter, direction and word type
   function studyLink(filter: string) {
-    return `/study?lesson=${lessonChoice}&filter=${filter}&direction=${direction}`;
+    const typePart = wordType === "all" ? "" : `&type=${wordType}`;
+    return `/study?lesson=${lessonChoice}&filter=${filter}&direction=${direction}${typePart}`;
   }
 
   // One button per lesson, plus "All"
@@ -95,11 +115,11 @@ export default function Home() {
       <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-6 sm:p-8 w-full max-w-md">
         {/* Header */}
 
-        <div className="text-center mb-5">
-          <div className="text-5xl mb-3">🇩🇪</div>
+        <div className="text-center mb-4">
+          <div className="text-4xl mb-2">🇩🇪</div>
 
           <p className="text-sm text-gray-500 mb-1">
-            A1 · {totalCount} words
+            A1 · {vocabulary.length} words
           </p>
 
           <h1 className="text-2xl font-bold">{title}</h1>
@@ -107,7 +127,7 @@ export default function Home() {
 
         {/* Lesson picker: one button per lesson, with its Mastered % */}
 
-        <div className="flex flex-wrap justify-center gap-2 mb-5">
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
           {lessonButtons.map((button) => (
             <button
               key={String(button.choice)}
@@ -132,7 +152,30 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Progress of the chosen lesson */}
+        {/* Word type dropdown: only types that exist in the chosen lesson */}
+
+        <div className="flex items-center justify-center gap-2 mb-4 text-sm">
+          <label htmlFor="word-type" className="text-gray-500">
+            Word type:
+          </label>
+
+          <select
+            id="word-type"
+            value={wordType}
+            onChange={(event) => setWordTypeChoice(event.target.value)}
+            className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
+          >
+            <option value="all">All types ({vocabulary.length})</option>
+
+            {wordTypes.map((item) => (
+              <option key={item.type} value={item.type}>
+                {item.name} ({item.count})
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Progress of the chosen lesson (and word type) */}
 
         <div className="mb-4">
           <div className="flex justify-between text-sm text-gray-500 mb-2">
@@ -148,7 +191,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 mb-6 text-sm">
+        <div className="flex justify-center gap-4 mb-5 text-sm">
           <span className="px-3 py-1 rounded-full bg-gray-100">
             Learning: {learningCount}
           </span>

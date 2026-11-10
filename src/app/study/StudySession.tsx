@@ -12,6 +12,7 @@ import {
   StudyFilter,
   StudyStatus,
   VocabularyCard,
+  filterByWordType,
   filterVocabulary,
   formatPartOfSpeech,
   loadStudyStatus,
@@ -41,12 +42,17 @@ export default function StudySession() {
   // the German word is the answer.
   const isEnglishToGerman = searchParams.get("direction") === "en-de";
 
-  // The lesson also comes from the URL, e.g. &lesson=2 (or lesson=all).
+  // The lesson and word type also come from the URL, e.g.
+  // &lesson=2&type=verb (lesson=all and no type = everything).
   // lessonVocabulary is null while the lessons are still loading.
   const lessons = useLessons();
+  const wordType = searchParams.get("type") ?? "all";
   const lessonVocabulary = lessons
-    ? selectLesson(lessons, parseLessonChoice(searchParams.get("lesson"), lessons))
-        .vocabulary
+    ? filterByWordType(
+        selectLesson(lessons, parseLessonChoice(searchParams.get("lesson"), lessons))
+          .vocabulary,
+        wordType
+      )
     : null;
 
   const [index, setIndex] = useState(0);

@@ -110,11 +110,12 @@ The lesson overview. It shows:
 
 - lesson picker: one button per lesson (Lektion 1, Lektion 2, …) plus "All", each with its Mastered %. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
 - CEFR level, word count and title of the chosen lesson
+- "Word type" dropdown (see "Word Type Filter")
 - mastered-word percentage with a progress bar
 - Learning count
 - Mastered count
 - direction toggle: 🇩🇪 → 🇬🇧 or 🇬🇧 → 🇩🇪 (see "Study Direction")
-- three study buttons, each with its word count (the lesson and direction are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de`):
+- three study buttons, each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
   - Study Learning words → `/study?filter=learning`
   - Study all words → `/study?filter=all`
   - Review Mastered words → `/study?filter=mastered`
@@ -122,7 +123,7 @@ The lesson overview. It shows:
 
 ## Study screen (`/study`)
 
-The flashcard screen. The lesson, filter and direction are read from the URL (`?lesson=2&filter=all&direction=de-en`). `lesson=all` (or a missing/unknown lesson) studies all lessons combined.
+The flashcard screen. The lesson, filter, direction and word type are read from the URL (`?lesson=2&filter=all&direction=de-en&type=verb`); a missing `type` means all word types. `lesson=all` (or a missing/unknown lesson) studies all lessons combined.
 
 Top bar:
 
@@ -572,14 +573,37 @@ The colour comes from the `gender` field in the JSON, not from the article text,
 
 ---
 
+# Word Type Filter
+
+A "Word type" dropdown on Home (below the lesson picker) limits studying to one part of speech, e.g. only Verbs.
+
+- Lists only the types that exist in the chosen lesson, with counts, e.g. `Verbs (16)`. Order and names come from `wordTypesIn()` in `src/lib/vocabulary.ts`.
+- One type at a time; "All types" is the default.
+- Not saved: it resets to "All types" every visit, so a forgotten filter never hides words. (The lesson choice *is* saved.)
+- When switching lesson, the type is kept if the new lesson has it, otherwise it falls back to "All types".
+- Counters, Mastered % and the three study buttons on Home follow the chosen type. The lesson picker percentages stay per whole lesson.
+- Passed to Study as `&type=verb`; the Study screen does not show it (the card badge already shows the type).
+
+Order of filtering: lesson → word type → Learning/All/Mastered.
+
+---
+
 # Future Features
 
 Potential future development includes:
 
 ### Study
 
+Ideas discussed and agreed as good next steps (in suggested order):
+
+1. **der / die / das quiz** — nouns only; show the noun without article, tap der / die / das, immediate feedback in article colours.
+2. **Study expressions** — flashcards for the `expressions` already stored in each lesson file (*Guten Tag!*, *alle sein*, …).
+3. **Spaced repetition** — the app schedules reviews per word based on how well it was remembered.
+4. **Grammar cards** — from the stored `grammar` tables (der/die/das → die, ein/kein, mein/dein/Ihr…).
+
+Other ideas:
+
 - difficult-word status
-- spaced repetition
 - review scheduling
 - quiz mode
 - typed answers for English → German (check spelling and article)
@@ -593,8 +617,6 @@ Potential future development includes:
 
 ### Lessons
 
-- study expressions (e.g. *Guten Tag!*, *alle sein*) — already stored in each lesson file under `expressions`, not shown yet
-- grammar cards from the stored `grammar` tables
 - when there are many lessons: a scrolling lesson list instead of buttons
 
 ### Vocabulary Import

@@ -233,3 +233,59 @@ export function filterVocabulary(
 
   return vocabulary;
 }
+
+// ---------------------------------------------------------------------------
+// Word types (part of speech), used by the "Word type" dropdown on Home
+// ---------------------------------------------------------------------------
+
+// The word types in the order they appear in the dropdown, with the
+// name shown to the user. Matches the "Part of Speech Labels" table
+// in PROJECT_CONTEXT.md.
+const WORD_TYPE_NAMES: Record<string, string> = {
+  noun: "Nouns",
+  verb: "Verbs",
+  adjective: "Adjectives",
+  adverb: "Adverbs",
+  question_word: "Question words",
+  preposition: "Prepositions",
+  conjunction: "Conjunctions",
+  possessive: "Possessives",
+  pronoun: "Pronouns",
+  particle: "Particles",
+};
+
+// "all" = every word type, otherwise a part_of_speech value like "verb"
+export type WordType = string;
+
+// The word types that exist in a list of words, with how many words each
+// has, e.g. [{ type: "noun", name: "Nouns", count: 43 }, ...].
+// Types with no words are left out.
+export function wordTypesIn(vocabulary: VocabularyCard[]) {
+  const counts: Record<string, number> = {};
+
+  for (const item of vocabulary) {
+    counts[item.part_of_speech] = (counts[item.part_of_speech] ?? 0) + 1;
+  }
+
+  const knownOrder = Object.keys(WORD_TYPE_NAMES);
+  const types = Object.keys(counts).sort(
+    (a, b) =>
+      (knownOrder.indexOf(a) + 1 || 99) - (knownOrder.indexOf(b) + 1 || 99)
+  );
+
+  return types.map((type) => ({
+    type,
+    name: WORD_TYPE_NAMES[type] ?? formatPartOfSpeech(type),
+    count: counts[type],
+  }));
+}
+
+// Returns only the words of one word type ("all" returns every word).
+export function filterByWordType(
+  vocabulary: VocabularyCard[],
+  wordType: WordType
+) {
+  if (wordType === "all") return vocabulary;
+
+  return vocabulary.filter((item) => item.part_of_speech === wordType);
+}
