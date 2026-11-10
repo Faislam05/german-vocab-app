@@ -2652,7 +2652,7 @@
     {
       "word": "aber",
       "display": "aber",
-      "part_of_speech": "function_word",
+      "part_of_speech": "conjunction",
       "english": "but",
       "cefr": "A1",
       "lesson": 1,
@@ -2681,7 +2681,7 @@
     {
       "word": "aus",
       "display": "aus",
-      "part_of_speech": "function_word",
+      "part_of_speech": "preposition",
       "english": "from; out of",
       "cefr": "A1",
       "lesson": 1,
@@ -2709,7 +2709,7 @@
     {
       "word": "das",
       "display": "das",
-      "part_of_speech": "function_word",
+      "part_of_speech": "pronoun",
       "english": "that; this",
       "cefr": "A1",
       "lesson": 1,
@@ -2737,7 +2737,7 @@
     {
       "word": "dein",
       "display": "dein",
-      "part_of_speech": "function_word",
+      "part_of_speech": "possessive",
       "english": "your (informal singular)",
       "cefr": "A1",
       "lesson": 1,
@@ -2765,7 +2765,7 @@
     {
       "word": "denn",
       "display": "denn",
-      "part_of_speech": "function_word",
+      "part_of_speech": "particle",
       "english": "then; actually (question particle)",
       "cefr": "A1",
       "lesson": 1,
@@ -2794,7 +2794,7 @@
     {
       "word": "in",
       "display": "in",
-      "part_of_speech": "function_word",
+      "part_of_speech": "preposition",
       "english": "in; into",
       "cefr": "A1",
       "lesson": 1,
@@ -2822,7 +2822,7 @@
     {
       "word": "ja",
       "display": "ja",
-      "part_of_speech": "function_word",
+      "part_of_speech": "particle",
       "english": "yes",
       "cefr": "A1",
       "lesson": 1,
@@ -2850,7 +2850,7 @@
     {
       "word": "man",
       "display": "man",
-      "part_of_speech": "function_word",
+      "part_of_speech": "pronoun",
       "english": "one; people; you (general)",
       "cefr": "A1",
       "lesson": 1,
@@ -2878,7 +2878,7 @@
     {
       "word": "mein",
       "display": "mein",
-      "part_of_speech": "function_word",
+      "part_of_speech": "possessive",
       "english": "my",
       "cefr": "A1",
       "lesson": 1,
@@ -2906,7 +2906,7 @@
     {
       "word": "mit",
       "display": "mit",
-      "part_of_speech": "function_word",
+      "part_of_speech": "preposition",
       "english": "with",
       "cefr": "A1",
       "lesson": 1,
@@ -2935,7 +2935,7 @@
     {
       "word": "und",
       "display": "und",
-      "part_of_speech": "function_word",
+      "part_of_speech": "conjunction",
       "english": "and",
       "cefr": "A1",
       "lesson": 1,
@@ -2967,7 +2967,7 @@
     {
       "word": "von",
       "display": "von",
-      "part_of_speech": "function_word",
+      "part_of_speech": "preposition",
       "english": "from; of",
       "cefr": "A1",
       "lesson": 1,
@@ -2995,7 +2995,7 @@
     {
       "word": "was",
       "display": "was",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "what",
       "cefr": "A1",
       "lesson": 1,
@@ -3024,7 +3024,7 @@
     {
       "word": "wer",
       "display": "wer",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "who",
       "cefr": "A1",
       "lesson": 1,
@@ -3052,7 +3052,7 @@
     {
       "word": "wie",
       "display": "wie",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "how; what ... like",
       "cefr": "A1",
       "lesson": 1,
@@ -3080,7 +3080,7 @@
     {
       "word": "wie viel",
       "display": "wie viel",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "how much; how many",
       "cefr": "A1",
       "lesson": 1,
@@ -3108,7 +3108,7 @@
     {
       "word": "wo",
       "display": "wo",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "where",
       "cefr": "A1",
       "lesson": 1,
@@ -3136,7 +3136,7 @@
     {
       "word": "woher",
       "display": "woher",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "from where",
       "cefr": "A1",
       "lesson": 1,
@@ -3164,7 +3164,7 @@
     {
       "word": "wohin",
       "display": "wohin",
-      "part_of_speech": "function_word",
+      "part_of_speech": "question_word",
       "english": "where to",
       "cefr": "A1",
       "lesson": 1,

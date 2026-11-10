@@ -141,6 +141,31 @@ The Study screen is sized so a revealed card fits on one screen without scrollin
 
 ---
 
+# Part of Speech Labels
+
+Every word has a `part_of_speech` value in the JSON. It is shown as the grey badge on the card (e.g. `question_word` → "QUESTION WORD").
+
+Use only these labels in lesson files:
+
+| Label | Use for | Examples (Lektion 1) |
+|---|---|---|
+| `noun` | nouns, including names of countries | der Beruf, die Frau, Deutschland |
+| `verb` | verbs | arbeiten, heißen |
+| `adjective` | adjectives | alt, gut |
+| `adverb` | adverbs and similar small words | hier, bitte |
+| `question_word` | W-question words | was, wer, wie, wie viel, wo, woher, wohin |
+| `preposition` | prepositions | aus, in, mit, von |
+| `conjunction` | words that join sentences | und, aber |
+| `possessive` | possessive words | mein, dein |
+| `pronoun` | pronouns | man, das (that/this) |
+| `particle` | answer words and conversational particles | ja, denn |
+
+The old catch-all label `function_word` is no longer used. Lektion 1 was relabelled so that question words, prepositions, etc. can be told apart (useful for future category filters, e.g. "study only question words").
+
+New labels can be added if a new lesson needs one; add them to this table.
+
+---
+
 # Vocabulary Visuals
 
 The project originally tested Wikimedia Commons image search.
