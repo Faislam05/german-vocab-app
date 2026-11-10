@@ -84,27 +84,58 @@ The current lesson contains approximately:
 
 ---
 
-# Current Vocabulary Card Features
+# App Screens
 
-Each vocabulary card currently shows:
+The app has two screens.
 
-- lesson title
-- current card number
-- progress bar
+## Home screen (`/`)
+
+The lesson overview. It shows:
+
+- lesson number, CEFR level and title
+- known-word percentage with a progress bar
 - Learning count
 - Known count
-- All / Learning / Known filters
-- emoji visual
+- three study buttons, each with its word count:
+  - Study Learning words → `/study?filter=learning`
+  - Study all words → `/study?filter=all`
+  - Review Known words → `/study?filter=known`
+- a keyboard shortcut hint
+
+## Study screen (`/study`)
+
+The flashcard screen. The filter is read from the URL (`?filter=`).
+
+Top bar:
+
+- ← Home link
+- current filter name + card number (e.g. `All words · 1 / 107`)
+- Flashcard mode On/Off toggle
+- progress bar
+
+Each vocabulary card shows:
+
+- emoji visual (shows ❓ until the answer is revealed)
 - part-of-speech badge
 - German word
 - German pronunciation button
+- Show Meaning button (in Flashcard mode, until revealed)
+
+After revealing (or always, when Flashcard mode is Off):
+
 - English meaning
 - plural where available
+- Learning / Known buttons
 - approximately three German example sentences
 - English translations
 - pronunciation button for each German sentence
+
+Then:
+
 - Previous button
 - Next button
+
+The Study screen is sized so a revealed card fits on one screen without scrolling on desktop and on mobile (tested down to 375×667). Keep this in mind when adding content to the card.
 
 ---
 
@@ -203,6 +234,10 @@ Learning
 Known
 ```
 
+The filter is chosen on the Home screen and passed to the Study screen in the URL, e.g. `/study?filter=learning`.
+
+The filter logic lives in `filterVocabulary()` in `src/lib/vocabulary.ts`.
+
 ### All
 
 Shows every vocabulary word.
@@ -284,11 +319,12 @@ for words the user wants to focus on.
 
 # Keyboard Navigation
 
-Keyboard navigation has been added.
+Keyboard navigation has been added on the Study screen.
 
 Current behavior:
 
 ```text
+Spacebar → Show meaning (reveal answer)
 Right Arrow → Next word
 Left Arrow → Previous word
 ```
@@ -300,10 +336,14 @@ Do not reference `visibleVocabulary` before it has been initialized.
 Current safe approach:
 
 ```tsx
-let visibleVocabulary = lessonData?.vocabulary ?? [];
+const visibleVocabulary = filterVocabulary(
+  lessonData?.vocabulary ?? [],
+  studyStatus,
+  studyFilter
+);
 ```
 
-and then apply filters before using its length.
+This is an empty list while data is loading, so its length is safe to use.
 
 ---
 
@@ -379,40 +419,35 @@ Do not tightly couple the vocabulary data to the current visual design.
 
 ---
 
-# Planned Next Feature
+# Flashcard Reveal Mode
 
-The next major study feature under consideration is:
+Implemented on the Study screen.
 
-## Flashcard Reveal Mode
-
-Instead of immediately showing the English translation, the card could initially show only:
-
-```text
-der Beruf
-```
-
-and a button such as:
+The card first shows only the German word (with part of speech and the Listen button) and a button:
 
 ```text
 Show Meaning
 ```
 
-After revealing the answer, show:
+The emoji shows ❓ until revealed, because the emoji often gives away the meaning.
+
+After revealing the answer, the card shows:
 
 - English meaning
 - plural
-- examples
 - Learning / Known controls
+- examples
 
-Possible keyboard shortcut:
+Keyboard shortcut:
 
 ```text
 Spacebar → Reveal answer
 ```
 
-This has not necessarily been implemented yet.
+How it works:
 
-Inspect the current code before assuming it exists.
+- `revealMode` (true/false) — whether Flashcard mode is on. It is on by default and not saved; it resets to On when the Study screen opens.
+- `revealedWord` — the word that has been revealed. Because it stores the word itself, moving to a different word hides the answer again automatically, with no manual reset.
 
 ---
 
@@ -422,7 +457,6 @@ Potential future development includes:
 
 ### Study
 
-- flashcard reveal mode
 - difficult-word status
 - spaced repetition
 - review scheduling
@@ -434,7 +468,6 @@ Potential future development includes:
 ### Progress
 
 - lesson completion percentage
-- known-word percentage
 - progress dashboard
 - daily review counts
 
@@ -465,7 +498,6 @@ Potential later workflow:
 - animations
 - redesigned cards
 - bottom navigation
-- dedicated study screen
 - progress screen
 - settings screen
 
@@ -490,8 +522,15 @@ Important files currently include approximately:
 ```text
 german-vocab-app/
 ├── src/
-│   └── app/
-│       └── page.tsx
+│   ├── app/
+│   │   ├── page.tsx              ← Home screen (lesson overview)
+│   │   └── study/
+│   │       ├── page.tsx          ← /study route (Suspense wrapper)
+│   │       └── StudySession.tsx  ← flashcard study screen
+│   │
+│   └── lib/
+│       └── vocabulary.ts         ← shared types, lesson file path,
+│                                    localStorage helpers, filter logic
 │
 ├── public/
 │   └── data/
