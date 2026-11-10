@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 type StudyTopBarProps = {
+  // Where "← Back" goes: the lesson page, e.g. "/lesson/2"
+  backHref: string;
+
   // e.g. "All words", "Learning", "Mastered"
   filterLabel: string;
 
@@ -38,13 +41,14 @@ function ShuffleIcon() {
   );
 }
 
-// Top of the Study screen: ← Home, "Learning: 3 of 14", the shuffle
+// Top of the Study screen: ← Back (to the lesson page), "Learning: 3 of 14", the shuffle
 // button and the Flashcard on/off switch, plus the progress bar.
 //
 // It only shows things and reports clicks. The state itself (is shuffle
 // on? which card are we on?) lives in StudySession, which passes it in
 // as props.
 export default function StudyTopBar({
+  backHref,
   filterLabel,
   position,
   total,
@@ -64,8 +68,8 @@ export default function StudyTopBar({
   return (
     <>
       <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-2">
-        <Link href="/" className="text-pencil hover:text-graphite">
-          ← Home
+        <Link href={backHref} className="text-pencil hover:text-graphite">
+          ← Back
         </Link>
 
         <span>

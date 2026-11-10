@@ -17,6 +17,7 @@ import {
   formatPartOfSpeech,
   loadStudyStatus,
   parseLessonChoice,
+  saveLastStudy,
   saveStudyStatus,
   selectLesson,
   shuffleArray,
@@ -59,13 +60,21 @@ export default function StudySession() {
   // lessonVocabulary is null while the lessons are still loading.
   const lessons = useLessons();
   const wordType = searchParams.get("type") ?? "all";
+  const lessonChoice = lessons
+    ? parseLessonChoice(searchParams.get("lesson"), lessons)
+    : "all";
   const lessonVocabulary = lessons
-    ? filterByWordType(
-        selectLesson(lessons, parseLessonChoice(searchParams.get("lesson"), lessons))
-          .vocabulary,
-        wordType
-      )
+    ? filterByWordType(selectLesson(lessons, lessonChoice).vocabulary, wordType)
     : null;
+
+  // "← Back" returns to the lesson page this study session came from
+  const backHref = `/lesson/${lessonChoice}`;
+
+  // Remember this study session (its URL settings), so the "Continue"
+  // card on Home can bring you straight back here.
+  useEffect(() => {
+    saveLastStudy(searchParams.toString());
+  }, [searchParams]);
 
   const [index, setIndex] = useState(0);
 
@@ -170,10 +179,10 @@ export default function StudySession() {
           </p>
 
           <Link
-            href="/"
+            href={backHref}
             className="inline-block px-5 py-2.5 rounded-xl bg-graphite text-paper font-semibold hover:bg-black"
           >
-            Back to Home
+            Back to the lesson
           </Link>
         </div>
       </main>
@@ -233,6 +242,7 @@ export default function StudySession() {
     <main className="min-h-screen flex items-center justify-center p-2 sm:p-6 overflow-x-clip">
       <div className={`${cardStyle} p-4 sm:p-6`}>
         <StudyTopBar
+          backHref={backHref}
           filterLabel={filterLabels[studyFilter]}
           position={safeIndex + 1}
           total={visibleVocabulary.length}

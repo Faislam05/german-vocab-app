@@ -65,7 +65,7 @@ Lesson data lives in JSON files inside:
 public/data/
 ```
 
-`public/data/lessons.json` is the list of lessons the app shows. The app loads that list first, then every lesson file in it (`useLessons()` in `src/lib/useLessons.ts`).
+`public/data/lessons.json` lists every chapter of the book (all 10) with `lesson`, `title` ("Lektion 2"), `chapter` (German chapter title), `chapter_en` (its English meaning) and `file`. `file` is the lesson's data file, or `null` when its words are not added yet (shown as a placeholder on Home). The app loads that list first, then every lesson file in it (`useBook()` / `useLessons()` in `src/lib/useLessons.ts`).
 
 Current lessons:
 
@@ -80,7 +80,7 @@ Each lesson also has a `lektion_XX_source.json` with exactly what is printed in 
 
 1. Share photos/PDF of the lesson's vocabulary page(s) from the textbook.
 2. Create `lektion_XX_source.json` (as printed) and `lektion_XX_enriched_with_emojis.json` (for the app), following the Lektion 1 and 2 format and the "Part of Speech Labels" table.
-3. Add one entry to `public/data/lessons.json`.
+3. In `public/data/lessons.json`, change that chapter's `"file": null` to the new file name.
 4. Run `npm run check-data` and fix anything it reports. Uncertain words get a `review_note` so they show up in its "Words to check" list.
 
 No code change is needed.
@@ -102,24 +102,35 @@ Each enriched lesson file contains:
 
 # App Screens
 
-The app has two screens.
+The app has three screens: Home → Lesson → Study.
 
 ## Home screen (`/`)
 
-The lesson overview. It shows:
+The overview of the whole book (`src/app/page.tsx`). It shows:
 
-- lesson picker: numbered boxes under the label "Lektion" (1, 2, … 6 per row) plus "All" (two boxes wide). Each box has a tiny bar showing its Mastered %; the exact % is in its tooltip and screen-reader label. Sized for all 10 lessons of the book: 2 rows, still fits a small phone (tested with 10 test lessons). Lessons of the book that are not added yet (up to `BOOK_LESSON_COUNT = 10` in `src/lib/vocabulary.ts`) are shown as dashed, greyed-out placeholder boxes that cannot be clicked; a box becomes a real button as soon as that lesson is added to `lessons.json`. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
-- title of the chosen lesson and its word count
+- "German A1" and overall progress: Mastered X of Y words, with a bar
+- **Continue** card: one tap back to the last study session (same lesson, filter, direction and word type), e.g. "Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Before the first study session it says "Start learning" and opens the first lesson's page. The last session is saved in localStorage (`lastStudy`) by the Study screen.
+- **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are smaller dashed placeholders ("Not added yet") that cannot be clicked; on phones they are two per row. An "All lessons" card studies every added lesson together.
+- **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Daily review, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
+
+On desktop the lesson cards are two per row. Home is allowed to scroll on phones (it is an overview); the Lesson and Study screens fit on one screen.
+
+## Lesson screen (`/lesson/2` or `/lesson/all`)
+
+The choices for studying one lesson (`src/app/lesson/[id]/`). `[id]` in the folder name means "any value": Next.js passes it in as `params.id` (read with `await` in this Next.js version). It shows:
+
+- ← Home link
+- "Lektion 2", the German chapter title, its English meaning and the word count
 - "Word type" dropdown (see "Word Type Filter")
 - Learning and Mastered counts, Mastered percentage and a progress bar
 - direction switch: German → English or English → German (see "Study Direction")
 - three study buttons, each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
-  - Study Learning words → `/study?filter=learning`
-  - Study all words → `/study?filter=all`
-  - Review Mastered words → `/study?filter=mastered`
+  - Study Learning words → `filter=learning`
+  - Study all words → `filter=all`
+  - Review Mastered words → `filter=mastered`
 - a keyboard shortcut hint (only on computers, hidden on phones)
 
-On desktop Home has two columns (lesson, word type and progress on the left; direction and study buttons on the right). On phones it is one column.
+A chapter that is not added yet (e.g. `/lesson/5`) shows "The words of this lesson are not added yet"; an unknown number shows "Lesson not found". Both have a "Back to Home" button.
 
 ## Study screen (`/study`)
 
@@ -127,7 +138,7 @@ The flashcard screen. The lesson, filter, direction and word type are read from 
 
 Top bar:
 
-- ← Home link
+- ← Back link (to the lesson page the session came from)
 - current filter name + card number (e.g. `Learning: 3 of 14`)
 - Shuffle button (highlighted yellow when on)
 - "Flashcard on/off" switch (highlighted yellow when on)
@@ -296,7 +307,7 @@ Learning
 Mastered
 ```
 
-The filter is chosen on the Home screen and passed to the Study screen in the URL, e.g. `/study?filter=learning`.
+The filter is chosen on the Lesson screen and passed to the Study screen in the URL, e.g. `/study?filter=learning`.
 
 The filter logic lives in `filterVocabulary()` in `src/lib/vocabulary.ts`.
 
@@ -566,7 +577,7 @@ The filter is applied after shuffling, so shuffle works with All, Learning and M
 
 # Study Direction
 
-Chosen on the Home screen and passed to the Study screen in the URL (`&direction=de-en` or `&direction=en-de`). Missing or unknown values mean German → English.
+Chosen on the Lesson screen and passed to the Study screen in the URL (`&direction=de-en` or `&direction=en-de`). Missing or unknown values mean German → English.
 
 The last choice is remembered in localStorage:
 
@@ -610,13 +621,12 @@ The colour comes from the `gender` field in the JSON, not from the article text,
 
 # Word Type Filter
 
-A "Word type" dropdown on Home (below the lesson picker) limits studying to one part of speech, e.g. only Verbs.
+A "Word type" dropdown on the Lesson screen limits studying to one part of speech, e.g. only Verbs.
 
 - Lists only the types that exist in the chosen lesson, with counts, e.g. `Verbs (16)`. Order and names come from `wordTypesIn()` in `src/lib/vocabulary.ts`.
 - One type at a time; "All types" is the default.
-- Not saved: it resets to "All types" every visit, so a forgotten filter never hides words. (The lesson choice *is* saved.)
-- When switching lesson, the type is kept if the new lesson has it, otherwise it falls back to "All types".
-- Counters, Mastered % and the three study buttons on Home follow the chosen type. The lesson picker percentages stay per whole lesson.
+- Not saved: it resets to "All types" every visit, so a forgotten filter never hides words. (The Continue card on Home does bring back the word type of the last study session.)
+- Counters, Mastered % and the three study buttons on the Lesson screen follow the chosen type. The lesson percentages on Home stay per whole lesson.
 - Passed to Study as `&type=verb`; the Study screen does not show it (the card badge already shows the type).
 
 Order of filtering: lesson → word type → Learning/All/Mastered.
@@ -698,7 +708,11 @@ Important files currently include approximately:
 german-vocab-app/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              ← Home screen (lesson overview)
+│   │   ├── page.tsx              ← Home screen (Continue, lessons, practice)
+│   │   ├── lesson/[id]/
+│   │   │   ├── page.tsx          ← /lesson/2 route (reads the lesson number)
+│   │   │   └── LessonOverview.tsx ← lesson screen (word type, direction,
+│   │   │                            study buttons)
 │   │   └── study/
 │   │       ├── page.tsx          ← /study route (Suspense wrapper)
 │   │       └── StudySession.tsx  ← flashcard study screen (state + logic)
@@ -713,12 +727,12 @@ german-vocab-app/
 │       ├── vocabulary.ts         ← shared types, lesson selection,
 │       │                            localStorage helpers, filter,
 │       │                            shuffle and formatting helpers
-│       └── useLessons.ts         ← hook that loads all lessons listed
-│                                    in lessons.json (Home and Study)
+│       └── useLessons.ts         ← hooks that load lessons.json and the
+│                                    lesson files (useBook, useLessons)
 │
 ├── public/
 │   └── data/
-│       ├── lessons.json          ← list of lessons shown in the app
+│       ├── lessons.json          ← all chapters of the book (+ file or null)
 │       ├── lektion_XX_enriched_with_emojis.json  ← lesson data (app)
 │       └── lektion_XX_source.json                ← as printed in the book
 │

@@ -41,19 +41,18 @@ export type StudyDirection = "de-en" | "en-de";
 // Words that are missing count as "learning".
 export type StudyStatus = Record<string, string>;
 
-// The list of lessons. To add a lesson: put its JSON file in public/data/
-// and add one entry to lessons.json — no code change needed.
+// The list of all chapters of the book. To add a lesson: put its JSON
+// file in public/data/ and set "file" in its lessons.json entry — no code
+// change needed. Chapters with "file": null are shown as "not added yet".
 export const LESSON_INDEX_FILE = "/data/lessons.json";
 
 export type LessonIndexEntry = {
   lesson: number;
-  title: string;
-  file: string; // file name inside public/data/
+  title: string; // "Lektion 2"
+  chapter: string; // German chapter title, "Gegenstände in Haus und Haushalt"
+  chapter_en: string; // English meaning, "Objects in the Home"
+  file: string | null; // file name inside public/data/, or null = not added yet
 };
-
-// How many lessons the textbook has. Lessons not added yet are shown on
-// Home as greyed-out placeholder boxes that can't be clicked.
-export const BOOK_LESSON_COUNT = 10;
 
 // What the user chose to study: one lesson number, or "all" lessons.
 export type LessonChoice = number | "all";
@@ -179,26 +178,32 @@ export function saveStudyDirection(direction: StudyDirection) {
   }
 }
 
-// localStorage key for the lesson last chosen on the Home screen
-// (saved as text, e.g. "2" or "all").
-const LESSON_CHOICE_KEY = "selectedLesson";
+// localStorage key for the last study session, used by the "Continue"
+// card on Home. It stores the Study screen's settings exactly as they
+// appear in its URL, e.g. "lesson=2&filter=learning&direction=de-en".
+const LAST_STUDY_KEY = "lastStudy";
 
-export function loadLessonChoiceText(): string | null {
+export function loadLastStudy(): string | null {
   if (typeof window === "undefined") return null;
 
   try {
-    return localStorage.getItem(LESSON_CHOICE_KEY);
+    return localStorage.getItem(LAST_STUDY_KEY);
   } catch {
     return null;
   }
 }
 
-export function saveLessonChoice(choice: LessonChoice) {
+export function saveLastStudy(settings: string) {
   try {
-    localStorage.setItem(LESSON_CHOICE_KEY, String(choice));
+    localStorage.setItem(LAST_STUDY_KEY, settings);
   } catch (error) {
-    console.error("Could not save lesson choice:", error);
+    console.error("Could not save last study session:", error);
   }
+}
+
+// Turns a word type like "verb" into its name for people: "Verbs".
+export function wordTypeName(wordType: WordType) {
+  return WORD_TYPE_NAMES[wordType] ?? formatPartOfSpeech(wordType);
 }
 
 // Turns "proper_noun" into "Proper Noun" for the part-of-speech badge.
@@ -279,7 +284,7 @@ export function wordTypesIn(vocabulary: VocabularyCard[]) {
 
   return types.map((type) => ({
     type,
-    name: WORD_TYPE_NAMES[type] ?? formatPartOfSpeech(type),
+    name: wordTypeName(type),
     count: counts[type],
   }));
 }

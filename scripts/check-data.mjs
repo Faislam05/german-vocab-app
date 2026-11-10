@@ -2,7 +2,8 @@
 //
 // Run with:  npm run check-data
 //
-// It reads public/data/lessons.json, opens each lesson file listed there,
+// It reads public/data/lessons.json, checks every chapter has its titles,
+// opens each lesson file listed there ("file": null = not added yet),
 // and reports problems such as unknown part-of-speech labels, nouns with
 // a missing or wrong gender, missing fields, or duplicate words.
 // It exits with an error code if anything is wrong, so it can also be
@@ -61,9 +62,20 @@ if (index && !Array.isArray(index.lessons)) {
   problems.push(`lessons.json: must contain a "lessons" list`);
 }
 
-// 2. Each lesson file listed in the index
+// 2. Each chapter listed in the index
 let wordTotal = 0;
+let lessonsAdded = 0;
 for (const entry of entries) {
+  // Every chapter needs its titles (shown on the Home screen)
+  for (const field of ["lesson", "title", "chapter", "chapter_en"]) {
+    if (entry[field] === undefined || entry[field] === null || entry[field] === "") {
+      problems.push(`lessons.json: Lektion ${entry.lesson ?? "?"} is missing "${field}"`);
+    }
+  }
+
+  // "file": null means the words are not added yet — nothing more to check
+  if (entry.file === null) continue;
+
   const path = join(DATA_DIR, entry.file ?? "");
   const name = entry.file ?? "(missing file name)";
 
@@ -74,6 +86,7 @@ for (const entry of entries) {
 
   const lesson = readJson(path);
   if (!lesson) continue;
+  lessonsAdded++;
 
   if (lesson.lesson !== entry.lesson) {
     problems.push(`${name}: says lesson ${lesson.lesson}, but lessons.json lists it as lesson ${entry.lesson}`);
@@ -147,7 +160,7 @@ for (const file of readdirSync(DATA_DIR)) {
 }
 
 // 4. Report
-console.log(`Checked ${entries.length} lesson(s), ${wordTotal} words.`);
+console.log(`Checked ${entries.length} chapters (${lessonsAdded} lesson(s) added), ${wordTotal} words.`);
 for (const warning of warnings) console.log(`  ⚠️  ${warning}`);
 for (const problem of problems) console.log(`  ❌ ${problem}`);
 

@@ -3,12 +3,72 @@
     {
       "lesson": 1,
       "title": "Lektion 1",
+      "chapter": "Erste Kontakte",
+      "chapter_en": "First Contacts / Introductions",
       "file": "lektion_01_enriched_with_emojis.json"
     },
     {
       "lesson": 2,
       "title": "Lektion 2",
+      "chapter": "Gegenstände in Haus und Haushalt",
+      "chapter_en": "Objects in the Home",
       "file": "lektion_02_enriched_with_emojis.json"
+    },
+    {
+      "lesson": 3,
+      "title": "Lektion 3",
+      "chapter": "Essen und Trinken",
+      "chapter_en": "Food and Drink",
+      "file": null
+    },
+    {
+      "lesson": 4,
+      "title": "Lektion 4",
+      "chapter": "Freizeit",
+      "chapter_en": "Free Time / Hobbies",
+      "file": null
+    },
+    {
+      "lesson": 5,
+      "title": "Lektion 5",
+      "chapter": "Wohnen",
+      "chapter_en": "Housing / Living",
+      "file": null
+    },
+    {
+      "lesson": 6,
+      "title": "Lektion 6",
+      "chapter": "Krankheit",
+      "chapter_en": "Illness / Health",
+      "file": null
+    },
+    {
+      "lesson": 7,
+      "title": "Lektion 7",
+      "chapter": "Alltag",
+      "chapter_en": "Everyday Life",
+      "file": null
+    },
+    {
+      "lesson": 8,
+      "title": "Lektion 8",
+      "chapter": "Orientierung in der Stadt",
+      "chapter_en": "Finding Your Way Around the City",
+      "file": null
+    },
+    {
+      "lesson": 9,
+      "title": "Lektion 9",
+      "chapter": "Kaufen und Schenken",
+      "chapter_en": "Shopping and Giving Gifts",
+      "file": null
+    },
+    {
+      "lesson": 10,
+      "title": "Lektion 10",
+      "chapter": "Deutsche Sprache und deutsche Kultur",
+      "chapter_en": "German Language and Culture",
+      "file": null
     }
   ]
 }
