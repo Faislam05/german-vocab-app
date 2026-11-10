@@ -41,6 +41,10 @@ const REQUIRED_FIELDS = ["word", "display", "part_of_speech", "english", "tts_te
 const problems = [];
 const warnings = [];
 
+// Words marked with a "review_note" in the lesson file: things to check
+// against the textbook later. Delete the note once a word is checked.
+const toCheck = [];
+
 function readJson(path) {
   try {
     return JSON.parse(readFileSync(path, "utf-8"));
@@ -127,6 +131,10 @@ for (const entry of entries) {
     }
 
     if (!item.emoji) warnings.push(`${label} has no emoji (📝 will be shown)`);
+
+    if (item.review_note) {
+      toCheck.push(`Lektion ${lesson.lesson}, "${item.display ?? item.word}" (p. ${(item.references ?? []).join(", ")}): ${item.review_note}`);
+    }
   }
 }
 
@@ -142,6 +150,12 @@ for (const file of readdirSync(DATA_DIR)) {
 console.log(`Checked ${entries.length} lesson(s), ${wordTotal} words.`);
 for (const warning of warnings) console.log(`  ⚠️  ${warning}`);
 for (const problem of problems) console.log(`  ❌ ${problem}`);
+
+if (toCheck.length > 0) {
+  console.log(`\n📝 Words to check against the textbook (${toCheck.length}):`);
+  for (const item of toCheck) console.log(`  - ${item}`);
+  console.log("");
+}
 
 if (problems.length > 0) {
   console.log(`\n${problems.length} problem(s) found. Please fix them before studying.`);

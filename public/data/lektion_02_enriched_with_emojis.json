@@ -660,7 +660,8 @@
       "gender": "neuter",
       "plural": "Bilder",
       "emoji": "🖼️",
-      "source_text": "s Bild,-er"
+      "source_text": "s Bild,-er",
+      "review_note": "The photo of page 19 looked like ',-en'; stored the standard plural 'Bilder'. Check the book."
     },
     {
       "word": "Fehler",
@@ -1079,7 +1080,8 @@
       "gender": "feminine",
       "plural": "Karten",
       "emoji": "🃏",
-      "source_text": "e Karte,-n"
+      "source_text": "e Karte,-n",
+      "review_note": "English is 'card; map; ticket'. Check page 31 for which meaning the lesson uses."
     },
     {
       "word": "Kassette",
@@ -2355,7 +2357,8 @@
           "en": "The kitchen is too modern."
         }
       ],
-      "emoji": "⬆️"
+      "emoji": "⬆️",
+      "review_note": "Treated as 'too' (zu teuer) and labelled adverb. Check pages 28 and 30: if it means 'to' (zu Hause), change english and label it preposition."
     }
   ],
   "expressions": [

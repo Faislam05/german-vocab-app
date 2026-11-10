@@ -81,7 +81,7 @@ Each lesson also has a `lektion_XX_source.json` with exactly what is printed in 
 1. Share photos/PDF of the lesson's vocabulary page(s) from the textbook.
 2. Create `lektion_XX_source.json` (as printed) and `lektion_XX_enriched_with_emojis.json` (for the app), following the Lektion 1 and 2 format and the "Part of Speech Labels" table.
 3. Add one entry to `public/data/lessons.json`.
-4. Run `npm run check-data` and fix anything it reports.
+4. Run `npm run check-data` and fix anything it reports. Uncertain words get a `review_note` so they show up in its "Words to check" list.
 
 No code change is needed.
 
@@ -192,6 +192,8 @@ If you add a label, also add it to `ALLOWED_LABELS` in `scripts/check-data.mjs`.
 - missing required fields (`word`, `display`, `part_of_speech`, `english`, `tts_text`, `examples`)
 - duplicate words within a lesson, wrong lesson numbers
 - lesson files in `public/data/` that are not listed in `lessons.json` (warning)
+
+It also prints a **"Words to check against the textbook"** list: every word that has a `review_note` field in its lesson file. When creating a lesson, add a `review_note` to any word that was unclear on the photo or uncertain (meaning, plural, label). After checking it against the book, fix the word if needed and delete its `review_note`.
 
 Run it after creating or editing any lesson file.
 
