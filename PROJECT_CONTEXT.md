@@ -109,7 +109,8 @@ The flashcard screen. The filter is read from the URL (`?filter=`).
 Top bar:
 
 - ← Home link
-- current filter name + card number (e.g. `All words · 1 / 107`)
+- current filter name + card number (e.g. `All · 1 / 107`)
+- 🔀 Shuffle toggle (black when on)
 - Flashcard mode On/Off toggle
 - progress bar
 
@@ -135,7 +136,7 @@ Then:
 - Previous button
 - Next button
 
-The Study screen is sized so a revealed card fits on one screen without scrolling on desktop and on mobile (tested down to 375×667). Keep this in mind when adding content to the card.
+The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800) and on normal phones (390×844), tested for all 107 words. On very small phones (375×667, iPhone SE) about 40 longer words need a short scroll to see the last example; Previous/Next stick to the bottom of the screen so they are always reachable. Keep this in mind when adding content to the card.
 
 ---
 
@@ -451,6 +452,21 @@ How it works:
 
 ---
 
+# Shuffle Mode
+
+Implemented on the Study screen with the 🔀 button.
+
+- Off by default: words appear in textbook order.
+- When turned on, the lesson words are shuffled once (`shuffleArray()` in `src/lib/vocabulary.ts`, a Fisher–Yates shuffle) and stored in `shuffledVocabulary`.
+- The order stays the same while studying, including going back with Previous and marking words Known.
+- Turning it off returns to textbook order; turning it on again gives a new random order.
+- It starts again from the first card whenever it is toggled.
+- Not saved; it resets to Off when the Study screen opens.
+
+The filter is applied after shuffling, so shuffle works with All, Learning and Known.
+
+---
+
 # Future Features
 
 Potential future development includes:
@@ -460,7 +476,6 @@ Potential future development includes:
 - difficult-word status
 - spaced repetition
 - review scheduling
-- random/shuffle mode
 - quiz mode
 - German → English
 - English → German

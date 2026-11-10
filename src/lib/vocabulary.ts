@@ -54,6 +54,19 @@ export function saveStudyStatus(status: StudyStatus) {
   localStorage.setItem(STUDY_STATUS_KEY, JSON.stringify(status));
 }
 
+// Returns a shuffled copy of a list (the original list is not changed).
+// Uses the Fisher–Yates shuffle, which gives every order an equal chance.
+export function shuffleArray<T>(items: T[]): T[] {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 // Returns only the words that match the chosen filter.
 export function filterVocabulary(
   vocabulary: VocabularyCard[],

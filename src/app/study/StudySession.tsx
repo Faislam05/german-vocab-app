@@ -8,13 +8,15 @@ import {
   LessonData,
   StudyFilter,
   StudyStatus,
+  VocabularyCard,
   filterVocabulary,
   loadStudyStatus,
   saveStudyStatus,
+  shuffleArray,
 } from "@/lib/vocabulary";
 
 const filterLabels: Record<StudyFilter, string> = {
-  all: "All words",
+  all: "All",
   learning: "Learning",
   known: "Known",
 };
@@ -42,6 +44,14 @@ export default function StudySession() {
   // automatically hides the answer again, because the word changes.
   const [revealedWord, setRevealedWord] = useState<string | null>(null);
 
+  // Shuffle mode: when on, this holds the lesson words in a random order.
+  // When off, it is null and the normal textbook order is used.
+  // The order is made once when shuffle is turned on, so it stays the
+  // same while you study (it doesn't reshuffle on every click).
+  const [shuffledVocabulary, setShuffledVocabulary] = useState<
+    VocabularyCard[] | null
+  >(null);
+
   useEffect(() => {
     fetch(LESSON_FILE)
       .then((response) => response.json())
@@ -53,8 +63,12 @@ export default function StudySession() {
       });
   }, []);
 
+  // Use the shuffled order if shuffle is on, otherwise the textbook order.
+  const orderedVocabulary =
+    shuffledVocabulary ?? lessonData?.vocabulary ?? [];
+
   const visibleVocabulary = filterVocabulary(
-    lessonData?.vocabulary ?? [],
+    orderedVocabulary,
     studyStatus,
     studyFilter
   );
@@ -176,12 +190,22 @@ export default function StudySession() {
     });
   }
 
+  function toggleShuffle() {
+    if (shuffledVocabulary) {
+      setShuffledVocabulary(null); // back to textbook order
+    } else {
+      setShuffledVocabulary(shuffleArray(lessonData?.vocabulary ?? []));
+    }
+
+    setIndex(0); // start from the first card of the new order
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-3 sm:p-4">
       <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-5 sm:p-6 w-full max-w-md">
-        {/* Top bar: back to Home, filter name, flashcard toggle */}
+        {/* Top bar: back to Home, filter name, shuffle + flashcard toggles */}
 
-        <div className="flex items-center justify-between text-sm mb-3">
+        <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-3">
           <Link href="/" className="text-gray-500 hover:text-gray-900">
             ← Home
           </Link>
@@ -191,12 +215,25 @@ export default function StudySession() {
             {visibleVocabulary.length}
           </span>
 
-          <button
-            onClick={() => setRevealMode(!revealMode)}
-            className="text-gray-500 hover:text-gray-900"
-          >
-            Flashcard: {revealMode ? "On" : "Off"}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleShuffle}
+              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full ${
+                shuffledVocabulary ? "bg-black" : "bg-gray-100"
+              }`}
+              aria-label={shuffledVocabulary ? "Turn shuffle off" : "Shuffle words"}
+              title={shuffledVocabulary ? "Shuffle: On" : "Shuffle: Off"}
+            >
+              🔀
+            </button>
+
+            <button
+              onClick={() => setRevealMode(!revealMode)}
+              className="text-gray-500 hover:text-gray-900"
+            >
+              Flashcard: {revealMode ? "On" : "Off"}
+            </button>
+          </div>
         </div>
 
         {/* Progress bar */}
@@ -214,8 +251,8 @@ export default function StudySession() {
 
         {/* Emoji visual (hidden until revealed, since it hints at the meaning) */}
 
-        <div className="w-full h-20 sm:h-24 rounded-2xl mb-3 bg-gray-100 flex items-center justify-center">
-          <span className="text-5xl sm:text-6xl">
+        <div className="w-full h-16 sm:h-24 rounded-2xl mb-3 bg-gray-100 flex items-center justify-center">
+          <span className="text-4xl sm:text-6xl">
             {showAnswer ? word.emoji || "📝" : "❓"}
           </span>
         </div>
@@ -318,9 +355,10 @@ export default function StudySession() {
           </>
         )}
 
-        {/* Navigation */}
+        {/* Navigation (sticks to the bottom of the screen if the card is
+            taller than the screen, so Next is always reachable) */}
 
-        <div className="flex justify-between mt-4">
+        <div className="sticky bottom-0 bg-white flex justify-between mt-2 pt-2 pb-1">
           <button
             onClick={previousWord}
             className="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300"
