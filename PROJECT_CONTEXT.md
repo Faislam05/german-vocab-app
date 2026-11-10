@@ -96,7 +96,8 @@ The lesson overview. It shows:
 - known-word percentage with a progress bar
 - Learning count
 - Known count
-- three study buttons, each with its word count:
+- direction toggle: 🇩🇪 → 🇬🇧 or 🇬🇧 → 🇩🇪 (see "Study Direction")
+- three study buttons, each with its word count (the direction is added to each link, e.g. `&direction=en-de`):
   - Study Learning words → `/study?filter=learning`
   - Study all words → `/study?filter=all`
   - Review Known words → `/study?filter=known`
@@ -467,6 +468,35 @@ The filter is applied after shuffling, so shuffle works with All, Learning and K
 
 ---
 
+# Study Direction
+
+Chosen on the Home screen and passed to the Study screen in the URL (`&direction=de-en` or `&direction=en-de`). Missing or unknown values mean German → English.
+
+The last choice is remembered in localStorage:
+
+```text
+studyDirection
+```
+
+### German → English (`de-en`, default)
+
+- Question: German word + 🔊 Listen. Emoji shows ❓ until revealed.
+- Button: Show Meaning
+- Answer: English meaning, plural, Learning/Known, examples
+
+### English → German (`en-de`)
+
+- Question: English meaning + part of speech. Emoji is shown as a hint.
+- Button: Show German
+- Answer: German word with article, 🔊 Listen, plural, Learning/Known, examples
+- Listen, plural and examples stay hidden until revealed, because they give away the German word.
+
+The answer is self-checked (reveal and compare); nothing is typed. A possible later step is a typed-answer mode that checks spelling and article.
+
+Learning/Known status is shared between both directions.
+
+---
+
 # Future Features
 
 Potential future development includes:
@@ -477,8 +507,9 @@ Potential future development includes:
 - spaced repetition
 - review scheduling
 - quiz mode
-- German → English
-- English → German
+- typed answers for English → German (check spelling and article)
+- separate Learning/Known status per direction
+- article colours (der / die / das)
 
 ### Progress
 

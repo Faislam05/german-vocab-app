@@ -32,6 +32,11 @@ export type LessonData = {
 
 export type StudyFilter = "all" | "learning" | "known";
 
+// Which way the flashcards are asked:
+// "de-en" = see German, recall English (default)
+// "en-de" = see English, recall German (with article)
+export type StudyDirection = "de-en" | "en-de";
+
 // Maps a vocabulary word to "learning" or "known".
 // Words that are missing count as "learning".
 export type StudyStatus = Record<string, string>;
@@ -52,6 +57,22 @@ export function loadStudyStatus(): StudyStatus {
 
 export function saveStudyStatus(status: StudyStatus) {
   localStorage.setItem(STUDY_STATUS_KEY, JSON.stringify(status));
+}
+
+// localStorage key for the last chosen study direction, so the Home
+// screen remembers it.
+const STUDY_DIRECTION_KEY = "studyDirection";
+
+export function loadStudyDirection(): StudyDirection {
+  if (typeof window === "undefined") return "de-en";
+
+  return localStorage.getItem(STUDY_DIRECTION_KEY) === "en-de"
+    ? "en-de"
+    : "de-en";
+}
+
+export function saveStudyDirection(direction: StudyDirection) {
+  localStorage.setItem(STUDY_DIRECTION_KEY, direction);
 }
 
 // Returns a shuffled copy of a list (the original list is not changed).

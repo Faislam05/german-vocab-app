@@ -30,6 +30,11 @@ export default function StudySession() {
       ? filterParam
       : "all";
 
+  // The direction also comes from the URL, e.g. &direction=en-de
+  // English → German: the card asks with the English meaning and
+  // the German word is the answer.
+  const isEnglishToGerman = searchParams.get("direction") === "en-de";
+
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
 
   const [index, setIndex] = useState(0);
@@ -249,11 +254,12 @@ export default function StudySession() {
           </div>
         </div>
 
-        {/* Emoji visual (hidden until revealed, since it hints at the meaning) */}
+        {/* Emoji visual. German → English: hidden until revealed, since it
+            hints at the meaning. English → German: always shown as a hint. */}
 
         <div className="w-full h-16 sm:h-24 rounded-2xl mb-3 bg-gray-100 flex items-center justify-center">
           <span className="text-4xl sm:text-6xl">
-            {showAnswer ? word.emoji || "📝" : "❓"}
+            {showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓"}
           </span>
         </div>
 
@@ -265,20 +271,30 @@ export default function StudySession() {
           </span>
         </div>
 
-        {/* Main word */}
+        {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
 
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-2">{word.display}</h1>
+          {isEnglishToGerman ? (
+            <h1 className="text-2xl sm:text-3xl font-bold mb-3">
+              {word.english}
+            </h1>
+          ) : (
+            <>
+              <h1 className="text-3xl sm:text-4xl font-bold mb-2">
+                {word.display}
+              </h1>
 
-          <button
-            onClick={() => speakText(word.tts_text)}
-            className="mb-3 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
-          >
-            🔊 Listen
-          </button>
+              <button
+                onClick={() => speakText(word.tts_text)}
+                className="mb-3 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
+              >
+                🔊 Listen
+              </button>
+            </>
+          )}
         </div>
 
-        {/* Show Meaning button (only while the answer is hidden) */}
+        {/* Reveal button (only while the answer is hidden) */}
 
         {!showAnswer && (
           <div className="text-center">
@@ -286,19 +302,35 @@ export default function StudySession() {
               onClick={() => setRevealedWord(word.word)}
               className="px-6 py-3 rounded-full bg-black text-white hover:bg-gray-800"
             >
-              Show Meaning
+              {isEnglishToGerman ? "Show German" : "Show Meaning"}
             </button>
 
             <p className="text-xs text-gray-400 mt-2">or press Space</p>
           </div>
         )}
 
-        {/* Answer: meaning, plural, status buttons and examples */}
+        {/* Answer: the other side of the card, plural, status buttons and examples */}
 
         {showAnswer && (
           <>
             <div className="text-center">
-              <p className="text-2xl mb-2">{word.english}</p>
+              {isEnglishToGerman ? (
+                <>
+                  <p className="text-3xl sm:text-4xl font-bold mb-2">
+                    {word.display}
+                  </p>
+
+                  {/* Listen is only shown now, since it would speak the answer */}
+                  <button
+                    onClick={() => speakText(word.tts_text)}
+                    className="mb-2 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
+                  >
+                    🔊 Listen
+                  </button>
+                </>
+              ) : (
+                <p className="text-2xl mb-2">{word.english}</p>
+              )}
 
               {word.plural && (
                 <p className="text-gray-500">Plural: {word.plural}</p>

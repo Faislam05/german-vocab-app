@@ -5,8 +5,11 @@ import { useEffect, useState } from "react";
 import {
   LESSON_FILE,
   LessonData,
+  StudyDirection,
   StudyStatus,
+  loadStudyDirection,
   loadStudyStatus,
+  saveStudyDirection,
 } from "@/lib/vocabulary";
 
 // The Home screen: lesson overview + choose what to study.
@@ -15,6 +18,15 @@ export default function Home() {
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
+
+  // German → English or English → German (remembered in localStorage)
+  const [direction, setDirection] =
+    useState<StudyDirection>(loadStudyDirection);
+
+  function chooseDirection(newDirection: StudyDirection) {
+    setDirection(newDirection);
+    saveStudyDirection(newDirection);
+  }
 
   useEffect(() => {
     fetch(LESSON_FILE)
@@ -86,25 +98,47 @@ export default function Home() {
           </span>
         </div>
 
+        {/* Direction */}
+
+        <div className="flex justify-center gap-2 mb-4 text-sm">
+          <button
+            onClick={() => chooseDirection("de-en")}
+            className={`px-4 py-1 rounded-full ${
+              direction === "de-en" ? "bg-black text-white" : "bg-gray-100"
+            }`}
+          >
+            🇩🇪 → 🇬🇧
+          </button>
+
+          <button
+            onClick={() => chooseDirection("en-de")}
+            className={`px-4 py-1 rounded-full ${
+              direction === "en-de" ? "bg-black text-white" : "bg-gray-100"
+            }`}
+          >
+            🇬🇧 → 🇩🇪
+          </button>
+        </div>
+
         {/* What to study */}
 
         <div className="space-y-3">
           <Link
-            href="/study?filter=learning"
+            href={`/study?filter=learning&direction=${direction}`}
             className="block w-full text-center px-5 py-3 rounded-full bg-black text-white hover:bg-gray-800"
           >
             Study Learning words ({learningCount})
           </Link>
 
           <Link
-            href="/study?filter=all"
+            href={`/study?filter=all&direction=${direction}`}
             className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
           >
             Study all words ({totalCount})
           </Link>
 
           <Link
-            href="/study?filter=known"
+            href={`/study?filter=known&direction=${direction}`}
             className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
           >
             Review Known words ({knownCount})
@@ -114,7 +148,7 @@ export default function Home() {
         {/* Keyboard hint */}
 
         <p className="text-xs text-gray-400 text-center mt-6">
-          While studying: Space = show meaning, ← → = previous / next
+          While studying: Space = reveal answer, ← → = previous / next
         </p>
       </div>
     </main>
