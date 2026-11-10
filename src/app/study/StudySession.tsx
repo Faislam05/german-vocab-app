@@ -238,8 +238,10 @@ export default function StudySession() {
     setIndex(0); // start from the first card of the new order
   }
 
+  // The card starts at the top (not centred), so it doesn't move up and
+  // down when the next word has more or fewer example sentences.
   return (
-    <main className="min-h-screen flex items-center justify-center p-2 sm:p-6 overflow-x-clip">
+    <main className="min-h-screen flex justify-center items-start p-2 sm:px-6 sm:pt-10 overflow-x-clip">
       <div className={`${cardStyle} p-4 sm:p-6`}>
         <StudyTopBar
           backHref={backHref}

@@ -135,6 +135,8 @@ The choices for studying one lesson (`src/app/lesson/[id]/`). `[id]` in the fold
   - Review Mastered words → `filter=mastered`
 - a keyboard shortcut hint (only on computers, hidden on phones)
 
+Layout: one centred column on all screens, the same width as the Study card (`max-w-lg`), so going from Lesson to Study does not shift sideways. It starts at the same top position as Home (no vertical centring).
+
 A chapter that is not added yet (e.g. `/lesson/5`) shows "The words of this lesson are not added yet"; an unknown number shows "Lesson not found". Both have a "Back to Home" button.
 
 ## Study screen (`/study`)
@@ -170,7 +172,7 @@ Then:
 - Previous button
 - Next button
 
-The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size (sized so long words like "die Telefonnummer" stay on one line), so every card looks the same. Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
+The card starts at the top of the screen (not vertically centred), so it stays in the same place when the next word has more or fewer example sentences. The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size (sized so long words like "die Telefonnummer" stay on one line), so every card looks the same. Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
 
 ---
 
