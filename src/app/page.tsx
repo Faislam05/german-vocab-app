@@ -2,19 +2,25 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useLessonData } from "@/lib/useLessonData";
+import { useLessons } from "@/lib/useLessons";
 import {
+  LessonChoice,
   StudyDirection,
   StudyStatus,
+  countMastered,
+  loadLessonChoiceText,
   loadStudyDirection,
   loadStudyStatus,
+  parseLessonChoice,
+  saveLessonChoice,
   saveStudyDirection,
+  selectLesson,
 } from "@/lib/vocabulary";
 
-// The Home screen: lesson overview + choose what to study.
+// The Home screen: choose a lesson, see its progress, choose what to study.
 // The flashcards themselves live on the Study screen (src/app/study/).
 export default function Home() {
-  const lessonData = useLessonData();
+  const lessons = useLessons();
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
 
@@ -22,12 +28,23 @@ export default function Home() {
   const [direction, setDirection] =
     useState<StudyDirection>(loadStudyDirection);
 
+  // The lesson last chosen, as saved text ("2", "all", or nothing yet).
+  // It is turned into a real choice below, once the lessons are loaded.
+  const [lessonChoiceText, setLessonChoiceText] = useState<string | null>(
+    loadLessonChoiceText
+  );
+
   function chooseDirection(newDirection: StudyDirection) {
     setDirection(newDirection);
     saveStudyDirection(newDirection);
   }
 
-  if (!lessonData) {
+  function chooseLesson(choice: LessonChoice) {
+    setLessonChoiceText(String(choice));
+    saveLessonChoice(choice);
+  }
+
+  if (!lessons) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p>Loading vocabulary...</p>
@@ -35,34 +52,89 @@ export default function Home() {
     );
   }
 
-  const totalCount = lessonData.vocabulary.length;
+  // Nothing chosen yet → start with the first lesson
+  const lessonChoice = parseLessonChoice(
+    lessonChoiceText ?? String(lessons[0]?.lesson),
+    lessons
+  );
 
-  const masteredCount = lessonData.vocabulary.filter(
-    (item) => studyStatus[item.word] === "mastered"
-  ).length;
+  const { title, vocabulary } = selectLesson(lessons, lessonChoice);
 
+  // Percentage of a word list that is Mastered (0 for an empty list)
+  function percentMastered(words: typeof vocabulary) {
+    if (words.length === 0) return 0;
+    return Math.round((countMastered(words, studyStatus) / words.length) * 100);
+  }
+
+  const totalCount = vocabulary.length;
+  const masteredCount = countMastered(vocabulary, studyStatus);
   const learningCount = totalCount - masteredCount;
+  const masteredPercent = percentMastered(vocabulary);
 
-  const masteredPercent = Math.round((masteredCount / totalCount) * 100);
+  // Every study link carries the lesson, filter and direction
+  function studyLink(filter: string) {
+    return `/study?lesson=${lessonChoice}&filter=${filter}&direction=${direction}`;
+  }
+
+  // One button per lesson, plus "All"
+  const lessonButtons: { choice: LessonChoice; label: string; percent: number }[] = [
+    ...lessons.map((lesson) => ({
+      choice: lesson.lesson as LessonChoice,
+      label: `Lektion ${lesson.lesson}`,
+      percent: percentMastered(lesson.vocabulary),
+    })),
+    {
+      choice: "all",
+      label: "All",
+      percent: percentMastered(selectLesson(lessons, "all").vocabulary),
+    },
+  ];
 
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md">
-        {/* Lesson header */}
+    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-3 sm:p-6">
+      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-6 sm:p-8 w-full max-w-md">
+        {/* Header */}
 
-        <div className="text-center mb-6">
-          <div className="text-6xl mb-4">🇩🇪</div>
+        <div className="text-center mb-5">
+          <div className="text-5xl mb-3">🇩🇪</div>
 
           <p className="text-sm text-gray-500 mb-1">
-            Lektion {lessonData.lesson} · {lessonData.cefr}
+            A1 · {totalCount} words
           </p>
 
-          <h1 className="text-2xl font-bold">{lessonData.title}</h1>
+          <h1 className="text-2xl font-bold">{title}</h1>
         </div>
 
-        {/* Lesson progress */}
+        {/* Lesson picker: one button per lesson, with its Mastered % */}
 
-        <div className="mb-6">
+        <div className="flex flex-wrap justify-center gap-2 mb-5">
+          {lessonButtons.map((button) => (
+            <button
+              key={String(button.choice)}
+              onClick={() => chooseLesson(button.choice)}
+              className={`px-3 py-1.5 rounded-2xl text-sm leading-tight ${
+                lessonChoice === button.choice
+                  ? "bg-black text-white"
+                  : "bg-gray-100 hover:bg-gray-200"
+              }`}
+            >
+              {button.label}
+              <span
+                className={`block text-xs ${
+                  lessonChoice === button.choice
+                    ? "text-gray-300"
+                    : "text-gray-500"
+                }`}
+              >
+                {button.percent}%
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Progress of the chosen lesson */}
+
+        <div className="mb-4">
           <div className="flex justify-between text-sm text-gray-500 mb-2">
             <span>Mastered</span>
             <span>{masteredPercent}%</span>
@@ -76,7 +148,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 mb-8 text-sm">
+        <div className="flex justify-center gap-4 mb-6 text-sm">
           <span className="px-3 py-1 rounded-full bg-gray-100">
             Learning: {learningCount}
           </span>
@@ -112,21 +184,21 @@ export default function Home() {
 
         <div className="space-y-3">
           <Link
-            href={`/study?filter=learning&direction=${direction}`}
+            href={studyLink("learning")}
             className="block w-full text-center px-5 py-3 rounded-full bg-black text-white hover:bg-gray-800"
           >
             Study Learning words ({learningCount})
           </Link>
 
           <Link
-            href={`/study?filter=all&direction=${direction}`}
+            href={studyLink("all")}
             className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
           >
             Study all words ({totalCount})
           </Link>
 
           <Link
-            href={`/study?filter=mastered&direction=${direction}`}
+            href={studyLink("mastered")}
             className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
           >
             Review Mastered words ({masteredCount})

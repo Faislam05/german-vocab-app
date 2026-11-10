@@ -59,19 +59,35 @@ When making changes:
 
 Vocabulary content is stored separately from the user interface.
 
-The current lesson data is loaded from a JSON file inside:
+Lesson data lives in JSON files inside:
 
 ```text
 public/data/
 ```
 
-The current app fetches the Lektion 1 enriched vocabulary JSON.
+`public/data/lessons.json` is the list of lessons the app shows. The app loads that list first, then every lesson file in it (`useLessons()` in `src/lib/useLessons.ts`).
 
-The exact filename may change, so inspect the existing `fetch()` path before editing it.
+Current lessons:
 
-The current lesson contains approximately:
+| Lesson | App file | Words | Textbook pages |
+|---|---|---|---|
+| Lektion 1 | `lektion_01_enriched_with_emojis.json` | 107 | 5–6 |
+| Lektion 2 | `lektion_02_enriched_with_emojis.json` | 76 | 19–20 |
 
-- 107 vocabulary cards
+Each lesson also has a `lektion_XX_source.json` with exactly what is printed in the book (words, page references, article codes, expressions and grammar tables). The app does not read the source files; they are kept so the enriched files can be rebuilt or checked. (`lektion_01_enriched.json` is an older Lektion 1 version that is not used.)
+
+## Adding a new lesson
+
+1. Share photos/PDF of the lesson's vocabulary page(s) from the textbook.
+2. Create `lektion_XX_source.json` (as printed) and `lektion_XX_enriched_with_emojis.json` (for the app), following the Lektion 1 and 2 format and the "Part of Speech Labels" table.
+3. Add one entry to `public/data/lessons.json`.
+4. Run `npm run check-data` and fix anything it reports.
+
+No code change is needed.
+
+Each enriched lesson file contains:
+
+- vocabulary cards
 - German words
 - English meanings
 - part of speech
@@ -92,12 +108,13 @@ The app has two screens.
 
 The lesson overview. It shows:
 
-- lesson number, CEFR level and title
+- lesson picker: one button per lesson (Lektion 1, Lektion 2, …) plus "All", each with its Mastered %. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
+- CEFR level, word count and title of the chosen lesson
 - mastered-word percentage with a progress bar
 - Learning count
 - Mastered count
 - direction toggle: 🇩🇪 → 🇬🇧 or 🇬🇧 → 🇩🇪 (see "Study Direction")
-- three study buttons, each with its word count (the direction is added to each link, e.g. `&direction=en-de`):
+- three study buttons, each with its word count (the lesson and direction are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de`):
   - Study Learning words → `/study?filter=learning`
   - Study all words → `/study?filter=all`
   - Review Mastered words → `/study?filter=mastered`
@@ -105,7 +122,7 @@ The lesson overview. It shows:
 
 ## Study screen (`/study`)
 
-The flashcard screen. The filter is read from the URL (`?filter=`).
+The flashcard screen. The lesson, filter and direction are read from the URL (`?lesson=2&filter=all&direction=de-en`). `lesson=all` (or a missing/unknown lesson) studies all lessons combined.
 
 Top bar:
 
@@ -163,6 +180,20 @@ Use only these labels in lesson files:
 The old catch-all label `function_word` is no longer used. Lektion 1 was relabelled so that question words, prepositions, etc. can be told apart (useful for future category filters, e.g. "study only question words").
 
 New labels can be added if a new lesson needs one; add them to this table.
+
+If you add a label, also add it to `ALLOWED_LABELS` in `scripts/check-data.mjs`.
+
+## Data check
+
+`npm run check-data` checks every lesson in `lessons.json` and reports:
+
+- unknown `part_of_speech` labels (including the old `function_word`)
+- nouns with a missing gender, or an article that doesn't match the gender
+- missing required fields (`word`, `display`, `part_of_speech`, `english`, `tts_text`, `examples`)
+- duplicate words within a lesson, wrong lesson numbers
+- lesson files in `public/data/` that are not listed in `lessons.json` (warning)
+
+Run it after creating or editing any lesson file.
 
 ---
 
@@ -560,10 +591,9 @@ Potential future development includes:
 
 ### Lessons
 
-- multiple lessons
-- lesson selection screen
-- lesson progress overview
-- combined vocabulary review
+- study expressions (e.g. *Guten Tag!*, *alle sein*) — already stored in each lesson file under `expressions`, not shown yet
+- grammar cards from the stored `grammar` tables
+- when there are many lessons: a scrolling lesson list instead of buttons
 
 ### Vocabulary Import
 
@@ -622,15 +652,21 @@ german-vocab-app/
 │   │   └── StudyTopBar.tsx       ← Study top bar + progress bar
 │   │
 │   └── lib/
-│       ├── vocabulary.ts         ← shared types, lesson file path,
+│       ├── vocabulary.ts         ← shared types, lesson selection,
 │       │                            localStorage helpers, filter,
 │       │                            shuffle and formatting helpers
-│       └── useLessonData.ts      ← hook that loads the lesson JSON
-│                                    (used by Home and Study)
+│       └── useLessons.ts         ← hook that loads all lessons listed
+│                                    in lessons.json (Home and Study)
 │
 ├── public/
 │   └── data/
-│       └── lesson JSON files
+│       ├── lessons.json          ← list of lessons shown in the app
+│       ├── lektion_XX_enriched_with_emojis.json  ← lesson data (app)
+│       └── lektion_XX_source.json                ← as printed in the book
+│
+├── scripts/
+│   └── check-data.mjs            ← `npm run check-data`: finds mistakes
+│                                    in lesson files
 │
 ├── GERMAN_VOCAB_APP_TECHNICAL_GUIDE.md
 ├── PROJECT_CONTEXT.md

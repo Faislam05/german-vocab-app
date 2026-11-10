@@ -15,7 +15,7 @@ export type VocabularyCard = {
   lesson: number;
   references: number[];
   tts_text: string;
-  image_search: string;
+  image_search: string | null;
   emoji?: string;
   examples: Example[];
   article?: string;
@@ -41,8 +41,56 @@ export type StudyDirection = "de-en" | "en-de";
 // Words that are missing count as "learning".
 export type StudyStatus = Record<string, string>;
 
-// The lesson file currently used by the app.
-export const LESSON_FILE = "/data/lektion_01_enriched_with_emojis.json";
+// The list of lessons. To add a lesson: put its JSON file in public/data/
+// and add one entry to lessons.json — no code change needed.
+export const LESSON_INDEX_FILE = "/data/lessons.json";
+
+export type LessonIndexEntry = {
+  lesson: number;
+  title: string;
+  file: string; // file name inside public/data/
+};
+
+// What the user chose to study: one lesson number, or "all" lessons.
+export type LessonChoice = number | "all";
+
+// Turns a value from the URL or localStorage (e.g. "2" or "all") into a
+// LessonChoice. Anything unknown means "all".
+export function parseLessonChoice(
+  value: string | null,
+  lessons: LessonData[]
+): LessonChoice {
+  const number = Number(value);
+
+  return lessons.some((lesson) => lesson.lesson === number) ? number : "all";
+}
+
+// Returns the title and words for the chosen lesson, or all lessons
+// combined (in lesson order).
+export function selectLesson(lessons: LessonData[], choice: LessonChoice) {
+  if (choice === "all") {
+    return {
+      title: "All lessons",
+      vocabulary: lessons.flatMap((lesson) => lesson.vocabulary),
+    };
+  }
+
+  const lesson = lessons.find((item) => item.lesson === choice);
+
+  return {
+    title: lesson?.title ?? "All lessons",
+    vocabulary: lesson?.vocabulary ?? [],
+  };
+}
+
+// How many words of a list are marked Mastered.
+export function countMastered(
+  vocabulary: VocabularyCard[],
+  studyStatus: StudyStatus
+) {
+  return vocabulary.filter((item) => studyStatus[item.word] === "mastered")
+    .length;
+}
 
 // localStorage key for the user's Learning / Mastered progress.
 const STUDY_STATUS_KEY = "studyStatus";
@@ -124,6 +172,28 @@ export function saveStudyDirection(direction: StudyDirection) {
     localStorage.setItem(STUDY_DIRECTION_KEY, direction);
   } catch (error) {
     console.error("Could not save study direction:", error);
+  }
+}
+
+// localStorage key for the lesson last chosen on the Home screen
+// (saved as text, e.g. "2" or "all").
+const LESSON_CHOICE_KEY = "selectedLesson";
+
+export function loadLessonChoiceText(): string | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return localStorage.getItem(LESSON_CHOICE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function saveLessonChoice(choice: LessonChoice) {
+  try {
+    localStorage.setItem(LESSON_CHOICE_KEY, String(choice));
+  } catch (error) {
+    console.error("Could not save lesson choice:", error);
   }
 }
 

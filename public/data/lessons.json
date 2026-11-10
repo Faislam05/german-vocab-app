@@ -1,0 +1,14 @@
+{
+  "lessons": [
+    {
+      "lesson": 1,
+      "title": "Lektion 1",
+      "file": "lektion_01_enriched_with_emojis.json"
+    },
+    {
+      "lesson": 2,
+      "title": "Lektion 2",
+      "file": "lektion_02_enriched_with_emojis.json"
+    }
+  ]
+}

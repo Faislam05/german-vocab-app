@@ -7,7 +7,7 @@ import ExampleSentences from "@/components/ExampleSentences";
 import GermanWord from "@/components/GermanWord";
 import ListenButton from "@/components/ListenButton";
 import StudyTopBar from "@/components/StudyTopBar";
-import { useLessonData } from "@/lib/useLessonData";
+import { useLessons } from "@/lib/useLessons";
 import {
   StudyFilter,
   StudyStatus,
@@ -15,7 +15,9 @@ import {
   filterVocabulary,
   formatPartOfSpeech,
   loadStudyStatus,
+  parseLessonChoice,
   saveStudyStatus,
+  selectLesson,
   shuffleArray,
 } from "@/lib/vocabulary";
 
@@ -39,7 +41,13 @@ export default function StudySession() {
   // the German word is the answer.
   const isEnglishToGerman = searchParams.get("direction") === "en-de";
 
-  const lessonData = useLessonData();
+  // The lesson also comes from the URL, e.g. &lesson=2 (or lesson=all).
+  // lessonVocabulary is null while the lessons are still loading.
+  const lessons = useLessons();
+  const lessonVocabulary = lessons
+    ? selectLesson(lessons, parseLessonChoice(searchParams.get("lesson"), lessons))
+        .vocabulary
+    : null;
 
   const [index, setIndex] = useState(0);
 
@@ -67,7 +75,7 @@ export default function StudySession() {
 
   // Use the shuffled order if shuffle is on, otherwise the textbook order.
   const orderedVocabulary =
-    shuffledVocabulary ?? lessonData?.vocabulary ?? [];
+    shuffledVocabulary ?? lessonVocabulary ?? [];
 
   const visibleVocabulary = filterVocabulary(
     orderedVocabulary,
@@ -111,7 +119,7 @@ export default function StudySession() {
     };
   }, [visibleVocabulary.length, currentWord]);
 
-  if (!lessonData) {
+  if (!lessonVocabulary) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p>Loading vocabulary...</p>
@@ -181,7 +189,7 @@ export default function StudySession() {
     if (shuffledVocabulary) {
       setShuffledVocabulary(null); // back to textbook order
     } else {
-      setShuffledVocabulary(shuffleArray(lessonData?.vocabulary ?? []));
+      setShuffledVocabulary(shuffleArray(lessonVocabulary ?? []));
     }
 
     setIndex(0); // start from the first card of the new order
