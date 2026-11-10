@@ -1,74 +1,62 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type Example = {
+  de: string;
+  en: string;
+};
+
+type VocabularyCard = {
+  word: string;
+  display: string;
+  part_of_speech: string;
+  english: string;
+  cefr: string;
+  lesson: number;
+  references: number[];
+  tts_text: string;
+  image_search: string;
+  examples: Example[];
+  article?: string;
+  gender?: string;
+  plural?: string;
+};
+
+type LessonData = {
+  lesson: number;
+  title: string;
+  cefr: string;
+  vocabulary: VocabularyCard[];
+};
 
 export default function Home() {
-  const words = [
-    {
-      display: "der Monat",
-      english: "month",
-      plural: "die Monate",
-      examples: [
-        {
-          de: "Der Monat hat vier Wochen.",
-          en: "The month has four weeks.",
-        },
-        {
-          de: "Ich bleibe einen Monat hier.",
-          en: "I am staying here for one month.",
-        },
-        {
-          de: "Nächsten Monat fahre ich nach Berlin.",
-          en: "Next month I am going to Berlin.",
-        },
-      ],
-    },
-    {
-      display: "der Beruf",
-      english: "profession",
-      plural: "die Berufe",
-      examples: [
-        {
-          de: "Mein Beruf ist interessant.",
-          en: "My profession is interesting.",
-        },
-        {
-          de: "Was sind Sie von Beruf?",
-          en: "What is your profession?",
-        },
-        {
-          de: "Er sucht einen neuen Beruf.",
-          en: "He is looking for a new profession.",
-        },
-      ],
-    },
-    {
-      display: "die Straße",
-      english: "street",
-      plural: "die Straßen",
-      examples: [
-        {
-          de: "Die Straße ist sehr lang.",
-          en: "The street is very long.",
-        },
-        {
-          de: "Ich wohne in dieser Straße.",
-          en: "I live on this street.",
-        },
-        {
-          de: "Wie heißt diese Straße?",
-          en: "What is this street called?",
-        },
-      ],
-    },
-  ];
-
+  const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [index, setIndex] = useState(0);
 
-  const word = words[index];
+  useEffect(() => {
+    fetch("/data/lektion_01_enriched.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setLessonData(data);
+      })
+      .catch((error) => {
+        console.error("Error loading lesson data:", error);
+      });
+  }, []);
+
+  if (!lessonData) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <p>Loading vocabulary...</p>
+      </main>
+    );
+  }
+
+  const word = lessonData.vocabulary[index];
 
   function speakWord() {
-    const speech = new SpeechSynthesisUtterance(word.display);
+    const speech = new SpeechSynthesisUtterance(word.tts_text);
     speech.lang = "de-DE";
 
     window.speechSynthesis.cancel();
@@ -76,22 +64,25 @@ export default function Home() {
   }
 
   function nextWord() {
-    setIndex((index + 1) % words.length);
+    setIndex((index + 1) % lessonData.vocabulary.length);
   }
 
   function previousWord() {
-    setIndex((index - 1 + words.length) % words.length);
+    setIndex(
+      (index - 1 + lessonData.vocabulary.length) %
+        lessonData.vocabulary.length
+    );
   }
 
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
         <p className="text-sm text-gray-500 mb-2">
-          Lektion 1
+          {lessonData.title}
         </p>
 
         <p className="text-sm text-gray-400 mb-4">
-          {index + 1} / {words.length}
+          {index + 1} / {lessonData.vocabulary.length}
         </p>
 
         <h1 className="text-4xl font-bold mb-4">
@@ -109,9 +100,11 @@ export default function Home() {
           {word.english}
         </p>
 
-        <p className="text-gray-500 mb-6">
-          Plural: {word.plural}
-        </p>
+        {word.plural && (
+          <p className="text-gray-500 mb-6">
+            Plural: {word.plural}
+          </p>
+        )}
 
         <div className="text-left space-y-4">
           {word.examples.map((example, exampleIndex) => (

@@ -1,0 +1,3350 @@
+{
+  "schema_version": 1,
+  "lesson": 1,
+  "title": "Lektion 1",
+  "source_pages": [
+    5,
+    6
+  ],
+  "language": "de",
+  "translation_language": "en",
+  "cefr": "A1",
+  "generation_notes": [
+    "Vocabulary was extracted from the two supplied Lektion 1 pages and enriched for app use.",
+    "Paired feminine/masculine profession and person entries were split into separate study cards.",
+    "Image searches are suggestions only; image licensing/source metadata should be saved when a real image is selected.",
+    "For abstract function words, image_search is null because a picture may not improve learning.",
+    "Pronunciation audio can be generated on-device from tts_text using German text-to-speech."
+  ],
+  "vocabulary": [
+    {
+      "word": "arbeiten",
+      "display": "arbeiten",
+      "part_of_speech": "verb",
+      "english": "to work",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13,
+        14
+      ],
+      "tts_text": "arbeiten",
+      "image_search": "person working at desk",
+      "examples": [
+        {
+          "de": "Ich arbeite in Berlin.",
+          "en": "I work in Berlin."
+        },
+        {
+          "de": "Mein Vater arbeitet heute.",
+          "en": "My father is working today."
+        },
+        {
+          "de": "Wo arbeitest du?",
+          "en": "Where do you work?"
+        }
+      ]
+    },
+    {
+      "word": "buchstabieren",
+      "display": "buchstabieren",
+      "part_of_speech": "verb",
+      "english": "to spell",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "buchstabieren",
+      "image_search": "person spelling a name letters",
+      "examples": [
+        {
+          "de": "Bitte buchstabieren Sie Ihren Namen.",
+          "en": "Please spell your name."
+        },
+        {
+          "de": "Wie buchstabiert man Berlin?",
+          "en": "How do you spell Berlin?"
+        },
+        {
+          "de": "Ich buchstabiere meinen Nachnamen.",
+          "en": "I spell my surname."
+        }
+      ]
+    },
+    {
+      "word": "fragen",
+      "display": "fragen",
+      "part_of_speech": "verb",
+      "english": "to ask",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10,
+        16
+      ],
+      "tts_text": "fragen",
+      "image_search": "person asking a question",
+      "examples": [
+        {
+          "de": "Ich frage den Lehrer.",
+          "en": "I ask the teacher."
+        },
+        {
+          "de": "Darf ich etwas fragen?",
+          "en": "May I ask something?"
+        },
+        {
+          "de": "Sie fragt nach dem Weg.",
+          "en": "She asks for directions."
+        }
+      ]
+    },
+    {
+      "word": "haben",
+      "display": "haben",
+      "part_of_speech": "verb",
+      "english": "to have",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "haben",
+      "image_search": "person holding belongings",
+      "examples": [
+        {
+          "de": "Ich habe ein Auto.",
+          "en": "I have a car."
+        },
+        {
+          "de": "Wir haben heute Deutsch.",
+          "en": "We have German today."
+        },
+        {
+          "de": "Hast du Zeit?",
+          "en": "Do you have time?"
+        }
+      ]
+    },
+    {
+      "word": "heißen",
+      "display": "heißen",
+      "part_of_speech": "verb",
+      "english": "to be called",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "heißen",
+      "image_search": "name tag introduction",
+      "examples": [
+        {
+          "de": "Ich heiße Anna.",
+          "en": "My name is Anna."
+        },
+        {
+          "de": "Wie heißen Sie?",
+          "en": "What is your name?"
+        },
+        {
+          "de": "Er heißt Paul.",
+          "en": "His name is Paul."
+        }
+      ]
+    },
+    {
+      "word": "hören",
+      "display": "hören",
+      "part_of_speech": "verb",
+      "english": "to hear; to listen",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11
+      ],
+      "tts_text": "hören",
+      "image_search": "person listening with ear headphones",
+      "examples": [
+        {
+          "de": "Ich höre Musik.",
+          "en": "I listen to music."
+        },
+        {
+          "de": "Hörst du mich?",
+          "en": "Can you hear me?"
+        },
+        {
+          "de": "Wir hören den Text.",
+          "en": "We listen to the text."
+        }
+      ]
+    },
+    {
+      "word": "kommen",
+      "display": "kommen",
+      "part_of_speech": "verb",
+      "english": "to come",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "kommen",
+      "image_search": "person arriving",
+      "examples": [
+        {
+          "de": "Ich komme aus Deutschland.",
+          "en": "I come from Germany."
+        },
+        {
+          "de": "Kommst du morgen?",
+          "en": "Are you coming tomorrow?"
+        },
+        {
+          "de": "Der Bus kommt um acht.",
+          "en": "The bus comes at eight."
+        }
+      ]
+    },
+    {
+      "word": "leben",
+      "display": "leben",
+      "part_of_speech": "verb",
+      "english": "to live",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "leben",
+      "image_search": "people living in a city",
+      "examples": [
+        {
+          "de": "Ich lebe in Berlin.",
+          "en": "I live in Berlin."
+        },
+        {
+          "de": "Meine Eltern leben in Köln.",
+          "en": "My parents live in Cologne."
+        },
+        {
+          "de": "Wir leben zusammen.",
+          "en": "We live together."
+        }
+      ]
+    },
+    {
+      "word": "lernen",
+      "display": "lernen",
+      "part_of_speech": "verb",
+      "english": "to learn; to study",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "lernen",
+      "image_search": "student studying German",
+      "examples": [
+        {
+          "de": "Ich lerne Deutsch.",
+          "en": "I am learning German."
+        },
+        {
+          "de": "Wir lernen neue Wörter.",
+          "en": "We learn new words."
+        },
+        {
+          "de": "Lernst du jeden Tag?",
+          "en": "Do you study every day?"
+        }
+      ]
+    },
+    {
+      "word": "lesen",
+      "display": "lesen",
+      "part_of_speech": "verb",
+      "english": "to read",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12,
+        14,
+        16
+      ],
+      "tts_text": "lesen",
+      "image_search": "person reading a book",
+      "examples": [
+        {
+          "de": "Ich lese ein Buch.",
+          "en": "I am reading a book."
+        },
+        {
+          "de": "Sie liest die Zeitung.",
+          "en": "She reads the newspaper."
+        },
+        {
+          "de": "Wir lesen den Text.",
+          "en": "We read the text."
+        }
+      ]
+    },
+    {
+      "word": "machen",
+      "display": "machen",
+      "part_of_speech": "verb",
+      "english": "to do; to make",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12,
+        17
+      ],
+      "tts_text": "machen",
+      "image_search": "person doing homework",
+      "examples": [
+        {
+          "de": "Was machst du heute?",
+          "en": "What are you doing today?"
+        },
+        {
+          "de": "Ich mache meine Hausaufgaben.",
+          "en": "I do my homework."
+        },
+        {
+          "de": "Wir machen eine Pause.",
+          "en": "We take a break."
+        }
+      ]
+    },
+    {
+      "word": "meinen",
+      "display": "meinen",
+      "part_of_speech": "verb",
+      "english": "to mean; to think",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "meinen",
+      "image_search": "person expressing an opinion",
+      "examples": [
+        {
+          "de": "Was meinst du?",
+          "en": "What do you mean?"
+        },
+        {
+          "de": "Ich meine diesen Mann.",
+          "en": "I mean this man."
+        },
+        {
+          "de": "Er meint das nicht so.",
+          "en": "He does not mean it that way."
+        }
+      ]
+    },
+    {
+      "word": "möchten",
+      "display": "möchten",
+      "part_of_speech": "verb",
+      "english": "would like",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "möchten",
+      "image_search": "person ordering coffee",
+      "examples": [
+        {
+          "de": "Ich möchte einen Kaffee.",
+          "en": "I would like a coffee."
+        },
+        {
+          "de": "Möchten Sie etwas trinken?",
+          "en": "Would you like something to drink?"
+        },
+        {
+          "de": "Wir möchten nach Wien fahren.",
+          "en": "We would like to go to Vienna."
+        }
+      ]
+    },
+    {
+      "word": "reisen",
+      "display": "reisen",
+      "part_of_speech": "verb",
+      "english": "to travel",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        15
+      ],
+      "tts_text": "reisen",
+      "image_search": "traveler with suitcase train",
+      "examples": [
+        {
+          "de": "Ich reise gern.",
+          "en": "I like to travel."
+        },
+        {
+          "de": "Wir reisen nach Österreich.",
+          "en": "We travel to Austria."
+        },
+        {
+          "de": "Sie reist mit dem Zug.",
+          "en": "She travels by train."
+        }
+      ]
+    },
+    {
+      "word": "schreiben",
+      "display": "schreiben",
+      "part_of_speech": "verb",
+      "english": "to write",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10,
+        16
+      ],
+      "tts_text": "schreiben",
+      "image_search": "person writing a postcard",
+      "examples": [
+        {
+          "de": "Ich schreibe eine E-Mail.",
+          "en": "I write an email."
+        },
+        {
+          "de": "Schreiben Sie Ihren Namen.",
+          "en": "Write your name."
+        },
+        {
+          "de": "Er schreibt eine Postkarte.",
+          "en": "He writes a postcard."
+        }
+      ]
+    },
+    {
+      "word": "sein",
+      "display": "sein",
+      "part_of_speech": "verb",
+      "english": "to be",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        18
+      ],
+      "tts_text": "sein",
+      "image_search": "people introducing themselves",
+      "examples": [
+        {
+          "de": "Ich bin Student.",
+          "en": "I am a student."
+        },
+        {
+          "de": "Wir sind in Berlin.",
+          "en": "We are in Berlin."
+        },
+        {
+          "de": "Bist du müde?",
+          "en": "Are you tired?"
+        }
+      ]
+    },
+    {
+      "word": "spielen",
+      "display": "spielen",
+      "part_of_speech": "verb",
+      "english": "to play",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12,
+        15,
+        16,
+        17
+      ],
+      "tts_text": "spielen",
+      "image_search": "children playing football",
+      "examples": [
+        {
+          "de": "Die Kinder spielen im Park.",
+          "en": "The children play in the park."
+        },
+        {
+          "de": "Ich spiele Fußball.",
+          "en": "I play football."
+        },
+        {
+          "de": "Spielst du gern Karten?",
+          "en": "Do you like playing cards?"
+        }
+      ]
+    },
+    {
+      "word": "sprechen",
+      "display": "sprechen",
+      "part_of_speech": "verb",
+      "english": "to speak",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16,
+        17
+      ],
+      "tts_text": "sprechen",
+      "image_search": "two people speaking",
+      "examples": [
+        {
+          "de": "Ich spreche Deutsch.",
+          "en": "I speak German."
+        },
+        {
+          "de": "Sprechen Sie Englisch?",
+          "en": "Do you speak English?"
+        },
+        {
+          "de": "Wir sprechen mit dem Lehrer.",
+          "en": "We speak with the teacher."
+        }
+      ]
+    },
+    {
+      "word": "studieren",
+      "display": "studieren",
+      "part_of_speech": "verb",
+      "english": "to study at university",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        16
+      ],
+      "tts_text": "studieren",
+      "image_search": "university student studying",
+      "examples": [
+        {
+          "de": "Ich studiere in Berlin.",
+          "en": "I study in Berlin."
+        },
+        {
+          "de": "Sie studiert Medizin.",
+          "en": "She studies medicine."
+        },
+        {
+          "de": "Was studierst du?",
+          "en": "What do you study?"
+        }
+      ]
+    },
+    {
+      "word": "warten",
+      "display": "warten",
+      "part_of_speech": "verb",
+      "english": "to wait",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        18
+      ],
+      "tts_text": "warten",
+      "image_search": "person waiting for bus",
+      "examples": [
+        {
+          "de": "Ich warte auf den Bus.",
+          "en": "I am waiting for the bus."
+        },
+        {
+          "de": "Warten Sie bitte hier.",
+          "en": "Please wait here."
+        },
+        {
+          "de": "Wir warten zehn Minuten.",
+          "en": "We wait ten minutes."
+        }
+      ]
+    },
+    {
+      "word": "werden",
+      "display": "werden",
+      "part_of_speech": "verb",
+      "english": "to become; to get",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "werden",
+      "image_search": "person becoming professional",
+      "examples": [
+        {
+          "de": "Ich werde Lehrer.",
+          "en": "I am becoming a teacher."
+        },
+        {
+          "de": "Es wird kalt.",
+          "en": "It is getting cold."
+        },
+        {
+          "de": "Mein Bruder wird 20 Jahre alt.",
+          "en": "My brother is turning 20."
+        }
+      ]
+    },
+    {
+      "word": "wohnen",
+      "display": "wohnen",
+      "part_of_speech": "verb",
+      "english": "to live; to reside",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "wohnen",
+      "image_search": "apartment building home",
+      "examples": [
+        {
+          "de": "Ich wohne in Hamburg.",
+          "en": "I live in Hamburg."
+        },
+        {
+          "de": "Wo wohnen Sie?",
+          "en": "Where do you live?"
+        },
+        {
+          "de": "Wir wohnen zusammen.",
+          "en": "We live together."
+        }
+      ]
+    },
+    {
+      "word": "Alter",
+      "display": "das Alter",
+      "part_of_speech": "noun",
+      "english": "age",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "das Alter",
+      "image_search": "age birthday number form",
+      "examples": [
+        {
+          "de": "Bitte schreiben Sie Ihr Alter.",
+          "en": "Please write your age."
+        },
+        {
+          "de": "Sein Alter ist 30 Jahre.",
+          "en": "His age is 30 years."
+        },
+        {
+          "de": "Das Alter steht im Formular.",
+          "en": "The age is written on the form."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Alter"
+    },
+    {
+      "word": "Ausländerin",
+      "display": "die Ausländerin",
+      "part_of_speech": "noun",
+      "english": "female foreigner",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "die Ausländerin",
+      "image_search": "foreign woman traveler passport",
+      "examples": [
+        {
+          "de": "Sie ist Ausländerin.",
+          "en": "She is a foreigner."
+        },
+        {
+          "de": "Die Ausländerin lernt Deutsch.",
+          "en": "The foreign woman is learning German."
+        },
+        {
+          "de": "Ich spreche mit der Ausländerin.",
+          "en": "I speak with the foreign woman."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Ausländerinnen",
+      "source_text": "Ausländerin/Ausländer"
+    },
+    {
+      "word": "Ausländer",
+      "display": "der Ausländer",
+      "part_of_speech": "noun",
+      "english": "foreigner",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "der Ausländer",
+      "image_search": "foreign man traveler passport",
+      "examples": [
+        {
+          "de": "Er ist Ausländer.",
+          "en": "He is a foreigner."
+        },
+        {
+          "de": "Der Ausländer spricht Deutsch.",
+          "en": "The foreign man speaks German."
+        },
+        {
+          "de": "Ich kenne einen Ausländer.",
+          "en": "I know a foreigner."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Ausländer",
+      "source_text": "Ausländerin/Ausländer"
+    },
+    {
+      "word": "Beruf",
+      "display": "der Beruf",
+      "part_of_speech": "noun",
+      "english": "profession; occupation",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "der Beruf",
+      "image_search": "different professions jobs",
+      "examples": [
+        {
+          "de": "Was sind Sie von Beruf?",
+          "en": "What is your profession?"
+        },
+        {
+          "de": "Mein Beruf ist interessant.",
+          "en": "My profession is interesting."
+        },
+        {
+          "de": "Sie spricht über ihren Beruf.",
+          "en": "She talks about her profession."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Berufe"
+    },
+    {
+      "word": "Deutschland",
+      "display": "Deutschland",
+      "part_of_speech": "noun",
+      "english": "Germany",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "Deutschland",
+      "image_search": "Germany map flag",
+      "examples": [
+        {
+          "de": "Ich komme aus Deutschland.",
+          "en": "I come from Germany."
+        },
+        {
+          "de": "Berlin liegt in Deutschland.",
+          "en": "Berlin is in Germany."
+        },
+        {
+          "de": "Wir wohnen in Deutschland.",
+          "en": "We live in Germany."
+        }
+      ]
+    },
+    {
+      "word": "Eltern",
+      "display": "die Eltern",
+      "part_of_speech": "noun",
+      "english": "parents",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "die Eltern",
+      "image_search": "parents family",
+      "examples": [
+        {
+          "de": "Meine Eltern wohnen in Köln.",
+          "en": "My parents live in Cologne."
+        },
+        {
+          "de": "Die Eltern sind zu Hause.",
+          "en": "The parents are at home."
+        },
+        {
+          "de": "Ich besuche meine Eltern.",
+          "en": "I visit my parents."
+        }
+      ],
+      "article": "die",
+      "gender": "plural"
+    },
+    {
+      "word": "Familienname",
+      "display": "der Familienname",
+      "part_of_speech": "noun",
+      "english": "surname; family name",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "der Familienname",
+      "image_search": "surname field on form",
+      "examples": [
+        {
+          "de": "Mein Familienname ist Müller.",
+          "en": "My surname is Müller."
+        },
+        {
+          "de": "Wie ist Ihr Familienname?",
+          "en": "What is your surname?"
+        },
+        {
+          "de": "Schreiben Sie Ihren Familiennamen.",
+          "en": "Write your surname."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Familiennamen"
+    },
+    {
+      "word": "Familienstand",
+      "display": "der Familienstand",
+      "part_of_speech": "noun",
+      "english": "marital status",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "der Familienstand",
+      "image_search": "marital status form",
+      "examples": [
+        {
+          "de": "Wie ist Ihr Familienstand?",
+          "en": "What is your marital status?"
+        },
+        {
+          "de": "Mein Familienstand ist ledig.",
+          "en": "My marital status is single."
+        },
+        {
+          "de": "Der Familienstand steht im Formular.",
+          "en": "The marital status is on the form."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine"
+    },
+    {
+      "word": "Fotograf",
+      "display": "der Fotograf",
+      "part_of_speech": "noun",
+      "english": "photographer",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16
+      ],
+      "tts_text": "der Fotograf",
+      "image_search": "photographer with camera",
+      "examples": [
+        {
+          "de": "Er ist Fotograf.",
+          "en": "He is a photographer."
+        },
+        {
+          "de": "Der Fotograf macht ein Foto.",
+          "en": "The photographer takes a photo."
+        },
+        {
+          "de": "Ich kenne den Fotografen.",
+          "en": "I know the photographer."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Fotografen"
+    },
+    {
+      "word": "Frau",
+      "display": "die Frau",
+      "part_of_speech": "noun",
+      "english": "woman; Mrs.",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        21
+      ],
+      "tts_text": "die Frau",
+      "image_search": "woman portrait",
+      "examples": [
+        {
+          "de": "Die Frau heißt Anna.",
+          "en": "The woman's name is Anna."
+        },
+        {
+          "de": "Frau Müller wohnt in Bonn.",
+          "en": "Mrs. Müller lives in Bonn."
+        },
+        {
+          "de": "Ich spreche mit der Frau.",
+          "en": "I speak with the woman."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Frauen"
+    },
+    {
+      "word": "Geburtstag",
+      "display": "der Geburtstag",
+      "part_of_speech": "noun",
+      "english": "birthday",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        18
+      ],
+      "tts_text": "der Geburtstag",
+      "image_search": "birthday cake celebration",
+      "examples": [
+        {
+          "de": "Heute ist mein Geburtstag.",
+          "en": "Today is my birthday."
+        },
+        {
+          "de": "Wann hast du Geburtstag?",
+          "en": "When is your birthday?"
+        },
+        {
+          "de": "Wir feiern seinen Geburtstag.",
+          "en": "We celebrate his birthday."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Geburtstage"
+    },
+    {
+      "word": "Hausfrau",
+      "display": "die Hausfrau",
+      "part_of_speech": "noun",
+      "english": "housewife",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "die Hausfrau",
+      "image_search": "woman at home household",
+      "examples": [
+        {
+          "de": "Sie ist Hausfrau.",
+          "en": "She is a housewife."
+        },
+        {
+          "de": "Die Hausfrau ist zu Hause.",
+          "en": "The housewife is at home."
+        },
+        {
+          "de": "Meine Mutter ist Hausfrau.",
+          "en": "My mother is a housewife."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Hausfrauen"
+    },
+    {
+      "word": "Herr",
+      "display": "der Herr",
+      "part_of_speech": "noun",
+      "english": "Mr.; gentleman",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "der Herr",
+      "image_search": "man portrait formal",
+      "examples": [
+        {
+          "de": "Herr Meier kommt aus Berlin.",
+          "en": "Mr. Meier comes from Berlin."
+        },
+        {
+          "de": "Guten Tag, Herr Schmidt.",
+          "en": "Hello, Mr. Schmidt."
+        },
+        {
+          "de": "Der Herr wartet hier.",
+          "en": "The gentleman is waiting here."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Herren"
+    },
+    {
+      "word": "Hobby",
+      "display": "das Hobby",
+      "part_of_speech": "noun",
+      "english": "hobby",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        15
+      ],
+      "tts_text": "das Hobby",
+      "image_search": "hobbies sports music reading",
+      "examples": [
+        {
+          "de": "Mein Hobby ist Lesen.",
+          "en": "My hobby is reading."
+        },
+        {
+          "de": "Was ist dein Hobby?",
+          "en": "What is your hobby?"
+        },
+        {
+          "de": "Sie hat viele Hobbys.",
+          "en": "She has many hobbies."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Hobbys"
+    },
+    {
+      "word": "Jahr",
+      "display": "das Jahr",
+      "part_of_speech": "noun",
+      "english": "year",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "das Jahr",
+      "image_search": "calendar year",
+      "examples": [
+        {
+          "de": "Ein Jahr hat zwölf Monate.",
+          "en": "A year has twelve months."
+        },
+        {
+          "de": "Ich bin 20 Jahre alt.",
+          "en": "I am 20 years old."
+        },
+        {
+          "de": "Wir lernen seit einem Jahr Deutsch.",
+          "en": "We have been learning German for a year."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Jahre",
+      "source_text": "Jahre"
+    },
+    {
+      "word": "Kauffrau",
+      "display": "die Kauffrau",
+      "part_of_speech": "noun",
+      "english": "businesswoman; commercial clerk",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        17
+      ],
+      "tts_text": "die Kauffrau",
+      "image_search": "businesswoman office",
+      "examples": [
+        {
+          "de": "Sie ist Kauffrau.",
+          "en": "She is a businesswoman."
+        },
+        {
+          "de": "Die Kauffrau arbeitet im Büro.",
+          "en": "The businesswoman works in an office."
+        },
+        {
+          "de": "Meine Schwester ist Kauffrau.",
+          "en": "My sister is a businesswoman."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Kauffrauen",
+      "source_text": "Kauffrau/Kaufmann"
+    },
+    {
+      "word": "Kaufmann",
+      "display": "der Kaufmann",
+      "part_of_speech": "noun",
+      "english": "businessman; merchant",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        17
+      ],
+      "tts_text": "der Kaufmann",
+      "image_search": "businessman office",
+      "examples": [
+        {
+          "de": "Er ist Kaufmann.",
+          "en": "He is a businessman."
+        },
+        {
+          "de": "Der Kaufmann arbeitet im Büro.",
+          "en": "The businessman works in an office."
+        },
+        {
+          "de": "Mein Vater ist Kaufmann.",
+          "en": "My father is a businessman."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Kaufleute",
+      "source_text": "Kauffrau/Kaufmann"
+    },
+    {
+      "word": "Kind",
+      "display": "das Kind",
+      "part_of_speech": "noun",
+      "english": "child",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13,
+        14
+      ],
+      "tts_text": "das Kind",
+      "image_search": "child playing",
+      "examples": [
+        {
+          "de": "Das Kind spielt im Park.",
+          "en": "The child plays in the park."
+        },
+        {
+          "de": "Wir haben zwei Kinder.",
+          "en": "We have two children."
+        },
+        {
+          "de": "Das Kind heißt Lea.",
+          "en": "The child's name is Lea."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Kinder"
+    },
+    {
+      "word": "Kurs",
+      "display": "der Kurs",
+      "part_of_speech": "noun",
+      "english": "course; class",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "der Kurs",
+      "image_search": "language class students",
+      "examples": [
+        {
+          "de": "Der Kurs beginnt heute.",
+          "en": "The course starts today."
+        },
+        {
+          "de": "Ich besuche einen Deutschkurs.",
+          "en": "I attend a German course."
+        },
+        {
+          "de": "Unser Kurs ist klein.",
+          "en": "Our class is small."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Kurse"
+    },
+    {
+      "word": "Land",
+      "display": "das Land",
+      "part_of_speech": "noun",
+      "english": "country",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16
+      ],
+      "tts_text": "das Land",
+      "image_search": "world map countries",
+      "examples": [
+        {
+          "de": "Deutschland ist ein Land in Europa.",
+          "en": "Germany is a country in Europe."
+        },
+        {
+          "de": "Aus welchem Land kommen Sie?",
+          "en": "Which country do you come from?"
+        },
+        {
+          "de": "Ich reise gern in andere Länder.",
+          "en": "I like traveling to other countries."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Länder"
+    },
+    {
+      "word": "Leute",
+      "display": "die Leute",
+      "part_of_speech": "noun",
+      "english": "people",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "die Leute",
+      "image_search": "group of people",
+      "examples": [
+        {
+          "de": "Viele Leute sind hier.",
+          "en": "Many people are here."
+        },
+        {
+          "de": "Die Leute warten auf den Bus.",
+          "en": "The people are waiting for the bus."
+        },
+        {
+          "de": "Ich kenne diese Leute.",
+          "en": "I know these people."
+        }
+      ],
+      "article": "die",
+      "gender": "plural"
+    },
+    {
+      "word": "Lösung",
+      "display": "die Lösung",
+      "part_of_speech": "noun",
+      "english": "solution; answer",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "die Lösung",
+      "image_search": "solution checkmark puzzle",
+      "examples": [
+        {
+          "de": "Die Lösung ist richtig.",
+          "en": "The answer is correct."
+        },
+        {
+          "de": "Ich kenne die Lösung.",
+          "en": "I know the solution."
+        },
+        {
+          "de": "Wir suchen eine Lösung.",
+          "en": "We are looking for a solution."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Lösungen"
+    },
+    {
+      "word": "Mechaniker",
+      "display": "der Mechaniker",
+      "part_of_speech": "noun",
+      "english": "mechanic",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        15,
+        17
+      ],
+      "tts_text": "der Mechaniker",
+      "image_search": "car mechanic repairing vehicle",
+      "examples": [
+        {
+          "de": "Er ist Mechaniker.",
+          "en": "He is a mechanic."
+        },
+        {
+          "de": "Der Mechaniker repariert das Auto.",
+          "en": "The mechanic repairs the car."
+        },
+        {
+          "de": "Mein Bruder arbeitet als Mechaniker.",
+          "en": "My brother works as a mechanic."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Mechaniker"
+    },
+    {
+      "word": "Monat",
+      "display": "der Monat",
+      "part_of_speech": "noun",
+      "english": "month",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "der Monat",
+      "image_search": "calendar month",
+      "examples": [
+        {
+          "de": "Ein Monat hat vier Wochen.",
+          "en": "A month has four weeks."
+        },
+        {
+          "de": "Ich bleibe einen Monat hier.",
+          "en": "I am staying here for one month."
+        },
+        {
+          "de": "Nächsten Monat fahre ich nach Berlin.",
+          "en": "Next month I am going to Berlin."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Monate"
+    },
+    {
+      "word": "Name",
+      "display": "der Name",
+      "part_of_speech": "noun",
+      "english": "name",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        8
+      ],
+      "tts_text": "der Name",
+      "image_search": "name tag form",
+      "examples": [
+        {
+          "de": "Mein Name ist Anna.",
+          "en": "My name is Anna."
+        },
+        {
+          "de": "Wie ist Ihr Name?",
+          "en": "What is your name?"
+        },
+        {
+          "de": "Schreiben Sie Ihren Namen.",
+          "en": "Write your name."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Namen"
+    },
+    {
+      "word": "Ort",
+      "display": "der Ort",
+      "part_of_speech": "noun",
+      "english": "place; town",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11,
+        20
+      ],
+      "tts_text": "der Ort",
+      "image_search": "small town location map",
+      "examples": [
+        {
+          "de": "Der Ort ist klein.",
+          "en": "The town is small."
+        },
+        {
+          "de": "Wie heißt dieser Ort?",
+          "en": "What is this place called?"
+        },
+        {
+          "de": "Wir wohnen in einem ruhigen Ort.",
+          "en": "We live in a quiet place."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Orte"
+    },
+    {
+      "word": "Österreich",
+      "display": "Österreich",
+      "part_of_speech": "noun",
+      "english": "Austria",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "Österreich",
+      "image_search": "Austria map flag",
+      "examples": [
+        {
+          "de": "Wien liegt in Österreich.",
+          "en": "Vienna is in Austria."
+        },
+        {
+          "de": "Ich komme aus Österreich.",
+          "en": "I come from Austria."
+        },
+        {
+          "de": "Wir reisen nach Österreich.",
+          "en": "We travel to Austria."
+        }
+      ]
+    },
+    {
+      "word": "Postkarte",
+      "display": "die Postkarte",
+      "part_of_speech": "noun",
+      "english": "postcard",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11,
+        21
+      ],
+      "tts_text": "die Postkarte",
+      "image_search": "postcard travel",
+      "examples": [
+        {
+          "de": "Ich schreibe eine Postkarte.",
+          "en": "I write a postcard."
+        },
+        {
+          "de": "Die Postkarte kommt aus Wien.",
+          "en": "The postcard comes from Vienna."
+        },
+        {
+          "de": "Sie kauft zwei Postkarten.",
+          "en": "She buys two postcards."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Postkarten"
+    },
+    {
+      "word": "Postleitzahl",
+      "display": "die Postleitzahl",
+      "part_of_speech": "noun",
+      "english": "postal code; ZIP code",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11
+      ],
+      "tts_text": "die Postleitzahl",
+      "image_search": "postal code address form",
+      "examples": [
+        {
+          "de": "Wie ist Ihre Postleitzahl?",
+          "en": "What is your postal code?"
+        },
+        {
+          "de": "Meine Postleitzahl ist 10115.",
+          "en": "My postal code is 10115."
+        },
+        {
+          "de": "Schreiben Sie die Postleitzahl.",
+          "en": "Write the postal code."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Postleitzahlen"
+    },
+    {
+      "word": "Reiseleiterin",
+      "display": "die Reiseleiterin",
+      "part_of_speech": "noun",
+      "english": "female tour guide",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        8
+      ],
+      "tts_text": "die Reiseleiterin",
+      "image_search": "female tour guide group",
+      "examples": [
+        {
+          "de": "Sie ist Reiseleiterin.",
+          "en": "She is a tour guide."
+        },
+        {
+          "de": "Die Reiseleiterin spricht Deutsch.",
+          "en": "The tour guide speaks German."
+        },
+        {
+          "de": "Wir warten auf die Reiseleiterin.",
+          "en": "We are waiting for the tour guide."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Reiseleiterinnen",
+      "source_text": "Reiseleiterin/Reiseleiter"
+    },
+    {
+      "word": "Reiseleiter",
+      "display": "der Reiseleiter",
+      "part_of_speech": "noun",
+      "english": "tour guide",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        8
+      ],
+      "tts_text": "der Reiseleiter",
+      "image_search": "male tour guide group",
+      "examples": [
+        {
+          "de": "Er ist Reiseleiter.",
+          "en": "He is a tour guide."
+        },
+        {
+          "de": "Der Reiseleiter kommt aus Berlin.",
+          "en": "The tour guide comes from Berlin."
+        },
+        {
+          "de": "Ich spreche mit dem Reiseleiter.",
+          "en": "I speak with the tour guide."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Reiseleiter",
+      "source_text": "Reiseleiterin/Reiseleiter"
+    },
+    {
+      "word": "Schülerin",
+      "display": "die Schülerin",
+      "part_of_speech": "noun",
+      "english": "schoolgirl; female pupil",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "die Schülerin",
+      "image_search": "female school student classroom",
+      "examples": [
+        {
+          "de": "Sie ist Schülerin.",
+          "en": "She is a schoolgirl."
+        },
+        {
+          "de": "Die Schülerin lernt Deutsch.",
+          "en": "The pupil is learning German."
+        },
+        {
+          "de": "Ich spreche mit der Schülerin.",
+          "en": "I speak with the pupil."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Schülerinnen",
+      "source_text": "Schülerin/Schüler"
+    },
+    {
+      "word": "Schüler",
+      "display": "der Schüler",
+      "part_of_speech": "noun",
+      "english": "schoolboy; pupil",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "der Schüler",
+      "image_search": "male school student classroom",
+      "examples": [
+        {
+          "de": "Er ist Schüler.",
+          "en": "He is a schoolboy."
+        },
+        {
+          "de": "Der Schüler liest ein Buch.",
+          "en": "The pupil reads a book."
+        },
+        {
+          "de": "Die Schüler lernen zusammen.",
+          "en": "The pupils learn together."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Schüler",
+      "source_text": "Schülerin/Schüler"
+    },
+    {
+      "word": "Schweiz",
+      "display": "die Schweiz",
+      "part_of_speech": "noun",
+      "english": "Switzerland",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "die Schweiz",
+      "image_search": "Switzerland map flag",
+      "examples": [
+        {
+          "de": "Bern liegt in der Schweiz.",
+          "en": "Bern is in Switzerland."
+        },
+        {
+          "de": "Ich komme aus der Schweiz.",
+          "en": "I come from Switzerland."
+        },
+        {
+          "de": "Wir fahren in die Schweiz.",
+          "en": "We are going to Switzerland."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine"
+    },
+    {
+      "word": "Seite",
+      "display": "die Seite",
+      "part_of_speech": "noun",
+      "english": "page",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "die Seite",
+      "image_search": "open book page",
+      "examples": [
+        {
+          "de": "Lesen Sie Seite zehn.",
+          "en": "Read page ten."
+        },
+        {
+          "de": "Die Antwort steht auf Seite 13.",
+          "en": "The answer is on page 13."
+        },
+        {
+          "de": "Das Buch hat viele Seiten.",
+          "en": "The book has many pages."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Seiten"
+    },
+    {
+      "word": "Sekretärin",
+      "display": "die Sekretärin",
+      "part_of_speech": "noun",
+      "english": "secretary",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "die Sekretärin",
+      "image_search": "female secretary office",
+      "examples": [
+        {
+          "de": "Sie ist Sekretärin.",
+          "en": "She is a secretary."
+        },
+        {
+          "de": "Die Sekretärin arbeitet im Büro.",
+          "en": "The secretary works in an office."
+        },
+        {
+          "de": "Ich spreche mit der Sekretärin.",
+          "en": "I speak with the secretary."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Sekretärinnen"
+    },
+    {
+      "word": "Straße",
+      "display": "die Straße",
+      "part_of_speech": "noun",
+      "english": "street",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "die Straße",
+      "image_search": "city street",
+      "examples": [
+        {
+          "de": "Ich wohne in dieser Straße.",
+          "en": "I live on this street."
+        },
+        {
+          "de": "Die Straße ist sehr lang.",
+          "en": "The street is very long."
+        },
+        {
+          "de": "Wie heißt diese Straße?",
+          "en": "What is this street called?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Straßen"
+    },
+    {
+      "word": "Studentin",
+      "display": "die Studentin",
+      "part_of_speech": "noun",
+      "english": "female university student",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16
+      ],
+      "tts_text": "die Studentin",
+      "image_search": "female university student",
+      "examples": [
+        {
+          "de": "Sie ist Studentin.",
+          "en": "She is a university student."
+        },
+        {
+          "de": "Die Studentin lernt Deutsch.",
+          "en": "The student is learning German."
+        },
+        {
+          "de": "Ich spreche mit der Studentin.",
+          "en": "I speak with the student."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Studentinnen",
+      "source_text": "Studentin/Student"
+    },
+    {
+      "word": "Student",
+      "display": "der Student",
+      "part_of_speech": "noun",
+      "english": "male university student",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16
+      ],
+      "tts_text": "der Student",
+      "image_search": "male university student",
+      "examples": [
+        {
+          "de": "Er ist Student.",
+          "en": "He is a university student."
+        },
+        {
+          "de": "Der Student wohnt in Berlin.",
+          "en": "The student lives in Berlin."
+        },
+        {
+          "de": "Die Studenten lernen zusammen.",
+          "en": "The students study together."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Studenten",
+      "source_text": "Studentin/Student"
+    },
+    {
+      "word": "Tag",
+      "display": "der Tag",
+      "part_of_speech": "noun",
+      "english": "day",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        17
+      ],
+      "tts_text": "der Tag",
+      "image_search": "calendar day sunrise",
+      "examples": [
+        {
+          "de": "Heute ist ein schöner Tag.",
+          "en": "Today is a beautiful day."
+        },
+        {
+          "de": "Ich arbeite fünf Tage.",
+          "en": "I work five days."
+        },
+        {
+          "de": "Guten Tag!",
+          "en": "Hello!"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Tage"
+    },
+    {
+      "word": "Telefon",
+      "display": "das Telefon",
+      "part_of_speech": "noun",
+      "english": "telephone; phone",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10,
+        21
+      ],
+      "tts_text": "das Telefon",
+      "image_search": "telephone handset",
+      "examples": [
+        {
+          "de": "Das Telefon ist neu.",
+          "en": "The telephone is new."
+        },
+        {
+          "de": "Mein Telefon liegt hier.",
+          "en": "My phone is here."
+        },
+        {
+          "de": "Ich spreche am Telefon.",
+          "en": "I am speaking on the phone."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Telefone"
+    },
+    {
+      "word": "Telefonnummer",
+      "display": "die Telefonnummer",
+      "part_of_speech": "noun",
+      "english": "telephone number; phone number",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "die Telefonnummer",
+      "image_search": "phone number contact screen",
+      "examples": [
+        {
+          "de": "Wie ist deine Telefonnummer?",
+          "en": "What is your phone number?"
+        },
+        {
+          "de": "Meine Telefonnummer ist 123456.",
+          "en": "My phone number is 123456."
+        },
+        {
+          "de": "Schreiben Sie Ihre Telefonnummer.",
+          "en": "Write your phone number."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Telefonnummern"
+    },
+    {
+      "word": "Vorname",
+      "display": "der Vorname",
+      "part_of_speech": "noun",
+      "english": "first name; given name",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "der Vorname",
+      "image_search": "first name field form",
+      "examples": [
+        {
+          "de": "Mein Vorname ist Anna.",
+          "en": "My first name is Anna."
+        },
+        {
+          "de": "Wie ist Ihr Vorname?",
+          "en": "What is your first name?"
+        },
+        {
+          "de": "Schreiben Sie Ihren Vornamen.",
+          "en": "Write your first name."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Vornamen"
+    },
+    {
+      "word": "Wohnort",
+      "display": "der Wohnort",
+      "part_of_speech": "noun",
+      "english": "place of residence",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10,
+        14
+      ],
+      "tts_text": "der Wohnort",
+      "image_search": "home location city map",
+      "examples": [
+        {
+          "de": "Mein Wohnort ist Bonn.",
+          "en": "My place of residence is Bonn."
+        },
+        {
+          "de": "Wie ist Ihr Wohnort?",
+          "en": "What is your place of residence?"
+        },
+        {
+          "de": "Der Wohnort steht im Formular.",
+          "en": "The place of residence is on the form."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Wohnorte"
+    },
+    {
+      "word": "Zahl",
+      "display": "die Zahl",
+      "part_of_speech": "noun",
+      "english": "number",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11
+      ],
+      "tts_text": "die Zahl",
+      "image_search": "numbers digits",
+      "examples": [
+        {
+          "de": "Schreiben Sie die Zahl fünf.",
+          "en": "Write the number five."
+        },
+        {
+          "de": "Die Zahl ist richtig.",
+          "en": "The number is correct."
+        },
+        {
+          "de": "Ich lerne die Zahlen auf Deutsch.",
+          "en": "I am learning the numbers in German."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Zahlen"
+    },
+    {
+      "word": "alt",
+      "display": "alt",
+      "part_of_speech": "adjective",
+      "english": "old",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "alt",
+      "image_search": "old and young people",
+      "examples": [
+        {
+          "de": "Mein Auto ist alt.",
+          "en": "My car is old."
+        },
+        {
+          "de": "Wie alt bist du?",
+          "en": "How old are you?"
+        },
+        {
+          "de": "Das Haus ist sehr alt.",
+          "en": "The house is very old."
+        }
+      ]
+    },
+    {
+      "word": "berufstätig",
+      "display": "berufstätig",
+      "part_of_speech": "adjective",
+      "english": "employed; working",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        15
+      ],
+      "tts_text": "berufstätig",
+      "image_search": "working professional office",
+      "examples": [
+        {
+          "de": "Ich bin berufstätig.",
+          "en": "I am employed."
+        },
+        {
+          "de": "Meine Frau ist berufstätig.",
+          "en": "My wife is working."
+        },
+        {
+          "de": "Sind Sie berufstätig?",
+          "en": "Are you employed?"
+        }
+      ]
+    },
+    {
+      "word": "frei",
+      "display": "frei",
+      "part_of_speech": "adjective",
+      "english": "free; available",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "frei",
+      "image_search": "free time empty calendar",
+      "examples": [
+        {
+          "de": "Ich bin heute frei.",
+          "en": "I am free today."
+        },
+        {
+          "de": "Ist der Platz frei?",
+          "en": "Is the seat free?"
+        },
+        {
+          "de": "Am Sonntag habe ich frei.",
+          "en": "I have Sunday off."
+        }
+      ]
+    },
+    {
+      "word": "geschieden",
+      "display": "geschieden",
+      "part_of_speech": "adjective",
+      "english": "divorced",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16
+      ],
+      "tts_text": "geschieden",
+      "image_search": "divorced marital status form",
+      "examples": [
+        {
+          "de": "Ich bin geschieden.",
+          "en": "I am divorced."
+        },
+        {
+          "de": "Er ist seit zwei Jahren geschieden.",
+          "en": "He has been divorced for two years."
+        },
+        {
+          "de": "Sind Sie verheiratet oder geschieden?",
+          "en": "Are you married or divorced?"
+        }
+      ]
+    },
+    {
+      "word": "gut",
+      "display": "gut",
+      "part_of_speech": "adjective",
+      "english": "good; well",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        8,
+        9,
+        15,
+        17
+      ],
+      "tts_text": "gut",
+      "image_search": "thumbs up good",
+      "examples": [
+        {
+          "de": "Mir geht es gut.",
+          "en": "I am well."
+        },
+        {
+          "de": "Das Essen ist gut.",
+          "en": "The food is good."
+        },
+        {
+          "de": "Sie spricht gut Deutsch.",
+          "en": "She speaks German well."
+        }
+      ]
+    },
+    {
+      "word": "klein",
+      "display": "klein",
+      "part_of_speech": "adjective",
+      "english": "small",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "klein",
+      "image_search": "small house object",
+      "examples": [
+        {
+          "de": "Die Wohnung ist klein.",
+          "en": "The apartment is small."
+        },
+        {
+          "de": "Das Kind ist noch klein.",
+          "en": "The child is still small."
+        },
+        {
+          "de": "Wir wohnen in einem kleinen Ort.",
+          "en": "We live in a small town."
+        }
+      ]
+    },
+    {
+      "word": "ledig",
+      "display": "ledig",
+      "part_of_speech": "adjective",
+      "english": "single; unmarried",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        15
+      ],
+      "tts_text": "ledig",
+      "image_search": "single marital status form",
+      "examples": [
+        {
+          "de": "Ich bin ledig.",
+          "en": "I am single."
+        },
+        {
+          "de": "Er ist 25 und ledig.",
+          "en": "He is 25 and single."
+        },
+        {
+          "de": "Sind Sie ledig?",
+          "en": "Are you single?"
+        }
+      ]
+    },
+    {
+      "word": "neu",
+      "display": "neu",
+      "part_of_speech": "adjective",
+      "english": "new",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "neu",
+      "image_search": "new object gift box",
+      "examples": [
+        {
+          "de": "Mein Auto ist neu.",
+          "en": "My car is new."
+        },
+        {
+          "de": "Sie hat eine neue Wohnung.",
+          "en": "She has a new apartment."
+        },
+        {
+          "de": "Das Buch ist neu.",
+          "en": "The book is new."
+        }
+      ]
+    },
+    {
+      "word": "verheiratet",
+      "display": "verheiratet",
+      "part_of_speech": "adjective",
+      "english": "married",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "verheiratet",
+      "image_search": "married couple wedding rings",
+      "examples": [
+        {
+          "de": "Ich bin verheiratet.",
+          "en": "I am married."
+        },
+        {
+          "de": "Sie sind seit fünf Jahren verheiratet.",
+          "en": "They have been married for five years."
+        },
+        {
+          "de": "Sind Sie verheiratet?",
+          "en": "Are you married?"
+        }
+      ]
+    },
+    {
+      "word": "bitte",
+      "display": "bitte",
+      "part_of_speech": "adverb",
+      "english": "please; you're welcome",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "bitte",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Kommen Sie bitte hierher.",
+          "en": "Please come here."
+        },
+        {
+          "de": "Ein Kaffee, bitte.",
+          "en": "A coffee, please."
+        },
+        {
+          "de": "Danke! – Bitte!",
+          "en": "Thanks! – You're welcome!"
+        }
+      ]
+    },
+    {
+      "word": "da",
+      "display": "da",
+      "part_of_speech": "adverb",
+      "english": "there; here",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12,
+        13
+      ],
+      "tts_text": "da",
+      "image_search": "pointing there",
+      "examples": [
+        {
+          "de": "Das Buch ist da.",
+          "en": "The book is there."
+        },
+        {
+          "de": "Wer ist da?",
+          "en": "Who is there?"
+        },
+        {
+          "de": "Da ist der Bahnhof.",
+          "en": "There is the train station."
+        }
+      ]
+    },
+    {
+      "word": "erst",
+      "display": "erst",
+      "part_of_speech": "adverb",
+      "english": "only; not until",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "erst",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Es ist erst acht Uhr.",
+          "en": "It is only eight o'clock."
+        },
+        {
+          "de": "Ich komme erst morgen.",
+          "en": "I am not coming until tomorrow."
+        },
+        {
+          "de": "Er ist erst 18 Jahre alt.",
+          "en": "He is only 18 years old."
+        }
+      ]
+    },
+    {
+      "word": "etwa",
+      "display": "etwa",
+      "part_of_speech": "adverb",
+      "english": "about; approximately",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "etwa",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Kurs dauert etwa eine Stunde.",
+          "en": "The course lasts about an hour."
+        },
+        {
+          "de": "Es sind etwa zehn Leute hier.",
+          "en": "There are about ten people here."
+        },
+        {
+          "de": "Das kostet etwa 20 Euro.",
+          "en": "That costs about 20 euros."
+        }
+      ]
+    },
+    {
+      "word": "hier",
+      "display": "hier",
+      "part_of_speech": "adverb",
+      "english": "here",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12,
+        17
+      ],
+      "tts_text": "hier",
+      "image_search": "pointing here location",
+      "examples": [
+        {
+          "de": "Ich wohne hier.",
+          "en": "I live here."
+        },
+        {
+          "de": "Warten Sie bitte hier.",
+          "en": "Please wait here."
+        },
+        {
+          "de": "Hier ist mein Pass.",
+          "en": "Here is my passport."
+        }
+      ]
+    },
+    {
+      "word": "jetzt",
+      "display": "jetzt",
+      "part_of_speech": "adverb",
+      "english": "now",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        16
+      ],
+      "tts_text": "jetzt",
+      "image_search": "clock now",
+      "examples": [
+        {
+          "de": "Ich lerne jetzt Deutsch.",
+          "en": "I am learning German now."
+        },
+        {
+          "de": "Kommst du jetzt?",
+          "en": "Are you coming now?"
+        },
+        {
+          "de": "Wir machen jetzt eine Pause.",
+          "en": "We are taking a break now."
+        }
+      ]
+    },
+    {
+      "word": "leider",
+      "display": "leider",
+      "part_of_speech": "adverb",
+      "english": "unfortunately",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        18
+      ],
+      "tts_text": "leider",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Leider habe ich keine Zeit.",
+          "en": "Unfortunately, I have no time."
+        },
+        {
+          "de": "Er kommt leider nicht.",
+          "en": "Unfortunately, he is not coming."
+        },
+        {
+          "de": "Leider ist der Kurs voll.",
+          "en": "Unfortunately, the course is full."
+        }
+      ]
+    },
+    {
+      "word": "nicht",
+      "display": "nicht",
+      "part_of_speech": "adverb",
+      "english": "not",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12
+      ],
+      "tts_text": "nicht",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme heute nicht.",
+          "en": "I am not coming today."
+        },
+        {
+          "de": "Das ist nicht mein Buch.",
+          "en": "That is not my book."
+        },
+        {
+          "de": "Sie spricht nicht Englisch.",
+          "en": "She does not speak English."
+        }
+      ]
+    },
+    {
+      "word": "noch",
+      "display": "noch",
+      "part_of_speech": "adverb",
+      "english": "still; yet; another",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "noch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich wohne noch in Bonn.",
+          "en": "I still live in Bonn."
+        },
+        {
+          "de": "Bist du noch müde?",
+          "en": "Are you still tired?"
+        },
+        {
+          "de": "Ich möchte noch einen Kaffee.",
+          "en": "I would like another coffee."
+        }
+      ]
+    },
+    {
+      "word": "noch einmal",
+      "display": "noch einmal",
+      "part_of_speech": "adverb",
+      "english": "once again",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10,
+        12
+      ],
+      "tts_text": "noch einmal",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Bitte sagen Sie das noch einmal.",
+          "en": "Please say that again."
+        },
+        {
+          "de": "Ich lese den Text noch einmal.",
+          "en": "I read the text again."
+        },
+        {
+          "de": "Kannst du das noch einmal schreiben?",
+          "en": "Can you write that again?"
+        }
+      ]
+    },
+    {
+      "word": "schon",
+      "display": "schon",
+      "part_of_speech": "adverb",
+      "english": "already",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "schon",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich bin schon hier.",
+          "en": "I am already here."
+        },
+        {
+          "de": "Hast du schon gegessen?",
+          "en": "Have you eaten already?"
+        },
+        {
+          "de": "Wir warten schon lange.",
+          "en": "We have already been waiting a long time."
+        }
+      ]
+    },
+    {
+      "word": "übrigens",
+      "display": "übrigens",
+      "part_of_speech": "adverb",
+      "english": "by the way",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17
+      ],
+      "tts_text": "übrigens",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Übrigens, ich heiße Anna.",
+          "en": "By the way, my name is Anna."
+        },
+        {
+          "de": "Übrigens, morgen bin ich frei.",
+          "en": "By the way, I am free tomorrow."
+        },
+        {
+          "de": "Er kommt übrigens aus Wien.",
+          "en": "By the way, he comes from Vienna."
+        }
+      ]
+    },
+    {
+      "word": "aber",
+      "display": "aber",
+      "part_of_speech": "function_word",
+      "english": "but",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14,
+        17
+      ],
+      "tts_text": "aber",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme, aber Anna bleibt hier.",
+          "en": "I am coming, but Anna is staying here."
+        },
+        {
+          "de": "Das Auto ist alt, aber gut.",
+          "en": "The car is old but good."
+        },
+        {
+          "de": "Ich spreche Deutsch, aber nicht gut.",
+          "en": "I speak German, but not well."
+        }
+      ]
+    },
+    {
+      "word": "aus",
+      "display": "aus",
+      "part_of_speech": "function_word",
+      "english": "from; out of",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "aus",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme aus Deutschland.",
+          "en": "I come from Germany."
+        },
+        {
+          "de": "Sie kommt aus der Schweiz.",
+          "en": "She comes from Switzerland."
+        },
+        {
+          "de": "Das ist eine Karte aus Wien.",
+          "en": "That is a card from Vienna."
+        }
+      ]
+    },
+    {
+      "word": "das",
+      "display": "das",
+      "part_of_speech": "function_word",
+      "english": "that; this",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "das",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Was ist das?",
+          "en": "What is that?"
+        },
+        {
+          "de": "Das ist mein Buch.",
+          "en": "That is my book."
+        },
+        {
+          "de": "Das ist Frau Meier.",
+          "en": "This is Mrs. Meier."
+        }
+      ]
+    },
+    {
+      "word": "dein",
+      "display": "dein",
+      "part_of_speech": "function_word",
+      "english": "your (informal singular)",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "dein",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wie ist dein Name?",
+          "en": "What is your name?"
+        },
+        {
+          "de": "Ist das dein Buch?",
+          "en": "Is that your book?"
+        },
+        {
+          "de": "Wo ist dein Telefon?",
+          "en": "Where is your phone?"
+        }
+      ]
+    },
+    {
+      "word": "denn",
+      "display": "denn",
+      "part_of_speech": "function_word",
+      "english": "then; actually (question particle)",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13,
+        18
+      ],
+      "tts_text": "denn",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wo wohnst du denn?",
+          "en": "So where do you live?"
+        },
+        {
+          "de": "Wie heißt du denn?",
+          "en": "So what is your name?"
+        },
+        {
+          "de": "Was machst du denn hier?",
+          "en": "So what are you doing here?"
+        }
+      ]
+    },
+    {
+      "word": "in",
+      "display": "in",
+      "part_of_speech": "function_word",
+      "english": "in; into",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "in",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich wohne in Berlin.",
+          "en": "I live in Berlin."
+        },
+        {
+          "de": "Das Buch ist in der Tasche.",
+          "en": "The book is in the bag."
+        },
+        {
+          "de": "Wir fahren in die Schweiz.",
+          "en": "We are going to Switzerland."
+        }
+      ]
+    },
+    {
+      "word": "ja",
+      "display": "ja",
+      "part_of_speech": "function_word",
+      "english": "yes",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        8
+      ],
+      "tts_text": "ja",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ja, ich komme morgen.",
+          "en": "Yes, I am coming tomorrow."
+        },
+        {
+          "de": "Ja, das ist richtig.",
+          "en": "Yes, that is correct."
+        },
+        {
+          "de": "Ja, ich spreche Deutsch.",
+          "en": "Yes, I speak German."
+        }
+      ]
+    },
+    {
+      "word": "man",
+      "display": "man",
+      "part_of_speech": "function_word",
+      "english": "one; people; you (general)",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "man",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wie schreibt man das?",
+          "en": "How do you spell that?"
+        },
+        {
+          "de": "In Deutschland spricht man Deutsch.",
+          "en": "People speak German in Germany."
+        },
+        {
+          "de": "Hier kann man Kaffee trinken.",
+          "en": "You can drink coffee here."
+        }
+      ]
+    },
+    {
+      "word": "mein",
+      "display": "mein",
+      "part_of_speech": "function_word",
+      "english": "my",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "mein",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist mein Buch.",
+          "en": "That is my book."
+        },
+        {
+          "de": "Mein Name ist Paul.",
+          "en": "My name is Paul."
+        },
+        {
+          "de": "Wo ist mein Telefon?",
+          "en": "Where is my phone?"
+        }
+      ]
+    },
+    {
+      "word": "mit",
+      "display": "mit",
+      "part_of_speech": "function_word",
+      "english": "with",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        16,
+        20
+      ],
+      "tts_text": "mit",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme mit Anna.",
+          "en": "I am coming with Anna."
+        },
+        {
+          "de": "Wir fahren mit dem Zug.",
+          "en": "We travel by train."
+        },
+        {
+          "de": "Sie spricht mit dem Lehrer.",
+          "en": "She speaks with the teacher."
+        }
+      ]
+    },
+    {
+      "word": "und",
+      "display": "und",
+      "part_of_speech": "function_word",
+      "english": "and",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7,
+        9,
+        10,
+        13,
+        14
+      ],
+      "tts_text": "und",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Anna und Paul wohnen in Berlin.",
+          "en": "Anna and Paul live in Berlin."
+        },
+        {
+          "de": "Ich lerne Deutsch und Englisch.",
+          "en": "I am learning German and English."
+        },
+        {
+          "de": "Wir trinken Kaffee und Tee.",
+          "en": "We drink coffee and tea."
+        }
+      ]
+    },
+    {
+      "word": "von",
+      "display": "von",
+      "part_of_speech": "function_word",
+      "english": "from; of",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        11
+      ],
+      "tts_text": "von",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme von der Arbeit.",
+          "en": "I am coming from work."
+        },
+        {
+          "de": "Das ist ein Foto von Anna.",
+          "en": "That is a photo of Anna."
+        },
+        {
+          "de": "Was sind Sie von Beruf?",
+          "en": "What is your profession?"
+        }
+      ]
+    },
+    {
+      "word": "was",
+      "display": "was",
+      "part_of_speech": "function_word",
+      "english": "what",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13,
+        19
+      ],
+      "tts_text": "was",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Was ist das?",
+          "en": "What is that?"
+        },
+        {
+          "de": "Was machen Sie?",
+          "en": "What do you do?"
+        },
+        {
+          "de": "Was möchtest du trinken?",
+          "en": "What would you like to drink?"
+        }
+      ]
+    },
+    {
+      "word": "wer",
+      "display": "wer",
+      "part_of_speech": "function_word",
+      "english": "who",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "wer",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wer ist das?",
+          "en": "Who is that?"
+        },
+        {
+          "de": "Wer kommt morgen?",
+          "en": "Who is coming tomorrow?"
+        },
+        {
+          "de": "Wer wohnt hier?",
+          "en": "Who lives here?"
+        }
+      ]
+    },
+    {
+      "word": "wie",
+      "display": "wie",
+      "part_of_speech": "function_word",
+      "english": "how; what ... like",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "wie",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wie heißen Sie?",
+          "en": "What is your name?"
+        },
+        {
+          "de": "Wie geht es dir?",
+          "en": "How are you?"
+        },
+        {
+          "de": "Wie schreibt man das?",
+          "en": "How do you spell that?"
+        }
+      ]
+    },
+    {
+      "word": "wie viel",
+      "display": "wie viel",
+      "part_of_speech": "function_word",
+      "english": "how much; how many",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12
+      ],
+      "tts_text": "wie viel",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wie viel kostet das?",
+          "en": "How much does that cost?"
+        },
+        {
+          "de": "Wie viel Zeit hast du?",
+          "en": "How much time do you have?"
+        },
+        {
+          "de": "Wie viele Kinder haben Sie?",
+          "en": "How many children do you have?"
+        }
+      ]
+    },
+    {
+      "word": "wo",
+      "display": "wo",
+      "part_of_speech": "function_word",
+      "english": "where",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        18
+      ],
+      "tts_text": "wo",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wo wohnen Sie?",
+          "en": "Where do you live?"
+        },
+        {
+          "de": "Wo ist der Bahnhof?",
+          "en": "Where is the train station?"
+        },
+        {
+          "de": "Wo arbeitet Anna?",
+          "en": "Where does Anna work?"
+        }
+      ]
+    },
+    {
+      "word": "woher",
+      "display": "woher",
+      "part_of_speech": "function_word",
+      "english": "from where",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        13
+      ],
+      "tts_text": "woher",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Woher kommen Sie?",
+          "en": "Where do you come from?"
+        },
+        {
+          "de": "Woher kommt Anna?",
+          "en": "Where does Anna come from?"
+        },
+        {
+          "de": "Woher kennst du Paul?",
+          "en": "How do you know Paul?"
+        }
+      ]
+    },
+    {
+      "word": "wohin",
+      "display": "wohin",
+      "part_of_speech": "function_word",
+      "english": "where to",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        18
+      ],
+      "tts_text": "wohin",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wohin fahren Sie?",
+          "en": "Where are you going?"
+        },
+        {
+          "de": "Wohin möchtest du reisen?",
+          "en": "Where would you like to travel?"
+        },
+        {
+          "de": "Wohin geht Anna?",
+          "en": "Where is Anna going?"
+        }
+      ]
+    }
+  ],
+  "expressions": [
+    {
+      "text": "Ach so!",
+      "english": "Oh, I see!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        17,
+        19
+      ],
+      "tts_text": "Ach so!"
+    },
+    {
+      "text": "Auf Wiedersehen!",
+      "english": "Goodbye!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        8
+      ],
+      "tts_text": "Auf Wiedersehen!"
+    },
+    {
+      "text": "Bitte schön!",
+      "english": "Here you are! / You're welcome!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "Bitte schön!"
+    },
+    {
+      "text": "Danke!",
+      "english": "Thanks!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Danke!"
+    },
+    {
+      "text": "Danke gut.",
+      "english": "Fine, thanks.",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Danke gut."
+    },
+    {
+      "text": "Danke schön!",
+      "english": "Thank you very much!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        10
+      ],
+      "tts_text": "Danke schön!"
+    },
+    {
+      "text": "Entschuldigung!",
+      "english": "Excuse me! / Sorry!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12
+      ],
+      "tts_text": "Entschuldigung!"
+    },
+    {
+      "text": "Es geht.",
+      "english": "I'm okay. / It's okay.",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Es geht."
+    },
+    {
+      "text": "Guten Abend!",
+      "english": "Good evening!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Guten Abend!"
+    },
+    {
+      "text": "Guten Morgen!",
+      "english": "Good morning!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Guten Morgen!"
+    },
+    {
+      "text": "Guten Tag!",
+      "english": "Hello! / Good day!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "Guten Tag!"
+    },
+    {
+      "text": "Hallo!",
+      "english": "Hello!",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Hallo!"
+    },
+    {
+      "text": "Macht nichts.",
+      "english": "It doesn't matter. / No problem.",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        12
+      ],
+      "tts_text": "Macht nichts."
+    },
+    {
+      "text": "Wie bitte?",
+      "english": "Pardon? / Sorry?",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        7
+      ],
+      "tts_text": "Wie bitte?"
+    },
+    {
+      "text": "Wie geht es Ihnen?",
+      "english": "How are you? (formal)",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        9
+      ],
+      "tts_text": "Wie geht es Ihnen?"
+    },
+    {
+      "text": "zur Zeit",
+      "english": "at the moment; currently",
+      "cefr": "A1",
+      "lesson": 1,
+      "references": [
+        14
+      ],
+      "tts_text": "zur Zeit"
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Personalpronomen und Verb",
+      "section_reference": "§22, §24",
+      "patterns": [
+        "Ich wohne ...",
+        "Wohnst du ...? / Wohnen Sie ...?",
+        "Er wohnt ... / Sie wohnt ...",
+        "Wir wohnen ...",
+        "Wohnt ihr ...? / Wohnen Sie ...?",
+        "Sie wohnen ..."
+      ],
+      "conjugations": {
+        "heißen": {
+          "ich": "heiße",
+          "du": "heißt",
+          "er": "heißt"
+        },
+        "sein": {
+          "ich": "bin",
+          "du": "bist",
+          "er": "ist",
+          "wir": "sind",
+          "ihr": "seid",
+          "sie": "sind"
+        },
+        "haben": {
+          "ich": "habe",
+          "du": "hast",
+          "er": "hat",
+          "wir": "haben",
+          "ihr": "habt",
+          "sie": "haben"
+        }
+      },
+      "english_topic": "Personal pronouns and verbs"
+    },
+    {
+      "topic": "Woher? / Wohin?",
+      "section_reference": "§10",
+      "pairs": [
+        {
+          "woher": "aus Deutschland",
+          "wohin": "nach Deutschland"
+        },
+        {
+          "woher": "aus Österreich",
+          "wohin": "nach Österreich"
+        },
+        {
+          "woher": "aus der Schweiz",
+          "wohin": "in die Schweiz"
+        },
+        {
+          "woher": "aus ...",
+          "wohin": "nach ... / in die ..."
+        }
+      ],
+      "english_topic": "Where from? / Where to?"
+    },
+    {
+      "topic": "Satzstrukturen",
+      "section_reference": "§31, §32, §33",
+      "word_questions": [
+        "Wie heißen Sie?",
+        "Wie geht es Ihnen?",
+        "Wie schreibt man das?",
+        "Wer ist das?",
+        "Wer ist da?",
+        "Wo wohnen Sie?",
+        "Woher kommt Julia?",
+        "Wohin möchtet ihr?",
+        "Was machen Sie?",
+        "Was sind Sie von Beruf?"
+      ],
+      "yes_no_questions": [
+        "Sind Sie Frau Beier?",
+        "Geht es Ihnen gut?",
+        "Schreibt man das mit „ie“?",
+        "Ist das die Reiseleiterin?",
+        "Wohnen Sie in Düsseldorf?",
+        "Kommt Julia aus Leipzig?",
+        "Möchtet ihr nach Wien?",
+        "Sind Sie Arzt?",
+        "Wartet ihr schon lange?"
+      ],
+      "statements": [
+        "Ich heiße Beier.",
+        "Es geht.",
+        "Das schreibt man mit „h“.",
+        "Ja, das ist die Reiseleiterin.",
+        "Nein, hier ist Lehmann.",
+        "Nein, ich wohne in Essen.",
+        "Julia kommt aus Dortmund.",
+        "Ich möchte nach Zürich.",
+        "Nein, ich bin Ingenieur.",
+        "Es geht."
+      ],
+      "english_topic": "Sentence structures"
+    }
+  ]
+}

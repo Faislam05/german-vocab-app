@@ -1,0 +1,908 @@
+{
+  "lesson": 1,
+  "title": "Lektion 1",
+  "source_pages": [
+    5,
+    6
+  ],
+  "status": "clean_source_extraction",
+  "notes": [
+    "references are the page numbers printed next to each vocabulary item in the book",
+    "paired noun forms are preserved together at this source-extraction stage",
+    "grammar examples are stored separately from vocabulary"
+  ],
+  "vocabulary": {
+    "verbs": [
+      {
+        "text": "arbeiten",
+        "references": [
+          13,
+          14
+        ]
+      },
+      {
+        "text": "buchstabieren",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "fragen",
+        "references": [
+          10,
+          16
+        ]
+      },
+      {
+        "text": "haben",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "heißen",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "hören",
+        "references": [
+          11
+        ]
+      },
+      {
+        "text": "kommen",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "leben",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "lernen",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "lesen",
+        "references": [
+          12,
+          14,
+          16
+        ]
+      },
+      {
+        "text": "machen",
+        "references": [
+          12,
+          17
+        ]
+      },
+      {
+        "text": "meinen",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "möchten",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "reisen",
+        "references": [
+          15
+        ]
+      },
+      {
+        "text": "schreiben",
+        "references": [
+          10,
+          16
+        ]
+      },
+      {
+        "text": "sein",
+        "references": [
+          7,
+          18
+        ]
+      },
+      {
+        "text": "spielen",
+        "references": [
+          12,
+          15,
+          16,
+          17
+        ]
+      },
+      {
+        "text": "sprechen",
+        "references": [
+          16,
+          17
+        ]
+      },
+      {
+        "text": "studieren",
+        "references": [
+          14,
+          16
+        ]
+      },
+      {
+        "text": "warten",
+        "references": [
+          18
+        ]
+      },
+      {
+        "text": "werden",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "wohnen",
+        "references": [
+          10
+        ]
+      }
+    ],
+    "nouns": [
+      {
+        "text": "Alter",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Ausländerin/Ausländer",
+        "forms": [
+          "Ausländerin",
+          "Ausländer"
+        ],
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "Beruf",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Deutschland",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "Eltern",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "Familienname",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "Familienstand",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Fotograf",
+        "references": [
+          16
+        ]
+      },
+      {
+        "text": "Frau",
+        "references": [
+          7,
+          21
+        ]
+      },
+      {
+        "text": "Geburtstag",
+        "references": [
+          18
+        ]
+      },
+      {
+        "text": "Hausfrau",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Herr",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "Hobby, Hobbys",
+        "singular": "Hobby",
+        "plural": "Hobbys",
+        "references": [
+          14,
+          15
+        ]
+      },
+      {
+        "text": "Jahre",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Kauffrau/Kaufmann",
+        "forms": [
+          "Kauffrau",
+          "Kaufmann"
+        ],
+        "references": [
+          14,
+          17
+        ]
+      },
+      {
+        "text": "Kind, Kinder",
+        "singular": "Kind",
+        "plural": "Kinder",
+        "references": [
+          13,
+          14
+        ]
+      },
+      {
+        "text": "Kurs",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "Land",
+        "references": [
+          16
+        ]
+      },
+      {
+        "text": "Leute",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Lösung",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "Mechaniker",
+        "references": [
+          15,
+          17
+        ]
+      },
+      {
+        "text": "Monat, Monate",
+        "singular": "Monat",
+        "plural": "Monate",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "Name",
+        "references": [
+          7,
+          8
+        ]
+      },
+      {
+        "text": "Ort",
+        "references": [
+          11,
+          20
+        ]
+      },
+      {
+        "text": "Österreich",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Postkarte, Postkarten",
+        "singular": "Postkarte",
+        "plural": "Postkarten",
+        "references": [
+          11,
+          21
+        ]
+      },
+      {
+        "text": "Postleitzahl, Postleitzahlen",
+        "singular": "Postleitzahl",
+        "plural": "Postleitzahlen",
+        "references": [
+          11
+        ]
+      },
+      {
+        "text": "Reiseleiterin/Reiseleiter",
+        "forms": [
+          "Reiseleiterin",
+          "Reiseleiter"
+        ],
+        "references": [
+          8
+        ]
+      },
+      {
+        "text": "Schülerin/Schüler",
+        "forms": [
+          "Schülerin",
+          "Schüler"
+        ],
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Schweiz",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "Seite",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "Sekretärin",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "Straße",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "Studentin/Student",
+        "forms": [
+          "Studentin",
+          "Student"
+        ],
+        "references": [
+          16
+        ]
+      },
+      {
+        "text": "Tag, Tage",
+        "singular": "Tag",
+        "plural": "Tage",
+        "references": [
+          7,
+          17
+        ]
+      },
+      {
+        "text": "Telefon",
+        "references": [
+          10,
+          21
+        ]
+      },
+      {
+        "text": "Telefonnummer",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "Vorname",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "Wohnort",
+        "references": [
+          10,
+          14
+        ]
+      },
+      {
+        "text": "Zahl, Zahlen",
+        "singular": "Zahl",
+        "plural": "Zahlen",
+        "references": [
+          11
+        ]
+      }
+    ],
+    "adjectives": [
+      {
+        "text": "alt",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "berufstätig",
+        "references": [
+          15
+        ]
+      },
+      {
+        "text": "frei",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "geschieden",
+        "references": [
+          16
+        ]
+      },
+      {
+        "text": "gut",
+        "references": [
+          7,
+          8,
+          9,
+          15,
+          17
+        ]
+      },
+      {
+        "text": "klein",
+        "references": [
+          14
+        ]
+      },
+      {
+        "text": "ledig",
+        "references": [
+          15
+        ]
+      },
+      {
+        "text": "neu",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "verheiratet",
+        "references": [
+          14
+        ]
+      }
+    ],
+    "adverbs": [
+      {
+        "text": "bitte",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "da",
+        "references": [
+          12,
+          13
+        ]
+      },
+      {
+        "text": "erst",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "etwa",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "hier",
+        "references": [
+          12,
+          17
+        ]
+      },
+      {
+        "text": "jetzt",
+        "references": [
+          14,
+          16
+        ]
+      },
+      {
+        "text": "leider",
+        "references": [
+          18
+        ]
+      },
+      {
+        "text": "nicht",
+        "references": [
+          12
+        ]
+      },
+      {
+        "text": "noch",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "noch einmal",
+        "references": [
+          10,
+          12
+        ]
+      },
+      {
+        "text": "schon",
+        "references": [
+          17
+        ]
+      },
+      {
+        "text": "übrigens",
+        "references": [
+          17
+        ]
+      }
+    ],
+    "function_words": [
+      {
+        "text": "aber",
+        "references": [
+          14,
+          17
+        ]
+      },
+      {
+        "text": "aus",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "das",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "dein",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "denn",
+        "references": [
+          13,
+          18
+        ]
+      },
+      {
+        "text": "in",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "ja",
+        "references": [
+          8
+        ]
+      },
+      {
+        "text": "man",
+        "references": [
+          10
+        ]
+      },
+      {
+        "text": "mein",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "mit",
+        "references": [
+          16,
+          20
+        ]
+      },
+      {
+        "text": "und",
+        "references": [
+          7,
+          9,
+          10,
+          13,
+          14
+        ]
+      },
+      {
+        "text": "von",
+        "references": [
+          11
+        ]
+      },
+      {
+        "text": "was?",
+        "references": [
+          13,
+          19
+        ]
+      },
+      {
+        "text": "wer?",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "wie?",
+        "references": [
+          7
+        ]
+      },
+      {
+        "text": "wie viel?",
+        "references": [
+          12
+        ]
+      },
+      {
+        "text": "wo?",
+        "references": [
+          18
+        ]
+      },
+      {
+        "text": "woher?",
+        "references": [
+          13
+        ]
+      },
+      {
+        "text": "wohin?",
+        "references": [
+          18
+        ]
+      }
+    ]
+  },
+  "expressions": [
+    {
+      "text": "Ach so!",
+      "references": [
+        17,
+        19
+      ]
+    },
+    {
+      "text": "Auf Wiedersehen!",
+      "references": [
+        8
+      ]
+    },
+    {
+      "text": "Bitte schön!",
+      "references": [
+        10
+      ]
+    },
+    {
+      "text": "Danke!",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Danke gut.",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Danke schön!",
+      "references": [
+        10
+      ]
+    },
+    {
+      "text": "Entschuldigung!",
+      "references": [
+        12
+      ]
+    },
+    {
+      "text": "Es geht.",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Guten Abend!",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Guten Morgen!",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Guten Tag!",
+      "references": [
+        7
+      ]
+    },
+    {
+      "text": "Hallo!",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "Macht nichts.",
+      "references": [
+        12
+      ]
+    },
+    {
+      "text": "Wie bitte?",
+      "references": [
+        7
+      ]
+    },
+    {
+      "text": "Wie geht es Ihnen?",
+      "references": [
+        9
+      ]
+    },
+    {
+      "text": "zur Zeit",
+      "references": [
+        14
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Personalpronomen und Verb",
+      "section_reference": "§22, §24",
+      "patterns": [
+        "Ich wohne ...",
+        "Wohnst du ...? / Wohnen Sie ...?",
+        "Er wohnt ... / Sie wohnt ...",
+        "Wir wohnen ...",
+        "Wohnt ihr ...? / Wohnen Sie ...?",
+        "Sie wohnen ..."
+      ],
+      "conjugations": {
+        "heißen": {
+          "ich": "heiße",
+          "du": "heißt",
+          "er": "heißt"
+        },
+        "sein": {
+          "ich": "bin",
+          "du": "bist",
+          "er": "ist",
+          "wir": "sind",
+          "ihr": "seid",
+          "sie": "sind"
+        },
+        "haben": {
+          "ich": "habe",
+          "du": "hast",
+          "er": "hat",
+          "wir": "haben",
+          "ihr": "habt",
+          "sie": "haben"
+        }
+      }
+    },
+    {
+      "topic": "Woher? / Wohin?",
+      "section_reference": "§10",
+      "pairs": [
+        {
+          "woher": "aus Deutschland",
+          "wohin": "nach Deutschland"
+        },
+        {
+          "woher": "aus Österreich",
+          "wohin": "nach Österreich"
+        },
+        {
+          "woher": "aus der Schweiz",
+          "wohin": "in die Schweiz"
+        },
+        {
+          "woher": "aus ...",
+          "wohin": "nach ... / in die ..."
+        }
+      ]
+    },
+    {
+      "topic": "Satzstrukturen",
+      "section_reference": "§31, §32, §33",
+      "word_questions": [
+        "Wie heißen Sie?",
+        "Wie geht es Ihnen?",
+        "Wie schreibt man das?",
+        "Wer ist das?",
+        "Wer ist da?",
+        "Wo wohnen Sie?",
+        "Woher kommt Julia?",
+        "Wohin möchtet ihr?",
+        "Was machen Sie?",
+        "Was sind Sie von Beruf?"
+      ],
+      "yes_no_questions": [
+        "Sind Sie Frau Beier?",
+        "Geht es Ihnen gut?",
+        "Schreibt man das mit „ie“?",
+        "Ist das die Reiseleiterin?",
+        "Wohnen Sie in Düsseldorf?",
+        "Kommt Julia aus Leipzig?",
+        "Möchtet ihr nach Wien?",
+        "Sind Sie Arzt?",
+        "Wartet ihr schon lange?"
+      ],
+      "statements": [
+        "Ich heiße Beier.",
+        "Es geht.",
+        "Das schreibt man mit „h“.",
+        "Ja, das ist die Reiseleiterin.",
+        "Nein, hier ist Lehmann.",
+        "Nein, ich wohne in Essen.",
+        "Julia kommt aus Dortmund.",
+        "Ich möchte nach Zürich.",
+        "Nein, ich bin Ingenieur.",
+        "Es geht."
+      ]
+    }
+  ]
+}
