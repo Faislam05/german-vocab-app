@@ -34,6 +34,13 @@ type LessonData = {
 export default function Home() {
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [index, setIndex] = useState(0);
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    if (typeof window === "undefined") return [];
+
+    const savedFavorites = localStorage.getItem("favorites");
+
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
   useEffect(() => {
     fetch("/data/lektion_01_enriched_with_emojis.json")
@@ -64,6 +71,14 @@ export default function Home() {
     window.speechSynthesis.speak(speech);
   }
 
+  function speakText(text: string) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "de-DE";
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(speech);
+  }
+
   function nextWord() {
     if (!lessonData) return;
 
@@ -79,20 +94,73 @@ export default function Home() {
     );
   }
 
+  function formatPartOfSpeech(value: string) {
+    return value
+      .replaceAll("_", " ")
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function toggleFavorite() {
+    setFavorites((currentFavorites) => {
+      let updatedFavorites: string[];
+
+      if (currentFavorites.includes(word.word)) {
+        updatedFavorites = currentFavorites.filter(
+          (favorite) => favorite !== word.word
+        );
+      } else {
+        updatedFavorites = [...currentFavorites, word.word];
+      }
+
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify(updatedFavorites)
+      );
+
+      return updatedFavorites;
+    });
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
-        <p className="text-sm text-gray-500 mb-2">
-          {lessonData.title}
-        </p>
+        <div className="mb-6">
+          <div className="flex justify-between text-sm text-gray-500 mb-2">
+            <span>{lessonData.title}</span>
+            <span>
+              {index + 1} / {lessonData.vocabulary.length}
+            </span>
+          </div>
 
-        <p className="text-sm text-gray-400 mb-4">
-          {index + 1} / {lessonData.vocabulary.length}
-        </p>
+          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-black transition-all duration-300"
+              style={{
+                width: `${
+                  ((index + 1) / lessonData.vocabulary.length) * 100
+                }%`,
+              }}
+            />
+          </div>
+        </div>
+
+        <button
+          onClick={toggleFavorite}
+          className="text-2xl"
+          aria-label="Toggle favorite"
+        >
+          {favorites.includes(word.word) ? "★" : "☆"}
+        </button>
 
         <div className="w-full aspect-[4/3] rounded-2xl mb-6 bg-gray-100 flex items-center justify-center">
           <span className="text-8xl">
             {word.emoji || "📝"}
+          </span>
+        </div>
+
+        <div className="flex justify-center mb-3">
+          <span className="text-xs font-semibold uppercase tracking-wide bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
+            {formatPartOfSpeech(word.part_of_speech)}
           </span>
         </div>
 
@@ -120,9 +188,19 @@ export default function Home() {
         <div className="text-left space-y-4">
           {word.examples.map((example, exampleIndex) => (
             <div key={exampleIndex}>
-              <p className="font-semibold">
-                {example.de}
-              </p>
+              <div className="flex items-start justify-between gap-3">
+                <p className="font-semibold">
+                  {example.de}
+                </p>
+
+                <button
+                  onClick={() => speakText(example.de)}
+                  className="text-lg hover:scale-110 transition-transform"
+                  aria-label="Listen to sentence"
+                >
+                  🔊
+                </button>
+              </div>
 
               <p className="text-gray-500">
                 {example.en}
