@@ -499,6 +499,21 @@ Learning/Mastered status is shared between both directions.
 
 ---
 
+# Article Colours
+
+The German word is shown with its article coloured by gender (`src/components/GermanWord.tsx`), in both study directions:
+
+| Article | Colour | Based on `gender` |
+|---|---|---|
+| der | blue | masculine |
+| die | red | feminine |
+| das | green | neuter |
+| die (plural-only nouns, e.g. die Eltern, die Leute) | amber | plural |
+
+The colour comes from the `gender` field in the JSON, not from the article text, so plural-only "die" is not shown as feminine. Words without an article are shown unchanged.
+
+---
+
 # Future Features
 
 Potential future development includes:
@@ -511,7 +526,6 @@ Potential future development includes:
 - quiz mode
 - typed answers for English → German (check spelling and article)
 - separate Learning/Mastered status per direction
-- article colours (der / die / das)
 
 ### Progress
 
@@ -578,6 +592,7 @@ german-vocab-app/
 │   │
 │   ├── components/               ← reusable pieces of the interface
 │   │   ├── ListenButton.tsx      ← 🔊 button (pill or icon-only)
+│   │   ├── GermanWord.tsx        ← German word with coloured article
 │   │   ├── ExampleSentences.tsx  ← example sentence list
 │   │   └── StudyTopBar.tsx       ← Study top bar + progress bar
 │   │

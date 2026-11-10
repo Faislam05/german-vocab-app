@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ExampleSentences from "@/components/ExampleSentences";
+import GermanWord from "@/components/GermanWord";
 import ListenButton from "@/components/ListenButton";
 import StudyTopBar from "@/components/StudyTopBar";
 import { useLessonData } from "@/lib/useLessonData";
@@ -226,7 +227,7 @@ export default function StudySession() {
           ) : (
             <>
               <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-                {word.display}
+                <GermanWord word={word} />
               </h1>
 
               <ListenButton text={word.tts_text} className="mb-3" />
@@ -257,7 +258,7 @@ export default function StudySession() {
               {isEnglishToGerman ? (
                 <>
                   <p className="text-3xl sm:text-4xl font-bold mb-2">
-                    {word.display}
+                    <GermanWord word={word} />
                   </p>
 
                   {/* Listen is only shown now, since it would speak the answer */}
