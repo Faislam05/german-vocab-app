@@ -33,18 +33,22 @@ type LessonData = {
 
 export default function Home() {
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
+
   const [index, setIndex] = useState(0);
 
-  const [favorites, setFavorites] = useState<string[]>(() => {
-    if (typeof window === "undefined") return [];
+  const [studyStatus, setStudyStatus] = useState<
+    Record<string, string>
+  >(() => {
+    if (typeof window === "undefined") return {};
 
-    const savedFavorites = localStorage.getItem("favorites");
+    const savedStatus = localStorage.getItem("studyStatus");
 
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
+    return savedStatus ? JSON.parse(savedStatus) : {};
   });
 
-  const [showFavoritesOnly, setShowFavoritesOnly] =
-    useState(false);
+  const [studyFilter, setStudyFilter] = useState<
+    "all" | "learning" | "known"
+  >("all");
 
   useEffect(() => {
     fetch("/data/lektion_01_enriched_with_emojis.json")
@@ -57,6 +61,47 @@ export default function Home() {
       });
   }, []);
 
+  let visibleVocabulary = lessonData?.vocabulary ?? [];
+
+  if (studyFilter === "learning") {
+    visibleVocabulary = visibleVocabulary.filter(
+      (item) => studyStatus[item.word] !== "known"
+    );
+  }
+
+  if (studyFilter === "known") {
+    visibleVocabulary = visibleVocabulary.filter(
+      (item) => studyStatus[item.word] === "known"
+    );
+  }
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (visibleVocabulary.length === 0) return;
+
+      if (event.key === "ArrowRight") {
+        setIndex(
+          (currentIndex) =>
+            (currentIndex + 1) % visibleVocabulary.length
+        );
+      }
+
+      if (event.key === "ArrowLeft") {
+        setIndex(
+          (currentIndex) =>
+            (currentIndex - 1 + visibleVocabulary.length) %
+            visibleVocabulary.length
+        );
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [visibleVocabulary.length]);
+
   if (!lessonData) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -65,31 +110,30 @@ export default function Home() {
     );
   }
 
-  const visibleVocabulary = showFavoritesOnly
-    ? lessonData.vocabulary.filter((item) =>
-        favorites.includes(item.word)
-      )
-    : lessonData.vocabulary;
+  const knownCount = lessonData.vocabulary.filter(
+    (item) => studyStatus[item.word] === "known"
+  ).length;
 
-  // Nothing has been favorited yet
+  const learningCount =
+    lessonData.vocabulary.length - knownCount;
+
   if (visibleVocabulary.length === 0) {
     return (
       <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
         <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
-          <div className="text-6xl mb-6">☆</div>
+          <div className="text-6xl mb-6">📚</div>
 
           <h1 className="text-2xl font-bold mb-3">
-            No favorites yet
+            No words here
           </h1>
 
           <p className="text-gray-500 mb-6">
-            Star some vocabulary words first, then you can
-            review them here.
+            There are currently no vocabulary words in this filter.
           </p>
 
           <button
             onClick={() => {
-              setShowFavoritesOnly(false);
+              setStudyFilter("all");
               setIndex(0);
             }}
             className="px-5 py-2 rounded-full bg-black text-white"
@@ -101,7 +145,10 @@ export default function Home() {
     );
   }
 
-  const word = visibleVocabulary[index];
+  const safeIndex =
+    index >= visibleVocabulary.length ? 0 : index;
+
+  const word = visibleVocabulary[safeIndex];
 
   function formatPartOfSpeech(value: string) {
     return value
@@ -144,33 +191,22 @@ export default function Home() {
     );
   }
 
-  function toggleFavorite() {
-    setFavorites((currentFavorites) => {
-      let updatedFavorites: string[];
-
-      if (currentFavorites.includes(word.word)) {
-        updatedFavorites = currentFavorites.filter(
-          (favorite) => favorite !== word.word
-        );
-      } else {
-        updatedFavorites = [
-          ...currentFavorites,
-          word.word,
-        ];
-      }
+  function updateStudyStatus(
+    status: "learning" | "known"
+  ) {
+    setStudyStatus((currentStatus) => {
+      const updatedStatus = {
+        ...currentStatus,
+        [word.word]: status,
+      };
 
       localStorage.setItem(
-        "favorites",
-        JSON.stringify(updatedFavorites)
+        "studyStatus",
+        JSON.stringify(updatedStatus)
       );
 
-      return updatedFavorites;
+      return updatedStatus;
     });
-  }
-
-  function toggleFavoritesView() {
-    setShowFavoritesOnly((currentValue) => !currentValue);
-    setIndex(0);
   }
 
   return (
@@ -183,7 +219,7 @@ export default function Home() {
             <span>{lessonData.title}</span>
 
             <span>
-              {index + 1} / {visibleVocabulary.length}
+              {safeIndex + 1} / {visibleVocabulary.length}
             </span>
           </div>
 
@@ -192,7 +228,7 @@ export default function Home() {
               className="h-full bg-black transition-all duration-300"
               style={{
                 width: `${
-                  ((index + 1) /
+                  ((safeIndex + 1) /
                     visibleVocabulary.length) *
                   100
                 }%`,
@@ -201,24 +237,61 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Favorites controls */}
+        {/* Progress counters */}
 
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex justify-center gap-4 mb-4 text-sm">
+          <span className="px-3 py-1 rounded-full bg-gray-100">
+            Learning: {learningCount}
+          </span>
+
+          <span className="px-3 py-1 rounded-full bg-gray-100">
+            Known: {knownCount}
+          </span>
+        </div>
+
+        {/* Study filters */}
+
+        <div className="flex justify-center gap-2 mb-5">
           <button
-            onClick={toggleFavoritesView}
-            className="px-3 py-1.5 rounded-full bg-gray-100 text-sm hover:bg-gray-200"
+            onClick={() => {
+              setStudyFilter("all");
+              setIndex(0);
+            }}
+            className={`px-3 py-1 rounded-full text-sm ${
+              studyFilter === "all"
+                ? "bg-black text-white"
+                : "bg-gray-100"
+            }`}
           >
-            {showFavoritesOnly
-              ? "Show All"
-              : `★ Favorites (${favorites.length})`}
+            All
           </button>
 
           <button
-            onClick={toggleFavorite}
-            className="text-3xl hover:scale-110 transition-transform"
-            aria-label="Toggle favorite"
+            onClick={() => {
+              setStudyFilter("learning");
+              setIndex(0);
+            }}
+            className={`px-3 py-1 rounded-full text-sm ${
+              studyFilter === "learning"
+                ? "bg-black text-white"
+                : "bg-gray-100"
+            }`}
           >
-            {favorites.includes(word.word) ? "★" : "☆"}
+            Learning
+          </button>
+
+          <button
+            onClick={() => {
+              setStudyFilter("known");
+              setIndex(0);
+            }}
+            className={`px-3 py-1 rounded-full text-sm ${
+              studyFilter === "known"
+                ? "bg-black text-white"
+                : "bg-gray-100"
+            }`}
+          >
+            Known
           </button>
         </div>
 
@@ -234,11 +307,13 @@ export default function Home() {
 
         <div className="flex justify-center mb-3">
           <span className="text-xs font-semibold uppercase tracking-wide bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
-            {formatPartOfSpeech(word.part_of_speech)}
+            {formatPartOfSpeech(
+              word.part_of_speech
+            )}
           </span>
         </div>
 
-        {/* Word */}
+        {/* Main word */}
 
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">
@@ -263,9 +338,40 @@ export default function Home() {
           )}
         </div>
 
+        {/* Learning / Known buttons */}
+
+        <div className="flex justify-center gap-2 mt-6 mb-6">
+          <button
+            onClick={() =>
+              updateStudyStatus("learning")
+            }
+            className={`px-4 py-2 rounded-full text-sm ${
+              (studyStatus[word.word] ||
+                "learning") === "learning"
+                ? "bg-black text-white"
+                : "bg-gray-200"
+            }`}
+          >
+            Learning
+          </button>
+
+          <button
+            onClick={() =>
+              updateStudyStatus("known")
+            }
+            className={`px-4 py-2 rounded-full text-sm ${
+              studyStatus[word.word] === "known"
+                ? "bg-black text-white"
+                : "bg-gray-200"
+            }`}
+          >
+            Known
+          </button>
+        </div>
+
         {/* Example sentences */}
 
-        <div className="text-left space-y-5 mt-6">
+        <div className="text-left space-y-5">
           {word.examples.map(
             (example, exampleIndex) => (
               <div key={exampleIndex}>
