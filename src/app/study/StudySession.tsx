@@ -22,8 +22,20 @@ import {
   shuffleArray,
 } from "@/lib/vocabulary";
 
+// The flashcard: a white sheet lying on the squared paper
+const cardStyle =
+  "bg-white rounded-2xl border border-graphite/10 shadow-[0_1px_2px_rgba(46,50,56,0.06),0_8px_24px_rgba(46,50,56,0.08)] w-full max-w-md sm:max-w-lg";
+
+// Small press feedback for buttons
+const pressable =
+  "transition-[transform,background-color] duration-150 ease-out active:scale-[0.97]";
+
+// The German word gets a yellow highlighter stroke behind its lower half
+const highlighter =
+  "px-1 box-decoration-clone bg-[linear-gradient(transparent_58%,var(--color-marker)_58%)]";
+
 const filterLabels: Record<StudyFilter, string> = {
-  all: "All",
+  all: "All words",
   learning: "Learning",
   mastered: "Mastered",
 };
@@ -135,20 +147,23 @@ export default function StudySession() {
 
   if (visibleVocabulary.length === 0) {
     return (
-      <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-        <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-8 w-full max-w-md text-center">
+      <main className="min-h-screen flex items-center justify-center p-6">
+        <div className={`${cardStyle} p-8 text-center`}>
           <div className="text-6xl mb-6">🎉</div>
 
-          <h1 className="text-2xl font-bold mb-3">No words here</h1>
+          <h1 className="font-serif text-3xl font-semibold mb-3">
+            No words here
+          </h1>
 
-          <p className="text-gray-500 mb-6">
-            There are no {filterLabels[studyFilter]} words to study right
-            now.
+          <p className="text-pencil mb-6">
+            There are no{" "}
+            {studyFilter === "all" ? "" : `${filterLabels[studyFilter]} `}
+            words to study right now.
           </p>
 
           <Link
             href="/"
-            className="inline-block px-5 py-2 rounded-full bg-black text-white"
+            className="inline-block px-5 py-2.5 rounded-xl bg-graphite text-paper font-semibold hover:bg-black"
           >
             Back to Home
           </Link>
@@ -160,6 +175,9 @@ export default function StudySession() {
   const safeIndex = index >= visibleVocabulary.length ? 0 : index;
 
   const word = visibleVocabulary[safeIndex];
+
+  // e.g. "Verb", "Question Word"
+  const partOfSpeech = formatPartOfSpeech(word.part_of_speech);
 
   // Show the answer if reveal mode is off, or this word was revealed.
   const showAnswer = !revealMode || revealedWord === word.word;
@@ -202,8 +220,8 @@ export default function StudySession() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-3 sm:p-4">
-      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-5 sm:p-6 w-full max-w-md">
+    <main className="min-h-screen flex items-center justify-center p-2 sm:p-6">
+      <div className={`${cardStyle} p-4 sm:p-6`}>
         <StudyTopBar
           filterLabel={filterLabels[studyFilter]}
           position={safeIndex + 1}
@@ -217,17 +235,9 @@ export default function StudySession() {
         {/* Emoji visual. German → English: hidden until revealed, since it
             hints at the meaning. English → German: always shown as a hint. */}
 
-        <div className="w-full h-16 sm:h-24 rounded-2xl mb-3 bg-gray-100 flex items-center justify-center">
+        <div className="w-full h-14 sm:h-20 rounded-xl mb-2 bg-paper border border-grid flex items-center justify-center">
           <span className="text-4xl sm:text-6xl">
             {showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓"}
-          </span>
-        </div>
-
-        {/* Part of speech */}
-
-        <div className="flex justify-center mb-2">
-          <span className="text-xs font-semibold uppercase tracking-wide bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
-            {formatPartOfSpeech(word.part_of_speech)}
           </span>
         </div>
 
@@ -235,16 +245,26 @@ export default function StudySession() {
 
         <div className="text-center">
           {isEnglishToGerman ? (
-            <h1 className="text-2xl sm:text-3xl font-bold mb-3">
-              {word.english}
-            </h1>
+            <>
+              {/* Same size as the English meaning in German → English, so
+                  the German word is always the biggest thing on the card */}
+              <h1 className="text-2xl mb-1">{word.english}</h1>
+
+              <p className="text-sm text-pencil mb-3">{partOfSpeech}</p>
+            </>
           ) : (
             <>
-              <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-                <GermanWord word={word} />
+              <h1 className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
+                <span className={highlighter}>
+                  <GermanWord word={word} />
+                </span>
               </h1>
 
-              <ListenButton text={word.tts_text} className="mb-3" />
+              {/* Part of speech and Listen on one row, to save space */}
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <span className="text-sm text-pencil">{partOfSpeech}</span>
+                <ListenButton text={word.tts_text} />
+              </div>
             </>
           )}
         </div>
@@ -252,15 +272,18 @@ export default function StudySession() {
         {/* Reveal button (only while the answer is hidden) */}
 
         {!showAnswer && (
-          <div className="text-center">
+          <div className="text-center mt-1">
             <button
               onClick={() => setRevealedWord(word.word)}
-              className="px-6 py-3 rounded-full bg-black text-white hover:bg-gray-800"
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
             >
-              {isEnglishToGerman ? "Show German" : "Show Meaning"}
-            </button>
+              {isEnglishToGerman ? "Show German" : "Show meaning"}
 
-            <p className="text-xs text-gray-400 mt-2">or press Space</p>
+              {/* Key hint, only on computers (phones have no Space key) */}
+              <kbd className="hidden pointer-fine:inline px-1.5 py-0.5 rounded border border-paper/30 text-xs font-sans font-normal text-paper/80">
+                Space
+              </kbd>
+            </button>
           </div>
         )}
 
@@ -271,31 +294,38 @@ export default function StudySession() {
             <div className="text-center">
               {isEnglishToGerman ? (
                 <>
-                  <p className="text-3xl sm:text-4xl font-bold mb-2">
-                    <GermanWord word={word} />
+                  <p className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
+                    <span className={highlighter}>
+                      <GermanWord word={word} />
+                    </span>
                   </p>
 
                   {/* Listen is only shown now, since it would speak the answer */}
                   <ListenButton text={word.tts_text} className="mb-2" />
                 </>
               ) : (
-                <p className="text-2xl mb-2">{word.english}</p>
+                <p className="text-2xl mb-1">{word.english}</p>
               )}
 
-              {word.plural && (
-                <p className="text-gray-500">Plural: {word.plural}</p>
-              )}
+              {/* Always shown (N/A when there is none), so every card has
+                  the same layout */}
+              <p className="text-pencil">Plural: {word.plural || "N/A"}</p>
             </div>
 
-            {/* Learning / Mastered buttons */}
+            {/* Learning / Mastered: one switch with two sides */}
 
-            <div className="flex justify-center gap-2 mt-4 mb-4">
+            <div
+              className="grid grid-cols-2 gap-1 p-1 mx-auto max-w-64 mt-3 mb-3 rounded-xl bg-grid text-sm"
+              role="group"
+              aria-label="How well do you know this word?"
+            >
               <button
                 onClick={() => updateStudyStatus("learning")}
-                className={`px-4 py-2 rounded-full text-sm ${
+                aria-pressed={(studyStatus[word.word] || "learning") === "learning"}
+                className={`py-1.5 rounded-lg ${pressable} ${
                   (studyStatus[word.word] || "learning") === "learning"
-                    ? "bg-black text-white"
-                    : "bg-gray-200"
+                    ? "bg-white font-semibold shadow-sm"
+                    : "text-pencil hover:text-graphite"
                 }`}
               >
                 Learning
@@ -303,10 +333,11 @@ export default function StudySession() {
 
               <button
                 onClick={() => updateStudyStatus("mastered")}
-                className={`px-4 py-2 rounded-full text-sm ${
+                aria-pressed={studyStatus[word.word] === "mastered"}
+                className={`py-1.5 rounded-lg ${pressable} ${
                   studyStatus[word.word] === "mastered"
-                    ? "bg-black text-white"
-                    : "bg-gray-200"
+                    ? "bg-marker font-semibold shadow-sm"
+                    : "text-pencil hover:text-graphite"
                 }`}
               >
                 Mastered
@@ -320,17 +351,17 @@ export default function StudySession() {
         {/* Navigation (sticks to the bottom of the screen if the card is
             taller than the screen, so Next is always reachable) */}
 
-        <div className="sticky bottom-0 bg-white flex justify-between mt-2 pt-2 pb-1">
+        <div className="sticky bottom-0 bg-white flex justify-between gap-2 mt-2 pt-2 pb-1 border-t border-grid">
           <button
             onClick={previousWord}
-            className="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300"
+            className={`px-4 py-2 rounded-xl border border-graphite/15 bg-paper hover:bg-grid ${pressable}`}
           >
             ← Previous
           </button>
 
           <button
             onClick={nextWord}
-            className="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300"
+            className={`px-5 py-2 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
           >
             Next →
           </button>

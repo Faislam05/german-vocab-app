@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design: "Karopapier" — German school squared paper.
+   The colours are defined once here and used as Tailwind classes,
+   e.g. bg-paper, text-graphite, bg-marker, text-pencil, border-grid.
+   (The der / die / das colours live in src/components/GermanWord.tsx.) */
+
+@theme {
+  --color-graphite: #2e3238; /* main text and main buttons */
+  --color-pencil: #5f6670; /* secondary text */
+  --color-paper: #fbfbf8; /* page and cards */
+  --color-grid: #e3e7ec; /* the squared-paper lines */
+  --color-marker: #ffe066; /* yellow highlighter: selected things */
+  --color-marker-strong: #e8b400; /* highlighter for thin bars */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree);
+  --font-serif: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* The squared paper: faint 20px grid lines on paper white */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-graphite);
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* A clear outline when moving through the app with the Tab key */
+:focus-visible {
+  outline: 2px solid var(--color-graphite);
+  outline-offset: 2px;
 }

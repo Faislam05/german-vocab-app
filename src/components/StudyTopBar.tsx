@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type StudyTopBarProps = {
-  // e.g. "All", "Learning", "Mastered"
+  // e.g. "All words", "Learning", "Mastered"
   filterLabel: string;
 
   // Card number (starting at 1) and how many cards there are
@@ -15,8 +15,31 @@ type StudyTopBarProps = {
   onToggleRevealMode: () => void;
 };
 
-// Top of the Study screen: ← Home, "All · 1 / 107", 🔀 shuffle and the
-// Flashcard On/Off toggle, plus the progress bar underneath.
+// The shuffle icon (two crossing arrows), drawn with SVG so it looks the
+// same on every device.
+function ShuffleIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4"
+      aria-hidden="true"
+    >
+      <path d="M16 3h5v5" />
+      <path d="M4 20 21 3" />
+      <path d="M21 16v5h-5" />
+      <path d="m15 15 6 6" />
+      <path d="M4 4l5 5" />
+    </svg>
+  );
+}
+
+// Top of the Study screen: ← Home, "Learning: 3 of 14", the shuffle
+// button and the Flashcard on/off switch, plus the progress bar.
 //
 // It only shows things and reports clicks. The state itself (is shuffle
 // on? which card are we on?) lives in StudySession, which passes it in
@@ -30,47 +53,53 @@ export default function StudyTopBar({
   revealMode,
   onToggleRevealMode,
 }: StudyTopBarProps) {
+  // Small switch-like buttons; "on" is highlighted in marker yellow
+  const switchStyle = (isOn: boolean) =>
+    `h-8 rounded-lg border transition-[transform,background-color] duration-150 ease-out active:scale-[0.95] ${
+      isOn
+        ? "bg-marker border-marker-strong text-graphite"
+        : "bg-paper border-graphite/15 text-pencil hover:text-graphite"
+    }`;
+
   return (
     <>
-      <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-3">
-        <Link href="/" className="text-gray-500 hover:text-gray-900">
+      <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-2">
+        <Link href="/" className="text-pencil hover:text-graphite">
           ← Home
         </Link>
 
-        <span className="px-3 py-1 rounded-full bg-gray-100">
-          {filterLabel} · {position} / {total}
+        <span>
+          {filterLabel}: <strong>{position}</strong> of {total}
         </span>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={onToggleShuffle}
-            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full ${
-              isShuffled ? "bg-black" : "bg-gray-100"
-            }`}
+            aria-pressed={isShuffled}
             aria-label={isShuffled ? "Turn shuffle off" : "Shuffle words"}
             title={isShuffled ? "Shuffle: On" : "Shuffle: Off"}
+            className={`w-8 flex items-center justify-center ${switchStyle(isShuffled)}`}
           >
-            🔀
+            <ShuffleIcon />
           </button>
 
           <button
             onClick={onToggleRevealMode}
-            className="text-gray-500 hover:text-gray-900"
+            aria-pressed={revealMode}
+            className={`px-2 ${switchStyle(revealMode)}`}
           >
-            Flashcard: {revealMode ? "On" : "Off"}
+            Flashcard {revealMode ? "on" : "off"}
           </button>
         </div>
       </div>
 
       {/* Progress bar */}
 
-      <div className="mb-4">
-        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-black transition-all duration-300"
-            style={{ width: `${(position / total) * 100}%` }}
-          />
-        </div>
+      <div className="mb-3 w-full h-1.5 bg-grid rounded-full overflow-hidden">
+        <div
+          className="h-full bg-marker-strong transition-[width] duration-300 ease-out"
+          style={{ width: `${(position / total) * 100}%` }}
+        />
       </div>
     </>
   );

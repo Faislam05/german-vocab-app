@@ -109,17 +109,17 @@ The app has two screens.
 The lesson overview. It shows:
 
 - lesson picker: one button per lesson (Lektion 1, Lektion 2, …) plus "All", each with its Mastered %. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
-- CEFR level, word count and title of the chosen lesson
+- title of the chosen lesson and its word count
 - "Word type" dropdown (see "Word Type Filter")
-- mastered-word percentage with a progress bar
-- Learning count
-- Mastered count
-- direction toggle: 🇩🇪 → 🇬🇧 or 🇬🇧 → 🇩🇪 (see "Study Direction")
+- Learning and Mastered counts, Mastered percentage and a progress bar
+- direction switch: German → English or English → German (see "Study Direction")
 - three study buttons, each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
   - Study Learning words → `/study?filter=learning`
   - Study all words → `/study?filter=all`
   - Review Mastered words → `/study?filter=mastered`
-- a keyboard shortcut hint
+- a keyboard shortcut hint (only on computers, hidden on phones)
+
+On desktop Home has two columns (lesson, word type and progress on the left; direction and study buttons on the right). On phones it is one column.
 
 ## Study screen (`/study`)
 
@@ -128,23 +128,22 @@ The flashcard screen. The lesson, filter, direction and word type are read from 
 Top bar:
 
 - ← Home link
-- current filter name + card number (e.g. `All · 1 / 107`)
-- 🔀 Shuffle toggle (black when on)
-- Flashcard mode On/Off toggle
+- current filter name + card number (e.g. `Learning: 3 of 14`)
+- Shuffle button (highlighted yellow when on)
+- "Flashcard on/off" switch (highlighted yellow when on)
 - progress bar
 
 Each vocabulary card shows:
 
 - emoji visual (shows ❓ until the answer is revealed)
-- part-of-speech badge
-- German word
-- German pronunciation button
-- Show Meaning button (in Flashcard mode, until revealed)
+- German word (with the yellow highlighter)
+- part of speech (e.g. "Verb") and the Listen button, on one row
+- Show meaning button (in Flashcard mode, until revealed; shows a `Space` key hint on computers)
 
 After revealing (or always, when Flashcard mode is Off):
 
 - English meaning
-- plural where available
+- plural (shows "Plural: N/A" when a word has none, so every card has the same layout)
 - Learning / Mastered buttons
 - approximately three German example sentences
 - English translations
@@ -155,13 +154,13 @@ Then:
 - Previous button
 - Next button
 
-The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800) and on normal phones (390×844), tested for all 107 words. On very small phones (375×667, iPhone SE) about 40 longer words need a short scroll to see the last example; Previous/Next stick to the bottom of the screen so they are always reachable. Keep this in mind when adding content to the card.
+The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size (sized so long words like "die Telefonnummer" stay on one line), so every card looks the same. Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
 
 ---
 
 # Part of Speech Labels
 
-Every word has a `part_of_speech` value in the JSON. It is shown as the grey badge on the card (e.g. `question_word` → "QUESTION WORD").
+Every word has a `part_of_speech` value in the JSON. It is shown on the card under the German word (e.g. `question_word` → "Question Word").
 
 Use only these labels in lesson files:
 
@@ -482,6 +481,36 @@ Do not tightly couple the vocabulary data to the current visual design.
 
 ---
 
+# Design: Karopapier
+
+The look is based on German school squared paper (Karopapier), chosen with the help of Anthropic's `frontend-design` skill.
+
+- **Background:** faint 20px grid on paper white (in `src/app/globals.css`).
+- **Flashcard:** a white sheet with a soft shadow lying on the grid. Only the flashcard is a "card"; Home sits directly on the paper.
+- **Highlighter:** marker yellow shows what is selected (lesson, Flashcard on, shuffle on, Mastered) and is drawn behind the German word.
+- **Colours** are defined once in `globals.css` and used as Tailwind classes:
+
+| Name | Hex | Tailwind classes | Used for |
+|---|---|---|---|
+| graphite | `#2E3238` | `text-graphite`, `bg-graphite` | main text, main buttons |
+| pencil | `#5F6670` | `text-pencil` | secondary text |
+| paper | `#FBFBF8` | `bg-paper` | page, light buttons |
+| grid | `#E3E7EC` | `bg-grid`, `border-grid` | grid lines, switch backgrounds |
+| marker | `#FFE066` | `bg-marker` | highlighter, selected things |
+| marker-strong | `#E8B400` | `bg-marker-strong` | progress bars, margin line |
+
+The der / die / das colours stay as they were (see "Article Colours").
+
+- **Fonts** (loaded in `src/app/layout.tsx` with `next/font/google`):
+  - Fraunces (`font-serif`): the German word and screen titles
+  - Figtree (default): everything else
+- **Icons:** drawn as small SVGs (speaker, shuffle) so they look the same on every device. Emojis are used only as vocabulary content on the cards.
+- **Buttons** shrink slightly when pressed (`active:scale-[0.97]`); a clear outline shows keyboard focus.
+- **Text style:** normal case (no ALL CAPS labels), plain wording ("Learning: 3 of 14").
+- Key hints (`Space`, arrows) are shown only on computers (`pointer-fine:`).
+
+---
+
 # Flashcard Reveal Mode
 
 Implemented on the Study screen.
@@ -516,7 +545,7 @@ How it works:
 
 # Shuffle Mode
 
-Implemented on the Study screen with the 🔀 button.
+Implemented on the Study screen with the shuffle button (crossing arrows).
 
 - Off by default: words appear in textbook order.
 - When turned on, the lesson words are shuffled once (`shuffleArray()` in `src/lib/vocabulary.ts`, a Fisher–Yates shuffle) and stored in `shuffledVocabulary`.
@@ -637,7 +666,6 @@ Potential later workflow:
 - responsive navigation
 - dark mode
 - animations
-- redesigned cards
 - bottom navigation
 - progress screen
 - settings screen

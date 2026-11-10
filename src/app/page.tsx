@@ -110,150 +110,178 @@ export default function Home() {
     },
   ];
 
+
+  // Shared button styles. "active:scale" gives a small press feedback.
+  const pressable =
+    "transition-[transform,background-color] duration-150 ease-out active:scale-[0.97]";
+
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-3 sm:p-6">
-      <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-6 sm:p-8 w-full max-w-md">
-        {/* Header */}
+    <main className="min-h-screen flex items-center justify-center px-4 py-5 sm:p-8">
+      <div className="w-full max-w-md lg:max-w-3xl lg:grid lg:grid-cols-2 lg:gap-14 lg:items-center">
+        {/* Left column (top on phones): lesson, word type, progress */}
 
-        <div className="text-center mb-4">
-          <div className="text-4xl mb-2">🇩🇪</div>
+        <section>
+          {/* Header */}
 
-          <p className="text-sm text-gray-500 mb-1">
-            A1 · {vocabulary.length} words
-          </p>
+          <div className="mb-4">
+            <h1 className="font-serif text-4xl font-semibold leading-tight">
+              {title}
+            </h1>
 
-          <h1 className="text-2xl font-bold">{title}</h1>
-        </div>
+            <p className="text-sm text-pencil">
+              {vocabulary.length} German A1 words
+            </p>
+          </div>
 
-        {/* Lesson picker: one button per lesson, with its Mastered % */}
+          {/* Lesson picker: one button per lesson, with its Mastered %.
+              The chosen lesson is "highlighted" in marker yellow. */}
 
-        <div className="flex flex-wrap justify-center gap-2 mb-4">
-          {lessonButtons.map((button) => (
-            <button
-              key={String(button.choice)}
-              onClick={() => chooseLesson(button.choice)}
-              className={`px-3 py-1.5 rounded-2xl text-sm leading-tight ${
-                lessonChoice === button.choice
-                  ? "bg-black text-white"
-                  : "bg-gray-100 hover:bg-gray-200"
-              }`}
-            >
-              {button.label}
-              <span
-                className={`block text-xs ${
+          <div className="flex flex-wrap gap-2 mb-4">
+            {lessonButtons.map((button) => (
+              <button
+                key={String(button.choice)}
+                onClick={() => chooseLesson(button.choice)}
+                className={`px-3 py-1.5 rounded-lg text-sm leading-tight text-left border ${pressable} ${
                   lessonChoice === button.choice
-                    ? "text-gray-300"
-                    : "text-gray-500"
+                    ? "bg-marker border-marker-strong font-semibold"
+                    : "bg-paper border-graphite/15 hover:bg-white"
                 }`}
               >
-                {button.percent}%
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* Word type dropdown: only types that exist in the chosen lesson */}
-
-        <div className="flex items-center justify-center gap-2 mb-4 text-sm">
-          <label htmlFor="word-type" className="text-gray-500">
-            Word type:
-          </label>
-
-          <select
-            id="word-type"
-            value={wordType}
-            onChange={(event) => setWordTypeChoice(event.target.value)}
-            className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
-          >
-            <option value="all">All types ({vocabulary.length})</option>
-
-            {wordTypes.map((item) => (
-              <option key={item.type} value={item.type}>
-                {item.name} ({item.count})
-              </option>
+                {button.label}
+                <span className="block text-xs font-normal text-pencil">
+                  {button.percent}% mastered
+                </span>
+              </button>
             ))}
-          </select>
-        </div>
-
-        {/* Progress of the chosen lesson (and word type) */}
-
-        <div className="mb-4">
-          <div className="flex justify-between text-sm text-gray-500 mb-2">
-            <span>Mastered</span>
-            <span>{masteredPercent}%</span>
           </div>
 
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-black transition-all duration-300"
-              style={{ width: `${masteredPercent}%` }}
-            />
+          {/* Word type dropdown: only types that exist in the chosen lesson */}
+
+          <div className="flex items-center gap-2 mb-5 text-sm">
+            <label htmlFor="word-type" className="text-pencil">
+              Word type
+            </label>
+
+            <select
+              id="word-type"
+              value={wordType}
+              onChange={(event) => setWordTypeChoice(event.target.value)}
+              className="px-2 py-1 rounded-lg bg-paper border border-graphite/15 hover:bg-white"
+            >
+              <option value="all">All types ({vocabulary.length})</option>
+
+              {wordTypes.map((item) => (
+                <option key={item.type} value={item.type}>
+                  {item.name} ({item.count})
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
 
-        <div className="flex justify-center gap-4 mb-5 text-sm">
-          <span className="px-3 py-1 rounded-full bg-gray-100">
-            Learning: {learningCount}
-          </span>
+          {/* Progress of the chosen lesson (and word type) */}
 
-          <span className="px-3 py-1 rounded-full bg-gray-100">
-            Mastered: {masteredCount}
-          </span>
-        </div>
+          <div className="mb-5 lg:mb-0">
+            <div className="flex justify-between text-sm mb-1.5">
+              <span>
+                Learning: <strong>{learningCount}</strong>
+                <span className="mx-2 text-graphite/30">|</span>
+                Mastered: <strong>{masteredCount}</strong>
+              </span>
 
-        {/* Direction */}
+              <span className="text-pencil">{masteredPercent}%</span>
+            </div>
 
-        <div className="flex justify-center gap-2 mb-4 text-sm">
-          <button
-            onClick={() => chooseDirection("de-en")}
-            className={`px-4 py-1 rounded-full ${
-              direction === "de-en" ? "bg-black text-white" : "bg-gray-100"
-            }`}
+            <div className="w-full h-2.5 bg-grid rounded-full overflow-hidden border border-graphite/10">
+              <div
+                className="h-full bg-marker-strong transition-[width] duration-300 ease-out"
+                style={{ width: `${masteredPercent}%` }}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Right column (bottom on phones): direction and what to study */}
+
+        <section>
+          {/* Direction */}
+
+          <div
+            className="grid grid-cols-2 gap-1 p-1 mb-4 rounded-xl bg-grid text-sm"
+            role="group"
+            aria-label="Study direction"
           >
-            🇩🇪 → 🇬🇧
-          </button>
+            <button
+              onClick={() => chooseDirection("de-en")}
+              aria-pressed={direction === "de-en"}
+              className={`py-1.5 rounded-lg ${pressable} ${
+                direction === "de-en"
+                  ? "bg-paper font-semibold shadow-sm"
+                  : "text-pencil hover:text-graphite"
+              }`}
+            >
+              German → English
+            </button>
 
-          <button
-            onClick={() => chooseDirection("en-de")}
-            className={`px-4 py-1 rounded-full ${
-              direction === "en-de" ? "bg-black text-white" : "bg-gray-100"
-            }`}
-          >
-            🇬🇧 → 🇩🇪
-          </button>
-        </div>
+            <button
+              onClick={() => chooseDirection("en-de")}
+              aria-pressed={direction === "en-de"}
+              className={`py-1.5 rounded-lg ${pressable} ${
+                direction === "en-de"
+                  ? "bg-paper font-semibold shadow-sm"
+                  : "text-pencil hover:text-graphite"
+              }`}
+            >
+              English → German
+            </button>
+          </div>
 
-        {/* What to study */}
+          {/* What to study */}
 
-        <div className="space-y-3">
-          <Link
-            href={studyLink("learning")}
-            className="block w-full text-center px-5 py-3 rounded-full bg-black text-white hover:bg-gray-800"
-          >
-            Study Learning words ({learningCount})
-          </Link>
+          <div className="space-y-2.5">
+            <Link
+              href={studyLink("learning")}
+              className={`block w-full text-center px-5 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
+            >
+              Study Learning words ({learningCount})
+            </Link>
 
-          <Link
-            href={studyLink("all")}
-            className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
-          >
-            Study all words ({totalCount})
-          </Link>
+            <Link
+              href={studyLink("all")}
+              className={`block w-full text-center px-5 py-3 rounded-xl bg-paper border border-graphite/15 hover:bg-white ${pressable}`}
+            >
+              Study all words ({totalCount})
+            </Link>
 
-          <Link
-            href={studyLink("mastered")}
-            className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
-          >
-            Review Mastered words ({masteredCount})
-          </Link>
-        </div>
+            <Link
+              href={studyLink("mastered")}
+              className={`block w-full text-center px-5 py-3 rounded-xl bg-paper border border-graphite/15 hover:bg-white ${pressable}`}
+            >
+              Review Mastered words ({masteredCount})
+            </Link>
+          </div>
 
-        {/* Keyboard hint */}
+          {/* Keyboard hint (only on computers with a mouse/trackpad) */}
 
-        <p className="text-xs text-gray-400 text-center mt-6">
-          While studying: Space = reveal answer, ← → = previous / next
-        </p>
+          <div className="hidden pointer-fine:block text-xs text-pencil mt-5 space-y-1.5">
+            <p>While studying:</p>
+            <p>
+              <Key>Space</Key> reveals the answer
+            </p>
+            <p>
+              <Key>←</Key> <Key>→</Key> move between words
+            </p>
+          </div>
+        </section>
       </div>
     </main>
+  );
+}
+
+// A keyboard key, drawn like a small key cap
+function Key({ children }: { children: React.ReactNode }) {
+  return (
+    <kbd className="px-1.5 py-0.5 rounded border border-graphite/20 border-b-2 bg-paper font-sans text-graphite">
+      {children}
+    </kbd>
   );
 }
