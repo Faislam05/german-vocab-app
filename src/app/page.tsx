@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useLessonData } from "@/lib/useLessonData";
 import {
-  LESSON_FILE,
-  LessonData,
   StudyDirection,
   StudyStatus,
   loadStudyDirection,
@@ -15,7 +14,7 @@ import {
 // The Home screen: lesson overview + choose what to study.
 // The flashcards themselves live on the Study screen (src/app/study/).
 export default function Home() {
-  const [lessonData, setLessonData] = useState<LessonData | null>(null);
+  const lessonData = useLessonData();
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
 
@@ -27,17 +26,6 @@ export default function Home() {
     setDirection(newDirection);
     saveStudyDirection(newDirection);
   }
-
-  useEffect(() => {
-    fetch(LESSON_FILE)
-      .then((response) => response.json())
-      .then((data) => {
-        setLessonData(data);
-      })
-      .catch((error) => {
-        console.error("Error loading lesson data:", error);
-      });
-  }, []);
 
   if (!lessonData) {
     return (

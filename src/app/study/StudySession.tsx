@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import ExampleSentences from "@/components/ExampleSentences";
+import ListenButton from "@/components/ListenButton";
+import StudyTopBar from "@/components/StudyTopBar";
+import { useLessonData } from "@/lib/useLessonData";
 import {
-  LESSON_FILE,
-  LessonData,
   StudyFilter,
   StudyStatus,
   VocabularyCard,
   filterVocabulary,
+  formatPartOfSpeech,
   loadStudyStatus,
   saveStudyStatus,
   shuffleArray,
@@ -35,7 +38,7 @@ export default function StudySession() {
   // the German word is the answer.
   const isEnglishToGerman = searchParams.get("direction") === "en-de";
 
-  const [lessonData, setLessonData] = useState<LessonData | null>(null);
+  const lessonData = useLessonData();
 
   const [index, setIndex] = useState(0);
 
@@ -56,17 +59,6 @@ export default function StudySession() {
   const [shuffledVocabulary, setShuffledVocabulary] = useState<
     VocabularyCard[] | null
   >(null);
-
-  useEffect(() => {
-    fetch(LESSON_FILE)
-      .then((response) => response.json())
-      .then((data) => {
-        setLessonData(data);
-      })
-      .catch((error) => {
-        console.error("Error loading lesson data:", error);
-      });
-  }, []);
 
   // Use the shuffled order if shuffle is on, otherwise the textbook order.
   const orderedVocabulary =
@@ -153,21 +145,6 @@ export default function StudySession() {
   // Show the answer if reveal mode is off, or this word was revealed.
   const showAnswer = !revealMode || revealedWord === word.word;
 
-  function formatPartOfSpeech(value: string) {
-    return value
-      .replaceAll("_", " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase());
-  }
-
-  function speakText(text: string) {
-    const speech = new SpeechSynthesisUtterance(text);
-
-    speech.lang = "de-DE";
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(speech);
-  }
-
   function nextWord() {
     setIndex(
       (currentIndex) => (currentIndex + 1) % visibleVocabulary.length
@@ -208,51 +185,15 @@ export default function StudySession() {
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-3 sm:p-4">
       <div className="bg-white text-gray-900 rounded-3xl shadow-lg p-5 sm:p-6 w-full max-w-md">
-        {/* Top bar: back to Home, filter name, shuffle + flashcard toggles */}
-
-        <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-3">
-          <Link href="/" className="text-gray-500 hover:text-gray-900">
-            ← Home
-          </Link>
-
-          <span className="px-3 py-1 rounded-full bg-gray-100">
-            {filterLabels[studyFilter]} · {safeIndex + 1} /{" "}
-            {visibleVocabulary.length}
-          </span>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleShuffle}
-              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full ${
-                shuffledVocabulary ? "bg-black" : "bg-gray-100"
-              }`}
-              aria-label={shuffledVocabulary ? "Turn shuffle off" : "Shuffle words"}
-              title={shuffledVocabulary ? "Shuffle: On" : "Shuffle: Off"}
-            >
-              🔀
-            </button>
-
-            <button
-              onClick={() => setRevealMode(!revealMode)}
-              className="text-gray-500 hover:text-gray-900"
-            >
-              Flashcard: {revealMode ? "On" : "Off"}
-            </button>
-          </div>
-        </div>
-
-        {/* Progress bar */}
-
-        <div className="mb-4">
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-black transition-all duration-300"
-              style={{
-                width: `${((safeIndex + 1) / visibleVocabulary.length) * 100}%`,
-              }}
-            />
-          </div>
-        </div>
+        <StudyTopBar
+          filterLabel={filterLabels[studyFilter]}
+          position={safeIndex + 1}
+          total={visibleVocabulary.length}
+          isShuffled={shuffledVocabulary !== null}
+          onToggleShuffle={toggleShuffle}
+          revealMode={revealMode}
+          onToggleRevealMode={() => setRevealMode(!revealMode)}
+        />
 
         {/* Emoji visual. German → English: hidden until revealed, since it
             hints at the meaning. English → German: always shown as a hint. */}
@@ -284,12 +225,7 @@ export default function StudySession() {
                 {word.display}
               </h1>
 
-              <button
-                onClick={() => speakText(word.tts_text)}
-                className="mb-3 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
-              >
-                🔊 Listen
-              </button>
+              <ListenButton text={word.tts_text} className="mb-3" />
             </>
           )}
         </div>
@@ -321,12 +257,7 @@ export default function StudySession() {
                   </p>
 
                   {/* Listen is only shown now, since it would speak the answer */}
-                  <button
-                    onClick={() => speakText(word.tts_text)}
-                    className="mb-2 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800"
-                  >
-                    🔊 Listen
-                  </button>
+                  <ListenButton text={word.tts_text} className="mb-2" />
                 </>
               ) : (
                 <p className="text-2xl mb-2">{word.english}</p>
@@ -363,27 +294,7 @@ export default function StudySession() {
               </button>
             </div>
 
-            {/* Example sentences */}
-
-            <div className="text-left text-sm sm:text-base space-y-2">
-              {word.examples.map((example, exampleIndex) => (
-                <div key={exampleIndex}>
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="font-semibold">{example.de}</p>
-
-                    <button
-                      onClick={() => speakText(example.de)}
-                      className="text-lg hover:scale-110 transition-transform"
-                      aria-label="Listen to sentence"
-                    >
-                      🔊
-                    </button>
-                  </div>
-
-                  <p className="text-gray-500">{example.en}</p>
-                </div>
-              ))}
-            </div>
+            <ExampleSentences examples={word.examples} />
           </>
         )}
 

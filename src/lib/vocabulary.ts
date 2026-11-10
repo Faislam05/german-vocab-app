@@ -47,16 +47,34 @@ export const LESSON_FILE = "/data/lektion_01_enriched_with_emojis.json";
 // localStorage key for the user's Learning / Known progress.
 const STUDY_STATUS_KEY = "studyStatus";
 
+// Note on try/catch below: reading or writing localStorage can fail,
+// for example if the saved data is broken or the browser blocks storage
+// (some private-browsing modes). Instead of crashing the page, we fall
+// back to "nothing saved" and log the problem.
+
 export function loadStudyStatus(): StudyStatus {
   if (typeof window === "undefined") return {};
 
-  const savedStatus = localStorage.getItem(STUDY_STATUS_KEY);
+  try {
+    const savedStatus = localStorage.getItem(STUDY_STATUS_KEY);
+    const parsed = savedStatus ? JSON.parse(savedStatus) : {};
 
-  return savedStatus ? JSON.parse(savedStatus) : {};
+    // Only accept a plain object like { "arbeiten": "known" }
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed
+      : {};
+  } catch (error) {
+    console.error("Could not read saved study status:", error);
+    return {};
+  }
 }
 
 export function saveStudyStatus(status: StudyStatus) {
-  localStorage.setItem(STUDY_STATUS_KEY, JSON.stringify(status));
+  try {
+    localStorage.setItem(STUDY_STATUS_KEY, JSON.stringify(status));
+  } catch (error) {
+    console.error("Could not save study status:", error);
+  }
 }
 
 // localStorage key for the last chosen study direction, so the Home
@@ -66,13 +84,28 @@ const STUDY_DIRECTION_KEY = "studyDirection";
 export function loadStudyDirection(): StudyDirection {
   if (typeof window === "undefined") return "de-en";
 
-  return localStorage.getItem(STUDY_DIRECTION_KEY) === "en-de"
-    ? "en-de"
-    : "de-en";
+  try {
+    return localStorage.getItem(STUDY_DIRECTION_KEY) === "en-de"
+      ? "en-de"
+      : "de-en";
+  } catch {
+    return "de-en";
+  }
 }
 
 export function saveStudyDirection(direction: StudyDirection) {
-  localStorage.setItem(STUDY_DIRECTION_KEY, direction);
+  try {
+    localStorage.setItem(STUDY_DIRECTION_KEY, direction);
+  } catch (error) {
+    console.error("Could not save study direction:", error);
+  }
+}
+
+// Turns "proper_noun" into "Proper Noun" for the part-of-speech badge.
+export function formatPartOfSpeech(value: string) {
+  return value
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 // Returns a shuffled copy of a list (the original list is not changed).

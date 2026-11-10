@@ -572,11 +572,19 @@ german-vocab-app/
 │   │   ├── page.tsx              ← Home screen (lesson overview)
 │   │   └── study/
 │   │       ├── page.tsx          ← /study route (Suspense wrapper)
-│   │       └── StudySession.tsx  ← flashcard study screen
+│   │       └── StudySession.tsx  ← flashcard study screen (state + logic)
+│   │
+│   ├── components/               ← reusable pieces of the interface
+│   │   ├── ListenButton.tsx      ← 🔊 button (pill or icon-only)
+│   │   ├── ExampleSentences.tsx  ← example sentence list
+│   │   └── StudyTopBar.tsx       ← Study top bar + progress bar
 │   │
 │   └── lib/
-│       └── vocabulary.ts         ← shared types, lesson file path,
-│                                    localStorage helpers, filter logic
+│       ├── vocabulary.ts         ← shared types, lesson file path,
+│       │                            localStorage helpers, filter,
+│       │                            shuffle and formatting helpers
+│       └── useLessonData.ts      ← hook that loads the lesson JSON
+│                                    (used by Home and Study)
 │
 ├── public/
 │   └── data/
@@ -589,6 +597,13 @@ german-vocab-app/
 ```
 
 The exact project structure should always be inspected before editing.
+
+### Component guideline
+
+- Screens (`src/app/.../page.tsx`, `StudySession.tsx`) hold the state and decide what happens.
+- Components (`src/components/`) only display things and report clicks, receiving everything through props.
+- Split a piece out into a component when it is reused or when a screen file becomes hard to read — not for every button.
+- All localStorage reads/writes go through helpers in `src/lib/vocabulary.ts`, which use try/catch so broken or blocked storage cannot crash the app.
 
 ---
 
