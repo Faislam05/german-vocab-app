@@ -108,7 +108,7 @@ The app has two screens.
 
 The lesson overview. It shows:
 
-- lesson picker: numbered boxes under the label "Lektion" (1, 2, … 6 per row) plus "All" (two boxes wide). Each box has a tiny bar showing its Mastered %; the exact % is in its tooltip and screen-reader label. Sized for all 10 lessons of the book: 2 rows, still fits a small phone (tested with 10 test lessons). The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
+- lesson picker: numbered boxes under the label "Lektion" (1, 2, … 6 per row) plus "All" (two boxes wide). Each box has a tiny bar showing its Mastered %; the exact % is in its tooltip and screen-reader label. Sized for all 10 lessons of the book: 2 rows, still fits a small phone (tested with 10 test lessons). Lessons of the book that are not added yet (up to `BOOK_LESSON_COUNT = 10` in `src/lib/vocabulary.ts`) are shown as dashed, greyed-out placeholder boxes that cannot be clicked; a box becomes a real button as soon as that lesson is added to `lessons.json`. The choice is remembered in localStorage (`selectedLesson`); the first visit starts with the first lesson.
 - title of the chosen lesson and its word count
 - "Word type" dropdown (see "Word Type Filter")
 - Learning and Mastered counts, Mastered percentage and a progress bar

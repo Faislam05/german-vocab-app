@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLessons } from "@/lib/useLessons";
 import {
+  BOOK_LESSON_COUNT,
   LessonChoice,
   StudyDirection,
   StudyStatus,
@@ -96,24 +97,38 @@ export default function Home() {
     return `/study?lesson=${lessonChoice}&filter=${filter}&direction=${direction}${typePart}`;
   }
 
-  // One button per lesson, plus "All"
+  // One box for every lesson of the book (1 to 10), plus "All".
+  // Lessons that are not added yet become placeholders ("available: false").
+  const lastLessonNumber = Math.max(
+    BOOK_LESSON_COUNT,
+    ...lessons.map((lesson) => lesson.lesson)
+  );
+
   const lessonButtons: {
     choice: LessonChoice;
     label: string; // shown in the box: "3" or "All"
     name: string; // read out by screen readers: "Lektion 3"
     percent: number;
+    available: boolean;
   }[] = [
-    ...lessons.map((lesson) => ({
-      choice: lesson.lesson as LessonChoice,
-      label: String(lesson.lesson),
-      name: `Lektion ${lesson.lesson}`,
-      percent: percentMastered(lesson.vocabulary),
-    })),
+    ...Array.from({ length: lastLessonNumber }, (_, i) => {
+      const number = i + 1;
+      const lesson = lessons.find((item) => item.lesson === number);
+
+      return {
+        choice: number as LessonChoice,
+        label: String(number),
+        name: `Lektion ${number}`,
+        percent: lesson ? percentMastered(lesson.vocabulary) : 0,
+        available: lesson !== undefined,
+      };
+    }),
     {
       choice: "all",
       label: "All",
       name: "All lessons",
       percent: percentMastered(selectLesson(lessons, "all").vocabulary),
+      available: true,
     },
   ];
 
@@ -142,13 +157,29 @@ export default function Home() {
 
           {/* Lesson picker: numbered boxes (6 per row), each with a tiny
               bar showing how much of that lesson is Mastered. "All" takes
-              two boxes. The chosen lesson is highlighted in marker yellow. */}
+              two boxes. The chosen lesson is highlighted in marker yellow.
+              Lessons not added yet are dashed placeholders. */}
 
           <p className="text-sm text-pencil mb-1.5">Lektion</p>
 
           <div className="grid grid-cols-6 gap-1.5 mb-4">
             {lessonButtons.map((button) => {
               const isChosen = lessonChoice === button.choice;
+
+              // Not added yet: a dashed, greyed-out box that can't be clicked
+              if (!button.available) {
+                return (
+                  <button
+                    key={String(button.choice)}
+                    disabled
+                    aria-label={`${button.name}, not added yet`}
+                    title={`${button.name}: not added yet`}
+                    className="h-11 px-1.5 pt-1.5 rounded-lg border border-dashed border-graphite/20 text-sm leading-none text-graphite/30 flex flex-col cursor-not-allowed"
+                  >
+                    {button.label}
+                  </button>
+                );
+              }
 
               return (
                 <button

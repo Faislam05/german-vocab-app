@@ -51,6 +51,10 @@ export type LessonIndexEntry = {
   file: string; // file name inside public/data/
 };
 
+// How many lessons the textbook has. Lessons not added yet are shown on
+// Home as greyed-out placeholder boxes that can't be clicked.
+export const BOOK_LESSON_COUNT = 10;
+
 // What the user chose to study: one lesson number, or "all" lessons.
 export type LessonChoice = number | "all";
 
