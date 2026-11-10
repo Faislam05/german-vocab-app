@@ -93,14 +93,14 @@ The app has two screens.
 The lesson overview. It shows:
 
 - lesson number, CEFR level and title
-- known-word percentage with a progress bar
+- mastered-word percentage with a progress bar
 - Learning count
-- Known count
+- Mastered count
 - direction toggle: 🇩🇪 → 🇬🇧 or 🇬🇧 → 🇩🇪 (see "Study Direction")
 - three study buttons, each with its word count (the direction is added to each link, e.g. `&direction=en-de`):
   - Study Learning words → `/study?filter=learning`
   - Study all words → `/study?filter=all`
-  - Review Known words → `/study?filter=known`
+  - Review Mastered words → `/study?filter=mastered`
 - a keyboard shortcut hint
 
 ## Study screen (`/study`)
@@ -127,7 +127,7 @@ After revealing (or always, when Flashcard mode is Off):
 
 - English meaning
 - plural where available
-- Learning / Known buttons
+- Learning / Mastered buttons
 - approximately three German example sentences
 - English translations
 - pronunciation button for each German sentence
@@ -188,8 +188,10 @@ The current states are only:
 
 ```text
 Learning
-Known
+Mastered
 ```
+
+The Mastered state was previously called "Known" and saved as `"known"`. It is now `"mastered"` everywhere: interface, code, URLs (`filter=mastered`) and saved data. Older saved progress is converted automatically: `migrateStudyStatus()` in `src/lib/vocabulary.ts` changes any `"known"` values to `"mastered"` when progress is loaded and saves the result.
 
 Every vocabulary word should behave as:
 
@@ -201,7 +203,7 @@ by default.
 
 The user does not need to manually mark a new word as Learning.
 
-A word becomes Known only when the user explicitly marks it as Known.
+A word becomes Mastered only when the user explicitly marks it as Mastered.
 
 Study status is saved using browser `localStorage`.
 
@@ -217,7 +219,7 @@ Example:
 
 ```json
 {
-  "arbeiten": "known",
+  "arbeiten": "mastered",
   "der Beruf": "learning"
 }
 ```
@@ -233,7 +235,7 @@ The app currently provides:
 ```text
 All
 Learning
-Known
+Mastered
 ```
 
 The filter is chosen on the Home screen and passed to the Study screen in the URL, e.g. `/study?filter=learning`.
@@ -246,13 +248,13 @@ Shows every vocabulary word.
 
 ### Learning
 
-Shows words that are not marked Known.
+Shows words that are not marked Mastered.
 
 This includes words without an explicit saved status.
 
-### Known
+### Mastered
 
-Shows only words explicitly marked Known.
+Shows only words explicitly marked Mastered.
 
 ---
 
@@ -262,19 +264,19 @@ The app currently displays:
 
 ```text
 Learning: X
-Known: Y
+Mastered: Y
 ```
 
-Known count is calculated from words explicitly marked:
+Mastered count is calculated from words explicitly marked:
 
 ```text
-known
+mastered
 ```
 
 Learning count is:
 
 ```text
-total vocabulary - known vocabulary
+total vocabulary - mastered vocabulary
 ```
 
 This means untouched words count as Learning.
@@ -302,7 +304,7 @@ For now, the app should use:
 
 ```text
 Learning
-Known
+Mastered
 ```
 
 instead.
@@ -437,7 +439,7 @@ After revealing the answer, the card shows:
 
 - English meaning
 - plural
-- Learning / Known controls
+- Learning / Mastered controls
 - examples
 
 Keyboard shortcut:
@@ -448,7 +450,7 @@ Spacebar → Reveal answer
 
 How it works:
 
-- `revealMode` (true/false) — whether Flashcard mode is on. It is on by default and not saved; it resets to On when the Study screen opens.
+- `revealMode` (true/false) — whether Flashcard mode is on. Default (both directions): Off for "Study all words" (read through everything), On for "Study Learning words" and "Review Mastered words" (test yourself). It is not saved; it resets to that default when the Study screen opens. The top-bar toggle can change it.
 - `revealedWord` — the word that has been revealed. Because it stores the word itself, moving to a different word hides the answer again automatically, with no manual reset.
 
 ---
@@ -459,12 +461,12 @@ Implemented on the Study screen with the 🔀 button.
 
 - Off by default: words appear in textbook order.
 - When turned on, the lesson words are shuffled once (`shuffleArray()` in `src/lib/vocabulary.ts`, a Fisher–Yates shuffle) and stored in `shuffledVocabulary`.
-- The order stays the same while studying, including going back with Previous and marking words Known.
+- The order stays the same while studying, including going back with Previous and marking words Mastered.
 - Turning it off returns to textbook order; turning it on again gives a new random order.
 - It starts again from the first card whenever it is toggled.
 - Not saved; it resets to Off when the Study screen opens.
 
-The filter is applied after shuffling, so shuffle works with All, Learning and Known.
+The filter is applied after shuffling, so shuffle works with All, Learning and Mastered.
 
 ---
 
@@ -482,18 +484,18 @@ studyDirection
 
 - Question: German word + 🔊 Listen. Emoji shows ❓ until revealed.
 - Button: Show Meaning
-- Answer: English meaning, plural, Learning/Known, examples
+- Answer: English meaning, plural, Learning/Mastered, examples
 
 ### English → German (`en-de`)
 
 - Question: English meaning + part of speech. Emoji is shown as a hint.
 - Button: Show German
-- Answer: German word with article, 🔊 Listen, plural, Learning/Known, examples
+- Answer: German word with article, 🔊 Listen, plural, Learning/Mastered, examples
 - Listen, plural and examples stay hidden until revealed, because they give away the German word.
 
 The answer is self-checked (reveal and compare); nothing is typed. A possible later step is a typed-answer mode that checks spelling and article.
 
-Learning/Known status is shared between both directions.
+Learning/Mastered status is shared between both directions.
 
 ---
 
@@ -508,7 +510,7 @@ Potential future development includes:
 - review scheduling
 - quiz mode
 - typed answers for English → German (check spelling and article)
-- separate Learning/Known status per direction
+- separate Learning/Mastered status per direction
 - article colours (der / die / das)
 
 ### Progress

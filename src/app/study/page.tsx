@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import StudySession from "./StudySession";
 
-// The Study screen lives at /study?filter=all|learning|known
+// The Study screen lives at /study?filter=all|learning|mastered
 //
 // StudySession reads the filter from the URL with useSearchParams().
 // Next.js requires a <Suspense> boundary around components that do

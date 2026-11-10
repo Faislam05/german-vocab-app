@@ -37,13 +37,13 @@ export default function Home() {
 
   const totalCount = lessonData.vocabulary.length;
 
-  const knownCount = lessonData.vocabulary.filter(
-    (item) => studyStatus[item.word] === "known"
+  const masteredCount = lessonData.vocabulary.filter(
+    (item) => studyStatus[item.word] === "mastered"
   ).length;
 
-  const learningCount = totalCount - knownCount;
+  const learningCount = totalCount - masteredCount;
 
-  const knownPercent = Math.round((knownCount / totalCount) * 100);
+  const masteredPercent = Math.round((masteredCount / totalCount) * 100);
 
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
@@ -64,14 +64,14 @@ export default function Home() {
 
         <div className="mb-6">
           <div className="flex justify-between text-sm text-gray-500 mb-2">
-            <span>Known</span>
-            <span>{knownPercent}%</span>
+            <span>Mastered</span>
+            <span>{masteredPercent}%</span>
           </div>
 
           <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
             <div
               className="h-full bg-black transition-all duration-300"
-              style={{ width: `${knownPercent}%` }}
+              style={{ width: `${masteredPercent}%` }}
             />
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function Home() {
           </span>
 
           <span className="px-3 py-1 rounded-full bg-gray-100">
-            Known: {knownCount}
+            Mastered: {masteredCount}
           </span>
         </div>
 
@@ -126,10 +126,10 @@ export default function Home() {
           </Link>
 
           <Link
-            href={`/study?filter=known&direction=${direction}`}
+            href={`/study?filter=mastered&direction=${direction}`}
             className="block w-full text-center px-5 py-3 rounded-full bg-gray-200 hover:bg-gray-300"
           >
-            Review Known words ({knownCount})
+            Review Mastered words ({masteredCount})
           </Link>
         </div>
 

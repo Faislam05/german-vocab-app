@@ -21,7 +21,7 @@ import {
 const filterLabels: Record<StudyFilter, string> = {
   all: "All",
   learning: "Learning",
-  known: "Known",
+  mastered: "Mastered",
 };
 
 export default function StudySession() {
@@ -29,7 +29,7 @@ export default function StudySession() {
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter");
   const studyFilter: StudyFilter =
-    filterParam === "learning" || filterParam === "known"
+    filterParam === "learning" || filterParam === "mastered"
       ? filterParam
       : "all";
 
@@ -46,7 +46,11 @@ export default function StudySession() {
     useState<StudyStatus>(loadStudyStatus);
 
   // Flashcard Reveal Mode: when on, the answer is hidden until revealed.
-  const [revealMode, setRevealMode] = useState(true);
+  // Default (both directions):
+  // - Off for "All words" (read through everything)
+  // - On for "Learning" and "Mastered" (test yourself)
+  // The toggle in the top bar can still change it.
+  const [revealMode, setRevealMode] = useState(studyFilter !== "all");
 
   // Stores which word has been revealed. Moving to another word
   // automatically hides the answer again, because the word changes.
@@ -159,7 +163,7 @@ export default function StudySession() {
     );
   }
 
-  function updateStudyStatus(status: "learning" | "known") {
+  function updateStudyStatus(status: "learning" | "mastered") {
     setStudyStatus((currentStatus) => {
       const updatedStatus = {
         ...currentStatus,
@@ -268,7 +272,7 @@ export default function StudySession() {
               )}
             </div>
 
-            {/* Learning / Known buttons */}
+            {/* Learning / Mastered buttons */}
 
             <div className="flex justify-center gap-2 mt-4 mb-4">
               <button
@@ -283,14 +287,14 @@ export default function StudySession() {
               </button>
 
               <button
-                onClick={() => updateStudyStatus("known")}
+                onClick={() => updateStudyStatus("mastered")}
                 className={`px-4 py-2 rounded-full text-sm ${
-                  studyStatus[word.word] === "known"
+                  studyStatus[word.word] === "mastered"
                     ? "bg-black text-white"
                     : "bg-gray-200"
                 }`}
               >
-                Known
+                Mastered
               </button>
             </div>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type StudyTopBarProps = {
-  // e.g. "All", "Learning", "Known"
+  // e.g. "All", "Learning", "Mastered"
   filterLabel: string;
 
   // Card number (starting at 1) and how many cards there are

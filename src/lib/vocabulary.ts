@@ -30,21 +30,21 @@ export type LessonData = {
   vocabulary: VocabularyCard[];
 };
 
-export type StudyFilter = "all" | "learning" | "known";
+export type StudyFilter = "all" | "learning" | "mastered";
 
 // Which way the flashcards are asked:
 // "de-en" = see German, recall English (default)
 // "en-de" = see English, recall German (with article)
 export type StudyDirection = "de-en" | "en-de";
 
-// Maps a vocabulary word to "learning" or "known".
+// Maps a vocabulary word to "learning" or "mastered".
 // Words that are missing count as "learning".
 export type StudyStatus = Record<string, string>;
 
 // The lesson file currently used by the app.
 export const LESSON_FILE = "/data/lektion_01_enriched_with_emojis.json";
 
-// localStorage key for the user's Learning / Known progress.
+// localStorage key for the user's Learning / Mastered progress.
 const STUDY_STATUS_KEY = "studyStatus";
 
 // Note on try/catch below: reading or writing localStorage can fail,
@@ -59,14 +59,40 @@ export function loadStudyStatus(): StudyStatus {
     const savedStatus = localStorage.getItem(STUDY_STATUS_KEY);
     const parsed = savedStatus ? JSON.parse(savedStatus) : {};
 
-    // Only accept a plain object like { "arbeiten": "known" }
-    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
-      ? parsed
-      : {};
+    // Only accept a plain object like { "arbeiten": "mastered" }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+
+    return migrateStudyStatus(parsed);
   } catch (error) {
     console.error("Could not read saved study status:", error);
     return {};
   }
+}
+
+// One-time conversion of older saved progress.
+// "Mastered" used to be called "Known" and was saved as "known".
+// Any "known" values are changed to "mastered" and saved back, so old
+// progress keeps working. Once converted, this does nothing.
+function migrateStudyStatus(status: StudyStatus): StudyStatus {
+  let changed = false;
+  const migrated: StudyStatus = {};
+
+  for (const [word, value] of Object.entries(status)) {
+    if (value === "known") {
+      migrated[word] = "mastered";
+      changed = true;
+    } else {
+      migrated[word] = value;
+    }
+  }
+
+  if (changed) {
+    saveStudyStatus(migrated);
+  }
+
+  return migrated;
 }
 
 export function saveStudyStatus(status: StudyStatus) {
@@ -128,11 +154,11 @@ export function filterVocabulary(
   filter: StudyFilter
 ) {
   if (filter === "learning") {
-    return vocabulary.filter((item) => studyStatus[item.word] !== "known");
+    return vocabulary.filter((item) => studyStatus[item.word] !== "mastered");
   }
 
-  if (filter === "known") {
-    return vocabulary.filter((item) => studyStatus[item.word] === "known");
+  if (filter === "mastered") {
+    return vocabulary.filter((item) => studyStatus[item.word] === "mastered");
   }
 
   return vocabulary;
