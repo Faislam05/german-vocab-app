@@ -115,140 +115,173 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex justify-center px-4 py-6 sm:p-10">
-      <div className="w-full max-w-md lg:max-w-3xl">
-        {/* Header with overall progress */}
+    // The page is exactly one screen tall and has two parts:
+    // 1. a fixed top part (title, progress, Continue, column headings)
+    // 2. a scroll area below it with the lessons and practice
+    <main className="h-dvh flex justify-center px-4 sm:px-10">
+      <div className="w-full max-w-md sm:max-w-2xl lg:max-w-5xl flex flex-col min-h-0">
+        {/* ---------- 1. Fixed top part ---------- */}
 
-        <header className="mb-5">
-          <h1 className="font-serif text-4xl font-semibold leading-tight">
-            German A1
-          </h1>
+        <div className="shrink-0 pt-6 sm:pt-10">
+          {/* Header with overall progress */}
 
-          <div className="flex justify-between text-sm text-pencil mt-1 mb-1.5">
-            <span>
-              Mastered <strong className="text-graphite">{allMastered}</strong>{" "}
-              of {allWords.length} words
-            </span>
-            <span>{allPercent}%</span>
+          <header className="mb-5">
+            <h1 className="font-serif text-4xl font-semibold leading-tight">
+              German A1
+            </h1>
+
+            <div className="flex justify-between text-sm text-pencil mt-1 mb-1.5">
+              <span>
+                Mastered{" "}
+                <strong className="text-graphite">{allMastered}</strong> of{" "}
+                {allWords.length} words
+              </span>
+              <span>{allPercent}%</span>
+            </div>
+
+            <div className="w-full h-2 bg-grid rounded-full overflow-hidden border border-graphite/10">
+              <div
+                className="h-full bg-marker-strong"
+                style={{ width: `${allPercent}%` }}
+              />
+            </div>
+          </header>
+
+          {/* Continue: one tap back to where you left off */}
+
+          {continueCard && (
+            <Link
+              href={continueCard.href}
+              className={`flex items-center justify-between gap-4 mb-5 p-4 rounded-2xl bg-graphite text-paper hover:bg-black ${pressable}`}
+            >
+              <span className="min-w-0">
+                <span className="block text-xs text-paper/70 mb-0.5">
+                  {continueCard.label}
+                </span>
+                <span className="block font-semibold truncate">
+                  {continueCard.title}
+                </span>
+                <span className="block text-sm text-paper/80">
+                  {continueCard.detail}
+                </span>
+              </span>
+
+              <span className="text-2xl" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          )}
+
+          {/* Column headings (same columns as the scroll area below) */}
+
+          <div className="grid grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-3 lg:grid-cols-3 lg:gap-6 pb-2">
+            <h2 className="font-serif text-2xl font-semibold lg:col-span-2">
+              Lessons
+            </h2>
+            <h2 className="font-serif text-2xl font-semibold">Practice</h2>
           </div>
-
-          <div className="w-full h-2 bg-grid rounded-full overflow-hidden border border-graphite/10">
-            <div
-              className="h-full bg-marker-strong"
-              style={{ width: `${allPercent}%` }}
-            />
-          </div>
-        </header>
-
-        {/* Continue: one tap back to where you left off */}
-
-        {continueCard && (
-          <Link
-            href={continueCard.href}
-            className={`flex items-center justify-between gap-4 mb-7 p-4 rounded-2xl bg-graphite text-paper hover:bg-black ${pressable}`}
-          >
-            <span className="min-w-0">
-              <span className="block text-xs text-paper/70 mb-0.5">
-                {continueCard.label}
-              </span>
-              <span className="block font-semibold truncate">
-                {continueCard.title}
-              </span>
-              <span className="block text-sm text-paper/80">
-                {continueCard.detail}
-              </span>
-            </span>
-
-            <span className="text-2xl" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        )}
-
-        {/* Lessons of the book. Lessons not added yet are smaller dashed
-            placeholders that can't be clicked (two per row on phones,
-            while added lessons use the full width). */}
-
-        <h2 className="font-serif text-2xl font-semibold mb-2">Lessons</h2>
-
-        <div className="grid grid-cols-2 gap-2 mb-7">
-          {book.chapters.map((chapter) => {
-            const lesson = book.lessons.find(
-              (item) => item.lesson === chapter.lesson
-            );
-
-            if (!lesson) {
-              return (
-                <div
-                  key={chapter.lesson}
-                  className="p-3 rounded-xl border border-dashed border-graphite/20 text-graphite/40"
-                >
-                  <p className="text-xs">{chapter.title}</p>
-                  <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
-                    {chapter.chapter}
-                  </p>
-                  <p className="text-xs">Not added yet</p>
-                </div>
-              );
-            }
-
-            const percent = percentMastered(lesson.vocabulary);
-
-            return (
-              <Link
-                key={chapter.lesson}
-                href={`/lesson/${chapter.lesson}`}
-                className={`block col-span-2 sm:col-span-1 p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 ${pressable}`}
-              >
-                <p className="text-xs text-pencil">{chapter.title}</p>
-                <p className="font-serif font-semibold leading-snug">
-                  {chapter.chapter}
-                </p>
-                <p className="text-xs text-pencil mb-2">{chapter.chapter_en}</p>
-
-                <div className="flex items-center gap-2 text-xs text-pencil">
-                  <span className="shrink-0">{lesson.vocabulary.length} words</span>
-                  <span className="flex-1 h-1.5 bg-grid rounded-full overflow-hidden">
-                    <span
-                      className="block h-full bg-marker-strong"
-                      style={{ width: `${percent}%` }}
-                    />
-                  </span>
-                  <span className="shrink-0">{percent}%</span>
-                </div>
-              </Link>
-            );
-          })}
-
-          {/* All lessons together */}
-
-          <Link
-            href="/lesson/all"
-            className={`block p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 col-span-2 ${pressable}`}
-          >
-            <p className="font-serif font-semibold">All lessons</p>
-            <p className="text-xs text-pencil">
-              Study the words of every added lesson together ({allWords.length}{" "}
-              words)
-            </p>
-          </Link>
         </div>
 
-        {/* Other ways to practise: placeholders for now */}
+        {/* ---------- 2. Scroll area ----------
+            Two columns, on phones too: Lessons on the left (a bit wider),
+            Practice on the right. Practice is "sticky": it stays in view
+            while you scroll down the lessons. On desktop the lessons get
+            two cards per row. The small side padding keeps card shadows
+            from being cut off at the edges. */}
 
-        <h2 className="font-serif text-2xl font-semibold mb-2">Practice</h2>
+        <div className="flex-1 min-h-0 overflow-y-auto -mx-2 px-2 pt-1 pb-6 sm:pb-10">
+          <div className="grid grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-3 lg:grid-cols-3 lg:gap-6 items-start">
+            {/* Lessons of the book. Lessons not added yet are dashed
+              placeholders that can't be clicked. */}
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-          {PRACTICE_IDEAS.map((idea) => (
-            <div
-              key={idea.title}
-              className="p-3 rounded-xl border border-dashed border-graphite/20 text-graphite/40"
-            >
-              <p className="font-serif font-semibold">{idea.title}</p>
-              <p className="text-xs">{idea.text}</p>
-              <p className="text-xs mt-1">Coming soon</p>
-            </div>
-          ))}
+            <section className="lg:col-span-2" aria-label="Lessons">
+              <div className="grid gap-2 lg:grid-cols-2">
+                {book.chapters.map((chapter) => {
+                  const lesson = book.lessons.find(
+                    (item) => item.lesson === chapter.lesson
+                  );
+
+                  if (!lesson) {
+                    return (
+                      <div
+                        key={chapter.lesson}
+                        className="p-2.5 sm:p-3 rounded-xl border border-dashed border-graphite/20 text-graphite/40"
+                      >
+                        <p className="text-xs">{chapter.title}</p>
+                        <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
+                          {chapter.chapter}
+                        </p>
+                        <p className="text-xs">Not added yet</p>
+                      </div>
+                    );
+                  }
+
+                  const percent = percentMastered(lesson.vocabulary);
+
+                  return (
+                    <Link
+                      key={chapter.lesson}
+                      href={`/lesson/${chapter.lesson}`}
+                      className={`block p-2.5 sm:p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 ${pressable}`}
+                    >
+                      <p className="text-xs text-pencil">{chapter.title}</p>
+                      <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
+                        {chapter.chapter}
+                      </p>
+                      <p className="text-xs text-pencil mb-2">
+                        {chapter.chapter_en}
+                      </p>
+
+                      <div className="flex justify-between text-xs text-pencil mb-1">
+                        <span>{lesson.vocabulary.length} words</span>
+                        <span>{percent}%</span>
+                      </div>
+
+                      <div className="h-1.5 bg-grid rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-marker-strong"
+                          style={{ width: `${percent}%` }}
+                        />
+                      </div>
+                    </Link>
+                  );
+                })}
+
+                {/* All lessons together */}
+
+                <Link
+                  href="/lesson/all"
+                  className={`block p-2.5 sm:p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 lg:col-span-2 ${pressable}`}
+                >
+                  <p className="font-serif text-sm sm:text-base font-semibold">
+                    All lessons
+                  </p>
+                  <p className="text-xs text-pencil">
+                    Every added lesson together ({allWords.length} words)
+                  </p>
+                </Link>
+              </div>
+            </section>
+
+            {/* Other ways to practise: placeholders for now */}
+
+            <section className="sticky top-0" aria-label="Practice">
+              <div className="grid gap-2">
+                {PRACTICE_IDEAS.map((idea) => (
+                  <div
+                    key={idea.title}
+                    className="p-2.5 sm:p-3 rounded-xl border border-dashed border-graphite/20 text-graphite/40"
+                  >
+                    <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
+                      {idea.title}
+                    </p>
+                    <p className="text-xs">{idea.text}</p>
+                    <p className="text-xs mt-1">Coming soon</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </main>

@@ -110,10 +110,15 @@ The overview of the whole book (`src/app/page.tsx`). It shows:
 
 - "German A1" and overall progress: Mastered X of Y words, with a bar
 - **Continue** card: one tap back to the last study session (same lesson, filter, direction and word type), e.g. "Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Before the first study session it says "Start learning" and opens the first lesson's page. The last session is saved in localStorage (`lastStudy`) by the Study screen.
-- **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are smaller dashed placeholders ("Not added yet") that cannot be clicked; on phones they are two per row. An "All lessons" card studies every added lesson together.
+- **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.
 - **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Daily review, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
 
-On desktop the lesson cards are two per row. Home is allowed to scroll on phones (it is an overview); the Lesson and Study screens fit on one screen.
+Layout (phone and desktop):
+
+- Home is exactly one screen tall (`h-dvh`) with two parts: a **fixed top** (title, overall progress, Continue card, and the "Lessons" / "Practice" headings) and a **scroll area** below it.
+- In the scroll area there are two columns, on phones too: Lessons on the left (a bit wider, `3fr`) and Practice on the right (`2fr`). On desktop Lessons take two-thirds with two cards per row, Practice one-third.
+- Practice is `sticky`, so only the lesson list moves when you scroll.
+- On desktop everything fits without scrolling. On a small phone (375×667) the scroll area is about 386px tall (about 4 lessons visible at a time).
 
 ## Lesson screen (`/lesson/2` or `/lesson/all`)
 
