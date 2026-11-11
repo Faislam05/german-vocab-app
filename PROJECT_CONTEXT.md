@@ -125,12 +125,11 @@ Layout (phone and desktop):
 
 The choices for studying one lesson (`src/app/lesson/[id]/`). `[id]` in the folder name means "any value": Next.js passes it in as `params.id` (read with `await` in this Next.js version). It shows:
 
-- ← Home link
-- "Lektion 2", the German chapter title, its English meaning and the word count
-- "Word type" dropdown (see "Word Type Filter")
-- Learning and Mastered counts, Mastered percentage and a progress bar
-- direction switch: German → English or English → German (see "Study Direction")
-- three study buttons, each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
+- "← Home" button (white pill)
+- a dark **cover** (graphite, like the Today card on Home): the lesson number in a white square, "Lektion 2", the German chapter title (always room for two lines, so every cover has the same height), its English meaning and the word count (one line), and the **two-tone bar** from Home (learned / mastered) with "18% learned · 4% mastered"
+- **word type chips** (see "Word Type Filter"): `All 76` `Nouns 43` `Verbs 16` …; on short screens (under 700px tall) they are one row you can swipe sideways
+- direction: two rounded buttons, German → English and English → German (see "Study Direction")
+- three study game buttons (Learning filled, the other two white), each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
   - Study Learning words → `filter=learning`
   - Study all words → `filter=all`
   - Review Mastered words → `filter=mastered`
@@ -549,7 +548,7 @@ The cards (Study and Daily review) follow a trading-card mockup made by the user
 
 - **Picture:** the word's emoji, big, on a soft white spotlight (no sparkles), and the level badge (`cefr`, e.g. "A1"). Smaller on screens under 700px tall. Custom illustrations per word were discussed but not made (each word would need its own drawing).
 - **Word pill:** white pill with the speaker button inside (German only); the German word in Fraunces, the article keeps its colour. The English question (English → German) is smaller, in Figtree.
-- **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, Mark as Mastered). "← Back" (Study) and "← Home" (Daily review) are white `btn-secondary` pills. Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on.
+- **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, Mark as Mastered). "← Back" (Study) and "← Home" (Daily review) are white `btn-secondary` pills. Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on. Off the cards the accent is graphite (`:root`), so the Lesson screen uses graphite game buttons. On dark backgrounds (the done screen) there are `.btn-light` (white button) and `.btn-outline-light` (white outline).
 - **Examples panel:** white panel, round listen button per sentence, German bold, English italic, thin dividers in the accent colour.
 - Pages without a word (e.g. "No words here") use plain cream paper (`.cardstock`, a creamy colour with a fine SVG paper grain).
 
@@ -568,7 +567,7 @@ The cards (Study and Daily review) follow a trading-card mockup made by the user
 
 1. **Reviews** first: learned words that are due today (or were missed earlier), oldest first. Answer hidden → Show meaning → Again / Got it.
 2. **New words** in groups of 5: **meet** the 5 words (answer shown: read, listen, Next), then **check** those 5 (answer hidden → Again / Got it). Got it = learned → box 1, back tomorrow.
-3. **Done** screen with today's totals, "Learn 10 more words" and Back to Home.
+3. **Done** screen (dark, like the Today card) with today's totals, "Learn 10 more words" (white button) and Back to Home (white outline).
 
 **Rules:**
 
@@ -684,12 +683,12 @@ The colour comes from the `gender` field in the JSON, not from the article text,
 
 # Word Type Filter
 
-A "Word type" dropdown on the Lesson screen limits studying to one part of speech, e.g. only Verbs.
+Word type chips on the Lesson screen (`All 76`, `Nouns 43`, `Verbs 16`, …) limit studying to one part of speech, e.g. only Verbs. The chosen chip is filled. (It used to be a dropdown.)
 
-- Lists only the types that exist in the chosen lesson, with counts, e.g. `Verbs (16)`. Order and names come from `wordTypesIn()` in `src/lib/vocabulary.ts`.
-- One type at a time; "All types" is the default.
-- Not saved: it resets to "All types" every visit, so a forgotten filter never hides words. (The Continue card on Home does bring back the word type of the last study session.)
-- Counters, Mastered % and the three study buttons on the Lesson screen follow the chosen type. The lesson percentages on Home stay per whole lesson.
+- Shows only the types that exist in the lesson, with counts, e.g. `Verbs 16`. Order and names come from `wordTypesIn()` in `src/lib/vocabulary.ts`.
+- One type at a time; "All" is the default.
+- Not saved: it resets to "All" every visit, so a forgotten filter never hides words. (The Continue card on Home does bring back the word type of the last study session.)
+- The counts on the three study buttons follow the chosen type. The cover bar and the lesson percentages on Home stay per whole lesson.
 - Passed to Study as `&type=verb`; the Study screen does not show it (the card badge already shows the type).
 
 Order of filtering: lesson → word type → Learning/All/Mastered.

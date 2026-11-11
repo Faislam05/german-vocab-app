@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ReviewCards, loadReviewCards } from "@/lib/review";
 import { useBook } from "@/lib/useLessons";
 import {
   StudyDirection,
@@ -16,29 +17,38 @@ import {
   wordTypesIn,
 } from "@/lib/vocabulary";
 
-// Shared button styles. "active:scale" gives a small press feedback.
-const pressable =
-  "transition-[transform,background-color] duration-150 ease-out active:scale-[0.97]";
+// A small rounded choice button (word type chips, direction switch):
+// filled when chosen, white otherwise.
+function choiceStyle(isChosen: boolean) {
+  return `rounded-full border-2 font-bold transition-[transform,background-color] duration-150 ease-out active:scale-[0.96] ${
+    isChosen
+      ? "bg-graphite border-graphite text-white"
+      : "bg-white border-graphite/15 text-graphite hover:border-graphite/40"
+  }`;
+}
 
 type LessonOverviewProps = {
   // From the URL: "2" for /lesson/2, or "all" for /lesson/all
   lessonId: string;
 };
 
-// The lesson page: progress of one lesson (or all lessons), and the
-// choices for studying it — word type, direction and what to study.
+// The lesson page: a cover with the lesson's progress, and the choices for
+// studying it — word type, direction and what to study.
 export default function LessonOverview({ lessonId }: LessonOverviewProps) {
   const book = useBook();
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
 
+  // Daily review progress (for the "learned" part of the progress bar)
+  const [reviewCards] = useState<ReviewCards>(loadReviewCards);
+
   // German → English or English → German (remembered in localStorage)
   const [direction, setDirection] =
     useState<StudyDirection>(loadStudyDirection);
 
-  // Word type chosen in the dropdown ("all" or e.g. "verb").
-  // Not saved on purpose: it starts at "All types" every visit, so a
-  // forgotten filter never hides words.
+  // Word type chosen with the chips ("all" or e.g. "verb").
+  // Not saved on purpose: it starts at "All" every visit, so a forgotten
+  // filter never hides words.
   const [wordTypeChoice, setWordTypeChoice] = useState<WordType>("all");
 
   function chooseDirection(newDirection: StudyDirection) {
@@ -78,10 +88,7 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
               : "There is no lesson with this number."}
           </p>
 
-          <Link
-            href="/"
-            className="inline-block px-5 py-2.5 rounded-xl bg-graphite text-paper font-semibold hover:bg-black"
-          >
+          <Link href="/" className="btn-primary inline-block px-6 py-2.5">
             Back to Home
           </Link>
         </div>
@@ -92,8 +99,21 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
   const lessonChoice = isAll ? "all" : Number(lessonId);
   const { vocabulary } = selectLesson(book.lessons, lessonChoice);
 
-  // Word types that exist in this lesson (for the dropdown).
-  // If the chosen type isn't in this lesson, fall back to "All types".
+  // ---------- The cover: progress of the whole lesson ----------
+
+  const total = vocabulary.length;
+  const learnedCount = vocabulary.filter((word) => reviewCards[word.word]).length;
+  const masteredAll = countMastered(vocabulary, studyStatus);
+  const learnedNotMastered = vocabulary.filter(
+    (word) => reviewCards[word.word] && studyStatus[word.word] !== "mastered"
+  ).length;
+  const percent = (count: number) =>
+    total === 0 ? 0 : Math.round((count / total) * 100);
+
+  // ---------- Word type chips ----------
+
+  // Word types that exist in this lesson. If the chosen type isn't in
+  // this lesson, fall back to "All".
   const wordTypes = wordTypesIn(vocabulary);
   const wordType = wordTypes.some((item) => item.type === wordTypeChoice)
     ? wordTypeChoice
@@ -105,8 +125,6 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
   const totalCount = studyWords.length;
   const masteredCount = countMastered(studyWords, studyStatus);
   const learningCount = totalCount - masteredCount;
-  const masteredPercent =
-    totalCount === 0 ? 0 : Math.round((masteredCount / totalCount) * 100);
 
   // Every study link carries the lesson, filter, direction and word type
   function studyLink(filter: string) {
@@ -121,151 +139,146 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
       <div className="w-full max-w-md sm:max-w-lg">
         <Link
           href="/"
-          className="inline-block text-sm text-pencil hover:text-graphite mb-3"
+          className="btn-secondary inline-flex items-center h-8 px-3 text-sm mb-2.5 sm:mb-4"
         >
           ← Home
         </Link>
 
-        <div>
-          {/* About this lesson */}
+        {/* ---------- Cover ---------- */}
 
-          <section>
-            {/* Header: "Lektion 2", the chapter title and its English meaning */}
+        {/* Dark, like the Today card on Home */}
+        <section className="rounded-3xl bg-graphite text-white shadow-[0_1px_2px_rgba(46,50,56,0.1),0_8px_24px_rgba(46,50,56,0.18)] p-3 sm:p-4 mb-4 sm:mb-5">
+          <div className="flex items-center gap-3.5">
+            {/* Big lesson number */}
+            <span className="shrink-0 grid place-items-center w-14 h-14 rounded-2xl bg-white text-graphite font-serif text-3xl font-semibold">
+              {isAll ? "∑" : lessonId}
+            </span>
 
-            <div className="mb-5">
-              <h1 className="font-serif text-4xl font-semibold leading-tight">
-                {isAll ? "All lessons" : chapter?.title}
+            <div className="min-w-0">
+              <p className="text-xs text-white/70">
+                {isAll ? "All added lessons" : chapter?.title}
+              </p>
+              {/* Always room for two lines of title (at most two), and one
+                  line for the English, so every cover has the same height */}
+              <h1 className="font-serif text-xl sm:text-2xl font-semibold leading-tight line-clamp-2 min-h-[3.125rem] sm:min-h-[3.75rem]">
+                {isAll ? "All lessons" : chapter?.chapter}
               </h1>
-
-              {chapter && (
-                <p className="font-serif text-lg leading-snug">
-                  {chapter.chapter}
-                </p>
-              )}
-
-              <p className="text-sm text-pencil">
+              <p className="text-sm text-white/75 truncate">
                 {chapter ? `${chapter.chapter_en}, ` : ""}
-                {vocabulary.length} words
+                {total} words
               </p>
             </div>
+          </div>
 
-            {/* Word type dropdown: only types that exist in this lesson */}
-
-            <div className="flex items-center gap-2 mb-5 text-sm">
-              <label htmlFor="word-type" className="text-pencil">
-                Word type
-              </label>
-
-              <select
-                id="word-type"
-                value={wordType}
-                onChange={(event) => setWordTypeChoice(event.target.value)}
-                className="px-2 py-1 rounded-lg bg-paper border border-graphite/15 hover:bg-white"
-              >
-                <option value="all">All types ({vocabulary.length})</option>
-
-                {wordTypes.map((item) => (
-                  <option key={item.type} value={item.type}>
-                    {item.name} ({item.count})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Progress of this lesson (and word type) */}
-
-            <div className="mb-5">
-              <div className="flex justify-between text-sm mb-1.5">
-                <span>
-                  Learning: <strong>{learningCount}</strong>
-                  <span className="mx-2 text-graphite/30">|</span>
-                  Mastered: <strong>{masteredCount}</strong>
-                </span>
-
-                <span className="text-pencil">{masteredPercent}%</span>
-              </div>
-
-              <div className="w-full h-2.5 bg-grid rounded-full overflow-hidden border border-graphite/10">
-                <div
-                  className="h-full bg-marker-strong transition-[width] duration-300 ease-out"
-                  style={{ width: `${masteredPercent}%` }}
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* How to study it */}
-
-          <section>
-            {/* Direction */}
-
+          {/* Two-tone bar: dark = Mastered, light = learned in Daily review */}
+          <div className="flex w-full h-2.5 mt-2.5 sm:mt-3.5 bg-white/15 rounded-full overflow-hidden">
             <div
-              className="grid grid-cols-2 gap-1 p-1 mb-4 rounded-xl bg-grid text-sm"
-              role="group"
-              aria-label="Study direction"
+              className="h-full bg-marker-strong"
+              style={{ width: `${percent(masteredAll)}%` }}
+            />
+            <div
+              className="h-full bg-marker"
+              style={{ width: `${percent(learnedNotMastered)}%` }}
+            />
+          </div>
+
+          <p className="flex items-center gap-1.5 text-xs text-white/75 mt-1.5">
+            <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker border border-marker-strong/50" />
+            {percent(learnedCount)}% learned
+            <span className="mx-1">·</span>
+            <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker-strong" />
+            {percent(masteredAll)}% mastered
+          </p>
+        </section>
+
+        {/* ---------- Word type chips ---------- */}
+
+        {/* On short screens (small phones) the chips are one row you can
+            swipe sideways, so the page still fits on one screen. */}
+        <div
+          className="flex flex-wrap gap-1.5 mb-4 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-4 [@media(max-height:700px)]:px-4 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
+          role="group"
+          aria-label="Word type"
+        >
+          <button
+            onClick={() => setWordTypeChoice("all")}
+            aria-pressed={wordType === "all"}
+            className={`shrink-0 px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
+          >
+            All {total}
+          </button>
+
+          {wordTypes.map((item) => (
+            <button
+              key={item.type}
+              onClick={() => setWordTypeChoice(item.type)}
+              aria-pressed={wordType === item.type}
+              className={`shrink-0 px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
             >
-              <button
-                onClick={() => chooseDirection("de-en")}
-                aria-pressed={direction === "de-en"}
-                className={`py-1.5 rounded-lg ${pressable} ${
-                  direction === "de-en"
-                    ? "bg-paper font-semibold shadow-sm"
-                    : "text-pencil hover:text-graphite"
-                }`}
-              >
-                German → English
-              </button>
+              {item.name} {item.count}
+            </button>
+          ))}
+        </div>
 
-              <button
-                onClick={() => chooseDirection("en-de")}
-                aria-pressed={direction === "en-de"}
-                className={`py-1.5 rounded-lg ${pressable} ${
-                  direction === "en-de"
-                    ? "bg-paper font-semibold shadow-sm"
-                    : "text-pencil hover:text-graphite"
-                }`}
-              >
-                English → German
-              </button>
-            </div>
+        {/* ---------- Direction ---------- */}
 
-            {/* What to study */}
+        <div
+          className="grid grid-cols-2 gap-1.5 mb-4 sm:mb-5"
+          role="group"
+          aria-label="Study direction"
+        >
+          <button
+            onClick={() => chooseDirection("de-en")}
+            aria-pressed={direction === "de-en"}
+            className={`py-1.5 text-sm ${choiceStyle(direction === "de-en")}`}
+          >
+            German → English
+          </button>
 
-            <div className="space-y-2.5">
-              <Link
-                href={studyLink("learning")}
-                className={`block w-full text-center px-5 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
-              >
-                Study Learning words ({learningCount})
-              </Link>
+          <button
+            onClick={() => chooseDirection("en-de")}
+            aria-pressed={direction === "en-de"}
+            className={`py-1.5 text-sm ${choiceStyle(direction === "en-de")}`}
+          >
+            English → German
+          </button>
+        </div>
 
-              <Link
-                href={studyLink("all")}
-                className={`block w-full text-center px-5 py-3 rounded-xl bg-paper border border-graphite/15 hover:bg-white ${pressable}`}
-              >
-                Study all words ({totalCount})
-              </Link>
+        {/* ---------- What to study ---------- */}
 
-              <Link
-                href={studyLink("mastered")}
-                className={`block w-full text-center px-5 py-3 rounded-xl bg-paper border border-graphite/15 hover:bg-white ${pressable}`}
-              >
-                Review Mastered words ({masteredCount})
-              </Link>
-            </div>
+        <div className="space-y-3 sm:space-y-3.5">
+          <Link
+            href={studyLink("learning")}
+            className="btn-primary flex items-center justify-center w-full h-12"
+          >
+            Study Learning words ({learningCount})
+          </Link>
 
-            {/* Keyboard hint (only on computers with a mouse/trackpad) */}
+          <Link
+            href={studyLink("all")}
+            className="btn-secondary flex items-center justify-center w-full h-12"
+          >
+            Study all words ({totalCount})
+          </Link>
 
-            <div className="hidden pointer-fine:block text-xs text-pencil mt-5 space-y-1.5">
-              <p>While studying:</p>
-              <p>
-                <Key>Space</Key> reveals the answer
-              </p>
-              <p>
-                <Key>←</Key> <Key>→</Key> move between words
-              </p>
-            </div>
-          </section>
+          <Link
+            href={studyLink("mastered")}
+            className="btn-secondary flex items-center justify-center w-full h-12"
+          >
+            Review Mastered words ({masteredCount})
+          </Link>
+        </div>
+
+        {/* Keyboard hint (only on computers with a mouse/trackpad) */}
+
+        <div className="hidden pointer-fine:block text-xs text-pencil mt-6 space-y-1.5">
+          <p>While studying:</p>
+          <p>
+            <Key>Space</Key> reveals the answer
+          </p>
+          <p>
+            <Key>←</Key> <Key>→</Key> move between words
+          </p>
         </div>
       </div>
     </main>

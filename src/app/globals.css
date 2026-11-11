@@ -80,7 +80,9 @@ body {
    theme; outside a card they fall back to graphite (see :root below).
    - .btn-primary:   filled in the card's dark colour (Show meaning, Next)
    - .btn-secondary: white with a border in the card colour (Previous)
-   Both have a thicker bottom edge (a hard shadow) and sink down when
+   - .btn-light / .btn-outline-light: the same, for dark backgrounds
+     (white button / white outline), e.g. the "All done" screen
+   All have a thicker bottom edge (a hard shadow) and sink down when
    pressed, like a physical button. */
 :root {
   --card-accent: #2e3238;
@@ -88,7 +90,9 @@ body {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-light,
+.btn-outline-light {
   border-radius: 9999px;
   font-weight: 800;
   transition:
@@ -110,22 +114,40 @@ body {
   box-shadow: 0 4px 0 color-mix(in srgb, var(--card-accent) 22%, white);
 }
 
+.btn-light {
+  background-color: white;
+  color: var(--color-graphite);
+  box-shadow: 0 4px 0 rgb(255 255 255 / 0.35);
+}
+
+.btn-outline-light {
+  color: white;
+  border: 2px solid rgb(255 255 255 / 0.4);
+  box-shadow: 0 4px 0 rgb(255 255 255 / 0.15);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover,
-  .btn-secondary:hover {
+  .btn-secondary:hover,
+  .btn-light:hover,
+  .btn-outline-light:hover {
     filter: brightness(1.08);
   }
 }
 
 .btn-primary:active,
-.btn-secondary:active {
+.btn-secondary:active,
+.btn-light:active,
+.btn-outline-light:active {
   transform: translateY(4px);
   box-shadow: 0 0 0 transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn-primary:active,
-  .btn-secondary:active {
+  .btn-secondary:active,
+  .btn-light:active,
+  .btn-outline-light:active {
     transform: none;
   }
 }

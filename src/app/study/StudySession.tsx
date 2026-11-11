@@ -165,7 +165,7 @@ export default function StudySession() {
 
           <Link
             href={backHref}
-            className="inline-block px-5 py-2.5 rounded-xl bg-graphite text-paper font-semibold hover:bg-black"
+            className="btn-primary inline-block px-6 py-2.5"
           >
             Back to the lesson
           </Link>

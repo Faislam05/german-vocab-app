@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import WordCard, {
-  cardFrame,
-  cardStyle,
-  pressable,
-} from "@/components/WordCard";
+import WordCard, { cardFrame, cardStyle } from "@/components/WordCard";
 import { useLessons } from "@/lib/useLessons";
 import {
   DAILY_NEW_WORDS,
@@ -201,7 +197,8 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
     return (
       <main className="min-h-screen flex justify-center items-start px-4 pt-6 sm:pt-10">
-        <div className={`${cardStyle} ${cardFrame()} p-8 text-center`}>
+        {/* Dark, like the Today card on Home and the lesson cover */}
+        <div className={`${cardStyle} bg-graphite text-white p-8 text-center`}>
           <div className="text-5xl mb-4">{didSomething ? "🎉" : "☕"}</div>
 
           <h1 className="font-serif text-3xl font-semibold mb-2">
@@ -209,24 +206,24 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
           </h1>
 
           {didSomething && (
-            <p className="text-pencil mb-6">
+            <p className="text-white/75 mb-6">
               Today: {learnedToday} new words learned, {reviewedToday}{" "}
               reviewed
             </p>
           )}
 
           {!didSomething && (
-            <p className="text-pencil mb-6">
+            <p className="text-white/75 mb-6">
               You have no words to review yet. Come back tomorrow for your
               reviews.
             </p>
           )}
 
-          <div className="space-y-2.5">
+          <div className="space-y-3.5">
             {newWordsLeft && (
               <button
                 onClick={learnMore}
-                className={`block w-full px-5 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
+                className="btn-light block w-full h-12"
               >
                 Learn {DAILY_NEW_WORDS} more words
               </button>
@@ -234,7 +231,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
             <Link
               href="/"
-              className={`block w-full px-5 py-3 rounded-xl bg-paper border border-graphite/15 hover:bg-white ${pressable}`}
+              className="btn-outline-light flex items-center justify-center w-full h-12"
             >
               Back to Home
             </Link>
