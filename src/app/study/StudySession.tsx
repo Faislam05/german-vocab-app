@@ -3,10 +3,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import ExampleSentences from "@/components/ExampleSentences";
-import GermanWord from "@/components/GermanWord";
-import ListenButton from "@/components/ListenButton";
 import StudyTopBar from "@/components/StudyTopBar";
+import WordCard, { cardStyle, pressable } from "@/components/WordCard";
 import { useLessons } from "@/lib/useLessons";
 import {
   StudyFilter,
@@ -14,7 +12,6 @@ import {
   VocabularyCard,
   filterByWordType,
   filterVocabulary,
-  formatPartOfSpeech,
   loadStudyStatus,
   parseLessonChoice,
   saveLastStudy,
@@ -22,18 +19,6 @@ import {
   selectLesson,
   shuffleArray,
 } from "@/lib/vocabulary";
-
-// The flashcard: a white sheet lying on the squared paper
-const cardStyle =
-  "bg-white rounded-2xl border border-graphite/10 shadow-[0_1px_2px_rgba(46,50,56,0.06),0_8px_24px_rgba(46,50,56,0.08)] w-full max-w-md sm:max-w-lg";
-
-// Small press feedback for buttons
-const pressable =
-  "transition-[transform,background-color] duration-150 ease-out active:scale-[0.97]";
-
-// The German word gets a yellow highlighter stroke behind its lower half
-const highlighter =
-  "px-1 box-decoration-clone bg-[linear-gradient(transparent_58%,var(--color-marker)_58%)]";
 
 const filterLabels: Record<StudyFilter, string> = {
   all: "All words",
@@ -193,9 +178,6 @@ export default function StudySession() {
 
   const word = visibleVocabulary[safeIndex];
 
-  // e.g. "Verb", "Question Word"
-  const partOfSpeech = formatPartOfSpeech(word.part_of_speech);
-
   // Show the answer if reveal mode is off, or this word was revealed.
   const showAnswer = !revealMode || revealedWord === word.word;
 
@@ -263,88 +245,13 @@ export default function StudySession() {
             moveDirection === "next" ? "card-in-next" : "card-in-previous"
           }
         >
-          {/* Emoji visual. German → English: hidden until revealed, since it
-              hints at the meaning. English → German: always shown as a hint. */}
-
-          <div className="w-full h-14 sm:h-20 rounded-xl mb-2 bg-paper border border-grid flex items-center justify-center">
-            <span className="text-4xl sm:text-6xl">
-              {showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓"}
-            </span>
-          </div>
-
-          {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
-
-          <div className="text-center">
-            {isEnglishToGerman ? (
-              <>
-                {/* Same size as the English meaning in German → English, so
-                    the German word is always the biggest thing on the card */}
-                <h1 className="text-2xl mb-1">{word.english}</h1>
-
-                <p className="text-sm text-pencil mb-3">{partOfSpeech}</p>
-              </>
-            ) : (
-              <>
-                <h1 className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
-                  <span className={highlighter}>
-                    <GermanWord word={word} />
-                  </span>
-                </h1>
-
-                {/* Part of speech and Listen on one row, to save space */}
-                <div className="flex items-center justify-center gap-3 mb-3">
-                  <span className="text-sm text-pencil">{partOfSpeech}</span>
-                  <ListenButton text={word.tts_text} />
-                </div>
-              </>
-            )}
-          </div>
-
-          {/* Reveal button (only while the answer is hidden) */}
-
-          {!showAnswer && (
-            <div className="text-center mt-1">
-              <button
-                onClick={() => setRevealedWord(word.word)}
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
-              >
-                {isEnglishToGerman ? "Show German" : "Show meaning"}
-
-                {/* Key hint, only on computers (phones have no Space key) */}
-                <kbd className="hidden pointer-fine:inline px-1.5 py-0.5 rounded border border-paper/30 text-xs font-sans font-normal text-paper/80">
-                  Space
-                </kbd>
-              </button>
-            </div>
-          )}
-
-          {/* Answer: the other side of the card, plural, status buttons and examples */}
-
-          {showAnswer && (
-            <div className="reveal-fade">
-              <div className="text-center">
-                {isEnglishToGerman ? (
-                  <>
-                    <p className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-2">
-                      <span className={highlighter}>
-                        <GermanWord word={word} />
-                      </span>
-                    </p>
-
-                    {/* Listen is only shown now, since it would speak the answer */}
-                    <ListenButton text={word.tts_text} className="mb-2" />
-                  </>
-                ) : (
-                  <p className="text-2xl mb-1">{word.english}</p>
-                )}
-
-                {/* Always shown (N/A when there is none), so every card has
-                    the same layout */}
-                <p className="text-pencil">Plural: {word.plural || "N/A"}</p>
-              </div>
-
-              {/* Learning / Mastered: one switch with two sides */}
-
+          <WordCard
+            word={word}
+            isEnglishToGerman={isEnglishToGerman}
+            showAnswer={showAnswer}
+            onReveal={() => setRevealedWord(word.word)}
+            actions={
+              /* Learning / Mastered: one switch with two sides */
               <div
                 className="grid grid-cols-2 gap-1 p-1 mx-auto max-w-64 mt-3 mb-3 rounded-xl bg-grid text-sm"
                 role="group"
@@ -352,7 +259,9 @@ export default function StudySession() {
               >
                 <button
                   onClick={() => updateStudyStatus("learning")}
-                  aria-pressed={(studyStatus[word.word] || "learning") === "learning"}
+                  aria-pressed={
+                    (studyStatus[word.word] || "learning") === "learning"
+                  }
                   className={`py-1.5 rounded-lg ${pressable} ${
                     (studyStatus[word.word] || "learning") === "learning"
                       ? "bg-white font-semibold shadow-sm"
@@ -374,10 +283,8 @@ export default function StudySession() {
                   Mastered
                 </button>
               </div>
-
-              <ExampleSentences examples={word.examples} />
-            </div>
-          )}
+            }
+          />
         </div>
 
         {/* Navigation (sticks to the bottom of the screen if the card is
