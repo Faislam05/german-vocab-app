@@ -4,6 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { useBook } from "@/lib/useLessons";
 import {
+  ReviewCards,
+  dueWords,
+  getTodayPlan,
+  loadReviewCards,
+  loadStudyLog,
+  todayString,
+} from "@/lib/review";
+import {
   StudyStatus,
   VocabularyCard,
   countMastered,
@@ -25,7 +33,6 @@ const pressable =
 const PRACTICE_IDEAS = [
   { title: "der / die / das", text: "Guess the article" },
   { title: "Expressions", text: "Phrases like “alle sein”" },
-  { title: "Daily review", text: "Words due today" },
   { title: "Grammar", text: "Tables from each lesson" },
 ];
 
@@ -42,6 +49,9 @@ export default function Home() {
   const book = useBook();
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
+
+  // Daily review progress (which words are learned, and when they are due)
+  const [reviewCards] = useState<ReviewCards>(loadReviewCards);
 
   // The last study session, e.g. "lesson=2&filter=learning&direction=de-en"
   // (null if you haven't studied yet)
@@ -67,22 +77,41 @@ export default function Home() {
 
   const continueCard = getContinueCard();
 
+  // Words that are in Daily review (learned at least once)
+  const learnedCount = allWords.filter((word) => reviewCards[word.word]).length;
+  const learnedPercent =
+    allWords.length === 0
+      ? 0
+      : Math.round((learnedCount / allWords.length) * 100);
+
+  // The two-tone bar: dark = Mastered, light = learned but not Mastered yet
+  const learnedNotMastered = allWords.filter(
+    (word) => reviewCards[word.word] && studyStatus[word.word] !== "mastered"
+  ).length;
+  const lightPercent =
+    allWords.length === 0 ? 0 : (learnedNotMastered / allWords.length) * 100;
+
+  // Today's Daily review: new words left to learn and reviews due.
+  // (Only a preview here; the plan is saved when the review starts.)
+  const todayPlan = getTodayPlan(allWords, reviewCards, false);
+  const newLeft = todayPlan.newWords.filter((word) => !reviewCards[word]).length;
+  const reviewsDue = dueWords(allWords, reviewCards).length;
+  const todayLog = loadStudyLog()[todayString()];
+  const doneToday = (todayLog?.learned ?? 0) + (todayLog?.reviewed ?? 0);
+  const todayDone = newLeft + reviewsDue === 0;
+
+  // e.g. "10 new words, 6 to review"
+  const todayParts = [
+    newLeft > 0 ? `${newLeft} new word${newLeft === 1 ? "" : "s"}` : "",
+    reviewsDue > 0 ? `${reviewsDue} to review` : "",
+  ].filter(Boolean);
+
   // What the Continue card shows and where it goes
   function getContinueCard() {
     if (!book) return null;
 
-    // Never studied yet: start with the first lesson
-    if (!lastStudy) {
-      const first = book.chapters.find((item) => item.file);
-      if (!first) return null;
-
-      return {
-        href: `/lesson/${first.lesson}`,
-        label: "Start learning",
-        title: `${first.title}: ${first.chapter}`,
-        detail: "Choose how you want to study",
-      };
-    }
+    // Never studied with the Study screen yet: nothing to continue
+    if (!lastStudy) return null;
 
     // Studied before: go straight back to the same study session
     const settings = new URLSearchParams(lastStudy);
@@ -130,39 +159,76 @@ export default function Home() {
               German A1
             </h1>
 
-            <div className="flex justify-between text-sm text-pencil mt-1 mb-1.5">
-              <span>
-                Mastered{" "}
-                <strong className="text-graphite">{allMastered}</strong> of{" "}
-                {allWords.length} words
-              </span>
-              <span>{allPercent}%</span>
-            </div>
+            <p className="text-sm text-pencil mt-1 mb-1.5">
+              Learned <strong className="text-graphite">{learnedCount}</strong>
+              <span className="mx-2 text-graphite/30">|</span>
+              Mastered{" "}
+              <strong className="text-graphite">{allMastered}</strong> of{" "}
+              {allWords.length} words
+            </p>
 
-            <div className="w-full h-2 bg-grid rounded-full overflow-hidden border border-graphite/10">
+            {/* Two-tone bar: dark yellow = Mastered, light yellow = learned
+                in Daily review but not Mastered yet. Over time light turns
+                into dark. */}
+            <div className="flex w-full h-2 bg-grid rounded-full overflow-hidden border border-graphite/10">
               <div
                 className="h-full bg-marker-strong"
                 style={{ width: `${allPercent}%` }}
               />
+              <div
+                className="h-full bg-marker"
+                style={{ width: `${lightPercent}%` }}
+              />
             </div>
+
+            {/* Key for the two colours */}
+            <p className="flex items-center gap-1.5 text-xs text-pencil mt-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker border border-marker-strong/50" />
+              {learnedPercent}% learned
+              <span className="mx-1">·</span>
+              <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker-strong" />
+              {allPercent}% mastered
+            </p>
           </header>
 
-          {/* Continue: one tap back to where you left off */}
+          {/* Today and Continue: two cards of the same size, stacked on
+              phones and side by side on wider screens */}
 
-          {continueCard && (
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 mb-5">
+            {/* Today: Daily review (new words + reviews), the main thing to
+                do every day. Dark, unless everything is done. */}
+
             <Link
-              href={continueCard.href}
-              className={`flex items-center justify-between gap-4 mb-5 p-4 rounded-2xl bg-graphite text-paper hover:bg-black ${pressable}`}
+              href="/review"
+              className={`flex items-center justify-between gap-4 p-4 rounded-2xl ${
+                continueCard ? "" : "sm:col-span-2"
+              } ${
+                todayDone
+                  ? "bg-white border border-graphite/10 shadow-sm hover:border-graphite/30"
+                  : "bg-graphite text-paper hover:bg-black"
+              } ${pressable}`}
             >
               <span className="min-w-0">
-                <span className="block text-xs text-paper/70 mb-0.5">
-                  {continueCard.label}
+                <span
+                  className={`block text-xs mb-0.5 ${
+                    todayDone ? "text-pencil" : "text-paper/70"
+                  }`}
+                >
+                  Today
                 </span>
                 <span className="block font-semibold truncate">
-                  {continueCard.title}
+                  {todayDone ? "All done for today ✓" : todayParts.join(", ")}
                 </span>
-                <span className="block text-sm text-paper/80">
-                  {continueCard.detail}
+                <span
+                  className={`block text-sm truncate ${
+                    todayDone ? "text-pencil" : "text-paper/80"
+                  }`}
+                >
+                  {todayDone
+                    ? "Learn more words, or come back tomorrow"
+                    : doneToday > 0
+                      ? `${todayLog?.learned ?? 0} learned, ${todayLog?.reviewed ?? 0} reviewed so far`
+                      : "Daily review: new words and words to repeat"}
                 </span>
               </span>
 
@@ -170,7 +236,33 @@ export default function Home() {
                 →
               </span>
             </Link>
-          )}
+
+            {/* Continue: one tap back to the last Study session. Same size
+                as Today, but light, so Today stays the main button. */}
+
+            {continueCard && (
+              <Link
+                href={continueCard.href}
+                className={`flex items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 ${pressable}`}
+              >
+                <span className="min-w-0">
+                  <span className="block text-xs text-pencil mb-0.5">
+                    Continue
+                  </span>
+                  <span className="block font-semibold truncate">
+                    {continueCard.title}
+                  </span>
+                  <span className="block text-sm text-pencil truncate">
+                    {continueCard.detail}
+                  </span>
+                </span>
+
+                <span className="text-2xl" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            )}
+          </div>
 
           {/* Column headings (same columns as the scroll area below) */}
 

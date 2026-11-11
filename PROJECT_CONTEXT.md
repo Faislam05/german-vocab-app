@@ -108,17 +108,18 @@ The app has three screens: Home → Lesson → Study.
 
 The overview of the whole book (`src/app/page.tsx`). It shows:
 
-- "German A1" and overall progress: Mastered X of Y words, with a bar
-- **Continue** card: one tap back to the last study session (same lesson, filter, direction and word type), e.g. "Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Before the first study session it says "Start learning" and opens the first lesson's page. The last session is saved in localStorage (`lastStudy`) by the Study screen.
+- "German A1" and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar**: dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
+- **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light) when nothing is left.
+- **Continue** card (same size as Today, three lines, but light so Today stays the main button; below Today on phones, next to it on wider screens): one tap back to the last Study session (same lesson, filter, direction and word type), e.g. "Continue / Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Hidden until the Study screen has been used once. The last session is saved in localStorage (`lastStudy`) by the Study screen.
 - **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.
-- **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Daily review, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
+- **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
 
 Layout (phone and desktop):
 
 - Home is exactly one screen tall (`h-dvh`) with two parts: a **fixed top** (title, overall progress, Continue card, and the "Lessons" / "Practice" headings) and a **scroll area** below it.
 - In the scroll area there are two columns, on phones too: Lessons on the left (a bit wider, `3fr`) and Practice on the right (`2fr`). On desktop Lessons take two-thirds with two cards per row, Practice one-third.
 - Practice is `sticky`, so only the lesson list moves when you scroll.
-- On desktop everything fits without scrolling. On a small phone (375×667) the scroll area is about 386px tall (about 4 lessons visible at a time).
+- On desktop everything fits without scrolling. On a small phone (375×667) the scroll area is about 260px tall (2–3 lessons visible at a time); on a normal phone (390×844) about 437px.
 
 ## Lesson screen (`/lesson/2` or `/lesson/all`)
 
@@ -535,6 +536,40 @@ The der / die / das colours stay as they were (see "Article Colours").
 
 ---
 
+# Daily Review
+
+"Learn 10 new words a day, and review old words just before you forget them." Opened with the **Today** card on Home (`/review`). Logic in `src/lib/review.ts`, screen in `src/app/review/`.
+
+**Leitner boxes** (the classic Karteikasten method): every learned word is in box 1–5. Words come back after 1, 2, 4, 8 or 16 days (`BOX_INTERVALS`).
+
+- **Got it** → one box up (max 5). **Again** → back to box 1 (back tomorrow), and it is asked once more at the end of today's session.
+- A word's box only changes on its first answer of the day; the extra "Once more" asks are practice.
+
+**A day's session:**
+
+1. **Reviews** first: learned words that are due today (or were missed earlier), oldest first. Answer hidden → Show meaning → Again / Got it.
+2. **New words** in groups of 5: **meet** the 5 words (answer shown: read, listen, Next), then **check** those 5 (answer hidden → Again / Got it). Got it = learned → box 1, back tomorrow.
+3. **Done** screen with today's totals, "Learn 10 more words" and Back to Home.
+
+**Rules:**
+
+- New words come in **book order** (Lektion 1 first), 10 per day (`DAILY_NEW_WORDS`, a setting can come later).
+- Heavy review days give fewer new words: 20+ reviews due → 5 new words, 40+ → none.
+- Today's new words are picked once per day and saved (`reviewToday`), so they stay the same after closing the app.
+- Uses the saved study direction (German → English by default). Keyboard: Space = show answer / next, 1 = Again, 2 = Got it.
+- **Connected to Learning / Mastered:** a word that reaches box 5 (4 correct reviews in a row, about 2 weeks) becomes Mastered automatically; answering "Again" on a Mastered word sets it back to Learning. Marking words by hand on the Study screen still works. Existing progress was not imported into the boxes (every word starts as new in Daily review).
+- Home shows **"Learned X | Mastered Y of Z words"**: Learned = words in Daily review (any box), so it grows from day one; Mastered = box 5 or marked by hand.
+
+**Saved in localStorage:**
+
+- `reviewCards`: `{ "arbeiten": { "box": 2, "due": "2026-11-13" } }` (words not in here are not learned yet)
+- `reviewToday`: `{ "date": "2026-11-11", "newWords": ["arbeiten", …] }`
+- `studyLog`: `{ "2026-11-11": { "reviewed": 6, "learned": 10 } }`, one entry per day, kept for the planned streak and stats (see Future Features → Progress)
+
+Dates are local days ("2026-11-11"), not UTC.
+
+---
+
 # Flashcard Reveal Mode
 
 Implemented on the Study screen.
@@ -650,7 +685,7 @@ Ideas discussed and agreed as good next steps (in suggested order):
 
 1. **der / die / das quiz** — nouns only; show the noun without article, tap der / die / das, immediate feedback in article colours.
 2. **Study expressions** — flashcards for the `expressions` already stored in each lesson file (*Guten Tag!*, *alle sein*, …).
-3. **Spaced repetition** — the app schedules reviews per word based on how well it was remembered.
+3. ~~**Spaced repetition**~~ — done: see "Daily Review".
 4. **Grammar cards** — from the stored `grammar` tables (der/die/das → die, ein/kein, mein/dein/Ihr…).
 
 Other ideas:
@@ -662,6 +697,17 @@ Other ideas:
 - separate Learning/Mastered status per direction
 
 ### Progress
+
+**Streaks and stats (discussed, planned):**
+
+- **Streak chip** at the top right of Home, next to "German A1" (in the fixed top, always visible): e.g. "5 days" with a small flame drawn as SVG (no emoji icons).
+- **Daily log from day one:** save one entry per day in localStorage, e.g. `"studyLog": { "2026-11-11": { "cards": 18, "mastered": 1 } }`. The streak is calculated from it. History can't be added afterwards, so the log must exist before a stats page is built.
+- **Stats page later** (`/stats`, opened by tapping the streak chip): this week as dots (studied / missed / today), current and best streak, total study days; later maybe a month grid (squares on the squared paper), cards per week, words mastered per week.
+- Not on Home below Practice: easy to miss on phones. Optionally a small week row on desktop later.
+- Still to decide: what counts as a study day (suggestion: at least 5 cards revealed or marked), strict reset vs one "freeze" day per week.
+- Progress lives in each browser, so phone and laptop have separate streaks until accounts/sync exist.
+
+Other ideas:
 
 - lesson completion percentage
 - progress dashboard
@@ -720,6 +766,9 @@ german-vocab-app/
 │   │   │   ├── page.tsx          ← /lesson/2 route (reads the lesson number)
 │   │   │   └── LessonOverview.tsx ← lesson screen (word type, direction,
 │   │   │                            study buttons)
+│   │   ├── review/
+│   │   │   ├── page.tsx          ← /review route
+│   │   │   └── ReviewSession.tsx ← Daily review screen (steps, answers)
 │   │   └── study/
 │   │       ├── page.tsx          ← /study route (Suspense wrapper)
 │   │       └── StudySession.tsx  ← flashcard study screen (state + logic)
@@ -728,9 +777,13 @@ german-vocab-app/
 │   │   ├── ListenButton.tsx      ← 🔊 button (pill or icon-only)
 │   │   ├── GermanWord.tsx        ← German word with coloured article
 │   │   ├── ExampleSentences.tsx  ← example sentence list
-│   │   └── StudyTopBar.tsx       ← Study top bar + progress bar
+│   │   ├── StudyTopBar.tsx       ← Study top bar + progress bar
+│   │   └── WordCard.tsx          ← one flashcard's content (used by
+│   │                                Study and Daily review)
 │   │
 │   └── lib/
+│       ├── review.ts             ← Daily review: Leitner boxes, today's
+│       │                            plan, study log
 │       ├── vocabulary.ts         ← shared types, lesson selection,
 │       │                            localStorage helpers, filter,
 │       │                            shuffle and formatting helpers
