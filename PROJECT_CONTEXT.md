@@ -127,8 +127,9 @@ The choices for studying one lesson (`src/app/lesson/[id]/`). `[id]` in the fold
 
 - "← Home" button (white pill)
 - a dark **cover** (graphite, like the Today card on Home): the lesson number in a white square, "Lektion 2", the German chapter title (always room for two lines, so every cover has the same height), its English meaning and the word count (one line), and the **two-tone bar** from Home (learned / mastered) with "18% learned · 4% mastered"
-- **word type chips** (see "Word Type Filter"): "All 76" on its own full-width row, then `Nouns 43` `Verbs 16` … which stretch (`grow`) so every row ends flush at the right edge, in a fixed order; on short screens (under 700px tall) they are one row you can swipe sideways. (Re-ordering chips to pack rows was considered and rejected: the order would change per lesson and screen.)
-- direction: two rounded buttons, German → English and English → German (see "Study Direction")
+- a white **settings card** ("how you'll study") with two small labelled groups:
+  - **Word type** chips (see "Word Type Filter"): "All 76" on its own full-width row, then `Nouns 43` `Verbs 16` … which stretch (`grow`) so every row ends flush at the right edge, in a fixed order; on short screens (under 700px tall) they are one row you can swipe sideways. (Re-ordering chips to pack rows was considered and rejected: the order would change per lesson and screen.)
+  - **Direction**: two rounded buttons, German → English and English → German (see "Study Direction")
 - three study game buttons (Learning filled, the other two white), each with its word count (the lesson, direction and word type are added to each link, e.g. `/study?lesson=2&filter=learning&direction=en-de&type=verb`):
   - Study Learning words → `filter=learning`
   - Study all words → `filter=all`

@@ -191,60 +191,64 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
           </p>
         </section>
 
-        {/* ---------- Word type chips ---------- */}
+        {/* ---------- Settings card: word type and direction ---------- */}
 
-        {/* "All" takes a full row; the type chips below stretch so every
-            row ends flush at the right edge. On short screens (small
-            phones) all chips are one row you can swipe sideways instead,
-            so the page still fits on one screen. */}
-        <div
-          className="flex flex-wrap gap-1.5 mb-4 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-4 [@media(max-height:700px)]:px-4 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
-          role="group"
-          aria-label="Word type"
-        >
-          <button
-            onClick={() => setWordTypeChoice("all")}
-            aria-pressed={wordType === "all"}
-            className={`shrink-0 grow basis-full [@media(max-height:700px)]:basis-auto text-center px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
+        <section className="rounded-3xl bg-white border border-graphite/10 shadow-[0_1px_2px_rgba(46,50,56,0.05),0_6px_18px_rgba(46,50,56,0.06)] p-3 sm:p-4 mb-4 sm:mb-5">
+          <p className="text-xs font-bold text-pencil mb-1.5">Word type</p>
+
+          {/* "All" takes a full row; the type chips below stretch so every
+              row ends flush at the right edge. On short screens (small
+              phones) all chips are one row you can swipe sideways instead,
+              so the page still fits on one screen. */}
+          <div
+            className="flex flex-wrap gap-1.5 mb-3 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-3 [@media(max-height:700px)]:px-3 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
+            role="group"
+            aria-label="Word type"
           >
-            All {total}
-          </button>
-
-          {wordTypes.map((item) => (
             <button
-              key={item.type}
-              onClick={() => setWordTypeChoice(item.type)}
-              aria-pressed={wordType === item.type}
-              className={`shrink-0 grow text-center px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
+              onClick={() => setWordTypeChoice("all")}
+              aria-pressed={wordType === "all"}
+              className={`shrink-0 grow basis-full [@media(max-height:700px)]:basis-auto text-center px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
             >
-              {item.name} {item.count}
+              All {total}
             </button>
-          ))}
-        </div>
 
-        {/* ---------- Direction ---------- */}
+            {wordTypes.map((item) => (
+              <button
+                key={item.type}
+                onClick={() => setWordTypeChoice(item.type)}
+                aria-pressed={wordType === item.type}
+                className={`shrink-0 grow text-center px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
+              >
+                {item.name} {item.count}
+              </button>
+            ))}
+          </div>
 
-        <div
-          className="grid grid-cols-2 gap-1.5 mb-4 sm:mb-5"
-          role="group"
-          aria-label="Study direction"
-        >
-          <button
-            onClick={() => chooseDirection("de-en")}
-            aria-pressed={direction === "de-en"}
-            className={`py-1.5 text-sm ${choiceStyle(direction === "de-en")}`}
+          <p className="text-xs font-bold text-pencil mb-1.5">Direction</p>
+
+          <div
+            className="grid grid-cols-2 gap-1.5"
+            role="group"
+            aria-label="Study direction"
           >
-            German → English
-          </button>
+            <button
+              onClick={() => chooseDirection("de-en")}
+              aria-pressed={direction === "de-en"}
+              className={`py-1.5 text-sm ${choiceStyle(direction === "de-en")}`}
+            >
+              German → English
+            </button>
 
-          <button
-            onClick={() => chooseDirection("en-de")}
-            aria-pressed={direction === "en-de"}
-            className={`py-1.5 text-sm ${choiceStyle(direction === "en-de")}`}
-          >
-            English → German
-          </button>
-        </div>
+            <button
+              onClick={() => chooseDirection("en-de")}
+              aria-pressed={direction === "en-de"}
+              className={`py-1.5 text-sm ${choiceStyle(direction === "en-de")}`}
+            >
+              English → German
+            </button>
+          </div>
+        </section>
 
         {/* ---------- What to study ---------- */}
 
