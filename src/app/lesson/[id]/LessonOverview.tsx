@@ -193,8 +193,10 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
 
         {/* ---------- Word type chips ---------- */}
 
-        {/* On short screens (small phones) the chips are one row you can
-            swipe sideways, so the page still fits on one screen. */}
+        {/* "All" takes a full row; the type chips below stretch so every
+            row ends flush at the right edge. On short screens (small
+            phones) all chips are one row you can swipe sideways instead,
+            so the page still fits on one screen. */}
         <div
           className="flex flex-wrap gap-1.5 mb-4 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-4 [@media(max-height:700px)]:px-4 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
           role="group"
@@ -203,7 +205,7 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
           <button
             onClick={() => setWordTypeChoice("all")}
             aria-pressed={wordType === "all"}
-            className={`shrink-0 px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
+            className={`shrink-0 grow basis-full [@media(max-height:700px)]:basis-auto text-center px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
           >
             All {total}
           </button>
@@ -213,7 +215,7 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
               key={item.type}
               onClick={() => setWordTypeChoice(item.type)}
               aria-pressed={wordType === item.type}
-              className={`shrink-0 px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
+              className={`shrink-0 grow text-center px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
             >
               {item.name} {item.count}
             </button>
