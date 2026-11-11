@@ -1,5 +1,5 @@
 // Reads German text aloud with the browser's built-in speech synthesis.
-function speakGerman(text: string) {
+export function speakGerman(text: string) {
   const speech = new SpeechSynthesisUtterance(text);
 
   speech.lang = "de-DE";
@@ -10,7 +10,7 @@ function speakGerman(text: string) {
 
 // A small speaker icon, drawn with SVG so it looks the same on every
 // device (emoji icons look different on iPhone, Android and Mac).
-function SpeakerIcon({ className = "" }: { className?: string }) {
+export function SpeakerIcon({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"

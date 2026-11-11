@@ -1,17 +1,17 @@
 import { VocabularyCard } from "@/lib/vocabulary";
 
 // Article colours, a common trick for remembering noun genders:
-//   der → blue (masculine), die → red (feminine), das → green (neuter)
-// Plural-only nouns such as "die Eltern" get amber, because their "die"
+//   der → navy (masculine), die → maroon (feminine), das → dark green
+//   (neuter). Plural-only nouns such as "die Eltern" get dark amber, because their "die"
 // is not feminine.
 //
 // The class names are written out in full on purpose: Tailwind only
 // includes classes it can find as complete words in the code.
 const genderColours: Record<string, string> = {
-  masculine: "text-blue-600",
-  feminine: "text-red-600",
-  neuter: "text-green-600",
-  plural: "text-amber-600",
+  masculine: "text-blue-900",
+  feminine: "text-red-900",
+  neuter: "text-green-800",
+  plural: "text-amber-800",
 };
 
 type GermanWordProps = {

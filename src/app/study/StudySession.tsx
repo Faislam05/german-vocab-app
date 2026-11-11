@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import StudyTopBar from "@/components/StudyTopBar";
-import WordCard, { cardStyle, pressable } from "@/components/WordCard";
+import WordCard, { cardFrame, cardStyle } from "@/components/WordCard";
 import { useLessons } from "@/lib/useLessons";
 import {
   StudyFilter,
@@ -150,7 +150,7 @@ export default function StudySession() {
   if (visibleVocabulary.length === 0) {
     return (
       <main className="min-h-screen flex items-center justify-center p-6">
-        <div className={`${cardStyle} p-8 text-center`}>
+        <div className={`${cardStyle} ${cardFrame()} p-8 text-center`}>
           <div className="text-6xl mb-6">🎉</div>
 
           <h1 className="font-serif text-3xl font-semibold mb-3">
@@ -177,6 +177,8 @@ export default function StudySession() {
   const safeIndex = index >= visibleVocabulary.length ? 0 : index;
 
   const word = visibleVocabulary[safeIndex];
+
+  const isMastered = studyStatus[word.word] === "mastered";
 
   // Show the answer if reveal mode is off, or this word was revealed.
   const showAnswer = !revealMode || revealedWord === word.word;
@@ -224,7 +226,7 @@ export default function StudySession() {
   // down when the next word has more or fewer example sentences.
   return (
     <main className="min-h-screen flex justify-center items-start p-2 sm:px-6 sm:pt-10 overflow-x-clip">
-      <div className={`${cardStyle} p-4 sm:p-6`}>
+      <div className={`${cardStyle} ${cardFrame(word)} p-3 sm:p-5`}>
         <StudyTopBar
           backHref={backHref}
           filterLabel={filterLabels[studyFilter]}
@@ -251,36 +253,19 @@ export default function StudySession() {
             showAnswer={showAnswer}
             onReveal={() => setRevealedWord(word.word)}
             actions={
-              /* Learning / Mastered: one switch with two sides */
-              <div
-                className="grid grid-cols-2 gap-1 p-1 mx-auto max-w-64 mt-3 mb-3 rounded-xl bg-grid text-sm"
-                role="group"
-                aria-label="How well do you know this word?"
-              >
+              /* One button: "Mark as Mastered" ⇄ "Mastered" (with a star) */
+              <div className="flex justify-center mb-3">
                 <button
-                  onClick={() => updateStudyStatus("learning")}
-                  aria-pressed={
-                    (studyStatus[word.word] || "learning") === "learning"
+                  onClick={() =>
+                    updateStudyStatus(isMastered ? "learning" : "mastered")
                   }
-                  className={`py-1.5 rounded-lg ${pressable} ${
-                    (studyStatus[word.word] || "learning") === "learning"
-                      ? "bg-white font-semibold shadow-sm"
-                      : "text-pencil hover:text-graphite"
+                  aria-pressed={isMastered}
+                  className={`inline-flex items-center gap-1.5 px-5 py-1.5 text-sm ${
+                    isMastered ? "btn-primary" : "btn-secondary"
                   }`}
                 >
-                  Learning
-                </button>
-
-                <button
-                  onClick={() => updateStudyStatus("mastered")}
-                  aria-pressed={studyStatus[word.word] === "mastered"}
-                  className={`py-1.5 rounded-lg ${pressable} ${
-                    studyStatus[word.word] === "mastered"
-                      ? "bg-marker font-semibold shadow-sm"
-                      : "text-pencil hover:text-graphite"
-                  }`}
-                >
-                  Mastered
+                  <StarIcon filled={isMastered} />
+                  {isMastered ? "Mastered" : "Mark as Mastered"}
                 </button>
               </div>
             }
@@ -290,22 +275,37 @@ export default function StudySession() {
         {/* Navigation (sticks to the bottom of the screen if the card is
             taller than the screen, so Next is always reachable) */}
 
-        <div className="sticky bottom-0 bg-white flex justify-between gap-2 mt-2 pt-2 pb-1 border-t border-grid">
+        <div className="sticky bottom-0 bg-(--card-bottom) flex gap-2.5 mt-2 pt-2.5 pb-1.5 border-t border-white/80">
           <button
             onClick={previousWord}
-            className={`px-4 py-2 rounded-xl border border-graphite/15 bg-paper hover:bg-grid ${pressable}`}
+            aria-label="Previous word"
+            className="btn-secondary shrink-0 w-12 h-11 text-lg"
           >
-            ← Previous
+            ←
           </button>
 
-          <button
-            onClick={nextWord}
-            className={`px-5 py-2 rounded-xl bg-graphite text-paper font-semibold hover:bg-black ${pressable}`}
-          >
+          <button onClick={nextWord} className="btn-primary flex-1 h-11">
             Next →
           </button>
         </div>
       </div>
     </main>
+  );
+}
+
+// A star: outlined = not Mastered yet, filled = Mastered
+function StarIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-4 h-4"
+      fill={filled ? "currentColor" : "none"}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z" />
+    </svg>
   );
 }

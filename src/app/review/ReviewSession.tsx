@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import WordCard, { cardStyle, pressable } from "@/components/WordCard";
+import WordCard, {
+  cardFrame,
+  cardStyle,
+  pressable,
+} from "@/components/WordCard";
 import { useLessons } from "@/lib/useLessons";
 import {
   DAILY_NEW_WORDS,
@@ -197,7 +201,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
     return (
       <main className="min-h-screen flex justify-center items-start px-4 pt-6 sm:pt-10">
-        <div className={`${cardStyle} p-8 text-center`}>
+        <div className={`${cardStyle} ${cardFrame()} p-8 text-center`}>
           <div className="text-5xl mb-4">{didSomething ? "🎉" : "☕"}</div>
 
           <h1 className="font-serif text-3xl font-semibold mb-2">
@@ -247,7 +251,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
   return (
     <main className="min-h-screen flex justify-center items-start p-2 sm:px-6 sm:pt-10 overflow-x-clip">
-      <div className={`${cardStyle} p-4 sm:p-6`}>
+      <div className={`${cardStyle} ${cardFrame(step.word)} p-3 sm:p-5`}>
         {/* Top bar: ← Home, what kind of card this is, and progress */}
 
         <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-2">
@@ -256,8 +260,10 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
           </Link>
 
           <span
-            className={`px-2 py-0.5 rounded-md ${
-              step.kind === "meet" ? "bg-marker font-semibold" : "bg-grid"
+            className={`px-2.5 py-0.5 rounded-full font-bold ${
+              step.kind === "meet"
+                ? "bg-(--card-accent) text-white"
+                : "bg-white text-(--card-accent)"
             }`}
           >
             {stepLabels[step.kind]}
@@ -268,9 +274,9 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
           </span>
         </div>
 
-        <div className="mb-3 w-full h-1.5 bg-grid rounded-full overflow-hidden">
+        <div className="mb-3 w-full h-1.5 bg-white/70 rounded-full overflow-hidden">
           <div
-            className="h-full bg-marker-strong transition-[width] duration-300 ease-out"
+            className="h-full bg-(--card-accent) transition-[width] duration-300 ease-out"
             style={{ width: `${(position / total) * 100}%` }}
           />
         </div>
@@ -287,7 +293,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
         {/* Bottom buttons (stick to the bottom of the screen) */}
 
-        <div className="sticky bottom-0 bg-white flex gap-2 mt-2 pt-2 pb-1 border-t border-grid">
+        <div className="sticky bottom-0 bg-(--card-bottom) flex gap-2.5 mt-2 pt-2.5 pb-2 border-t border-white/80">
           {step.kind === "meet" ? (
             <BigButton onClick={next} primary keyHint="Space">
               Next
@@ -327,10 +333,8 @@ function BigButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold ${pressable} ${
-        primary
-          ? "bg-graphite text-paper hover:bg-black"
-          : "bg-paper border border-graphite/15 hover:bg-grid"
+      className={`flex-1 inline-flex items-center justify-center gap-2 px-4 h-11 ${
+        primary ? "btn-primary" : "btn-secondary"
       }`}
     >
       {children}

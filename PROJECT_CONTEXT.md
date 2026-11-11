@@ -152,28 +152,25 @@ Top bar:
 - "Flashcard on/off" switch (highlighted yellow when on)
 - progress bar
 
-Each vocabulary card shows:
+Each vocabulary card (see "Flashcard design") shows:
 
-- emoji visual (shows ❓ until the answer is revealed)
-- German word (with the yellow highlighter)
-- part of speech (e.g. "Verb") and the Listen button, on one row
+- the picture: a big emoji with sparkles and an "A1" badge (shows ❓ until the answer is revealed)
+- the German word in a white pill, with the Listen button inside it
+- a dark chip with the part of speech (e.g. "Verb")
 - Show meaning button (in Flashcard mode, until revealed; shows a `Space` key hint on computers)
 
 After revealing (or always, when Flashcard mode is Off):
 
-- English meaning
-- plural (shows "Plural: N/A" when a word has none, so every card has the same layout)
-- Learning / Mastered buttons
-- approximately three German example sentences
-- English translations
-- pronunciation button for each German sentence
+- the English meaning as a light chip next to the part of speech
+- the plural on its own line (shows "Plural: N/A" when a word has none, so every card has the same layout)
+- one "☆ Mark as Mastered" / "★ Mastered" button (tap again to go back to Learning)
+- approximately three German example sentences with English translations (italic) and a listen button each, in a white panel
 
 Then:
 
-- Previous button
-- Next button
+- ← (Previous, round) and Next buttons
 
-The card starts at the top of the screen (not vertically centred), so it stays in the same place when the next word has more or fewer example sentences. The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size (sized so long words like "die Telefonnummer" stay on one line), so every card looks the same. Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
+The card starts at the top of the screen (not vertically centred), so it stays in the same place when the next word has more or fewer example sentences. The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size, so every card looks the same; in English → German the English question is one size smaller than the German word. On very small phones one English → German card can need a tiny scroll if a meaning is long, so keep English meanings short (e.g. "program; TV channel"). Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
 
 ---
 
@@ -505,8 +502,8 @@ Do not tightly couple the vocabulary data to the current visual design.
 The look is based on German school squared paper (Karopapier), chosen with the help of Anthropic's `frontend-design` skill.
 
 - **Background:** faint 20px grid on paper white (in `src/app/globals.css`).
-- **Flashcard:** a white sheet with a soft shadow lying on the grid. Only the flashcard is a "card"; Home sits directly on the paper.
-- **Highlighter:** marker yellow shows what is selected (lesson, Flashcard on, shuffle on, Mastered) and is drawn behind the German word.
+- **Flashcards** have their own colourful "trading card" look (see "Flashcard design" below). Home and the Lesson screen sit directly on the paper.
+- **Highlighter:** marker yellow shows what is selected on Home and the Lesson screen, and the light/dark yellow of the progress bar on Home.
 - **Colours** are defined once in `globals.css` and used as Tailwind classes:
 
 | Name | Hex | Tailwind classes | Used for |
@@ -518,13 +515,14 @@ The look is based on German school squared paper (Karopapier), chosen with the h
 | marker | `#FFE066` | `bg-marker` | highlighter, selected things |
 | marker-strong | `#E8B400` | `bg-marker-strong` | progress bars, margin line |
 
-The der / die / das colours stay as they were (see "Article Colours").
+For the der / die / das colours see "Article Colours".
 
 - **Fonts** (loaded in `src/app/layout.tsx` with `next/font/google`):
-  - Fraunces (`font-serif`): the German word and screen titles
-  - Figtree (default): everything else
+  - Fraunces (`font-serif`): screen titles and lesson names
+  - Figtree (default): everything else outside the cards
+  - Nunito (`font-rounded`): a rounded font, on the flashcards only
 - **Icons:** drawn as small SVGs (speaker, shuffle) so they look the same on every device. Emojis are used only as vocabulary content on the cards.
-- **Buttons** shrink slightly when pressed (`active:scale-[0.97]`); a clear outline shows keyboard focus.
+- **Buttons** outside the cards shrink slightly when pressed (`active:scale-[0.97]`); buttons on the cards are "game buttons" (see below). A clear outline shows keyboard focus.
 - **Animations** (in `globals.css`), kept short because they happen hundreds of times per session:
   - changing cards: the new card slides in 80px from the right (Next) or left (Previous) while fading in, 280ms (`card-in-next` / `card-in-previous`, played by giving the card content `key={word.word}`)
   - revealing the answer: fades in while rising 12px into place, 300ms (`reveal-fade`)
@@ -533,6 +531,27 @@ The der / die / das colours stay as they were (see "Article Colours").
   - no page-turn or flip: too slow for something done this often (decided with Emil Kowalski's `animate` skill)
 - **Text style:** normal case (no ALL CAPS labels), plain wording ("Learning: 3 of 14").
 - Key hints (`Space`, arrows) are shown only on computers (`pointer-fine:`).
+
+## Flashcard design
+
+The cards (Study and Daily review) follow a trading-card mockup made by the user. Shared code: `src/components/WordCard.tsx` (card content, `cardStyle`, `cardFrame()`) and the "Flashcard art" and "Card buttons" parts of `globals.css`.
+
+- **Frame and body:** a thick white frame (10px, 12px on bigger screens) around a body in the word's colour: a soft gradient, dotted (halftone) patches in two corners and soft white clouds along the bottom (`.card-art`).
+- **Colour themes** (`.theme-masculine`, `.theme-feminine`, `.theme-neuter`, `.theme-plural`, `.theme-other`): each sets `--card-top`, `--card-bottom` (body gradient), `--card-accent` (dark colour) and `--card-dot`. The accent is used for the badge, chips, listen buttons, progress bar and main buttons, so everything on a card changes colour with the word.
+
+| Word | Accent | Body |
+|---|---|---|
+| der (masculine) | navy `#1E3A8A` | light blue |
+| die (feminine) | maroon `#7F1D1D` | light pink |
+| das (neuter) | dark green `#166534` | light green |
+| plural-only nouns | dark amber `#92400E` | light amber |
+| all other words (verbs, adjectives, …) | dark mustard `#A16207` | light yellow |
+
+- **Picture:** the word's emoji, big, on a white spotlight with sparkles and comic "action lines" (SVG), and the level badge (`cefr`, e.g. "A1"). Smaller on screens under 700px tall. Custom illustrations per word were discussed but not made (each word would need its own drawing).
+- **Word pill:** white pill with the speaker button inside (German only); the article keeps its colour.
+- **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, Mark as Mastered). Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on.
+- **Examples panel:** white panel, round listen button per sentence, German bold, English italic, thin dividers in the accent colour.
+- Pages without a word (e.g. "No words here") use plain cream paper (`.cardstock`, a creamy colour with a fine SVG paper grain).
 
 ---
 
@@ -652,10 +671,12 @@ The German word is shown with its article coloured by gender (`src/components/Ge
 
 | Article | Colour | Based on `gender` |
 |---|---|---|
-| der | blue | masculine |
-| die | red | feminine |
-| das | green | neuter |
-| die (plural-only nouns, e.g. die Eltern, die Leute) | amber | plural |
+| der | navy | masculine |
+| die | maroon | feminine |
+| das | dark green | neuter |
+| die (plural-only nouns, e.g. die Eltern, die Leute) | dark amber | plural |
+
+The same colours are used for the card themes (see "Flashcard design").
 
 The colour comes from the `gender` field in the JSON, not from the article text, so plural-only "die" is not shown as feminine. Words without an article are shown unchanged.
 

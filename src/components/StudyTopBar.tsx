@@ -57,12 +57,13 @@ export default function StudyTopBar({
   revealMode,
   onToggleRevealMode,
 }: StudyTopBarProps) {
-  // Small switch-like buttons; "on" is highlighted in marker yellow
+  // Small switch-like buttons in the card colour: white when off,
+  // filled when on
   const switchStyle = (isOn: boolean) =>
-    `h-8 rounded-lg border transition-[transform,background-color] duration-150 ease-out active:scale-[0.95] ${
+    `h-8 rounded-full border-2 font-bold transition-[transform,background-color] duration-150 ease-out active:scale-[0.95] ${
       isOn
-        ? "bg-marker border-marker-strong text-graphite"
-        : "bg-paper border-graphite/15 text-pencil hover:text-graphite"
+        ? "bg-(--card-accent) border-(--card-accent) text-white"
+        : "bg-white border-[color-mix(in_srgb,var(--card-accent)_25%,white)] text-(--card-accent)"
     }`;
 
   return (
@@ -90,7 +91,7 @@ export default function StudyTopBar({
           <button
             onClick={onToggleRevealMode}
             aria-pressed={revealMode}
-            className={`px-2 ${switchStyle(revealMode)}`}
+            className={`px-3 ${switchStyle(revealMode)}`}
           >
             Flashcard {revealMode ? "on" : "off"}
           </button>
@@ -99,9 +100,9 @@ export default function StudyTopBar({
 
       {/* Progress bar */}
 
-      <div className="mb-3 w-full h-1.5 bg-grid rounded-full overflow-hidden">
+      <div className="mb-3 w-full h-1.5 bg-white/70 rounded-full overflow-hidden">
         <div
-          className="h-full bg-marker-strong transition-[width] duration-300 ease-out"
+          className="h-full bg-(--card-accent) transition-[width] duration-300 ease-out"
           style={{ width: `${(position / total) * 100}%` }}
         />
       </div>
