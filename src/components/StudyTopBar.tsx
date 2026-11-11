@@ -69,7 +69,10 @@ export default function StudyTopBar({
   return (
     <>
       <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-2">
-        <Link href={backHref} className="text-pencil hover:text-graphite">
+        <Link
+          href={backHref}
+          className="btn-secondary inline-flex items-center h-8 px-3"
+        >
           ← Back
         </Link>
 

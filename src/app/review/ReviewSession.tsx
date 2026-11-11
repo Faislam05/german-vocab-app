@@ -255,7 +255,10 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
         {/* Top bar: ← Home, what kind of card this is, and progress */}
 
         <div className="flex items-center justify-between gap-2 whitespace-nowrap text-xs sm:text-sm mb-2">
-          <Link href="/" className="text-pencil hover:text-graphite">
+          <Link
+            href="/"
+            className="btn-secondary inline-flex items-center h-8 px-3"
+          >
             ← Home
           </Link>
 
