@@ -541,11 +541,11 @@ The cards (Study and Daily review) follow a trading-card mockup made by the user
 
 | Word | Accent | Body |
 |---|---|---|
-| der (masculine) | navy `#1E3A8A` | blue `#C9DAF8` |
-| die (feminine) | maroon `#7F1D1D` | pink `#F4C9C9` |
-| das (neuter) | dark green `#166534` | green `#C1E6CB` |
-| plural-only nouns | dark amber `#92400E` | amber `#F6D7A8` |
-| all other words (verbs, adjectives, …) | dark mustard `#A16207` | yellow `#F6E294` |
+| der (masculine) | navy `#1E3A8A` | blue `#E8EFFC` |
+| die (feminine) | maroon `#7F1D1D` | pink `#FBE8E8` |
+| das (neuter) | dark green `#166534` | green `#E4F5E9` |
+| plural-only nouns | dark amber `#92400E` | amber `#FBEED9` |
+| all other words (verbs, adjectives, …) | dark mustard `#A16207` | yellow `#FBF3D2` |
 
 - **Picture:** the word's emoji, big, on a soft white spotlight (no sparkles), and the level badge (`cefr`, e.g. "A1"). Smaller on screens under 700px tall. Custom illustrations per word were discussed but not made (each word would need its own drawing).
 - **Word pill:** white pill with the speaker button inside (German only); the German word in Fraunces, the article keeps its colour. The English question (English → German) is smaller, in Figtree.

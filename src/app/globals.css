@@ -51,23 +51,23 @@ body {
    - --card-accent: the dark colour for badge, chips, buttons and bar
    --------------------------------------------------------------------- */
 .theme-masculine {
-  --card-bg: #c9daf8;
+  --card-bg: #e8effc;
   --card-accent: #1e3a8a; /* navy */
 }
 .theme-feminine {
-  --card-bg: #f4c9c9;
+  --card-bg: #fbe8e8;
   --card-accent: #7f1d1d; /* maroon */
 }
 .theme-neuter {
-  --card-bg: #c1e6cb;
+  --card-bg: #e4f5e9;
   --card-accent: #166534; /* dark green */
 }
 .theme-plural {
-  --card-bg: #f6d7a8;
+  --card-bg: #fbeed9;
   --card-accent: #92400e; /* dark amber */
 }
 .theme-other {
-  --card-bg: #f6e294;
+  --card-bg: #fbf3d2;
   --card-accent: #a16207; /* dark mustard */
 }
 
