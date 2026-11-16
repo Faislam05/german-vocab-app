@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Hint from "@/components/Hint";
 import StudyTopBar from "@/components/StudyTopBar";
 import WordCard, { cardFrame, cardStyle } from "@/components/WordCard";
+import { useHints } from "@/lib/hints";
 import { useLessons } from "@/lib/useLessons";
 import {
   StudyFilter,
@@ -104,6 +106,15 @@ export default function StudySession() {
   // The word currently on screen (undefined while data is loading).
   const currentWord =
     visibleVocabulary[index >= visibleVocabulary.length ? 0 : index];
+
+  // First-time tips on this screen, one at a time (see src/lib/hints.ts).
+  // The Mastered tip waits until the answer (and its button) is visible.
+  const answerVisible =
+    !revealMode || (currentWord && revealedWord === currentWord.word);
+  const hints = useHints([
+    { id: "study-flashcard", ready: true },
+    { id: "study-mastered", ready: Boolean(answerVisible) },
+  ]);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -227,16 +238,24 @@ export default function StudySession() {
   return (
     <main className="min-h-screen flex justify-center items-start p-2 sm:px-6 sm:pt-10 overflow-x-clip">
       <div className={`${cardStyle} ${cardFrame(word)} p-3 sm:p-5`}>
-        <StudyTopBar
-          backHref={backHref}
-          filterLabel={filterLabels[studyFilter]}
-          position={safeIndex + 1}
-          total={visibleVocabulary.length}
-          isShuffled={shuffledVocabulary !== null}
-          onToggleShuffle={toggleShuffle}
-          revealMode={revealMode}
-          onToggleRevealMode={() => setRevealMode(!revealMode)}
-        />
+        <Hint
+          id="study-flashcard"
+          show={hints.current === "study-flashcard"}
+          align="right"
+          onDismiss={() => hints.dismiss("study-flashcard")}
+          onSkipAll={hints.skipAll}
+        >
+          <StudyTopBar
+            backHref={backHref}
+            filterLabel={filterLabels[studyFilter]}
+            position={safeIndex + 1}
+            total={visibleVocabulary.length}
+            isShuffled={shuffledVocabulary !== null}
+            onToggleShuffle={toggleShuffle}
+            revealMode={revealMode}
+            onToggleRevealMode={() => setRevealMode(!revealMode)}
+          />
+        </Hint>
 
         {/* The card content. "key" makes React draw a fresh copy for each
             word, which plays the slide-in animation (see globals.css). */}
@@ -255,18 +274,26 @@ export default function StudySession() {
             actions={
               /* One button: "Mark as Mastered" ⇄ "Mastered" (with a star) */
               <div className="flex justify-center mb-3">
-                <button
-                  onClick={() =>
-                    updateStudyStatus(isMastered ? "learning" : "mastered")
-                  }
-                  aria-pressed={isMastered}
-                  className={`inline-flex items-center gap-1.5 px-5 py-1.5 text-sm ${
-                    isMastered ? "btn-primary" : "btn-secondary"
-                  }`}
+                <Hint
+                  id="study-mastered"
+                  show={hints.current === "study-mastered"}
+                  onDismiss={() => hints.dismiss("study-mastered")}
+                  onSkipAll={hints.skipAll}
+                  className="flex"
                 >
-                  <StarIcon filled={isMastered} />
-                  {isMastered ? "Mastered" : "Mark as Mastered"}
-                </button>
+                  <button
+                    onClick={() =>
+                      updateStudyStatus(isMastered ? "learning" : "mastered")
+                    }
+                    aria-pressed={isMastered}
+                    className={`inline-flex items-center gap-1.5 px-5 py-1.5 text-sm ${
+                      isMastered ? "btn-primary" : "btn-secondary"
+                    }`}
+                  >
+                    <StarIcon filled={isMastered} />
+                    {isMastered ? "Mastered" : "Mark as Mastered"}
+                  </button>
+                </Hint>
               </div>
             }
           />

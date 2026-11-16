@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Hint from "@/components/Hint";
 import WordCard, { cardFrame, cardStyle } from "@/components/WordCard";
+import { useHints } from "@/lib/hints";
 import { useLessons } from "@/lib/useLessons";
 import {
   DAILY_NEW_WORDS,
@@ -113,6 +115,14 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
   const step = session.steps[session.index] as Step | undefined;
   const showAnswer = step?.kind === "meet" || revealedIndex === session.index;
+
+  // First-time tip for Again / Got it, once those buttons are visible
+  const hints = useHints([
+    {
+      id: "review-answer",
+      ready: Boolean(step) && step?.kind !== "meet" && showAnswer,
+    },
+  ]);
 
   function reveal() {
     setRevealedIndex(session.index);
@@ -303,14 +313,21 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
               {isEnglishToGerman ? "Show German" : "Show meaning"}
             </BigButton>
           ) : (
-            <>
+            <Hint
+              id="review-answer"
+              show={hints.current === "review-answer"}
+              placement="above"
+              onDismiss={() => hints.dismiss("review-answer")}
+              onSkipAll={hints.skipAll}
+              className="flex-1 flex gap-2.5"
+            >
               <BigButton onClick={() => answer(false)} keyHint="1">
                 Again
               </BigButton>
               <BigButton onClick={() => answer(true)} primary keyHint="2">
                 Got it
               </BigButton>
-            </>
+            </Hint>
           )}
         </div>
       </div>

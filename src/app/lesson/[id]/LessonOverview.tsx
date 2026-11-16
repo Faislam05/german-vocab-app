@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Hint from "@/components/Hint";
+import { useHints } from "@/lib/hints";
 import { ReviewCards, loadReviewCards } from "@/lib/review";
 import { useBook } from "@/lib/useLessons";
 import {
@@ -50,6 +52,12 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
   // Not saved on purpose: it starts at "All" every visit, so a forgotten
   // filter never hides words.
   const [wordTypeChoice, setWordTypeChoice] = useState<WordType>("all");
+
+  // First-time tips on this screen, one at a time (see src/lib/hints.ts)
+  const hints = useHints([
+    { id: "lesson-types", ready: true },
+    { id: "lesson-buttons", ready: true },
+  ]);
 
   function chooseDirection(newDirection: StudyDirection) {
     setDirection(newDirection);
@@ -200,30 +208,37 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
               row ends flush at the right edge. On short screens (small
               phones) all chips are one row you can swipe sideways instead,
               so the page still fits on one screen. */}
-          <div
-            className="flex flex-wrap gap-1.5 mb-3 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-3 [@media(max-height:700px)]:px-3 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
-            role="group"
-            aria-label="Word type"
+          <Hint
+            id="lesson-types"
+            show={hints.current === "lesson-types"}
+            onDismiss={() => hints.dismiss("lesson-types")}
+            onSkipAll={hints.skipAll}
           >
-            <button
-              onClick={() => setWordTypeChoice("all")}
-              aria-pressed={wordType === "all"}
-              className={`shrink-0 grow basis-full [@media(max-height:700px)]:basis-auto text-center px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
+            <div
+              className="flex flex-wrap gap-1.5 mb-3 [@media(max-height:700px)]:flex-nowrap [@media(max-height:700px)]:overflow-x-auto [@media(max-height:700px)]:-mx-3 [@media(max-height:700px)]:px-3 [@media(max-height:700px)]:pb-1 [scrollbar-width:none]"
+              role="group"
+              aria-label="Word type"
             >
-              All {total}
-            </button>
-
-            {wordTypes.map((item) => (
               <button
-                key={item.type}
-                onClick={() => setWordTypeChoice(item.type)}
-                aria-pressed={wordType === item.type}
-                className={`shrink-0 grow text-center px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
+                onClick={() => setWordTypeChoice("all")}
+                aria-pressed={wordType === "all"}
+                className={`shrink-0 grow basis-full [@media(max-height:700px)]:basis-auto text-center px-3 py-1 text-sm ${choiceStyle(wordType === "all")}`}
               >
-                {item.name} {item.count}
+                All {total}
               </button>
-            ))}
-          </div>
+
+              {wordTypes.map((item) => (
+                <button
+                  key={item.type}
+                  onClick={() => setWordTypeChoice(item.type)}
+                  aria-pressed={wordType === item.type}
+                  className={`shrink-0 grow text-center px-3 py-1 text-sm ${choiceStyle(wordType === item.type)}`}
+                >
+                  {item.name} {item.count}
+                </button>
+              ))}
+            </div>
+          </Hint>
 
           <p className="text-xs font-bold text-pencil mb-1.5">Direction</p>
 
@@ -252,28 +267,36 @@ export default function LessonOverview({ lessonId }: LessonOverviewProps) {
 
         {/* ---------- What to study ---------- */}
 
-        <div className="space-y-3 sm:space-y-3.5">
-          <Link
-            href={studyLink("learning")}
-            className="btn-primary flex items-center justify-center w-full h-12"
-          >
-            Study Learning words ({learningCount})
-          </Link>
+        <Hint
+          id="lesson-buttons"
+          show={hints.current === "lesson-buttons"}
+          placement="above"
+          onDismiss={() => hints.dismiss("lesson-buttons")}
+          onSkipAll={hints.skipAll}
+        >
+          <div className="space-y-3 sm:space-y-3.5">
+            <Link
+              href={studyLink("learning")}
+              className="btn-primary flex items-center justify-center w-full h-12"
+            >
+              Study Learning words ({learningCount})
+            </Link>
 
-          <Link
-            href={studyLink("all")}
-            className="btn-secondary flex items-center justify-center w-full h-12"
-          >
-            Study all words ({totalCount})
-          </Link>
+            <Link
+              href={studyLink("all")}
+              className="btn-secondary flex items-center justify-center w-full h-12"
+            >
+              Study all words ({totalCount})
+            </Link>
 
-          <Link
-            href={studyLink("mastered")}
-            className="btn-secondary flex items-center justify-center w-full h-12"
-          >
-            Review Mastered words ({masteredCount})
-          </Link>
-        </div>
+            <Link
+              href={studyLink("mastered")}
+              className="btn-secondary flex items-center justify-center w-full h-12"
+            >
+              Review Mastered words ({masteredCount})
+            </Link>
+          </div>
+        </Hint>
 
         {/* Keyboard hint (only on computers with a mouse/trackpad) */}
 

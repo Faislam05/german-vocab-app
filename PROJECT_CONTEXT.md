@@ -112,6 +112,7 @@ The overview of the whole book (`src/app/page.tsx`). It shows:
 - **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light) when nothing is left.
 - **Continue** card (same size as Today, three lines, but light so Today stays the main button; below Today on phones, next to it on wider screens): one tap back to the last Study session (same lesson, filter, direction and word type), e.g. "Continue / Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Hidden until the Study screen has been used once. The last session is saved in localStorage (`lastStudy`) by the Study screen.
 - **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.
+- **"Show tips again"** link at the bottom of the Practice column, once tips have been seen (see "First-Time Tips")
 - **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
 
 Layout (phone and desktop):
@@ -589,6 +590,28 @@ Dates are local days ("2026-11-11"), not UTC.
 
 ---
 
+# First-Time Tips
+
+Small tips that explain a feature the first time you see it (`src/lib/hints.ts` for the texts and saving, `src/components/Hint.tsx` for the bubble).
+
+| Screen | Points at | Tip |
+|---|---|---|
+| Home | Today card | Start here: 10 new words a day, and repeat older words before you would forget them |
+| Home | first lesson card | Or open a lesson to study it your way |
+| Lesson | word type chips | Study just one kind of word, e.g. only verbs |
+| Lesson | the three study buttons | what Learning words / All words / Mastered words each mean |
+| Study | top bar (Flashcard switch) | Flashcard on hides the answer; Show meaning or Space to check |
+| Study | Mark as Mastered | (only once the answer is shown) mark it, tap again to undo |
+| Daily review | Again / Got it | (only once the answer is shown) Again = back tomorrow |
+
+- **One tip at a time** per screen, in the order above. A tip waits until the thing it points at is on screen (`ready`).
+- **Spotlight:** the page is blurred and dimmed, the thing stays sharp in a rounded window with a mustard outline, and a mustard speech bubble (black "Tip" label, dark "Got it" button) floats next to it. The blur and bubble are drawn in a portal at the top of the page; the bubble flips above/below to stay on screen and follows the thing every frame while open (so scrolling or animations don't misplace it).
+- Closing: **Got it**, **Esc**, or tapping the blurred area. **Skip all tips** turns them all off. **"Show tips again"** (bottom of the Practice column on Home) brings them back.
+- Saved in localStorage: `seenHints` (list of ids) and `hintsSkipped`. Like all progress, per device/browser.
+- To add a tip: add it to `HINTS` in `src/lib/hints.ts`, wrap the thing in `<Hint id=…>` and add it to that screen's `useHints([...])` list.
+
+---
+
 # Flashcard Reveal Mode
 
 Implemented on the Study screen.
@@ -798,11 +821,13 @@ german-vocab-app/
 │   │   ├── ListenButton.tsx      ← 🔊 button (pill or icon-only)
 │   │   ├── GermanWord.tsx        ← German word with coloured article
 │   │   ├── ExampleSentences.tsx  ← example sentence list
+│   │   ├── Hint.tsx              ← first-time tip (spotlight + bubble)
 │   │   ├── StudyTopBar.tsx       ← Study top bar + progress bar
 │   │   └── WordCard.tsx          ← one flashcard's content (used by
 │   │                                Study and Daily review)
 │   │
 │   └── lib/
+│       ├── hints.ts              ← first-time tips: texts, which are seen
 │       ├── review.ts             ← Daily review: Leitner boxes, today's
 │       │                            plan, study log
 │       ├── vocabulary.ts         ← shared types, lesson selection,

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Hint from "@/components/Hint";
+import { anyHintsSeen, resetHints, useHints } from "@/lib/hints";
 import { useBook } from "@/lib/useLessons";
 import {
   ReviewCards,
@@ -56,6 +58,15 @@ export default function Home() {
   // The last study session, e.g. "lesson=2&filter=learning&direction=de-en"
   // (null if you haven't studied yet)
   const [lastStudy] = useState<string | null>(loadLastStudy);
+
+  // First-time tips on this screen, one at a time (see src/lib/hints.ts)
+  const hints = useHints([
+    { id: "home-today", ready: true },
+    { id: "home-lessons", ready: true },
+  ]);
+
+  // Show the "Show tips again" link only once tips have been seen
+  const [tipsSeen] = useState<boolean>(anyHintsSeen);
 
   if (!book) {
     return (
@@ -198,44 +209,50 @@ export default function Home() {
             {/* Today: Daily review (new words + reviews), the main thing to
                 do every day. Dark, unless everything is done. */}
 
-            <Link
-              href="/review"
-              className={`flex items-center justify-between gap-4 p-4 rounded-2xl ${
-                continueCard ? "" : "sm:col-span-2"
-              } ${
-                todayDone
-                  ? "bg-white border border-graphite/10 shadow-sm hover:border-graphite/30"
-                  : "bg-graphite text-paper hover:bg-black"
-              } ${pressable}`}
+            <Hint
+              id="home-today"
+              show={hints.current === "home-today"}
+              onDismiss={() => hints.dismiss("home-today")}
+              onSkipAll={hints.skipAll}
+              className={continueCard ? "" : "sm:col-span-2"}
             >
-              <span className="min-w-0">
-                <span
-                  className={`block text-xs mb-0.5 ${
-                    todayDone ? "text-pencil" : "text-paper/70"
-                  }`}
-                >
-                  Today
+              <Link
+                href="/review"
+                className={`flex h-full items-center justify-between gap-4 p-4 rounded-2xl ${
+                  todayDone
+                    ? "bg-white border border-graphite/10 shadow-sm hover:border-graphite/30"
+                    : "bg-graphite text-paper hover:bg-black"
+                } ${pressable}`}
+              >
+                <span className="min-w-0">
+                  <span
+                    className={`block text-xs mb-0.5 ${
+                      todayDone ? "text-pencil" : "text-paper/70"
+                    }`}
+                  >
+                    Today
+                  </span>
+                  <span className="block font-semibold truncate">
+                    {todayDone ? "All done for today ✓" : todayParts.join(", ")}
+                  </span>
+                  <span
+                    className={`block text-sm truncate ${
+                      todayDone ? "text-pencil" : "text-paper/80"
+                    }`}
+                  >
+                    {todayDone
+                      ? "Learn more words, or come back tomorrow"
+                      : doneToday > 0
+                        ? `${todayLog?.learned ?? 0} learned, ${todayLog?.reviewed ?? 0} reviewed so far`
+                        : "Daily review: new words and words to repeat"}
+                  </span>
                 </span>
-                <span className="block font-semibold truncate">
-                  {todayDone ? "All done for today ✓" : todayParts.join(", ")}
-                </span>
-                <span
-                  className={`block text-sm truncate ${
-                    todayDone ? "text-pencil" : "text-paper/80"
-                  }`}
-                >
-                  {todayDone
-                    ? "Learn more words, or come back tomorrow"
-                    : doneToday > 0
-                      ? `${todayLog?.learned ?? 0} learned, ${todayLog?.reviewed ?? 0} reviewed so far`
-                      : "Daily review: new words and words to repeat"}
-                </span>
-              </span>
 
-              <span className="text-2xl" aria-hidden="true">
-                →
-              </span>
-            </Link>
+                <span className="text-2xl" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </Hint>
 
             {/* Continue: one tap back to the last Study session. Same size
                 as Today, but light, so Today stays the main button. */}
@@ -311,31 +328,42 @@ export default function Home() {
                   const percent = percentMastered(lesson.vocabulary);
 
                   return (
-                    <Link
+                    <Hint
                       key={chapter.lesson}
-                      href={`/lesson/${chapter.lesson}`}
-                      className={`block p-2.5 sm:p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 ${pressable}`}
+                      id="home-lessons"
+                      show={
+                        hints.current === "home-lessons" &&
+                        chapter.lesson === book.lessons[0]?.lesson
+                      }
+                      align="left"
+                      onDismiss={() => hints.dismiss("home-lessons")}
+                      onSkipAll={hints.skipAll}
                     >
-                      <p className="text-xs text-pencil">{chapter.title}</p>
-                      <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
-                        {chapter.chapter}
-                      </p>
-                      <p className="text-xs text-pencil mb-2">
-                        {chapter.chapter_en}
-                      </p>
+                      <Link
+                        href={`/lesson/${chapter.lesson}`}
+                        className={`block p-2.5 sm:p-3 rounded-xl bg-white border border-graphite/10 shadow-sm hover:border-graphite/30 ${pressable}`}
+                      >
+                        <p className="text-xs text-pencil">{chapter.title}</p>
+                        <p className="font-serif text-sm sm:text-base font-semibold leading-snug">
+                          {chapter.chapter}
+                        </p>
+                        <p className="text-xs text-pencil mb-2">
+                          {chapter.chapter_en}
+                        </p>
 
-                      <div className="flex justify-between text-xs text-pencil mb-1">
-                        <span>{lesson.vocabulary.length} words</span>
-                        <span>{percent}%</span>
-                      </div>
+                        <div className="flex justify-between text-xs text-pencil mb-1">
+                          <span>{lesson.vocabulary.length} words</span>
+                          <span>{percent}%</span>
+                        </div>
 
-                      <div className="h-1.5 bg-grid rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-marker-strong"
-                          style={{ width: `${percent}%` }}
-                        />
-                      </div>
-                    </Link>
+                        <div className="h-1.5 bg-grid rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-marker-strong"
+                            style={{ width: `${percent}%` }}
+                          />
+                        </div>
+                      </Link>
+                    </Hint>
                   );
                 })}
 
@@ -372,6 +400,19 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+
+              {/* Bring back the first-time tips */}
+              {tipsSeen && (
+                <button
+                  onClick={() => {
+                    resetHints();
+                    window.location.reload();
+                  }}
+                  className="mt-3 text-xs text-pencil underline underline-offset-2 hover:text-graphite"
+                >
+                  Show tips again
+                </button>
+              )}
             </section>
           </div>
         </div>

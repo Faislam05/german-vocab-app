@@ -199,6 +199,27 @@ body {
   }
 }
 
+/* First-time tips: the blur around the spotlight fades in. */
+.hint-fade {
+  transition: opacity 250ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/* First-time tip bubbles: fade in while rising a little into place. */
+.hint-pop {
+  transition:
+    opacity 250ms var(--ease-out),
+    transform 250ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
 /* "Reduce motion" turned on in the phone/computer settings: keep the
    gentle fades, but nothing slides. */
 @media (prefers-reduced-motion: reduce) {
@@ -208,6 +229,12 @@ body {
   }
 
   .reveal-fade {
+    @starting-style {
+      transform: none;
+    }
+  }
+
+  .hint-pop {
     @starting-style {
       transform: none;
     }
