@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Fox from "@/components/Fox";
 import Hint from "@/components/Hint";
 import WordCard, { cardFrame, cardStyle } from "@/components/WordCard";
 import { useHints } from "@/lib/hints";
@@ -209,7 +210,15 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
       <main className="min-h-screen flex justify-center items-start px-4 pt-6 sm:pt-10">
         {/* Dark, like the Today card on Home and the lesson cover */}
         <div className={`${cardStyle} bg-graphite text-white p-8 text-center`}>
-          <div className="text-5xl mb-4">{didSomething ? "🎉" : "☕"}</div>
+          {/* The fox celebrates when you're done, or sleeps when there
+              was nothing to do */}
+          <div className="flex justify-center mb-4">
+            {didSomething ? (
+              <Fox pose="celebrating" height={130} says="Super!" pop />
+            ) : (
+              <Fox pose="sleeping" height={90} pop />
+            )}
+          </div>
 
           <h1 className="font-serif text-3xl font-semibold mb-2">
             {didSomething ? "All done for today" : "Nothing due right now"}

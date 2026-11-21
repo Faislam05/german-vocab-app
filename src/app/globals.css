@@ -220,11 +220,32 @@ body {
   }
 }
 
+/* The fox mascot pops up with a small springy bounce (it overshoots a
+   little, then settles), and its speech bubble follows a moment later. */
+.fox-pop {
+  transform-origin: bottom center;
+  animation: fox-pop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.fox-bubble-pop {
+  transform-origin: bottom left;
+  animation: fox-pop 350ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms both;
+}
+
+@keyframes fox-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.6);
+  }
+}
+
 /* "Reduce motion" turned on in the phone/computer settings: keep the
    gentle fades, but nothing slides. */
 @media (prefers-reduced-motion: reduce) {
   .card-in-next,
-  .card-in-previous {
+  .card-in-previous,
+  .fox-pop,
+  .fox-bubble-pop {
     animation-name: fade-in;
   }
 

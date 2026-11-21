@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Fox from "@/components/Fox";
 import Hint from "@/components/Hint";
 import ProgressBar, { getProgress } from "@/components/ProgressBar";
 import { LevelId, loadLevel } from "@/lib/level";
-import { anyHintsSeen, resetHints, useHints } from "@/lib/hints";
+import { useHints } from "@/lib/hints";
 import { useBook } from "@/lib/useLessons";
 import {
   ReviewCards,
@@ -75,9 +76,6 @@ export default function Home() {
     { id: "home-today", ready: true },
     { id: "home-lessons", ready: true },
   ]);
-
-  // Show the "Show tips again" link only once tips have been seen
-  const [tipsSeen] = useState<boolean>(anyHintsSeen);
 
   if (!book || !level) {
     return (
@@ -164,18 +162,19 @@ export default function Home() {
           {/* Header with overall progress */}
 
           <header className="mb-5">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3">
               <h1 className="font-serif text-4xl font-semibold leading-tight">
-                German
+                German {level}
               </h1>
 
-              {/* Your level; tap it to change level on the Welcome screen */}
+              {/* Profile button: the fox's face. Opens the Profile screen
+                  (level, progress, settings). */}
               <Link
-                href="/welcome"
-                aria-label={`Level ${level}, change level`}
-                className="btn-secondary px-3 py-1 text-sm"
+                href="/profile"
+                aria-label="Profile"
+                className="shrink-0 grid place-items-center w-11 h-11 rounded-full bg-marker-strong transition-transform duration-150 ease-out active:scale-95"
               >
-                {level} <span aria-hidden="true">▾</span>
+                <Fox pose="head" height={34} />
               </Link>
             </div>
 
@@ -389,19 +388,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
-              {/* Bring back the first-time tips */}
-              {tipsSeen && (
-                <button
-                  onClick={() => {
-                    resetHints();
-                    window.location.reload();
-                  }}
-                  className="mt-3 text-xs text-pencil underline underline-offset-2 hover:text-graphite"
-                >
-                  Show tips again
-                </button>
-              )}
             </section>
           </div>
         </div>

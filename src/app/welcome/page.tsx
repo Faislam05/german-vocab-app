@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
+import Fox from "@/components/Fox";
 import ProgressBar, { getProgress } from "@/components/ProgressBar";
 import { LEVELS, LevelId, loadLevel, saveLevel } from "@/lib/level";
 import { ReviewCards, loadReviewCards } from "@/lib/review";
@@ -47,12 +48,19 @@ export default function Welcome() {
   return (
     <main className="min-h-dvh flex justify-center px-4 py-6 sm:py-12">
       <div className="w-full max-w-md">
-        <header className="mb-6">
-          <h1 className="font-serif text-4xl font-semibold leading-tight">
-            Hallo! 👋
-          </h1>
-          <p className="text-lg mt-1">Let&apos;s learn German.</p>
-          <p className="text-pencil mt-3">Which level do you want to study?</p>
+        {/* The greeting, with the fox waving hello next to it */}
+        <header className="flex items-end justify-between gap-2 mb-6">
+          <div>
+            <h1 className="font-serif text-4xl font-semibold leading-tight">
+              Hallo!
+            </h1>
+            <p className="text-lg mt-1">Let&apos;s learn German.</p>
+            <p className="text-pencil mt-3">
+              Which level do you want to study?
+            </p>
+          </div>
+
+          <Fox pose="waving" height={120} pop className="shrink-0" />
         </header>
 
         {/* A1: the main choice, a big dark card (with your progress bar

@@ -103,16 +103,16 @@ Each enriched lesson file contains:
 
 # App Screens
 
-The app has three screens: Home → Lesson → Study, plus a one-time Welcome screen.
+The app has three screens: Home → Lesson → Study, plus a one-time Welcome screen and a Profile screen.
 
 ## Welcome screen (`/welcome`)
 
-Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo! 👋 Let's learn German", then a choice of level. A1 is a big dark card; A2–C2 are dashed "Coming soon" placeholders. The level list is `LEVELS` in `src/lib/level.ts` (set `ready: true` when a level gets words).
+Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo! Let's learn German" with the waving fox (see "Fox Mascot"), then a choice of level. A1 is a big dark card; A2–C2 are dashed "Coming soon" placeholders. The level list is `LEVELS` in `src/lib/level.ts` (set `ready: true` when a level gets words).
 
 - The choice is saved in localStorage (`level`), and from then on the app opens straight on Home.
 - Home sends you here when no level is saved yet (and shows nothing meanwhile).
 - People who used the app before this screen existed (they have `studyStatus`, `reviewCards` or `lastStudy` saved) skip it and get A1 automatically.
-- Tapping the level chip on Home ("A1 ▾") opens this screen again to change level. (No "← Home" button for now: tapping A1 goes back to Home anyway. Add one when a second level exists, to leave without switching.)
+- "Change" (Level) on the Profile screen opens this screen again to change level. (No "← Home" button for now: tapping A1 goes back to Home anyway. Add one when a second level exists, to leave without switching.)
 - Once you have started (something learned or Mastered), the A1 card shows the same two-tone progress bar and key as Home (`src/components/ProgressBar.tsx`, shared by both screens; `getProgress()` there computes the numbers). New users see no bar and the line "Not sure? Start with A1"; that line is hidden when changing level.
 - Later idea: more books per level, and other languages above levels (Language → Level → Book → Lesson). Progress is saved by the German word, so the same word in two books would share progress; other languages would need their own progress keys.
 
@@ -120,11 +120,10 @@ Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo
 
 The overview of the whole book (`src/app/page.tsx`). It shows:
 
-- "German" with a level chip ("A1 ▾", opens the Welcome screen to change level), and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar** (`ProgressBar`, also used on Welcome): dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
+- "German A1" (your level), the **profile button** at the top right (the fox face on dark yellow, opens Profile), and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar** (`ProgressBar`, also used on Welcome): dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
 - **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light) when nothing is left.
 - **Continue** card (same size as Today, three lines, but light so Today stays the main button; below Today on phones, next to it on wider screens): one tap back to the last Study session (same lesson, filter, direction and word type), e.g. "Continue / Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Hidden until the Study screen has been used once. The last session is saved in localStorage (`lastStudy`) by the Study screen.
 - **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.
-- **"Show tips again"** link at the bottom of the Practice column, once tips have been seen (see "First-Time Tips")
 - **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
 
 Layout (phone and desktop):
@@ -133,6 +132,14 @@ Layout (phone and desktop):
 - In the scroll area there are two columns, on phones too: Lessons on the left (a bit wider, `3fr`) and Practice on the right (`2fr`). On desktop Lessons take two-thirds with two cards per row, Practice one-third.
 - Practice is `sticky`, so only the lesson list moves when you scroll.
 - On desktop everything fits without scrolling. On a small phone (375×667) the scroll area is about 260px tall (2–3 lessons visible at a time); on a normal phone (390×844) about 437px.
+
+## Profile screen (`/profile`)
+
+Opened with the fox button at the top right of Home (`src/app/profile/page.tsx`). Same layout as the Lesson screen ("← Home", dark cover, white card):
+
+- **Cover**: the fox face on dark yellow, "German A1", "Beginner, X learned, Y mastered", and the progress bar.
+- **Settings card**: **Level** ("Change" opens Welcome) and **Tips** ("Show again" turns the first-time tips back on and goes to Home).
+- A dashed "Streak and stats, coming soon" placeholder. Planned here later: streak, words per day, daily goal, reset progress.
 
 ## Lesson screen (`/lesson/2` or `/lesson/all`)
 
@@ -568,6 +575,24 @@ The cards (Study and Daily review) follow a trading-card mockup made by the user
 
 ---
 
+# Fox Mascot
+
+A friendly fox, used for **moments** (hello, well done, nothing to do), not on every card: the flashcards already have the word's emoji as their picture.
+
+- Component: `src/components/Fox.tsx`: `<Fox pose="waving" height={120} says="Super!" pop />`. `says` adds a white speech bubble (real text, so it can change); `pop` makes the fox pop in with a small springy bounce (`.fox-pop` in globals.css; just a fade with "reduce motion").
+- Images: `public/mascot/fox-<pose>.webp`. Made from the ChatGPT PNGs (`~/Desktop/Vocab App/fox-*.png`) with `python3 scripts/prepare-mascot.py "<folder>" <pose> ...`: removes haze and soft shadows, makes the fox fully solid, trims it and saves a small WebP (about 20 KB). Add each new pose's size to `POSES` in `Fox.tsx`.
+
+| Pose | Where |
+|---|---|
+| waving | Welcome screen, next to "Hallo!" |
+| celebrating | Daily review "All done for today", with "Super!" |
+| sleeping | Daily review "Nothing due right now" |
+| head | Profile button on Home and the Profile cover (on dark yellow); also the future logo / app icon |
+
+Ready but not used yet (PNGs on the Desktop): encouraging ("Kein Problem!" after Again), peeking (over the Today card), presenting (for the tips), thinking (der/die/das quiz), neutral, reading (loading).
+
+---
+
 # Daily Review
 
 "Learn 10 new words a day, and review old words just before you forget them." Opened with the **Today** card on Home (`/review`). Logic in `src/lib/review.ts`, screen in `src/app/review/`.
@@ -618,7 +643,7 @@ Small tips that explain a feature the first time you see it (`src/lib/hints.ts` 
 
 - **One tip at a time** per screen, in the order above. A tip waits until the thing it points at is on screen (`ready`).
 - **Spotlight:** the page is blurred and dimmed, the thing stays sharp in a rounded window with a mustard outline, and a mustard speech bubble (black "Tip" label, dark "Got it" button) floats next to it. The blur and bubble are drawn in a portal at the top of the page; the bubble flips above/below to stay on screen and follows the thing every frame while open (so scrolling or animations don't misplace it).
-- Closing: **Got it**, **Esc**, or tapping the blurred area. **Skip all tips** turns them all off. **"Show tips again"** (bottom of the Practice column on Home) brings them back.
+- Closing: **Got it**, **Esc**, or tapping the blurred area. **Skip all tips** turns them all off. **"Show again"** (Tips, on the Profile screen) brings them back.
 - Saved in localStorage: `seenHints` (list of ids) and `hintsSkipped`. Like all progress, per device/browser.
 - To add a tip: add it to `HINTS` in `src/lib/hints.ts`, wrap the thing in `<Hint id=…>` and add it to that screen's `useHints([...])` list.
 
