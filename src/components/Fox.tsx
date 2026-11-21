@@ -9,6 +9,7 @@ const POSES = {
   waving: { width: 230, height: 360 },
   celebrating: { width: 294, height: 360 },
   sleeping: { width: 391, height: 360 },
+  encouraging: { width: 281, height: 360 },
   head: { width: 360, height: 360 }, // the face: logo and profile button
 } as const;
 
@@ -55,9 +56,7 @@ export default function Fox({
 
       {says && (
         <span
-          className={`absolute bottom-[92%] left-[66%] whitespace-nowrap rounded-2xl bg-white text-graphite font-serif font-semibold text-lg px-3 py-1 shadow-[0_3px_0_rgba(0,0,0,0.15)] ${
-            pop ? "fox-bubble-pop" : ""
-          }`}
+          className={`absolute whitespace-nowrap rounded-2xl bg-white text-graphite font-serif font-semibold text-lg px-3 py-1 ring-1 ring-graphite/10 shadow-[0_3px_0_rgba(0,0,0,0.15)] bottom-[92%] left-[66%] ${pop ? "fox-bubble-pop" : ""}`}
         >
           {says}
           {/* The bubble's little tail, pointing down at the fox */}

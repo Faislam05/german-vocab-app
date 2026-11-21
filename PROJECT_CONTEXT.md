@@ -587,9 +587,10 @@ A friendly fox, used for **moments** (hello, well done, nothing to do), not on e
 | waving | Welcome screen, next to "Hallo!" |
 | celebrating | Daily review "All done for today", with "Super!" |
 | sleeping | Daily review "Nothing due right now" |
+| encouraging | Daily review, after **Again**: pops up left of the word saying "Kein Problem!" for about 1.5s, then fades away (`.fox-moment`); taps go through it |
 | head | Profile button on Home and the Profile cover (on dark yellow); also the future logo / app icon |
 
-Ready but not used yet (PNGs on the Desktop): encouraging ("Kein Problem!" after Again), peeking (over the Today card), presenting (for the tips), thinking (der/die/das quiz), neutral, reading (loading).
+Ready but not used yet (PNGs on the Desktop): peeking (over the Today card), presenting (for the tips), thinking (der/die/das quiz), neutral, reading (loading).
 
 ---
 

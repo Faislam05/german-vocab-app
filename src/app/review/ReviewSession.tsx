@@ -114,6 +114,17 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
   // answering (and saving) the same card twice.
   const lastAnswered = useRef<number | null>(null);
 
+  // "Kein Problem!": after Again, the fox pops up next to the word for a
+  // moment. The number changes on every Again, so the fox pops up again
+  // even if it is still showing (null = not showing).
+  const [encourage, setEncourage] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (encourage === null) return;
+    const timer = setTimeout(() => setEncourage(null), 1800);
+    return () => clearTimeout(timer);
+  }, [encourage]);
+
   const step = session.steps[session.index] as Step | undefined;
   const showAnswer = step?.kind === "meet" || revealedIndex === session.index;
 
@@ -160,6 +171,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
     if (!gotIt) {
       forgotWord(step.word.word);
       steps.push({ kind: "retry", word: step.word, isNew: step.isNew });
+      setEncourage(session.index);
     }
 
     setSession({ steps, index: session.index + 1, reviewed, learned });
@@ -307,6 +319,23 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
             word={step.word}
             isEnglishToGerman={isEnglishToGerman}
             showAnswer={showAnswer}
+            besideWord={
+              // "Kein Problem!" after Again: the fox pops up next to the
+              // word for a moment, then fades away
+              encourage !== null && (
+                <div key={encourage} className="fox-moment" aria-live="polite">
+                  <Fox
+                    pose="encouraging"
+                    height={50}
+                    says="Kein Problem!"
+                    pop
+                  />
+                  <span className="sr-only">
+                    No problem, you will see this word again at the end.
+                  </span>
+                </div>
+              )
+            }
           />
         </div>
 
