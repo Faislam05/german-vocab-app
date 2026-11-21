@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Hint from "@/components/Hint";
+import { LevelId, loadLevel } from "@/lib/level";
 import { anyHintsSeen, resetHints, useHints } from "@/lib/hints";
 import { useBook } from "@/lib/useLessons";
 import {
@@ -49,6 +51,14 @@ const filterNames: Record<string, string> = {
 // lessons of the book and (later) other ways to practise.
 export default function Home() {
   const book = useBook();
+  const router = useRouter();
+
+  // Your German level. None chosen yet (first visit): go to the Welcome
+  // screen to choose one, and show nothing here meanwhile.
+  const [level] = useState<LevelId | null>(loadLevel);
+  useEffect(() => {
+    if (!level) router.replace("/welcome");
+  }, [level, router]);
 
   const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
 
@@ -68,7 +78,7 @@ export default function Home() {
   // Show the "Show tips again" link only once tips have been seen
   const [tipsSeen] = useState<boolean>(anyHintsSeen);
 
-  if (!book) {
+  if (!book || !level) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <p>Loading vocabulary...</p>
@@ -166,9 +176,20 @@ export default function Home() {
           {/* Header with overall progress */}
 
           <header className="mb-5">
-            <h1 className="font-serif text-4xl font-semibold leading-tight">
-              German A1
-            </h1>
+            <div className="flex items-center gap-3">
+              <h1 className="font-serif text-4xl font-semibold leading-tight">
+                German
+              </h1>
+
+              {/* Your level; tap it to change level on the Welcome screen */}
+              <Link
+                href="/welcome"
+                aria-label={`Level ${level}, change level`}
+                className="btn-secondary px-3 py-1 text-sm"
+              >
+                {level} <span aria-hidden="true">▾</span>
+              </Link>
+            </div>
 
             <p className="text-sm text-pencil mt-1 mb-1.5">
               Learned <strong className="text-graphite">{learnedCount}</strong>
