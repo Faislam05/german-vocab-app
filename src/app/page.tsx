@@ -229,15 +229,20 @@ export default function Home() {
                     }`}
                   >
                     {todayDone
-                      ? "Learn more words, or come back tomorrow"
+                      ? "See you tomorrow, or learn more"
                       : doneToday > 0
                         ? `${todayLog?.learned ?? 0} learned, ${todayLog?.reviewed ?? 0} reviewed so far`
                         : "Daily review: new words and words to repeat"}
                   </span>
                 </span>
 
-                <span className="text-2xl" aria-hidden="true">
-                  →
+                {/* All done: the fox sleeps next to the arrow until
+                    tomorrow */}
+                <span className="shrink-0 flex items-center gap-3">
+                  {todayDone && <Fox pose="sleeping" height={44} />}
+                  <span className="text-2xl" aria-hidden="true">
+                    →
+                  </span>
                 </span>
               </Link>
             </Hint>

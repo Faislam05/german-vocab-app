@@ -121,7 +121,7 @@ Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo
 The overview of the whole book (`src/app/page.tsx`). It shows:
 
 - "German A1" (your level), the **profile button** at the top right (the fox face on dark yellow, opens Profile), and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar** (`ProgressBar`, also used on Welcome): dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
-- **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light) when nothing is left.
+- **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light, with a small sleeping fox: "See you tomorrow, or learn more") when nothing is left.
 - **Continue** card (same size as Today, three lines, but light so Today stays the main button; below Today on phones, next to it on wider screens): one tap back to the last Study session (same lesson, filter, direction and word type), e.g. "Continue / Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Hidden until the Study screen has been used once. The last session is saved in localStorage (`lastStudy`) by the Study screen.
 - **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.
 - **Practice**: dashed "Coming soon" placeholders for the planned activities (der / die / das quiz, Expressions, Grammar). They are listed in `PRACTICE_IDEAS` in `src/app/page.tsx`.
@@ -587,6 +587,7 @@ A friendly fox, used for **moments** (hello, well done, nothing to do), not on e
 | waving | Welcome screen, next to "Hallo!" |
 | celebrating | Daily review "All done for today", with "Super!" |
 | sleeping | Daily review "Nothing due right now" |
+| sleeping (small) | Home, on the Today card when all is done for today ("See you tomorrow, or learn more") |
 | encouraging | Daily review, after **Again**: pops up left of the word saying "Kein Problem!" for about 1.5s, then fades away (`.fox-moment`); taps go through it |
 | head | Profile button on Home and the Profile cover (on dark yellow); also the future logo / app icon |
 
