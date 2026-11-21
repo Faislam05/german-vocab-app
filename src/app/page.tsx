@@ -209,7 +209,7 @@ export default function Home() {
                 className={`flex h-full items-center justify-between gap-4 p-4 rounded-2xl ${
                   todayDone
                     ? "bg-white border border-graphite/10 shadow-sm hover:border-graphite/30"
-                    : "bg-graphite text-paper hover:bg-black"
+                    : "bg-graphite text-paper border border-graphite hover:bg-black hover:border-black"
                 } ${pressable}`}
               >
                 <span className="min-w-0">
@@ -232,14 +232,18 @@ export default function Home() {
                       ? "See you tomorrow, or learn more"
                       : doneToday > 0
                         ? `${todayLog?.learned ?? 0} learned, ${todayLog?.reviewed ?? 0} reviewed so far`
-                        : "Daily review: new words and words to repeat"}
+                        : "Learn new words, repeat old ones"}
                   </span>
                 </span>
 
-                {/* All done: the fox sleeps next to the arrow until
-                    tomorrow */}
+                {/* The fox next to the arrow: reading while there are
+                    words to learn or review, sleeping when all is done */}
                 <span className="shrink-0 flex items-center gap-3">
-                  {todayDone && <Fox pose="sleeping" height={44} />}
+                  {todayDone ? (
+                    <Fox pose="sleeping" height={44} />
+                  ) : (
+                    <Fox pose="reading" height={56} />
+                  )}
                   <span className="text-2xl" aria-hidden="true">
                     →
                   </span>

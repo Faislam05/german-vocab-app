@@ -10,6 +10,7 @@ const POSES = {
   celebrating: { width: 294, height: 360 },
   sleeping: { width: 391, height: 360 },
   encouraging: { width: 281, height: 360 },
+  reading: { width: 272, height: 360 },
   head: { width: 360, height: 360 }, // the face: logo and profile button
 } as const;
 
