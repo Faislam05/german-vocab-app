@@ -73,6 +73,7 @@ Current lessons:
 |---|---|---|---|
 | Lektion 1 | `lektion_01_enriched_with_emojis.json` | 107 | 5–6 |
 | Lektion 2 | `lektion_02_enriched_with_emojis.json` | 76 | 19–20 |
+| Lektion 3 | `lektion_03_enriched_with_emojis.json` | 138 | 33–34 (assumed, not visible in the photos) |
 
 Each lesson also has a `lektion_XX_source.json` with exactly what is printed in the book (words, page references, article codes, expressions and grammar tables). The app does not read the source files; they are kept so the enriched files can be rebuilt or checked. (`lektion_01_enriched.json` is an older Lektion 1 version that is not used.)
 

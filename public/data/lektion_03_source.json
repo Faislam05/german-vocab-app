@@ -1,0 +1,1128 @@
+{
+  "lesson": 3,
+  "title": "Lektion 3",
+  "source_pages": [
+    33,
+    34
+  ],
+  "status": "clean_source_extraction",
+  "notes": [
+    "references are the page numbers printed next to each vocabulary item in the book",
+    "noun article codes as printed: r = der, e = die, s = das",
+    "plural notation as printed: ,-n adds -n; ,¨-e adds -e with umlaut; ,¨ adds only an umlaut; ,- means no change",
+    "grammar tables are stored separately from vocabulary",
+    "page numbers 33 and 34 are assumed (the two Lektion 3 pages after Lektion 2's pages 19-20 are not numbered in the photos)"
+  ],
+  "vocabulary": {
+    "verbs": [
+      {
+        "text": "backen",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "bestellen",
+        "references": [
+          38
+        ]
+      },
+      {
+        "text": "bezahlen",
+        "references": [
+          39
+        ]
+      },
+      {
+        "text": "brauchen",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "erkennen",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "erzählen",
+        "references": [
+          35,
+          37,
+          41
+        ]
+      },
+      {
+        "text": "essen",
+        "references": [
+          34
+        ]
+      },
+      {
+        "text": "glauben",
+        "references": [
+          36
+        ]
+      },
+      {
+        "text": "kennen",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "kochen",
+        "references": [
+          40,
+          58,
+          70
+        ]
+      },
+      {
+        "text": "mögen",
+        "references": [
+          36,
+          60
+        ]
+      },
+      {
+        "text": "nehmen",
+        "references": [
+          37,
+          40
+        ]
+      },
+      {
+        "text": "schmecken",
+        "references": [
+          40,
+          42
+        ]
+      },
+      {
+        "text": "trinken",
+        "references": [
+          34,
+          45,
+          47
+        ]
+      },
+      {
+        "text": "üben",
+        "references": [
+          36,
+          54,
+          78
+        ]
+      }
+    ],
+    "nouns": [
+      {
+        "text": "Abendessen",
+        "printed": "s Abendessen",
+        "references": [
+          40,
+          79,
+          86
+        ]
+      },
+      {
+        "text": "Alkohol",
+        "printed": "r Alkohol",
+        "references": [
+          42,
+          61
+        ]
+      },
+      {
+        "text": "Anzeige",
+        "printed": "e Anzeige,-n",
+        "references": [
+          41,
+          113
+        ]
+      },
+      {
+        "text": "Apfel",
+        "printed": "r Apfel,¨",
+        "references": [
+          37,
+          41
+        ]
+      },
+      {
+        "text": "Bier",
+        "printed": "s Bier",
+        "references": [
+          33,
+          35,
+          37,
+          41,
+          42
+        ]
+      },
+      {
+        "text": "Bohne",
+        "printed": "e Bohne,-n",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Brot",
+        "printed": "s Brot,-e",
+        "references": [
+          33,
+          35
+        ]
+      },
+      {
+        "text": "Brötchen",
+        "printed": "s Brötchen,-",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "Butter",
+        "printed": "e Butter",
+        "references": [
+          33,
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Dose",
+        "printed": "e Dose,-n",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "Ei",
+        "printed": "s Ei,-er",
+        "references": [
+          33,
+          35,
+          41
+        ]
+      },
+      {
+        "text": "Eis",
+        "printed": "s Eis",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Erdbeere",
+        "printed": "e Erdbeere,-n",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Export",
+        "printed": "r Export",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "Fisch",
+        "printed": "r Fisch,-e",
+        "references": [
+          33,
+          35
+        ]
+      },
+      {
+        "text": "Flasche",
+        "printed": "e Flasche,-n",
+        "references": [
+          35,
+          41
+        ]
+      },
+      {
+        "text": "Fleisch",
+        "printed": "s Fleisch",
+        "references": [
+          33,
+          37
+        ]
+      },
+      {
+        "text": "Frage",
+        "printed": "e Frage,-n",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "Frucht",
+        "printed": "e Frucht,¨-e",
+        "references": [
+          37,
+          41
+        ]
+      },
+      {
+        "text": "Frühstück",
+        "printed": "s Frühstück",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Gabel",
+        "printed": "e Gabel,-n",
+        "references": [
+          33
+        ]
+      },
+      {
+        "text": "Gasthof",
+        "printed": "r Gasthof,¨-e",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Gemüse",
+        "printed": "s Gemüse",
+        "references": [
+          33,
+          35
+        ]
+      },
+      {
+        "text": "Gericht",
+        "printed": "s Gericht,-e",
+        "references": [
+          37,
+          40
+        ]
+      },
+      {
+        "text": "Gespräch",
+        "printed": "s Gespräch,-e",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Getränk",
+        "printed": "s Getränk,-e",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Gewürz",
+        "printed": "s Gewürz,-e",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Glas",
+        "printed": "s Glas,¨-er",
+        "references": [
+          33,
+          35
+        ]
+      },
+      {
+        "text": "Gramm",
+        "printed": "s Gramm",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Hähnchen",
+        "printed": "s Hähnchen,-",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Kaffee",
+        "printed": "r Kaffee",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "Kartoffel",
+        "printed": "e Kartoffel,-n",
+        "references": [
+          35,
+          37,
+          41
+        ]
+      },
+      {
+        "text": "Käse",
+        "printed": "r Käse",
+        "references": [
+          36,
+          41
+        ]
+      },
+      {
+        "text": "Kilo",
+        "printed": "s Kilo,-s",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Kotelett",
+        "printed": "s Kotelett,-s",
+        "references": [
+          35,
+          36
+        ]
+      },
+      {
+        "text": "Kuchen",
+        "printed": "r Kuchen,-",
+        "references": [
+          33,
+          35
+        ]
+      },
+      {
+        "text": "Limonade",
+        "printed": "e Limonade,-n",
+        "references": [
+          37,
+          42
+        ]
+      },
+      {
+        "text": "Liter",
+        "printed": "r Liter,-",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Löffel",
+        "printed": "r Löffel,-",
+        "references": [
+          33
+        ]
+      },
+      {
+        "text": "Mark",
+        "printed": "e Mark",
+        "references": [
+          39
+        ]
+      },
+      {
+        "text": "Marmelade",
+        "printed": "e Marmelade,-n",
+        "references": [
+          35,
+          41
+        ]
+      },
+      {
+        "text": "Mehl",
+        "printed": "s Mehl",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Messer",
+        "printed": "s Messer,-",
+        "references": [
+          33
+        ]
+      },
+      {
+        "text": "Milch",
+        "printed": "e Milch",
+        "references": [
+          33,
+          35,
+          41
+        ]
+      },
+      {
+        "text": "Mineralwasser",
+        "printed": "s Mineralwasser",
+        "references": [
+          35,
+          41
+        ]
+      },
+      {
+        "text": "Nachtisch",
+        "printed": "r Nachtisch,-e",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Öl",
+        "printed": "s Öl,-e",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Pfeffer",
+        "printed": "r Pfeffer",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Pfund",
+        "printed": "s Pfund",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Preis",
+        "printed": "r Preis,-e",
+        "references": [
+          39
+        ]
+      },
+      {
+        "text": "Reis",
+        "printed": "r Reis",
+        "references": [
+          33
+        ]
+      },
+      {
+        "text": "Rotwein",
+        "printed": "r Rotwein,-e",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Saft",
+        "printed": "r Saft,¨-e",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Sahne",
+        "printed": "e Sahne",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Salat",
+        "printed": "r Salat,-e",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Schinken",
+        "printed": "r Schinken,-",
+        "references": [
+          37,
+          41
+        ]
+      },
+      {
+        "text": "Schokolade",
+        "printed": "e Schokolade,-n",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Soße",
+        "printed": "e Soße,-n",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "Speisekarte",
+        "printed": "e Speisekarte,-n",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "Steak",
+        "printed": "s Steak,-s",
+        "references": [
+          36,
+          37
+        ]
+      },
+      {
+        "text": "Suppe",
+        "printed": "e Suppe,-n",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Tasse",
+        "printed": "e Tasse,-n",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "Tee",
+        "printed": "r Tee",
+        "references": [
+          35,
+          36
+        ]
+      },
+      {
+        "text": "Teller",
+        "printed": "r Teller,-",
+        "references": [
+          33,
+          37
+        ]
+      },
+      {
+        "text": "Tomate",
+        "printed": "e Tomate,-n",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Vorspeise",
+        "printed": "e Vorspeise,-n",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "Wäsche",
+        "printed": "e Wäsche",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Wurst",
+        "printed": "e Wurst,¨-e",
+        "references": [
+          35,
+          37
+        ]
+      },
+      {
+        "text": "Zettel",
+        "printed": "r Zettel,-",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Zucker",
+        "printed": "r Zucker",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "Zwiebel",
+        "printed": "e Zwiebel,-n",
+        "references": [
+          37
+        ]
+      }
+    ],
+    "adjectives": [
+      {
+        "text": "billig",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "bitter",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "dunkel",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "eng",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "fantastisch",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "groß",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "grün",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "hart",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "hell",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "hoch",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "mild",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "nah",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "normal",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "rot",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "salzig",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "schlank",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "stark",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "süß",
+        "references": [
+          40,
+          42
+        ]
+      },
+      {
+        "text": "trocken",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "typisch",
+        "references": [
+          42
+        ]
+      }
+    ],
+    "adverbs": [
+      {
+        "text": "abends",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "besonders",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "danach",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "dann",
+        "references": [
+          37,
+          41,
+          42
+        ]
+      },
+      {
+        "text": "fast",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "ganz",
+        "references": [
+          41
+        ]
+      },
+      {
+        "text": "genug",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "gern",
+        "references": [
+          36,
+          38,
+          42
+        ]
+      },
+      {
+        "text": "lieber",
+        "references": [
+          38
+        ]
+      },
+      {
+        "text": "manchmal",
+        "references": [
+          36
+        ]
+      },
+      {
+        "text": "mittags",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "morgens",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "nachmittags",
+        "references": [
+          35
+        ]
+      },
+      {
+        "text": "natürlich",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "nur",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "oben",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "oft",
+        "references": [
+          36
+        ]
+      },
+      {
+        "text": "so",
+        "references": [
+          39
+        ]
+      },
+      {
+        "text": "sofort",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "überall",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "unten",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "verschieden",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "vorwiegend",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "zuerst",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "zusammen",
+        "references": [
+          39
+        ]
+      }
+    ],
+    "function_words": [
+      {
+        "text": "alle",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "als",
+        "references": [
+          37,
+          40
+        ]
+      },
+      {
+        "text": "doch",
+        "references": [
+          40
+        ]
+      },
+      {
+        "text": "etwas",
+        "references": [
+          40,
+          42
+        ]
+      },
+      {
+        "text": "jeder",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "mit",
+        "references": [
+          37
+        ]
+      },
+      {
+        "text": "pro",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "viel",
+        "references": [
+          42
+        ]
+      },
+      {
+        "text": "welcher?",
+        "references": [
+          43
+        ]
+      },
+      {
+        "text": "zu",
+        "references": [
+          40
+        ]
+      }
+    ]
+  },
+  "expressions": [
+    {
+      "text": "es gibt",
+      "references": [
+        42
+      ]
+    },
+    {
+      "text": "vor allem",
+      "references": [
+        42
+      ]
+    }
+  ],
+  "abbreviations": [
+    {
+      "text": "g",
+      "printed": "g s Gramm",
+      "full": "das Gramm",
+      "english": "gram",
+      "references": [
+        41
+      ]
+    },
+    {
+      "text": "kg",
+      "printed": "kg s Kilogramm",
+      "full": "das Kilogramm",
+      "english": "kilogram",
+      "references": [
+        41
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Definiter Artikel im Akkusativ",
+      "english_topic": "Definite article in the accusative",
+      "section_reference": "§2",
+      "singular": [
+        "den Stuhl",
+        "die Lampe",
+        "das Klavier"
+      ],
+      "plural": [
+        "die Stühle",
+        "die Lampen",
+        "die Klaviere"
+      ]
+    },
+    {
+      "topic": "Indefiniter Artikel im Akkusativ",
+      "english_topic": "Indefinite article in the accusative",
+      "section_reference": "§2",
+      "singular": [
+        "einen Stuhl",
+        "eine Lampe",
+        "ein Regal"
+      ],
+      "plural": [
+        "Stühle",
+        "Lampen",
+        "Regale"
+      ],
+      "negative_singular": [
+        "keinen Stuhl",
+        "keine Lampe",
+        "kein Regal"
+      ],
+      "negative_plural": [
+        "keine Stühle",
+        "keine Lampen",
+        "keine Regale"
+      ]
+    },
+    {
+      "topic": "Possessivartikel im Akkusativ",
+      "english_topic": "Possessive articles in the accusative",
+      "section_reference": "§6a",
+      "forms": {
+        "ich": {
+          "masculine": "meinen Stuhl",
+          "feminine": "meine Lampe",
+          "neuter": "mein Regal",
+          "plural": "meine Stühle"
+        },
+        "du": {
+          "masculine": "deinen Stuhl",
+          "feminine": "deine Lampe",
+          "neuter": "dein Regal",
+          "plural": "deine Stühle"
+        },
+        "Sie": {
+          "masculine": "Ihren Stuhl",
+          "feminine": "Ihre Lampe",
+          "neuter": "Ihr Regal",
+          "plural": "Ihre Stühle"
+        },
+        "er": {
+          "masculine": "seinen Stuhl",
+          "feminine": "seine Lampe",
+          "neuter": "sein Regal",
+          "plural": "seine Stühle"
+        }
+      }
+    },
+    {
+      "topic": "Imperativ",
+      "english_topic": "Imperative",
+      "section_reference": "§26, §34",
+      "examples": [
+        {
+          "form": "du",
+          "de": "Nimm doch noch etwas Fleisch, Christian!",
+          "en": "Do have some more meat, Christian!"
+        },
+        {
+          "form": "Sie",
+          "de": "Nehmen Sie doch noch etwas Fleisch, Frau Herzog!",
+          "en": "Do have some more meat, Mrs Herzog!"
+        }
+      ]
+    }
+  ]
+}

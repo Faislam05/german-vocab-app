@@ -1,0 +1,4342 @@
+{
+  "schema_version": 1,
+  "lesson": 3,
+  "title": "Lektion 3",
+  "source_pages": [
+    33,
+    34
+  ],
+  "language": "de",
+  "translation_language": "en",
+  "cefr": "A1",
+  "generation_notes": [
+    "Vocabulary was extracted from the supplied Lektion 3 pages and enriched for app use.",
+    "Funktionswörter from the book were given specific part-of-speech labels (pronoun, conjunction, particle, preposition, question word).",
+    "'mit', 'viel' and 'zu' are listed in the book again but already exist in Lektion 1/2, so they are left out here (kept in the source file).",
+    "'verschieden' is listed under Adverbien in the book but is labelled adjective, because it is used like one ('verschiedene Gerichte').",
+    "'e Mark' is the former German currency (the book is from before the euro).",
+    "Nouns without a plural in the book are stored without a plural (the card shows 'Plural: N/A').",
+    "Image searches are suggestions only; for abstract words image_search is null.",
+    "Pronunciation audio can be generated on-device from tts_text using German text-to-speech."
+  ],
+  "vocabulary": [
+    {
+      "word": "backen",
+      "display": "backen",
+      "part_of_speech": "verb",
+      "english": "to bake",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "backen",
+      "image_search": "baking a cake",
+      "examples": [
+        {
+          "de": "Ich backe einen Kuchen.",
+          "en": "I'm baking a cake."
+        },
+        {
+          "de": "Wir backen Brot.",
+          "en": "We bake bread."
+        },
+        {
+          "de": "Backst du gern?",
+          "en": "Do you like baking?"
+        }
+      ],
+      "emoji": "🧁"
+    },
+    {
+      "word": "bestellen",
+      "display": "bestellen",
+      "part_of_speech": "verb",
+      "english": "to order",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        38
+      ],
+      "tts_text": "bestellen",
+      "image_search": "ordering food in a restaurant",
+      "examples": [
+        {
+          "de": "Ich bestelle eine Suppe.",
+          "en": "I'm ordering a soup."
+        },
+        {
+          "de": "Was bestellst du?",
+          "en": "What are you ordering?"
+        },
+        {
+          "de": "Wir bestellen zwei Kaffee.",
+          "en": "We're ordering two coffees."
+        }
+      ],
+      "emoji": "🛎️"
+    },
+    {
+      "word": "bezahlen",
+      "display": "bezahlen",
+      "part_of_speech": "verb",
+      "english": "to pay",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        39
+      ],
+      "tts_text": "bezahlen",
+      "image_search": "paying the bill in a restaurant",
+      "examples": [
+        {
+          "de": "Ich möchte bezahlen, bitte.",
+          "en": "I'd like to pay, please."
+        },
+        {
+          "de": "Wer bezahlt?",
+          "en": "Who's paying?"
+        },
+        {
+          "de": "Er bezahlt den Kaffee.",
+          "en": "He pays for the coffee."
+        }
+      ],
+      "emoji": "💶"
+    },
+    {
+      "word": "brauchen",
+      "display": "brauchen",
+      "part_of_speech": "verb",
+      "english": "to need",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "brauchen",
+      "image_search": "shopping list",
+      "examples": [
+        {
+          "de": "Ich brauche Milch.",
+          "en": "I need milk."
+        },
+        {
+          "de": "Brauchst du Hilfe?",
+          "en": "Do you need help?"
+        },
+        {
+          "de": "Wir brauchen noch Brot.",
+          "en": "We still need bread."
+        }
+      ],
+      "emoji": "🛒"
+    },
+    {
+      "word": "erkennen",
+      "display": "erkennen",
+      "part_of_speech": "verb",
+      "english": "to recognize",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "erkennen",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich erkenne dich nicht.",
+          "en": "I don't recognize you."
+        },
+        {
+          "de": "Erkennst du das Gewürz?",
+          "en": "Do you recognize the spice?"
+        },
+        {
+          "de": "Sie erkennt ihn sofort.",
+          "en": "She recognizes him immediately."
+        }
+      ],
+      "emoji": "🔎"
+    },
+    {
+      "word": "erzählen",
+      "display": "erzählen",
+      "part_of_speech": "verb",
+      "english": "to tell (a story)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37,
+        41
+      ],
+      "tts_text": "erzählen",
+      "image_search": "person telling a story",
+      "examples": [
+        {
+          "de": "Er erzählt eine Geschichte.",
+          "en": "He tells a story."
+        },
+        {
+          "de": "Erzähl mal!",
+          "en": "Tell me!"
+        },
+        {
+          "de": "Sie erzählt von ihrem Urlaub.",
+          "en": "She talks about her holiday."
+        }
+      ],
+      "emoji": "🗣️"
+    },
+    {
+      "word": "essen",
+      "display": "essen",
+      "part_of_speech": "verb",
+      "english": "to eat",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        34
+      ],
+      "tts_text": "essen",
+      "image_search": "people eating",
+      "examples": [
+        {
+          "de": "Ich esse gern Fisch.",
+          "en": "I like eating fish."
+        },
+        {
+          "de": "Was isst du?",
+          "en": "What are you eating?"
+        },
+        {
+          "de": "Wir essen um zwölf Uhr.",
+          "en": "We eat at twelve o'clock."
+        }
+      ],
+      "emoji": "🍽️"
+    },
+    {
+      "word": "glauben",
+      "display": "glauben",
+      "part_of_speech": "verb",
+      "english": "to believe; to think",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36
+      ],
+      "tts_text": "glauben",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich glaube, das ist richtig.",
+          "en": "I think that's right."
+        },
+        {
+          "de": "Glaubst du das?",
+          "en": "Do you believe that?"
+        },
+        {
+          "de": "Er glaubt, der Kaffee ist kalt.",
+          "en": "He thinks the coffee is cold."
+        }
+      ],
+      "emoji": "💭"
+    },
+    {
+      "word": "kennen",
+      "display": "kennen",
+      "part_of_speech": "verb",
+      "english": "to know (be familiar with)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "kennen",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Kennst du Anna?",
+          "en": "Do you know Anna?"
+        },
+        {
+          "de": "Ich kenne das Restaurant.",
+          "en": "I know the restaurant."
+        },
+        {
+          "de": "Wir kennen den Weg.",
+          "en": "We know the way."
+        }
+      ],
+      "emoji": "🤝"
+    },
+    {
+      "word": "kochen",
+      "display": "kochen",
+      "part_of_speech": "verb",
+      "english": "to cook",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40,
+        58,
+        70
+      ],
+      "tts_text": "kochen",
+      "image_search": "person cooking",
+      "examples": [
+        {
+          "de": "Ich koche Suppe.",
+          "en": "I'm cooking soup."
+        },
+        {
+          "de": "Kochst du heute?",
+          "en": "Are you cooking today?"
+        },
+        {
+          "de": "Mein Vater kocht gut.",
+          "en": "My father cooks well."
+        }
+      ],
+      "emoji": "🍳"
+    },
+    {
+      "word": "mögen",
+      "display": "mögen",
+      "part_of_speech": "verb",
+      "english": "to like",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36,
+        60
+      ],
+      "tts_text": "mögen",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich mag Käse.",
+          "en": "I like cheese."
+        },
+        {
+          "de": "Magst du Tee?",
+          "en": "Do you like tea?"
+        },
+        {
+          "de": "Sie mag keinen Fisch.",
+          "en": "She doesn't like fish."
+        }
+      ],
+      "emoji": "❤️"
+    },
+    {
+      "word": "nehmen",
+      "display": "nehmen",
+      "part_of_speech": "verb",
+      "english": "to take; to have (food, drink)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        40
+      ],
+      "tts_text": "nehmen",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich nehme den Salat.",
+          "en": "I'll have the salad."
+        },
+        {
+          "de": "Was nehmen Sie?",
+          "en": "What will you have?"
+        },
+        {
+          "de": "Nimm doch noch etwas!",
+          "en": "Do have some more!"
+        }
+      ],
+      "emoji": "🤲"
+    },
+    {
+      "word": "schmecken",
+      "display": "schmecken",
+      "part_of_speech": "verb",
+      "english": "to taste",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40,
+        42
+      ],
+      "tts_text": "schmecken",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das schmeckt gut!",
+          "en": "That tastes good!"
+        },
+        {
+          "de": "Schmeckt dir die Suppe?",
+          "en": "Do you like the soup?"
+        },
+        {
+          "de": "Der Kuchen schmeckt süß.",
+          "en": "The cake tastes sweet."
+        }
+      ],
+      "emoji": "😋"
+    },
+    {
+      "word": "trinken",
+      "display": "trinken",
+      "part_of_speech": "verb",
+      "english": "to drink",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        34,
+        45,
+        47
+      ],
+      "tts_text": "trinken",
+      "image_search": "person drinking",
+      "examples": [
+        {
+          "de": "Ich trinke Wasser.",
+          "en": "I drink water."
+        },
+        {
+          "de": "Was trinkst du?",
+          "en": "What are you drinking?"
+        },
+        {
+          "de": "Wir trinken Kaffee.",
+          "en": "We drink coffee."
+        }
+      ],
+      "emoji": "🥤"
+    },
+    {
+      "word": "üben",
+      "display": "üben",
+      "part_of_speech": "verb",
+      "english": "to practise",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36,
+        54,
+        78
+      ],
+      "tts_text": "üben",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich übe Deutsch.",
+          "en": "I practise German."
+        },
+        {
+          "de": "Wir üben die Wörter.",
+          "en": "We practise the words."
+        },
+        {
+          "de": "Übst du jeden Tag?",
+          "en": "Do you practise every day?"
+        }
+      ],
+      "emoji": "✍️"
+    },
+    {
+      "word": "Abendessen",
+      "display": "das Abendessen",
+      "part_of_speech": "noun",
+      "english": "dinner; supper",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40,
+        79,
+        86
+      ],
+      "tts_text": "das Abendessen",
+      "image_search": "family dinner table",
+      "examples": [
+        {
+          "de": "Das Abendessen ist fertig.",
+          "en": "Dinner is ready."
+        },
+        {
+          "de": "Was gibt es zum Abendessen?",
+          "en": "What's for dinner?"
+        },
+        {
+          "de": "Das Abendessen schmeckt gut.",
+          "en": "The dinner tastes good."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🍝",
+      "source_text": "s Abendessen"
+    },
+    {
+      "word": "Alkohol",
+      "display": "der Alkohol",
+      "part_of_speech": "noun",
+      "english": "alcohol",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42,
+        61
+      ],
+      "tts_text": "der Alkohol",
+      "image_search": "alcoholic drinks",
+      "examples": [
+        {
+          "de": "Ich trinke keinen Alkohol.",
+          "en": "I don't drink alcohol."
+        },
+        {
+          "de": "Bier hat Alkohol.",
+          "en": "Beer contains alcohol."
+        },
+        {
+          "de": "Ist da Alkohol drin?",
+          "en": "Is there alcohol in it?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🍸",
+      "source_text": "r Alkohol"
+    },
+    {
+      "word": "Anzeige",
+      "display": "die Anzeige",
+      "part_of_speech": "noun",
+      "english": "advertisement; ad",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41,
+        113
+      ],
+      "tts_text": "die Anzeige",
+      "image_search": "newspaper advertisement",
+      "examples": [
+        {
+          "de": "Ich lese die Anzeige.",
+          "en": "I'm reading the ad."
+        },
+        {
+          "de": "Die Anzeige ist in der Zeitung.",
+          "en": "The ad is in the newspaper."
+        },
+        {
+          "de": "Das ist eine Anzeige für Käse.",
+          "en": "That's an ad for cheese."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Anzeigen",
+      "emoji": "📰",
+      "source_text": "e Anzeige,-n"
+    },
+    {
+      "word": "Apfel",
+      "display": "der Apfel",
+      "part_of_speech": "noun",
+      "english": "apple",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        41
+      ],
+      "tts_text": "der Apfel",
+      "image_search": "apple",
+      "examples": [
+        {
+          "de": "Der Apfel ist rot.",
+          "en": "The apple is red."
+        },
+        {
+          "de": "Ich esse einen Apfel.",
+          "en": "I'm eating an apple."
+        },
+        {
+          "de": "Die Äpfel sind billig.",
+          "en": "The apples are cheap."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Äpfel",
+      "emoji": "🍎",
+      "source_text": "r Apfel,¨"
+    },
+    {
+      "word": "Bier",
+      "display": "das Bier",
+      "part_of_speech": "noun",
+      "english": "beer",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35,
+        37,
+        41,
+        42
+      ],
+      "tts_text": "das Bier",
+      "image_search": "glass of beer",
+      "examples": [
+        {
+          "de": "Ein Bier, bitte!",
+          "en": "A beer, please!"
+        },
+        {
+          "de": "Das Bier ist kalt.",
+          "en": "The beer is cold."
+        },
+        {
+          "de": "Er trinkt gern Bier.",
+          "en": "He likes drinking beer."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🍺",
+      "source_text": "s Bier"
+    },
+    {
+      "word": "Bohne",
+      "display": "die Bohne",
+      "part_of_speech": "noun",
+      "english": "bean",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "die Bohne",
+      "image_search": "green beans",
+      "examples": [
+        {
+          "de": "Die Bohnen sind grün.",
+          "en": "The beans are green."
+        },
+        {
+          "de": "Ich mag keine Bohnen.",
+          "en": "I don't like beans."
+        },
+        {
+          "de": "Wir kochen Bohnen.",
+          "en": "We're cooking beans."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Bohnen",
+      "emoji": "🫘",
+      "source_text": "e Bohne,-n"
+    },
+    {
+      "word": "Brot",
+      "display": "das Brot",
+      "part_of_speech": "noun",
+      "english": "bread",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35
+      ],
+      "tts_text": "das Brot",
+      "image_search": "loaf of bread",
+      "examples": [
+        {
+          "de": "Das Brot ist frisch.",
+          "en": "The bread is fresh."
+        },
+        {
+          "de": "Ich kaufe ein Brot.",
+          "en": "I'm buying a loaf of bread."
+        },
+        {
+          "de": "Möchtest du Brot?",
+          "en": "Would you like some bread?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Brote",
+      "emoji": "🍞",
+      "source_text": "s Brot,-e"
+    },
+    {
+      "word": "Brötchen",
+      "display": "das Brötchen",
+      "part_of_speech": "noun",
+      "english": "bread roll",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "das Brötchen",
+      "image_search": "German bread rolls",
+      "examples": [
+        {
+          "de": "Ich esse ein Brötchen.",
+          "en": "I'm eating a roll."
+        },
+        {
+          "de": "Die Brötchen sind warm.",
+          "en": "The rolls are warm."
+        },
+        {
+          "de": "Zum Frühstück gibt es Brötchen.",
+          "en": "There are rolls for breakfast."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Brötchen",
+      "emoji": "🥖",
+      "source_text": "s Brötchen,-"
+    },
+    {
+      "word": "Butter",
+      "display": "die Butter",
+      "part_of_speech": "noun",
+      "english": "butter",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35,
+        37
+      ],
+      "tts_text": "die Butter",
+      "image_search": "butter",
+      "examples": [
+        {
+          "de": "Die Butter ist im Kühlschrank.",
+          "en": "The butter is in the fridge."
+        },
+        {
+          "de": "Brot mit Butter, bitte.",
+          "en": "Bread with butter, please."
+        },
+        {
+          "de": "Wir brauchen Butter.",
+          "en": "We need butter."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "🧈",
+      "source_text": "e Butter"
+    },
+    {
+      "word": "Dose",
+      "display": "die Dose",
+      "part_of_speech": "noun",
+      "english": "can; tin",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "die Dose",
+      "image_search": "tin can",
+      "examples": [
+        {
+          "de": "Die Dose ist leer.",
+          "en": "The can is empty."
+        },
+        {
+          "de": "Ich kaufe zwei Dosen Tomaten.",
+          "en": "I'm buying two cans of tomatoes."
+        },
+        {
+          "de": "Wo ist die Dose?",
+          "en": "Where is the tin?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Dosen",
+      "emoji": "🥫",
+      "source_text": "e Dose,-n"
+    },
+    {
+      "word": "Ei",
+      "display": "das Ei",
+      "part_of_speech": "noun",
+      "english": "egg",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35,
+        41
+      ],
+      "tts_text": "das Ei",
+      "image_search": "eggs",
+      "examples": [
+        {
+          "de": "Ich esse ein Ei.",
+          "en": "I'm eating an egg."
+        },
+        {
+          "de": "Wir brauchen sechs Eier.",
+          "en": "We need six eggs."
+        },
+        {
+          "de": "Das Ei ist hart.",
+          "en": "The egg is hard-boiled."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Eier",
+      "emoji": "🥚",
+      "source_text": "s Ei,-er"
+    },
+    {
+      "word": "Eis",
+      "display": "das Eis",
+      "part_of_speech": "noun",
+      "english": "ice cream; ice",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "das Eis",
+      "image_search": "ice cream",
+      "examples": [
+        {
+          "de": "Ich möchte ein Eis.",
+          "en": "I'd like an ice cream."
+        },
+        {
+          "de": "Das Eis ist kalt.",
+          "en": "The ice cream is cold."
+        },
+        {
+          "de": "Kinder essen gern Eis.",
+          "en": "Children like eating ice cream."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🍨",
+      "source_text": "s Eis"
+    },
+    {
+      "word": "Erdbeere",
+      "display": "die Erdbeere",
+      "part_of_speech": "noun",
+      "english": "strawberry",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "die Erdbeere",
+      "image_search": "strawberries",
+      "examples": [
+        {
+          "de": "Die Erdbeeren sind süß.",
+          "en": "The strawberries are sweet."
+        },
+        {
+          "de": "Ich mag Erdbeeren.",
+          "en": "I like strawberries."
+        },
+        {
+          "de": "Wir essen Kuchen mit Erdbeeren.",
+          "en": "We're eating cake with strawberries."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Erdbeeren",
+      "emoji": "🍓",
+      "source_text": "e Erdbeere,-n"
+    },
+    {
+      "word": "Export",
+      "display": "der Export",
+      "part_of_speech": "noun",
+      "english": "export",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "der Export",
+      "image_search": "cargo ship",
+      "examples": [
+        {
+          "de": "Der Export ist wichtig.",
+          "en": "Exports are important."
+        },
+        {
+          "de": "Das Bier ist für den Export.",
+          "en": "The beer is for export."
+        },
+        {
+          "de": "Der Export nach Japan ist groß.",
+          "en": "Exports to Japan are large."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🚢",
+      "source_text": "r Export"
+    },
+    {
+      "word": "Fisch",
+      "display": "der Fisch",
+      "part_of_speech": "noun",
+      "english": "fish",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35
+      ],
+      "tts_text": "der Fisch",
+      "image_search": "fish on a plate",
+      "examples": [
+        {
+          "de": "Ich esse gern Fisch.",
+          "en": "I like eating fish."
+        },
+        {
+          "de": "Der Fisch ist frisch.",
+          "en": "The fish is fresh."
+        },
+        {
+          "de": "Wir kochen heute Fisch.",
+          "en": "We're cooking fish today."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Fische",
+      "emoji": "🐟",
+      "source_text": "r Fisch,-e"
+    },
+    {
+      "word": "Flasche",
+      "display": "die Flasche",
+      "part_of_speech": "noun",
+      "english": "bottle",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        41
+      ],
+      "tts_text": "die Flasche",
+      "image_search": "bottle",
+      "examples": [
+        {
+          "de": "Eine Flasche Wasser, bitte.",
+          "en": "A bottle of water, please."
+        },
+        {
+          "de": "Die Flasche ist leer.",
+          "en": "The bottle is empty."
+        },
+        {
+          "de": "Wir brauchen zwei Flaschen Milch.",
+          "en": "We need two bottles of milk."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Flaschen",
+      "emoji": "🍾",
+      "source_text": "e Flasche,-n"
+    },
+    {
+      "word": "Fleisch",
+      "display": "das Fleisch",
+      "part_of_speech": "noun",
+      "english": "meat",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        37
+      ],
+      "tts_text": "das Fleisch",
+      "image_search": "meat",
+      "examples": [
+        {
+          "de": "Ich esse kein Fleisch.",
+          "en": "I don't eat meat."
+        },
+        {
+          "de": "Das Fleisch ist gut.",
+          "en": "The meat is good."
+        },
+        {
+          "de": "Nimm doch noch etwas Fleisch!",
+          "en": "Do have some more meat!"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🥩",
+      "source_text": "s Fleisch"
+    },
+    {
+      "word": "Frage",
+      "display": "die Frage",
+      "part_of_speech": "noun",
+      "english": "question",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "die Frage",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich habe eine Frage.",
+          "en": "I have a question."
+        },
+        {
+          "de": "Die Frage ist schwer.",
+          "en": "The question is difficult."
+        },
+        {
+          "de": "Gibt es noch Fragen?",
+          "en": "Are there any more questions?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Fragen",
+      "emoji": "🙋",
+      "source_text": "e Frage,-n"
+    },
+    {
+      "word": "Frucht",
+      "display": "die Frucht",
+      "part_of_speech": "noun",
+      "english": "fruit",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        41
+      ],
+      "tts_text": "die Frucht",
+      "image_search": "fresh fruit",
+      "examples": [
+        {
+          "de": "Die Frucht ist süß.",
+          "en": "The fruit is sweet."
+        },
+        {
+          "de": "Ich esse gern Früchte.",
+          "en": "I like eating fruit."
+        },
+        {
+          "de": "Welche Frucht ist das?",
+          "en": "Which fruit is that?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Früchte",
+      "emoji": "🍇",
+      "source_text": "e Frucht,¨-e"
+    },
+    {
+      "word": "Frühstück",
+      "display": "das Frühstück",
+      "part_of_speech": "noun",
+      "english": "breakfast",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Frühstück",
+      "image_search": "breakfast table",
+      "examples": [
+        {
+          "de": "Das Frühstück ist fertig.",
+          "en": "Breakfast is ready."
+        },
+        {
+          "de": "Zum Frühstück esse ich Brot.",
+          "en": "For breakfast I eat bread."
+        },
+        {
+          "de": "Wann gibt es Frühstück?",
+          "en": "When is breakfast?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🥞",
+      "source_text": "s Frühstück"
+    },
+    {
+      "word": "Gabel",
+      "display": "die Gabel",
+      "part_of_speech": "noun",
+      "english": "fork",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33
+      ],
+      "tts_text": "die Gabel",
+      "image_search": "fork",
+      "examples": [
+        {
+          "de": "Ich brauche eine Gabel.",
+          "en": "I need a fork."
+        },
+        {
+          "de": "Wo ist die Gabel?",
+          "en": "Where is the fork?"
+        },
+        {
+          "de": "Die Gabeln sind sauber.",
+          "en": "The forks are clean."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Gabeln",
+      "emoji": "🍴",
+      "source_text": "e Gabel,-n"
+    },
+    {
+      "word": "Gasthof",
+      "display": "der Gasthof",
+      "part_of_speech": "noun",
+      "english": "inn; country restaurant",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "der Gasthof",
+      "image_search": "traditional German inn",
+      "examples": [
+        {
+          "de": "Der Gasthof ist alt.",
+          "en": "The inn is old."
+        },
+        {
+          "de": "Wir essen im Gasthof.",
+          "en": "We eat at the inn."
+        },
+        {
+          "de": "Der Gasthof hat gutes Essen.",
+          "en": "The inn has good food."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Gasthöfe",
+      "emoji": "🏡",
+      "source_text": "r Gasthof,¨-e"
+    },
+    {
+      "word": "Gemüse",
+      "display": "das Gemüse",
+      "part_of_speech": "noun",
+      "english": "vegetables",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35
+      ],
+      "tts_text": "das Gemüse",
+      "image_search": "fresh vegetables",
+      "examples": [
+        {
+          "de": "Gemüse ist gesund.",
+          "en": "Vegetables are healthy."
+        },
+        {
+          "de": "Ich kaufe Gemüse.",
+          "en": "I'm buying vegetables."
+        },
+        {
+          "de": "Das Gemüse ist frisch.",
+          "en": "The vegetables are fresh."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🥦",
+      "source_text": "s Gemüse"
+    },
+    {
+      "word": "Gericht",
+      "display": "das Gericht",
+      "part_of_speech": "noun",
+      "english": "dish; meal",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        40
+      ],
+      "tts_text": "das Gericht",
+      "image_search": "plate of food",
+      "examples": [
+        {
+          "de": "Das Gericht ist typisch für Bayern.",
+          "en": "The dish is typical of Bavaria."
+        },
+        {
+          "de": "Welches Gericht nimmst du?",
+          "en": "Which dish are you having?"
+        },
+        {
+          "de": "Das Gericht schmeckt gut.",
+          "en": "The dish tastes good."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Gerichte",
+      "emoji": "🍛",
+      "source_text": "s Gericht,-e"
+    },
+    {
+      "word": "Gespräch",
+      "display": "das Gespräch",
+      "part_of_speech": "noun",
+      "english": "conversation",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "das Gespräch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Gespräch ist kurz.",
+          "en": "The conversation is short."
+        },
+        {
+          "de": "Wir hören das Gespräch.",
+          "en": "We listen to the conversation."
+        },
+        {
+          "de": "Das ist ein Gespräch im Restaurant.",
+          "en": "That's a conversation in a restaurant."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Gespräche",
+      "emoji": "🗨️",
+      "source_text": "s Gespräch,-e"
+    },
+    {
+      "word": "Getränk",
+      "display": "das Getränk",
+      "part_of_speech": "noun",
+      "english": "drink; beverage",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "das Getränk",
+      "image_search": "drinks",
+      "examples": [
+        {
+          "de": "Was möchten Sie als Getränk?",
+          "en": "What would you like to drink?"
+        },
+        {
+          "de": "Das Getränk ist kalt.",
+          "en": "The drink is cold."
+        },
+        {
+          "de": "Wir bestellen die Getränke.",
+          "en": "We're ordering the drinks."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Getränke",
+      "emoji": "🥤",
+      "source_text": "s Getränk,-e"
+    },
+    {
+      "word": "Gewürz",
+      "display": "das Gewürz",
+      "part_of_speech": "noun",
+      "english": "spice",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Gewürz",
+      "image_search": "spices",
+      "examples": [
+        {
+          "de": "Pfeffer ist ein Gewürz.",
+          "en": "Pepper is a spice."
+        },
+        {
+          "de": "Das Gewürz ist scharf.",
+          "en": "The spice is hot."
+        },
+        {
+          "de": "Ich brauche Gewürze.",
+          "en": "I need spices."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Gewürze",
+      "emoji": "🌿",
+      "source_text": "s Gewürz,-e"
+    },
+    {
+      "word": "Glas",
+      "display": "das Glas",
+      "part_of_speech": "noun",
+      "english": "glass",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35
+      ],
+      "tts_text": "das Glas",
+      "image_search": "drinking glass",
+      "examples": [
+        {
+          "de": "Ein Glas Wasser, bitte.",
+          "en": "A glass of water, please."
+        },
+        {
+          "de": "Das Glas ist voll.",
+          "en": "The glass is full."
+        },
+        {
+          "de": "Die Gläser sind sauber.",
+          "en": "The glasses are clean."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Gläser",
+      "emoji": "🥃",
+      "source_text": "s Glas,¨-er"
+    },
+    {
+      "word": "Gramm",
+      "display": "das Gramm",
+      "part_of_speech": "noun",
+      "english": "gram",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Gramm",
+      "image_search": "kitchen scale",
+      "examples": [
+        {
+          "de": "200 Gramm Käse, bitte.",
+          "en": "200 grams of cheese, please."
+        },
+        {
+          "de": "Das sind 500 Gramm.",
+          "en": "That's 500 grams."
+        },
+        {
+          "de": "Wie viel Gramm Mehl brauchen wir?",
+          "en": "How many grams of flour do we need?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "⚖️",
+      "source_text": "s Gramm"
+    },
+    {
+      "word": "Hähnchen",
+      "display": "das Hähnchen",
+      "part_of_speech": "noun",
+      "english": "chicken (as food)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "das Hähnchen",
+      "image_search": "roast chicken",
+      "examples": [
+        {
+          "de": "Ich esse gern Hähnchen.",
+          "en": "I like eating chicken."
+        },
+        {
+          "de": "Das Hähnchen schmeckt gut.",
+          "en": "The chicken tastes good."
+        },
+        {
+          "de": "Wir bestellen ein Hähnchen.",
+          "en": "We're ordering a chicken."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Hähnchen",
+      "emoji": "🍗",
+      "source_text": "s Hähnchen,-"
+    },
+    {
+      "word": "Kaffee",
+      "display": "der Kaffee",
+      "part_of_speech": "noun",
+      "english": "coffee",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "der Kaffee",
+      "image_search": "cup of coffee",
+      "examples": [
+        {
+          "de": "Ein Kaffee, bitte.",
+          "en": "A coffee, please."
+        },
+        {
+          "de": "Der Kaffee ist heiß.",
+          "en": "The coffee is hot."
+        },
+        {
+          "de": "Trinkst du Kaffee?",
+          "en": "Do you drink coffee?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "☕",
+      "source_text": "r Kaffee"
+    },
+    {
+      "word": "Kartoffel",
+      "display": "die Kartoffel",
+      "part_of_speech": "noun",
+      "english": "potato",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37,
+        41
+      ],
+      "tts_text": "die Kartoffel",
+      "image_search": "potatoes",
+      "examples": [
+        {
+          "de": "Die Kartoffeln sind gut.",
+          "en": "The potatoes are good."
+        },
+        {
+          "de": "Ich esse Fleisch mit Kartoffeln.",
+          "en": "I eat meat with potatoes."
+        },
+        {
+          "de": "Wir brauchen ein Kilo Kartoffeln.",
+          "en": "We need a kilo of potatoes."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Kartoffeln",
+      "emoji": "🥔",
+      "source_text": "e Kartoffel,-n"
+    },
+    {
+      "word": "Käse",
+      "display": "der Käse",
+      "part_of_speech": "noun",
+      "english": "cheese",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36,
+        41
+      ],
+      "tts_text": "der Käse",
+      "image_search": "cheese",
+      "examples": [
+        {
+          "de": "Ich mag Käse.",
+          "en": "I like cheese."
+        },
+        {
+          "de": "Der Käse ist mild.",
+          "en": "The cheese is mild."
+        },
+        {
+          "de": "Brot mit Käse, bitte.",
+          "en": "Bread with cheese, please."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🧀",
+      "source_text": "r Käse"
+    },
+    {
+      "word": "Kilo",
+      "display": "das Kilo",
+      "part_of_speech": "noun",
+      "english": "kilo",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Kilo",
+      "image_search": "kitchen scale",
+      "examples": [
+        {
+          "de": "Ein Kilo Äpfel, bitte.",
+          "en": "A kilo of apples, please."
+        },
+        {
+          "de": "Das Kilo kostet zwei Euro.",
+          "en": "The kilo costs two euros."
+        },
+        {
+          "de": "Wie viel Kilo brauchst du?",
+          "en": "How many kilos do you need?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Kilos",
+      "emoji": "⚖️",
+      "source_text": "s Kilo,-s"
+    },
+    {
+      "word": "Kotelett",
+      "display": "das Kotelett",
+      "part_of_speech": "noun",
+      "english": "chop; cutlet",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        36
+      ],
+      "tts_text": "das Kotelett",
+      "image_search": "pork chop",
+      "examples": [
+        {
+          "de": "Ich nehme das Kotelett.",
+          "en": "I'll have the chop."
+        },
+        {
+          "de": "Das Kotelett ist groß.",
+          "en": "The chop is big."
+        },
+        {
+          "de": "Wir kaufen zwei Koteletts.",
+          "en": "We're buying two chops."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Koteletts",
+      "emoji": "🍖",
+      "source_text": "s Kotelett,-s"
+    },
+    {
+      "word": "Kuchen",
+      "display": "der Kuchen",
+      "part_of_speech": "noun",
+      "english": "cake",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35
+      ],
+      "tts_text": "der Kuchen",
+      "image_search": "cake",
+      "examples": [
+        {
+          "de": "Der Kuchen ist süß.",
+          "en": "The cake is sweet."
+        },
+        {
+          "de": "Ich backe einen Kuchen.",
+          "en": "I'm baking a cake."
+        },
+        {
+          "de": "Möchtest du Kuchen?",
+          "en": "Would you like some cake?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Kuchen",
+      "emoji": "🍰",
+      "source_text": "r Kuchen,-"
+    },
+    {
+      "word": "Limonade",
+      "display": "die Limonade",
+      "part_of_speech": "noun",
+      "english": "lemonade; soft drink",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        42
+      ],
+      "tts_text": "die Limonade",
+      "image_search": "glass of lemonade",
+      "examples": [
+        {
+          "de": "Eine Limonade, bitte.",
+          "en": "A lemonade, please."
+        },
+        {
+          "de": "Die Limonade ist süß.",
+          "en": "The lemonade is sweet."
+        },
+        {
+          "de": "Kinder trinken gern Limonade.",
+          "en": "Children like drinking lemonade."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Limonaden",
+      "emoji": "🍋",
+      "source_text": "e Limonade,-n"
+    },
+    {
+      "word": "Liter",
+      "display": "der Liter",
+      "part_of_speech": "noun",
+      "english": "litre",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "der Liter",
+      "image_search": "litre measuring jug",
+      "examples": [
+        {
+          "de": "Ein Liter Milch, bitte.",
+          "en": "A litre of milk, please."
+        },
+        {
+          "de": "Die Flasche hat einen Liter.",
+          "en": "The bottle holds one litre."
+        },
+        {
+          "de": "Wir brauchen zwei Liter Wasser.",
+          "en": "We need two litres of water."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Liter",
+      "emoji": "🫗",
+      "source_text": "r Liter,-"
+    },
+    {
+      "word": "Löffel",
+      "display": "der Löffel",
+      "part_of_speech": "noun",
+      "english": "spoon",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33
+      ],
+      "tts_text": "der Löffel",
+      "image_search": "spoon",
+      "examples": [
+        {
+          "de": "Ich brauche einen Löffel.",
+          "en": "I need a spoon."
+        },
+        {
+          "de": "Der Löffel ist klein.",
+          "en": "The spoon is small."
+        },
+        {
+          "de": "Wo sind die Löffel?",
+          "en": "Where are the spoons?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Löffel",
+      "emoji": "🥄",
+      "source_text": "r Löffel,-"
+    },
+    {
+      "word": "Mark",
+      "display": "die Mark",
+      "part_of_speech": "noun",
+      "english": "mark (former German currency)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        39
+      ],
+      "tts_text": "die Mark",
+      "image_search": "Deutsche Mark coins",
+      "examples": [
+        {
+          "de": "Das kostet zehn Mark.",
+          "en": "That costs ten marks."
+        },
+        {
+          "de": "Die Mark war das Geld in Deutschland.",
+          "en": "The mark was the money in Germany."
+        },
+        {
+          "de": "Heute bezahlt man mit Euro, nicht mit Mark.",
+          "en": "Today you pay in euros, not marks."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "💰",
+      "source_text": "e Mark"
+    },
+    {
+      "word": "Marmelade",
+      "display": "die Marmelade",
+      "part_of_speech": "noun",
+      "english": "jam",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        41
+      ],
+      "tts_text": "die Marmelade",
+      "image_search": "jar of jam",
+      "examples": [
+        {
+          "de": "Ich esse Brot mit Marmelade.",
+          "en": "I eat bread with jam."
+        },
+        {
+          "de": "Die Marmelade ist süß.",
+          "en": "The jam is sweet."
+        },
+        {
+          "de": "Wir kaufen Erdbeermarmelade.",
+          "en": "We're buying strawberry jam."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Marmeladen",
+      "emoji": "🫙",
+      "source_text": "e Marmelade,-n"
+    },
+    {
+      "word": "Mehl",
+      "display": "das Mehl",
+      "part_of_speech": "noun",
+      "english": "flour",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Mehl",
+      "image_search": "bag of flour",
+      "examples": [
+        {
+          "de": "Wir brauchen Mehl.",
+          "en": "We need flour."
+        },
+        {
+          "de": "Ein Kilo Mehl, bitte.",
+          "en": "A kilo of flour, please."
+        },
+        {
+          "de": "Zum Backen brauche ich Mehl.",
+          "en": "I need flour for baking."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "🌾",
+      "source_text": "s Mehl"
+    },
+    {
+      "word": "Messer",
+      "display": "das Messer",
+      "part_of_speech": "noun",
+      "english": "knife",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33
+      ],
+      "tts_text": "das Messer",
+      "image_search": "kitchen knife",
+      "examples": [
+        {
+          "de": "Das Messer ist scharf.",
+          "en": "The knife is sharp."
+        },
+        {
+          "de": "Ich brauche ein Messer.",
+          "en": "I need a knife."
+        },
+        {
+          "de": "Die Messer sind neu.",
+          "en": "The knives are new."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Messer",
+      "emoji": "🔪",
+      "source_text": "s Messer,-"
+    },
+    {
+      "word": "Milch",
+      "display": "die Milch",
+      "part_of_speech": "noun",
+      "english": "milk",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        35,
+        41
+      ],
+      "tts_text": "die Milch",
+      "image_search": "glass of milk",
+      "examples": [
+        {
+          "de": "Die Milch ist kalt.",
+          "en": "The milk is cold."
+        },
+        {
+          "de": "Kaffee mit Milch, bitte.",
+          "en": "Coffee with milk, please."
+        },
+        {
+          "de": "Wir brauchen Milch.",
+          "en": "We need milk."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "🥛",
+      "source_text": "e Milch"
+    },
+    {
+      "word": "Mineralwasser",
+      "display": "das Mineralwasser",
+      "part_of_speech": "noun",
+      "english": "mineral water",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        41
+      ],
+      "tts_text": "das Mineralwasser",
+      "image_search": "bottle of mineral water",
+      "examples": [
+        {
+          "de": "Ein Mineralwasser, bitte.",
+          "en": "A mineral water, please."
+        },
+        {
+          "de": "Ich trinke Mineralwasser.",
+          "en": "I drink mineral water."
+        },
+        {
+          "de": "Das Mineralwasser ist kalt.",
+          "en": "The mineral water is cold."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "💧",
+      "source_text": "s Mineralwasser"
+    },
+    {
+      "word": "Nachtisch",
+      "display": "der Nachtisch",
+      "part_of_speech": "noun",
+      "english": "dessert",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "der Nachtisch",
+      "image_search": "dessert",
+      "examples": [
+        {
+          "de": "Was gibt es als Nachtisch?",
+          "en": "What's for dessert?"
+        },
+        {
+          "de": "Als Nachtisch nehme ich ein Eis.",
+          "en": "For dessert I'll have an ice cream."
+        },
+        {
+          "de": "Der Nachtisch ist süß.",
+          "en": "The dessert is sweet."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Nachtische",
+      "emoji": "🍮",
+      "source_text": "r Nachtisch,-e"
+    },
+    {
+      "word": "Öl",
+      "display": "das Öl",
+      "part_of_speech": "noun",
+      "english": "oil",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Öl",
+      "image_search": "bottle of olive oil",
+      "examples": [
+        {
+          "de": "Wir brauchen Öl.",
+          "en": "We need oil."
+        },
+        {
+          "de": "Das Öl ist gut für den Salat.",
+          "en": "The oil is good for the salad."
+        },
+        {
+          "de": "Eine Flasche Öl, bitte.",
+          "en": "A bottle of oil, please."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Öle",
+      "emoji": "🫒",
+      "source_text": "s Öl,-e"
+    },
+    {
+      "word": "Pfeffer",
+      "display": "der Pfeffer",
+      "part_of_speech": "noun",
+      "english": "pepper (spice)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "der Pfeffer",
+      "image_search": "black pepper",
+      "examples": [
+        {
+          "de": "Salz und Pfeffer, bitte.",
+          "en": "Salt and pepper, please."
+        },
+        {
+          "de": "Der Pfeffer ist scharf.",
+          "en": "The pepper is hot."
+        },
+        {
+          "de": "Ist da Pfeffer drin?",
+          "en": "Is there pepper in it?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🌶️",
+      "source_text": "r Pfeffer"
+    },
+    {
+      "word": "Pfund",
+      "display": "das Pfund",
+      "part_of_speech": "noun",
+      "english": "pound (half a kilo)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "das Pfund",
+      "image_search": "kitchen scale",
+      "examples": [
+        {
+          "de": "Ein Pfund Kaffee, bitte.",
+          "en": "A pound of coffee, please."
+        },
+        {
+          "de": "Ein Pfund sind 500 Gramm.",
+          "en": "A pound is 500 grams."
+        },
+        {
+          "de": "Das Pfund kostet drei Euro.",
+          "en": "The pound costs three euros."
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "emoji": "⚖️",
+      "source_text": "s Pfund"
+    },
+    {
+      "word": "Preis",
+      "display": "der Preis",
+      "part_of_speech": "noun",
+      "english": "price",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        39
+      ],
+      "tts_text": "der Preis",
+      "image_search": "price tag",
+      "examples": [
+        {
+          "de": "Der Preis ist gut.",
+          "en": "The price is good."
+        },
+        {
+          "de": "Wie ist der Preis?",
+          "en": "What's the price?"
+        },
+        {
+          "de": "Die Preise sind hoch.",
+          "en": "The prices are high."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Preise",
+      "emoji": "🏷️",
+      "source_text": "r Preis,-e"
+    },
+    {
+      "word": "Reis",
+      "display": "der Reis",
+      "part_of_speech": "noun",
+      "english": "rice",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33
+      ],
+      "tts_text": "der Reis",
+      "image_search": "bowl of rice",
+      "examples": [
+        {
+          "de": "Ich esse gern Reis.",
+          "en": "I like eating rice."
+        },
+        {
+          "de": "Der Reis ist fertig.",
+          "en": "The rice is ready."
+        },
+        {
+          "de": "Fisch mit Reis, bitte.",
+          "en": "Fish with rice, please."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🍚",
+      "source_text": "r Reis"
+    },
+    {
+      "word": "Rotwein",
+      "display": "der Rotwein",
+      "part_of_speech": "noun",
+      "english": "red wine",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "der Rotwein",
+      "image_search": "glass of red wine",
+      "examples": [
+        {
+          "de": "Ein Glas Rotwein, bitte.",
+          "en": "A glass of red wine, please."
+        },
+        {
+          "de": "Der Rotwein ist trocken.",
+          "en": "The red wine is dry."
+        },
+        {
+          "de": "Trinkst du Rotwein?",
+          "en": "Do you drink red wine?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Rotweine",
+      "emoji": "🍷",
+      "source_text": "r Rotwein,-e"
+    },
+    {
+      "word": "Saft",
+      "display": "der Saft",
+      "part_of_speech": "noun",
+      "english": "juice",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "der Saft",
+      "image_search": "glass of juice",
+      "examples": [
+        {
+          "de": "Ein Saft, bitte.",
+          "en": "A juice, please."
+        },
+        {
+          "de": "Der Saft ist süß.",
+          "en": "The juice is sweet."
+        },
+        {
+          "de": "Kinder trinken gern Saft.",
+          "en": "Children like drinking juice."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Säfte",
+      "emoji": "🧃",
+      "source_text": "r Saft,¨-e"
+    },
+    {
+      "word": "Sahne",
+      "display": "die Sahne",
+      "part_of_speech": "noun",
+      "english": "cream",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "die Sahne",
+      "image_search": "whipped cream",
+      "examples": [
+        {
+          "de": "Kuchen mit Sahne, bitte.",
+          "en": "Cake with cream, please."
+        },
+        {
+          "de": "Die Sahne ist süß.",
+          "en": "The cream is sweet."
+        },
+        {
+          "de": "Möchtest du Sahne?",
+          "en": "Would you like cream?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "🍦",
+      "source_text": "e Sahne"
+    },
+    {
+      "word": "Salat",
+      "display": "der Salat",
+      "part_of_speech": "noun",
+      "english": "salad; lettuce",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "der Salat",
+      "image_search": "salad",
+      "examples": [
+        {
+          "de": "Ich nehme einen Salat.",
+          "en": "I'll have a salad."
+        },
+        {
+          "de": "Der Salat ist frisch.",
+          "en": "The salad is fresh."
+        },
+        {
+          "de": "Wir essen Salat mit Tomaten.",
+          "en": "We eat salad with tomatoes."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Salate",
+      "emoji": "🥗",
+      "source_text": "r Salat,-e"
+    },
+    {
+      "word": "Schinken",
+      "display": "der Schinken",
+      "part_of_speech": "noun",
+      "english": "ham",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        41
+      ],
+      "tts_text": "der Schinken",
+      "image_search": "ham",
+      "examples": [
+        {
+          "de": "Brot mit Schinken, bitte.",
+          "en": "Bread with ham, please."
+        },
+        {
+          "de": "Der Schinken ist salzig.",
+          "en": "The ham is salty."
+        },
+        {
+          "de": "Ich esse keinen Schinken.",
+          "en": "I don't eat ham."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Schinken",
+      "emoji": "🥓",
+      "source_text": "r Schinken,-"
+    },
+    {
+      "word": "Schokolade",
+      "display": "die Schokolade",
+      "part_of_speech": "noun",
+      "english": "chocolate",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "die Schokolade",
+      "image_search": "bar of chocolate",
+      "examples": [
+        {
+          "de": "Ich esse gern Schokolade.",
+          "en": "I like eating chocolate."
+        },
+        {
+          "de": "Die Schokolade ist süß.",
+          "en": "The chocolate is sweet."
+        },
+        {
+          "de": "Möchtest du Schokolade?",
+          "en": "Would you like some chocolate?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Schokoladen",
+      "emoji": "🍫",
+      "source_text": "e Schokolade,-n"
+    },
+    {
+      "word": "Soße",
+      "display": "die Soße",
+      "part_of_speech": "noun",
+      "english": "sauce",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "die Soße",
+      "image_search": "sauce",
+      "examples": [
+        {
+          "de": "Die Soße ist scharf.",
+          "en": "The sauce is hot."
+        },
+        {
+          "de": "Fleisch mit Soße, bitte.",
+          "en": "Meat with sauce, please."
+        },
+        {
+          "de": "Die Soße schmeckt gut.",
+          "en": "The sauce tastes good."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Soßen",
+      "emoji": "🥣",
+      "source_text": "e Soße,-n"
+    },
+    {
+      "word": "Speisekarte",
+      "display": "die Speisekarte",
+      "part_of_speech": "noun",
+      "english": "menu",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "die Speisekarte",
+      "image_search": "restaurant menu",
+      "examples": [
+        {
+          "de": "Die Speisekarte, bitte.",
+          "en": "The menu, please."
+        },
+        {
+          "de": "Was steht auf der Speisekarte?",
+          "en": "What's on the menu?"
+        },
+        {
+          "de": "Ich lese die Speisekarte.",
+          "en": "I'm reading the menu."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Speisekarten",
+      "emoji": "📋",
+      "source_text": "e Speisekarte,-n"
+    },
+    {
+      "word": "Steak",
+      "display": "das Steak",
+      "part_of_speech": "noun",
+      "english": "steak",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36,
+        37
+      ],
+      "tts_text": "das Steak",
+      "image_search": "steak",
+      "examples": [
+        {
+          "de": "Ich nehme ein Steak.",
+          "en": "I'll have a steak."
+        },
+        {
+          "de": "Das Steak ist gut.",
+          "en": "The steak is good."
+        },
+        {
+          "de": "Wie ist das Steak?",
+          "en": "How is the steak?"
+        }
+      ],
+      "article": "das",
+      "gender": "neuter",
+      "plural": "Steaks",
+      "emoji": "🥩",
+      "source_text": "s Steak,-s"
+    },
+    {
+      "word": "Suppe",
+      "display": "die Suppe",
+      "part_of_speech": "noun",
+      "english": "soup",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "die Suppe",
+      "image_search": "bowl of soup",
+      "examples": [
+        {
+          "de": "Die Suppe ist heiß.",
+          "en": "The soup is hot."
+        },
+        {
+          "de": "Ich nehme eine Suppe.",
+          "en": "I'll have a soup."
+        },
+        {
+          "de": "Die Suppe schmeckt gut.",
+          "en": "The soup tastes good."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Suppen",
+      "emoji": "🍲",
+      "source_text": "e Suppe,-n"
+    },
+    {
+      "word": "Tasse",
+      "display": "die Tasse",
+      "part_of_speech": "noun",
+      "english": "cup",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "die Tasse",
+      "image_search": "cup",
+      "examples": [
+        {
+          "de": "Eine Tasse Kaffee, bitte.",
+          "en": "A cup of coffee, please."
+        },
+        {
+          "de": "Die Tasse ist leer.",
+          "en": "The cup is empty."
+        },
+        {
+          "de": "Wir brauchen vier Tassen.",
+          "en": "We need four cups."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Tassen",
+      "emoji": "☕",
+      "source_text": "e Tasse,-n"
+    },
+    {
+      "word": "Tee",
+      "display": "der Tee",
+      "part_of_speech": "noun",
+      "english": "tea",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        36
+      ],
+      "tts_text": "der Tee",
+      "image_search": "cup of tea",
+      "examples": [
+        {
+          "de": "Ein Tee, bitte.",
+          "en": "A tea, please."
+        },
+        {
+          "de": "Der Tee ist heiß.",
+          "en": "The tea is hot."
+        },
+        {
+          "de": "Trinkst du Tee mit Zucker?",
+          "en": "Do you take sugar in your tea?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🍵",
+      "source_text": "r Tee"
+    },
+    {
+      "word": "Teller",
+      "display": "der Teller",
+      "part_of_speech": "noun",
+      "english": "plate",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        33,
+        37
+      ],
+      "tts_text": "der Teller",
+      "image_search": "plate",
+      "examples": [
+        {
+          "de": "Der Teller ist voll.",
+          "en": "The plate is full."
+        },
+        {
+          "de": "Ich brauche einen Teller.",
+          "en": "I need a plate."
+        },
+        {
+          "de": "Die Teller sind sauber.",
+          "en": "The plates are clean."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Teller",
+      "emoji": "🍽️",
+      "source_text": "r Teller,-"
+    },
+    {
+      "word": "Tomate",
+      "display": "die Tomate",
+      "part_of_speech": "noun",
+      "english": "tomato",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "die Tomate",
+      "image_search": "tomatoes",
+      "examples": [
+        {
+          "de": "Die Tomaten sind rot.",
+          "en": "The tomatoes are red."
+        },
+        {
+          "de": "Ich kaufe Tomaten.",
+          "en": "I'm buying tomatoes."
+        },
+        {
+          "de": "Salat mit Tomaten, bitte.",
+          "en": "Salad with tomatoes, please."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Tomaten",
+      "emoji": "🍅",
+      "source_text": "e Tomate,-n"
+    },
+    {
+      "word": "Vorspeise",
+      "display": "die Vorspeise",
+      "part_of_speech": "noun",
+      "english": "starter; appetizer",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "die Vorspeise",
+      "image_search": "starter dish",
+      "examples": [
+        {
+          "de": "Als Vorspeise nehme ich eine Suppe.",
+          "en": "As a starter I'll have a soup."
+        },
+        {
+          "de": "Die Vorspeise ist klein.",
+          "en": "The starter is small."
+        },
+        {
+          "de": "Möchten Sie eine Vorspeise?",
+          "en": "Would you like a starter?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Vorspeisen",
+      "emoji": "🍤",
+      "source_text": "e Vorspeise,-n"
+    },
+    {
+      "word": "Wäsche",
+      "display": "die Wäsche",
+      "part_of_speech": "noun",
+      "english": "laundry; washing",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "die Wäsche",
+      "image_search": "laundry basket",
+      "examples": [
+        {
+          "de": "Die Wäsche ist sauber.",
+          "en": "The laundry is clean."
+        },
+        {
+          "de": "Die Wäsche ist noch nass.",
+          "en": "The laundry is still wet."
+        },
+        {
+          "de": "Wo ist die Wäsche?",
+          "en": "Where is the laundry?"
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "emoji": "🧺",
+      "source_text": "e Wäsche"
+    },
+    {
+      "word": "Wurst",
+      "display": "die Wurst",
+      "part_of_speech": "noun",
+      "english": "sausage",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35,
+        37
+      ],
+      "tts_text": "die Wurst",
+      "image_search": "German sausage",
+      "examples": [
+        {
+          "de": "Ich esse eine Wurst.",
+          "en": "I'm eating a sausage."
+        },
+        {
+          "de": "Die Wurst ist salzig.",
+          "en": "The sausage is salty."
+        },
+        {
+          "de": "Deutsche Würste sind bekannt.",
+          "en": "German sausages are famous."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Würste",
+      "emoji": "🌭",
+      "source_text": "e Wurst,¨-e"
+    },
+    {
+      "word": "Zettel",
+      "display": "der Zettel",
+      "part_of_speech": "noun",
+      "english": "note; slip of paper",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "der Zettel",
+      "image_search": "note on paper",
+      "examples": [
+        {
+          "de": "Der Zettel ist auf dem Tisch.",
+          "en": "The note is on the table."
+        },
+        {
+          "de": "Ich schreibe einen Zettel.",
+          "en": "I'm writing a note."
+        },
+        {
+          "de": "Wo ist der Zettel?",
+          "en": "Where is the note?"
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "plural": "Zettel",
+      "emoji": "🗒️",
+      "source_text": "r Zettel,-"
+    },
+    {
+      "word": "Zucker",
+      "display": "der Zucker",
+      "part_of_speech": "noun",
+      "english": "sugar",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "der Zucker",
+      "image_search": "sugar",
+      "examples": [
+        {
+          "de": "Kaffee ohne Zucker, bitte.",
+          "en": "Coffee without sugar, please."
+        },
+        {
+          "de": "Wir brauchen Zucker.",
+          "en": "We need sugar."
+        },
+        {
+          "de": "Der Zucker ist im Regal.",
+          "en": "The sugar is on the shelf."
+        }
+      ],
+      "article": "der",
+      "gender": "masculine",
+      "emoji": "🍬",
+      "source_text": "r Zucker"
+    },
+    {
+      "word": "Zwiebel",
+      "display": "die Zwiebel",
+      "part_of_speech": "noun",
+      "english": "onion",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "die Zwiebel",
+      "image_search": "onions",
+      "examples": [
+        {
+          "de": "Die Zwiebel ist scharf.",
+          "en": "The onion is strong."
+        },
+        {
+          "de": "Wir brauchen zwei Zwiebeln.",
+          "en": "We need two onions."
+        },
+        {
+          "de": "Ich mag keine Zwiebeln.",
+          "en": "I don't like onions."
+        }
+      ],
+      "article": "die",
+      "gender": "feminine",
+      "plural": "Zwiebeln",
+      "emoji": "🧅",
+      "source_text": "e Zwiebel,-n"
+    },
+    {
+      "word": "billig",
+      "display": "billig",
+      "part_of_speech": "adjective",
+      "english": "cheap",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "billig",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Brot ist billig.",
+          "en": "The bread is cheap."
+        },
+        {
+          "de": "Die Äpfel sind billig.",
+          "en": "The apples are cheap."
+        },
+        {
+          "de": "Das ist nicht billig.",
+          "en": "That's not cheap."
+        }
+      ],
+      "emoji": "🪙"
+    },
+    {
+      "word": "bitter",
+      "display": "bitter",
+      "part_of_speech": "adjective",
+      "english": "bitter",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "bitter",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Kaffee ist bitter.",
+          "en": "The coffee is bitter."
+        },
+        {
+          "de": "Die Schokolade ist bitter.",
+          "en": "The chocolate is bitter."
+        },
+        {
+          "de": "Das schmeckt bitter.",
+          "en": "That tastes bitter."
+        }
+      ],
+      "emoji": "😖"
+    },
+    {
+      "word": "dunkel",
+      "display": "dunkel",
+      "part_of_speech": "adjective",
+      "english": "dark",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "dunkel",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Bier ist dunkel.",
+          "en": "The beer is dark."
+        },
+        {
+          "de": "Das Brot ist dunkel.",
+          "en": "The bread is dark."
+        },
+        {
+          "de": "Es ist schon dunkel.",
+          "en": "It's already dark."
+        }
+      ],
+      "emoji": "🌑"
+    },
+    {
+      "word": "eng",
+      "display": "eng",
+      "part_of_speech": "adjective",
+      "english": "narrow; tight",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "eng",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Straße ist eng.",
+          "en": "The street is narrow."
+        },
+        {
+          "de": "Die Hose ist eng.",
+          "en": "The trousers are tight."
+        },
+        {
+          "de": "Das Zimmer ist eng.",
+          "en": "The room is cramped."
+        }
+      ],
+      "emoji": "↔️"
+    },
+    {
+      "word": "fantastisch",
+      "display": "fantastisch",
+      "part_of_speech": "adjective",
+      "english": "fantastic",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "fantastisch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Essen ist fantastisch!",
+          "en": "The food is fantastic!"
+        },
+        {
+          "de": "Der Kuchen schmeckt fantastisch.",
+          "en": "The cake tastes fantastic."
+        },
+        {
+          "de": "Das ist fantastisch!",
+          "en": "That's fantastic!"
+        }
+      ],
+      "emoji": "🤩"
+    },
+    {
+      "word": "groß",
+      "display": "groß",
+      "part_of_speech": "adjective",
+      "english": "big; large; tall",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "groß",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Teller ist groß.",
+          "en": "The plate is big."
+        },
+        {
+          "de": "Das Restaurant ist groß.",
+          "en": "The restaurant is large."
+        },
+        {
+          "de": "Er ist sehr groß.",
+          "en": "He is very tall."
+        }
+      ],
+      "emoji": "🐘"
+    },
+    {
+      "word": "grün",
+      "display": "grün",
+      "part_of_speech": "adjective",
+      "english": "green",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "grün",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Salat ist grün.",
+          "en": "The salad is green."
+        },
+        {
+          "de": "Die Bohnen sind grün.",
+          "en": "The beans are green."
+        },
+        {
+          "de": "Ich mag grüne Äpfel.",
+          "en": "I like green apples."
+        }
+      ],
+      "emoji": "💚"
+    },
+    {
+      "word": "hart",
+      "display": "hart",
+      "part_of_speech": "adjective",
+      "english": "hard",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "hart",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Brot ist hart.",
+          "en": "The bread is hard."
+        },
+        {
+          "de": "Das Ei ist hart.",
+          "en": "The egg is hard-boiled."
+        },
+        {
+          "de": "Der Käse ist hart.",
+          "en": "The cheese is hard."
+        }
+      ],
+      "emoji": "🪨"
+    },
+    {
+      "word": "hell",
+      "display": "hell",
+      "part_of_speech": "adjective",
+      "english": "light; bright",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "hell",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Bier ist hell.",
+          "en": "The beer is light."
+        },
+        {
+          "de": "Die Küche ist hell.",
+          "en": "The kitchen is bright."
+        },
+        {
+          "de": "Es ist schon hell.",
+          "en": "It's already light."
+        }
+      ],
+      "emoji": "☀️"
+    },
+    {
+      "word": "hoch",
+      "display": "hoch",
+      "part_of_speech": "adjective",
+      "english": "high",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "hoch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Preise sind hoch.",
+          "en": "The prices are high."
+        },
+        {
+          "de": "Der Berg ist hoch.",
+          "en": "The mountain is high."
+        },
+        {
+          "de": "Das Regal ist hoch.",
+          "en": "The shelf is high."
+        }
+      ],
+      "emoji": "📈"
+    },
+    {
+      "word": "mild",
+      "display": "mild",
+      "part_of_speech": "adjective",
+      "english": "mild",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "mild",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Käse ist mild.",
+          "en": "The cheese is mild."
+        },
+        {
+          "de": "Die Soße ist mild.",
+          "en": "The sauce is mild."
+        },
+        {
+          "de": "Das Wetter ist mild.",
+          "en": "The weather is mild."
+        }
+      ],
+      "emoji": "🌤️"
+    },
+    {
+      "word": "nah",
+      "display": "nah",
+      "part_of_speech": "adjective",
+      "english": "near; close",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "nah",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Restaurant ist nah.",
+          "en": "The restaurant is close."
+        },
+        {
+          "de": "Ist der Supermarkt nah?",
+          "en": "Is the supermarket nearby?"
+        },
+        {
+          "de": "Die Bäckerei ist ganz nah.",
+          "en": "The bakery is very close."
+        }
+      ],
+      "emoji": "📍"
+    },
+    {
+      "word": "normal",
+      "display": "normal",
+      "part_of_speech": "adjective",
+      "english": "normal; regular",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "normal",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist normal.",
+          "en": "That's normal."
+        },
+        {
+          "de": "Ich trinke normalen Kaffee.",
+          "en": "I drink regular coffee."
+        },
+        {
+          "de": "Der Preis ist normal.",
+          "en": "The price is normal."
+        }
+      ],
+      "emoji": "👌"
+    },
+    {
+      "word": "rot",
+      "display": "rot",
+      "part_of_speech": "adjective",
+      "english": "red",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "rot",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Tomate ist rot.",
+          "en": "The tomato is red."
+        },
+        {
+          "de": "Der Apfel ist rot.",
+          "en": "The apple is red."
+        },
+        {
+          "de": "Die Erdbeeren sind rot.",
+          "en": "The strawberries are red."
+        }
+      ],
+      "emoji": "🔴"
+    },
+    {
+      "word": "salzig",
+      "display": "salzig",
+      "part_of_speech": "adjective",
+      "english": "salty",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "salzig",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Suppe ist salzig.",
+          "en": "The soup is salty."
+        },
+        {
+          "de": "Der Schinken ist salzig.",
+          "en": "The ham is salty."
+        },
+        {
+          "de": "Das ist zu salzig.",
+          "en": "That's too salty."
+        }
+      ],
+      "emoji": "🧂"
+    },
+    {
+      "word": "schlank",
+      "display": "schlank",
+      "part_of_speech": "adjective",
+      "english": "slim",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "schlank",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Sie ist schlank.",
+          "en": "She is slim."
+        },
+        {
+          "de": "Er ist groß und schlank.",
+          "en": "He is tall and slim."
+        },
+        {
+          "de": "Die Flasche ist schlank.",
+          "en": "The bottle is slim."
+        }
+      ],
+      "emoji": "🧍"
+    },
+    {
+      "word": "stark",
+      "display": "stark",
+      "part_of_speech": "adjective",
+      "english": "strong",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "stark",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Kaffee ist stark.",
+          "en": "The coffee is strong."
+        },
+        {
+          "de": "Er ist sehr stark.",
+          "en": "He is very strong."
+        },
+        {
+          "de": "Der Tee ist zu stark.",
+          "en": "The tea is too strong."
+        }
+      ],
+      "emoji": "💪"
+    },
+    {
+      "word": "süß",
+      "display": "süß",
+      "part_of_speech": "adjective",
+      "english": "sweet",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40,
+        42
+      ],
+      "tts_text": "süß",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Kuchen ist süß.",
+          "en": "The cake is sweet."
+        },
+        {
+          "de": "Die Erdbeeren sind süß.",
+          "en": "The strawberries are sweet."
+        },
+        {
+          "de": "Das ist zu süß.",
+          "en": "That's too sweet."
+        }
+      ],
+      "emoji": "🍭"
+    },
+    {
+      "word": "trocken",
+      "display": "trocken",
+      "part_of_speech": "adjective",
+      "english": "dry",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "trocken",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Wein ist trocken.",
+          "en": "The wine is dry."
+        },
+        {
+          "de": "Das Brot ist trocken.",
+          "en": "The bread is dry."
+        },
+        {
+          "de": "Die Wäsche ist trocken.",
+          "en": "The laundry is dry."
+        }
+      ],
+      "emoji": "🏜️"
+    },
+    {
+      "word": "typisch",
+      "display": "typisch",
+      "part_of_speech": "adjective",
+      "english": "typical",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "typisch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist typisch deutsch.",
+          "en": "That's typically German."
+        },
+        {
+          "de": "Bier ist typisch für Bayern.",
+          "en": "Beer is typical of Bavaria."
+        },
+        {
+          "de": "Was ist ein typisches Gericht?",
+          "en": "What is a typical dish?"
+        }
+      ],
+      "emoji": "🥨"
+    },
+    {
+      "word": "abends",
+      "display": "abends",
+      "part_of_speech": "adverb",
+      "english": "in the evening(s)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "abends",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Abends esse ich Brot.",
+          "en": "In the evening I eat bread."
+        },
+        {
+          "de": "Wir kochen abends.",
+          "en": "We cook in the evening."
+        },
+        {
+          "de": "Abends trinke ich Tee.",
+          "en": "In the evenings I drink tea."
+        }
+      ],
+      "emoji": "🌙"
+    },
+    {
+      "word": "besonders",
+      "display": "besonders",
+      "part_of_speech": "adverb",
+      "english": "especially; particularly",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "besonders",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Der Kuchen ist besonders gut.",
+          "en": "The cake is especially good."
+        },
+        {
+          "de": "Ich mag besonders Käse.",
+          "en": "I especially like cheese."
+        },
+        {
+          "de": "Das ist nicht besonders teuer.",
+          "en": "That's not particularly expensive."
+        }
+      ],
+      "emoji": "⭐"
+    },
+    {
+      "word": "danach",
+      "display": "danach",
+      "part_of_speech": "adverb",
+      "english": "afterwards; then",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "danach",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Danach essen wir Kuchen.",
+          "en": "Afterwards we eat cake."
+        },
+        {
+          "de": "Zuerst die Suppe, danach das Fleisch.",
+          "en": "First the soup, then the meat."
+        },
+        {
+          "de": "Was machst du danach?",
+          "en": "What are you doing afterwards?"
+        }
+      ],
+      "emoji": "⏭️"
+    },
+    {
+      "word": "dann",
+      "display": "dann",
+      "part_of_speech": "adverb",
+      "english": "then",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        41,
+        42
+      ],
+      "tts_text": "dann",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Dann bezahlen wir.",
+          "en": "Then we pay."
+        },
+        {
+          "de": "Zuerst essen wir, dann trinken wir Kaffee.",
+          "en": "First we eat, then we have coffee."
+        },
+        {
+          "de": "Und dann?",
+          "en": "And then?"
+        }
+      ],
+      "emoji": "➡️"
+    },
+    {
+      "word": "fast",
+      "display": "fast",
+      "part_of_speech": "adverb",
+      "english": "almost",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "fast",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das Essen ist fast fertig.",
+          "en": "The food is almost ready."
+        },
+        {
+          "de": "Es ist fast acht Uhr.",
+          "en": "It's almost eight o'clock."
+        },
+        {
+          "de": "Ich trinke fast nie Alkohol.",
+          "en": "I almost never drink alcohol."
+        }
+      ],
+      "emoji": "⏳"
+    },
+    {
+      "word": "ganz",
+      "display": "ganz",
+      "part_of_speech": "adverb",
+      "english": "quite; completely; whole",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        41
+      ],
+      "tts_text": "ganz",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist ganz einfach.",
+          "en": "That's quite easy."
+        },
+        {
+          "de": "Der Kuchen ist ganz frisch.",
+          "en": "The cake is completely fresh."
+        },
+        {
+          "de": "Das Restaurant ist ganz nah.",
+          "en": "The restaurant is very close."
+        }
+      ],
+      "emoji": "💯"
+    },
+    {
+      "word": "genug",
+      "display": "genug",
+      "part_of_speech": "adverb",
+      "english": "enough",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "genug",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wir haben genug Brot.",
+          "en": "We have enough bread."
+        },
+        {
+          "de": "Das ist genug, danke.",
+          "en": "That's enough, thanks."
+        },
+        {
+          "de": "Hast du genug Geld?",
+          "en": "Do you have enough money?"
+        }
+      ],
+      "emoji": "✅"
+    },
+    {
+      "word": "gern",
+      "display": "gern",
+      "part_of_speech": "adverb",
+      "english": "gladly; like to (do)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36,
+        38,
+        42
+      ],
+      "tts_text": "gern",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich esse gern Fisch.",
+          "en": "I like eating fish."
+        },
+        {
+          "de": "Trinkst du gern Tee?",
+          "en": "Do you like drinking tea?"
+        },
+        {
+          "de": "Ja, gern!",
+          "en": "Yes, gladly!"
+        }
+      ],
+      "emoji": "😊"
+    },
+    {
+      "word": "lieber",
+      "display": "lieber",
+      "part_of_speech": "adverb",
+      "english": "rather; prefer to",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        38
+      ],
+      "tts_text": "lieber",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich trinke lieber Tee.",
+          "en": "I'd rather drink tea."
+        },
+        {
+          "de": "Nimmst du lieber Fisch oder Fleisch?",
+          "en": "Would you rather have fish or meat?"
+        },
+        {
+          "de": "Ich esse lieber Salat.",
+          "en": "I prefer eating salad."
+        }
+      ],
+      "emoji": "🤔"
+    },
+    {
+      "word": "manchmal",
+      "display": "manchmal",
+      "part_of_speech": "adverb",
+      "english": "sometimes",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36
+      ],
+      "tts_text": "manchmal",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Manchmal koche ich.",
+          "en": "Sometimes I cook."
+        },
+        {
+          "de": "Ich trinke manchmal Wein.",
+          "en": "I sometimes drink wine."
+        },
+        {
+          "de": "Manchmal essen wir im Restaurant.",
+          "en": "Sometimes we eat in a restaurant."
+        }
+      ],
+      "emoji": "🔄"
+    },
+    {
+      "word": "mittags",
+      "display": "mittags",
+      "part_of_speech": "adverb",
+      "english": "at midday; at lunchtime",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "mittags",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Mittags esse ich warm.",
+          "en": "At lunchtime I have a hot meal."
+        },
+        {
+          "de": "Was isst du mittags?",
+          "en": "What do you eat at lunchtime?"
+        },
+        {
+          "de": "Mittags gibt es Suppe.",
+          "en": "There's soup at lunchtime."
+        }
+      ],
+      "emoji": "🕛"
+    },
+    {
+      "word": "morgens",
+      "display": "morgens",
+      "part_of_speech": "adverb",
+      "english": "in the morning(s)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "morgens",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Morgens trinke ich Kaffee.",
+          "en": "In the morning I drink coffee."
+        },
+        {
+          "de": "Was isst du morgens?",
+          "en": "What do you eat in the morning?"
+        },
+        {
+          "de": "Morgens esse ich ein Brötchen.",
+          "en": "In the morning I eat a roll."
+        }
+      ],
+      "emoji": "🌅"
+    },
+    {
+      "word": "nachmittags",
+      "display": "nachmittags",
+      "part_of_speech": "adverb",
+      "english": "in the afternoon(s)",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        35
+      ],
+      "tts_text": "nachmittags",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Nachmittags essen wir Kuchen.",
+          "en": "In the afternoon we eat cake."
+        },
+        {
+          "de": "Ich trinke nachmittags Tee.",
+          "en": "I drink tea in the afternoon."
+        },
+        {
+          "de": "Nachmittags habe ich Zeit.",
+          "en": "I have time in the afternoon."
+        }
+      ],
+      "emoji": "🕒"
+    },
+    {
+      "word": "natürlich",
+      "display": "natürlich",
+      "part_of_speech": "adverb",
+      "english": "of course; naturally",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "natürlich",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Natürlich!",
+          "en": "Of course!"
+        },
+        {
+          "de": "Natürlich trinke ich Kaffee.",
+          "en": "Of course I drink coffee."
+        },
+        {
+          "de": "Das ist natürlich teuer.",
+          "en": "That's expensive, of course."
+        }
+      ],
+      "emoji": "👍"
+    },
+    {
+      "word": "nur",
+      "display": "nur",
+      "part_of_speech": "adverb",
+      "english": "only; just",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "nur",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich trinke nur Wasser.",
+          "en": "I only drink water."
+        },
+        {
+          "de": "Das kostet nur zwei Euro.",
+          "en": "That only costs two euros."
+        },
+        {
+          "de": "Nur ein Stück, bitte.",
+          "en": "Just one piece, please."
+        }
+      ],
+      "emoji": "☝️"
+    },
+    {
+      "word": "oben",
+      "display": "oben",
+      "part_of_speech": "adverb",
+      "english": "above; at the top; upstairs",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "oben",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Gläser sind oben.",
+          "en": "The glasses are at the top."
+        },
+        {
+          "de": "Oben ist die Küche.",
+          "en": "The kitchen is upstairs."
+        },
+        {
+          "de": "Der Zucker ist oben im Regal.",
+          "en": "The sugar is at the top of the shelf."
+        }
+      ],
+      "emoji": "⬆️"
+    },
+    {
+      "word": "oft",
+      "display": "oft",
+      "part_of_speech": "adverb",
+      "english": "often",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        36
+      ],
+      "tts_text": "oft",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich koche oft.",
+          "en": "I often cook."
+        },
+        {
+          "de": "Wir essen oft Fisch.",
+          "en": "We often eat fish."
+        },
+        {
+          "de": "Wie oft trinkst du Kaffee?",
+          "en": "How often do you drink coffee?"
+        }
+      ],
+      "emoji": "🔁"
+    },
+    {
+      "word": "so",
+      "display": "so",
+      "part_of_speech": "adverb",
+      "english": "so; like this",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        39
+      ],
+      "tts_text": "so",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das ist so gut!",
+          "en": "That's so good!"
+        },
+        {
+          "de": "So macht man das.",
+          "en": "This is how you do it."
+        },
+        {
+          "de": "Der Kaffee ist so heiß.",
+          "en": "The coffee is so hot."
+        }
+      ],
+      "emoji": "👉"
+    },
+    {
+      "word": "sofort",
+      "display": "sofort",
+      "part_of_speech": "adverb",
+      "english": "immediately; right away",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "sofort",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Ich komme sofort.",
+          "en": "I'm coming right away."
+        },
+        {
+          "de": "Das Essen kommt sofort.",
+          "en": "The food is coming right away."
+        },
+        {
+          "de": "Bitte sofort bezahlen.",
+          "en": "Please pay immediately."
+        }
+      ],
+      "emoji": "⚡"
+    },
+    {
+      "word": "überall",
+      "display": "überall",
+      "part_of_speech": "adverb",
+      "english": "everywhere",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "überall",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Bier gibt es überall.",
+          "en": "You can get beer everywhere."
+        },
+        {
+          "de": "Ich suche überall.",
+          "en": "I'm looking everywhere."
+        },
+        {
+          "de": "Überall sind Leute.",
+          "en": "There are people everywhere."
+        }
+      ],
+      "emoji": "🌍"
+    },
+    {
+      "word": "unten",
+      "display": "unten",
+      "part_of_speech": "adverb",
+      "english": "below; at the bottom; downstairs",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "unten",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Die Teller sind unten.",
+          "en": "The plates are at the bottom."
+        },
+        {
+          "de": "Unten ist das Restaurant.",
+          "en": "The restaurant is downstairs."
+        },
+        {
+          "de": "Die Flaschen sind unten im Regal.",
+          "en": "The bottles are at the bottom of the shelf."
+        }
+      ],
+      "emoji": "⬇️"
+    },
+    {
+      "word": "verschieden",
+      "display": "verschieden",
+      "part_of_speech": "adjective",
+      "english": "different; various",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "verschieden",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Es gibt verschiedene Gerichte.",
+          "en": "There are various dishes."
+        },
+        {
+          "de": "Die Preise sind verschieden.",
+          "en": "The prices are different."
+        },
+        {
+          "de": "Wir haben verschiedene Getränke.",
+          "en": "We have different drinks."
+        }
+      ],
+      "emoji": "🎨"
+    },
+    {
+      "word": "vorwiegend",
+      "display": "vorwiegend",
+      "part_of_speech": "adverb",
+      "english": "mainly; predominantly",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "vorwiegend",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wir essen vorwiegend Gemüse.",
+          "en": "We mainly eat vegetables."
+        },
+        {
+          "de": "In Bayern trinkt man vorwiegend Bier.",
+          "en": "In Bavaria people mainly drink beer."
+        },
+        {
+          "de": "Das Wetter ist vorwiegend sonnig.",
+          "en": "The weather is mainly sunny."
+        }
+      ],
+      "emoji": "📊"
+    },
+    {
+      "word": "zuerst",
+      "display": "zuerst",
+      "part_of_speech": "adverb",
+      "english": "first; at first",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37
+      ],
+      "tts_text": "zuerst",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Zuerst essen wir Suppe.",
+          "en": "First we eat soup."
+        },
+        {
+          "de": "Was nehmen wir zuerst?",
+          "en": "What shall we have first?"
+        },
+        {
+          "de": "Zuerst bezahlen, bitte.",
+          "en": "Please pay first."
+        }
+      ],
+      "emoji": "1️⃣"
+    },
+    {
+      "word": "zusammen",
+      "display": "zusammen",
+      "part_of_speech": "adverb",
+      "english": "together",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        39
+      ],
+      "tts_text": "zusammen",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Wir essen zusammen.",
+          "en": "We eat together."
+        },
+        {
+          "de": "Zusammen oder getrennt?",
+          "en": "Together or separately?"
+        },
+        {
+          "de": "Das macht zusammen zehn Euro.",
+          "en": "That comes to ten euros altogether."
+        }
+      ],
+      "emoji": "👫"
+    },
+    {
+      "word": "alle",
+      "display": "alle",
+      "part_of_speech": "pronoun",
+      "english": "all; everyone",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "alle",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Alle essen gern Kuchen.",
+          "en": "Everyone likes eating cake."
+        },
+        {
+          "de": "Alle Gläser sind sauber.",
+          "en": "All the glasses are clean."
+        },
+        {
+          "de": "Sind alle da?",
+          "en": "Is everyone here?"
+        }
+      ],
+      "emoji": "👥"
+    },
+    {
+      "word": "als",
+      "display": "als",
+      "part_of_speech": "conjunction",
+      "english": "as; than",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        37,
+        40
+      ],
+      "tts_text": "als",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Als Nachtisch nehme ich Eis.",
+          "en": "For dessert I'll have ice cream."
+        },
+        {
+          "de": "Tee ist billiger als Kaffee.",
+          "en": "Tea is cheaper than coffee."
+        },
+        {
+          "de": "Was möchten Sie als Getränk?",
+          "en": "What would you like as a drink?"
+        }
+      ],
+      "emoji": "🆚"
+    },
+    {
+      "word": "doch",
+      "display": "doch",
+      "part_of_speech": "particle",
+      "english": "do (for emphasis); yes (contradicting a 'no')",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40
+      ],
+      "tts_text": "doch",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Nimm doch noch etwas Fleisch!",
+          "en": "Do have some more meat!"
+        },
+        {
+          "de": "Das ist doch gut!",
+          "en": "But that's good!"
+        },
+        {
+          "de": "Trinkst du keinen Kaffee? – Doch!",
+          "en": "Don't you drink coffee? – Yes, I do!"
+        }
+      ],
+      "emoji": "💁"
+    },
+    {
+      "word": "etwas",
+      "display": "etwas",
+      "part_of_speech": "pronoun",
+      "english": "something; some; a little",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        40,
+        42
+      ],
+      "tts_text": "etwas",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Möchtest du etwas trinken?",
+          "en": "Would you like something to drink?"
+        },
+        {
+          "de": "Ich brauche etwas Zucker.",
+          "en": "I need a little sugar."
+        },
+        {
+          "de": "Etwas Brot, bitte.",
+          "en": "Some bread, please."
+        }
+      ],
+      "emoji": "🤏"
+    },
+    {
+      "word": "jeder",
+      "display": "jeder",
+      "part_of_speech": "pronoun",
+      "english": "every; each; everyone",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "jeder",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Jeder Gast bekommt ein Glas.",
+          "en": "Every guest gets a glass."
+        },
+        {
+          "de": "Jeder mag Schokolade.",
+          "en": "Everyone likes chocolate."
+        },
+        {
+          "de": "Ich trinke jeden Tag Kaffee.",
+          "en": "I drink coffee every day."
+        }
+      ],
+      "emoji": "👤"
+    },
+    {
+      "word": "pro",
+      "display": "pro",
+      "part_of_speech": "preposition",
+      "english": "per",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "pro",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Das kostet zwei Euro pro Kilo.",
+          "en": "That costs two euros per kilo."
+        },
+        {
+          "de": "Ein Ei pro Person.",
+          "en": "One egg per person."
+        },
+        {
+          "de": "Wie viel kostet das pro Stück?",
+          "en": "How much is that per piece?"
+        }
+      ],
+      "emoji": "➗"
+    },
+    {
+      "word": "welcher",
+      "display": "welcher",
+      "part_of_speech": "question_word",
+      "english": "which?",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        43
+      ],
+      "tts_text": "welcher",
+      "image_search": null,
+      "examples": [
+        {
+          "de": "Welcher Wein ist trocken?",
+          "en": "Which wine is dry?"
+        },
+        {
+          "de": "Welche Suppe nimmst du?",
+          "en": "Which soup are you having?"
+        },
+        {
+          "de": "Welches Getränk möchten Sie?",
+          "en": "Which drink would you like?"
+        }
+      ],
+      "emoji": "🤷"
+    }
+  ],
+  "expressions": [
+    {
+      "text": "es gibt",
+      "english": "there is; there are",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "es gibt",
+      "example": "Es gibt heute Fisch."
+    },
+    {
+      "text": "vor allem",
+      "english": "above all; especially",
+      "cefr": "A1",
+      "lesson": 3,
+      "references": [
+        42
+      ],
+      "tts_text": "vor allem",
+      "example": "Ich esse vor allem Gemüse."
+    }
+  ],
+  "abbreviations": [
+    {
+      "text": "g",
+      "printed": "g s Gramm",
+      "full": "das Gramm",
+      "english": "gram",
+      "references": [
+        41
+      ]
+    },
+    {
+      "text": "kg",
+      "printed": "kg s Kilogramm",
+      "full": "das Kilogramm",
+      "english": "kilogram",
+      "references": [
+        41
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "topic": "Definiter Artikel im Akkusativ",
+      "english_topic": "Definite article in the accusative",
+      "section_reference": "§2",
+      "singular": [
+        "den Stuhl",
+        "die Lampe",
+        "das Klavier"
+      ],
+      "plural": [
+        "die Stühle",
+        "die Lampen",
+        "die Klaviere"
+      ]
+    },
+    {
+      "topic": "Indefiniter Artikel im Akkusativ",
+      "english_topic": "Indefinite article in the accusative",
+      "section_reference": "§2",
+      "singular": [
+        "einen Stuhl",
+        "eine Lampe",
+        "ein Regal"
+      ],
+      "plural": [
+        "Stühle",
+        "Lampen",
+        "Regale"
+      ],
+      "negative_singular": [
+        "keinen Stuhl",
+        "keine Lampe",
+        "kein Regal"
+      ],
+      "negative_plural": [
+        "keine Stühle",
+        "keine Lampen",
+        "keine Regale"
+      ]
+    },
+    {
+      "topic": "Possessivartikel im Akkusativ",
+      "english_topic": "Possessive articles in the accusative",
+      "section_reference": "§6a",
+      "forms": {
+        "ich": {
+          "masculine": "meinen Stuhl",
+          "feminine": "meine Lampe",
+          "neuter": "mein Regal",
+          "plural": "meine Stühle"
+        },
+        "du": {
+          "masculine": "deinen Stuhl",
+          "feminine": "deine Lampe",
+          "neuter": "dein Regal",
+          "plural": "deine Stühle"
+        },
+        "Sie": {
+          "masculine": "Ihren Stuhl",
+          "feminine": "Ihre Lampe",
+          "neuter": "Ihr Regal",
+          "plural": "Ihre Stühle"
+        },
+        "er": {
+          "masculine": "seinen Stuhl",
+          "feminine": "seine Lampe",
+          "neuter": "sein Regal",
+          "plural": "seine Stühle"
+        }
+      }
+    },
+    {
+      "topic": "Imperativ",
+      "english_topic": "Imperative",
+      "section_reference": "§26, §34",
+      "examples": [
+        {
+          "form": "du",
+          "de": "Nimm doch noch etwas Fleisch, Christian!",
+          "en": "Do have some more meat, Christian!"
+        },
+        {
+          "form": "Sie",
+          "de": "Nehmen Sie doch noch etwas Fleisch, Frau Herzog!",
+          "en": "Do have some more meat, Mrs Herzog!"
+        }
+      ]
+    }
+  ]
+}
