@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import ExampleSentences from "@/components/ExampleSentences";
 import GermanWord from "@/components/GermanWord";
 import { SpeakerIcon, speakGerman } from "@/components/ListenButton";
@@ -42,25 +43,85 @@ export function cardFrame(word?: VocabularyCard) {
     : "cardstock border border-graphite/10";
 }
 
+// Text sizes for the word, largest first. If the word doesn't fit in
+// the pill, it steps down to the next size (see WordPill).
+const WORD_SIZES = [
+  "text-2xl sm:text-3xl",
+  "text-xl sm:text-2xl",
+  "text-lg sm:text-xl",
+  "text-base sm:text-lg", // only a few very long words on small phones
+];
+const SMALL_SIZES = [
+  "text-lg sm:text-2xl",
+  "text-base sm:text-xl",
+  "text-sm sm:text-lg",
+];
+
 // The word in a white pill. With `listen`, a speaker button sits inside
 // the pill on the left (only for German text). `heading` makes the text
 // the page's main heading (the question of the card).
+//
+// Every pill has the same width (the card minus a space on each side),
+// so cards look alike and there is always room on the left for
+// `beside` (e.g. the fox after "Again"). The word is centred in it.
+// Long words get smaller text: the pill checks whether the word sticks
+// out, or needs more lines than `maxLines`, and if so steps down a size. (Each word gets its own pill, see `key` below, so every
+// word starts again at the largest size.)
 function WordPill({
   children,
   listen,
   heading = false,
   small = false,
+  maxLines = 2,
+  beside,
 }: {
   children: React.ReactNode;
   listen?: string;
   heading?: boolean;
   small?: boolean; // smaller text, for the English question (EN → DE)
+  maxLines?: number; // more lines than this: smaller text
+  beside?: React.ReactNode; // shown in the space to the left of the pill
 }) {
   const Text = heading ? "h1" : "span";
+  const sizes = small ? SMALL_SIZES : WORD_SIZES;
+
+  // Which text size is used (0 = the largest)
+  // (typed for both the <h1> and the <span> it can be)
+  const textRef = useRef<HTMLHeadingElement & HTMLSpanElement>(null);
+  const [sizeStep, setSizeStep] = useState(0);
+
+  // Checked whenever the word's size changes (ResizeObserver), so also
+  // again right after stepping down a size
+  useEffect(() => {
+    const text = textRef.current;
+    if (!text) return;
+
+    const observer = new ResizeObserver(() => {
+      const lineHeight = parseFloat(getComputedStyle(text).lineHeight);
+      const sticksOut = text.scrollWidth > text.clientWidth + 1;
+      const tooManyLines = text.offsetHeight > lineHeight * (maxLines + 0.5);
+
+      if (sticksOut || tooManyLines) {
+        setSizeStep((step) => Math.min(step + 1, sizes.length - 1));
+      }
+    });
+    observer.observe(text);
+    return () => observer.disconnect();
+  }, [sizes.length, maxLines]);
 
   return (
     <div className="flex justify-center mb-1.5">
-      <div className="inline-flex items-center gap-2.5 max-w-full pl-1.5 pr-5 py-1.5 rounded-full bg-white border-2 border-[color-mix(in_srgb,var(--card-accent)_30%,transparent)] shadow-sm">
+      <div className="relative flex items-center gap-2.5 w-[calc(100%-5.5rem)] pl-1.5 pr-5 py-1.5 rounded-full bg-white border-2 border-[color-mix(in_srgb,var(--card-accent)_30%,transparent)] shadow-sm">
+        {/* Something in the space left of the pill (never takes clicks).
+            Lined up with the pill's top, so anything above it (like the
+            fox's speech bubble) stays above the pill, even when a long
+            word makes the pill two lines tall. */}
+        {beside && (
+          <div className="absolute right-full top-0 mr-0.5 w-max pointer-events-none">
+            {beside}
+          </div>
+        )}
+
         {listen ? (
           <>
             <button
@@ -70,18 +131,17 @@ function WordPill({
             >
               <SpeakerIcon className="w-5 h-5" />
             </button>
-            <span className="w-0.5 h-7 rounded-full bg-[color-mix(in_srgb,var(--card-accent)_25%,transparent)]" />
+            <span className="shrink-0 w-0.5 h-7 rounded-full bg-[color-mix(in_srgb,var(--card-accent)_25%,transparent)]" />
           </>
         ) : (
           <span className="w-3" />
         )}
 
         <Text
-          className={`min-w-0 leading-tight ${
-            small
-              ? "font-sans font-bold text-lg sm:text-2xl"
-              : "font-serif font-semibold text-2xl sm:text-3xl"
-          }`}
+          ref={textRef}
+          className={`flex-1 min-w-0 text-center leading-tight ${
+            small ? "font-sans font-bold" : "font-serif font-semibold"
+          } ${sizes[sizeStep]}`}
         >
           {children}
         </Text>
@@ -106,6 +166,10 @@ type WordCardProps = {
   // Extra buttons shown under the answer, e.g. the Learning / Mastered
   // switch on the Study screen
   actions?: React.ReactNode;
+
+  // Something shown just to the left of the word, e.g. the fox saying
+  // "Kein Problem!" in Daily review
+  besideWord?: React.ReactNode;
 };
 
 // The content of one flashcard: the picture (emoji), the word, its type,
@@ -118,6 +182,7 @@ export default function WordCard({
   showAnswer,
   onReveal,
   actions,
+  besideWord,
 }: WordCardProps) {
   // e.g. "Verb", "Question Word"
   const partOfSpeech = formatPartOfSpeech(word.part_of_speech);
@@ -148,11 +213,16 @@ export default function WordCard({
       {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
 
       {isEnglishToGerman ? (
-        <WordPill heading small>
+        <WordPill key={word.word} heading small beside={besideWord}>
           {word.english}
         </WordPill>
       ) : (
-        <WordPill listen={word.tts_text} heading>
+        <WordPill
+          key={word.word}
+          listen={word.tts_text}
+          heading
+          beside={besideWord}
+        >
           <GermanWord word={word} />
         </WordPill>
       )}
@@ -161,7 +231,7 @@ export default function WordCard({
 
       {isEnglishToGerman && showAnswer && (
         <div className="reveal-fade">
-          <WordPill listen={word.tts_text}>
+          <WordPill key={word.word} listen={word.tts_text} maxLines={1}>
             <GermanWord word={word} />
           </WordPill>
         </div>
