@@ -112,7 +112,7 @@ Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo
 - The choice is saved in localStorage (`level`), and from then on the app opens straight on Home.
 - Home sends you here when no level is saved yet (and shows nothing meanwhile).
 - People who used the app before this screen existed (they have `studyStatus`, `reviewCards` or `lastStudy` saved) skip it and get A1 automatically.
-- Tapping the level chip on Home ("A1 ▾") opens this screen again to change level; then it also shows a "← Home" button.
+- Tapping the level chip on Home ("A1 ▾") opens this screen again to change level. (No "← Home" button for now: tapping A1 goes back to Home anyway. Add one when a second level exists, to leave without switching.)
 - Once you have started (something learned or Mastered), the A1 card shows the same two-tone progress bar and key as Home (`src/components/ProgressBar.tsx`, shared by both screens; `getProgress()` there computes the numbers). New users see no bar and the line "Not sure? Start with A1"; that line is hidden when changing level.
 - Later idea: more books per level, and other languages above levels (Language → Level → Book → Lesson). Progress is saved by the German word, so the same word in two books would share progress; other languages would need their own progress keys.
 

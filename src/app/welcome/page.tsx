@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import ProgressBar, { getProgress } from "@/components/ProgressBar";
@@ -48,16 +47,6 @@ export default function Welcome() {
   return (
     <main className="min-h-dvh flex justify-center px-4 py-6 sm:py-12">
       <div className="w-full max-w-md">
-        {/* Back to Home, only when changing level (not the first time) */}
-        {current && (
-          <Link
-            href="/"
-            className="btn-secondary inline-block px-4 py-1.5 text-sm mb-5"
-          >
-            ← Home
-          </Link>
-        )}
-
         <header className="mb-6">
           <h1 className="font-serif text-4xl font-semibold leading-tight">
             Hallo! 👋
