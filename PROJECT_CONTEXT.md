@@ -113,13 +113,14 @@ Shown only the first time the app is opened (`src/app/welcome/page.tsx`): "Hallo
 - Home sends you here when no level is saved yet (and shows nothing meanwhile).
 - People who used the app before this screen existed (they have `studyStatus`, `reviewCards` or `lastStudy` saved) skip it and get A1 automatically.
 - Tapping the level chip on Home ("A1 ▾") opens this screen again to change level; then it also shows a "← Home" button.
+- Once you have started (something learned or Mastered), the A1 card shows the same two-tone progress bar and key as Home (`src/components/ProgressBar.tsx`, shared by both screens; `getProgress()` there computes the numbers). New users see no bar and the line "Not sure? Start with A1"; that line is hidden when changing level.
 - Later idea: more books per level, and other languages above levels (Language → Level → Book → Lesson). Progress is saved by the German word, so the same word in two books would share progress; other languages would need their own progress keys.
 
 ## Home screen (`/`)
 
 The overview of the whole book (`src/app/page.tsx`). It shows:
 
-- "German" with a level chip ("A1 ▾", opens the Welcome screen to change level), and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar**: dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
+- "German" with a level chip ("A1 ▾", opens the Welcome screen to change level), and overall progress: "Learned X | Mastered Y of Z words" (see "Daily Review") and a **two-tone bar** (`ProgressBar`, also used on Welcome): dark yellow = Mastered, light yellow = learned in Daily review but not Mastered yet. Under it a key: "16% learned · 4% mastered".
 - **Today** card (dark, the main button): opens Daily review (see "Daily Review"), e.g. "10 new words, 6 to review", or "All done for today ✓" (light) when nothing is left.
 - **Continue** card (same size as Today, three lines, but light so Today stays the main button; below Today on phones, next to it on wider screens): one tap back to the last Study session (same lesson, filter, direction and word type), e.g. "Continue / Lektion 2: Gegenstände in Haus und Haushalt / Verbs, Learning words (14), English → German". Hidden until the Study screen has been used once. The last session is saved in localStorage (`lastStudy`) by the Study screen.
 - **Lessons**: one card per chapter of the book (all 10, from `lessons.json`) with the German chapter title, its English meaning, word count and a Mastered bar. Chapters whose words are not added yet are dashed placeholders ("Not added yet") that cannot be clicked. An "All lessons" card studies every added lesson together.

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Hint from "@/components/Hint";
+import ProgressBar, { getProgress } from "@/components/ProgressBar";
 import { LevelId, loadLevel } from "@/lib/level";
 import { anyHintsSeen, resetHints, useHints } from "@/lib/hints";
 import { useBook } from "@/lib/useLessons";
@@ -93,24 +94,11 @@ export default function Home() {
   }
 
   const allWords = selectLesson(book.lessons, "all").vocabulary;
-  const allMastered = countMastered(allWords, studyStatus);
-  const allPercent = percentMastered(allWords);
+
+  // Overall progress: words learned (in Daily review) and Mastered
+  const progress = getProgress(allWords, reviewCards, studyStatus);
 
   const continueCard = getContinueCard();
-
-  // Words that are in Daily review (learned at least once)
-  const learnedCount = allWords.filter((word) => reviewCards[word.word]).length;
-  const learnedPercent =
-    allWords.length === 0
-      ? 0
-      : Math.round((learnedCount / allWords.length) * 100);
-
-  // The two-tone bar: dark = Mastered, light = learned but not Mastered yet
-  const learnedNotMastered = allWords.filter(
-    (word) => reviewCards[word.word] && studyStatus[word.word] !== "mastered"
-  ).length;
-  const lightPercent =
-    allWords.length === 0 ? 0 : (learnedNotMastered / allWords.length) * 100;
 
   // Today's Daily review: new words left to learn and reviews due.
   // (Only a preview here; the plan is saved when the review starts.)
@@ -192,35 +180,15 @@ export default function Home() {
             </div>
 
             <p className="text-sm text-pencil mt-1 mb-1.5">
-              Learned <strong className="text-graphite">{learnedCount}</strong>
+              Learned{" "}
+              <strong className="text-graphite">{progress.learned}</strong>
               <span className="mx-2 text-graphite/30">|</span>
               Mastered{" "}
-              <strong className="text-graphite">{allMastered}</strong> of{" "}
-              {allWords.length} words
+              <strong className="text-graphite">{progress.mastered}</strong> of{" "}
+              {progress.total} words
             </p>
 
-            {/* Two-tone bar: dark yellow = Mastered, light yellow = learned
-                in Daily review but not Mastered yet. Over time light turns
-                into dark. */}
-            <div className="flex w-full h-2 bg-grid rounded-full overflow-hidden border border-graphite/10">
-              <div
-                className="h-full bg-marker-strong"
-                style={{ width: `${allPercent}%` }}
-              />
-              <div
-                className="h-full bg-marker"
-                style={{ width: `${lightPercent}%` }}
-              />
-            </div>
-
-            {/* Key for the two colours */}
-            <p className="flex items-center gap-1.5 text-xs text-pencil mt-1.5">
-              <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker border border-marker-strong/50" />
-              {learnedPercent}% learned
-              <span className="mx-1">·</span>
-              <span className="inline-block w-2.5 h-2.5 rounded-sm bg-marker-strong" />
-              {allPercent}% mastered
-            </p>
+            <ProgressBar progress={progress} />
           </header>
 
           {/* Today and Continue: two cards of the same size, stacked on

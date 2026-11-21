@@ -2,8 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
+import ProgressBar, { getProgress } from "@/components/ProgressBar";
 import { LEVELS, LevelId, loadLevel, saveLevel } from "@/lib/level";
+import { ReviewCards, loadReviewCards } from "@/lib/review";
+import { useBook } from "@/lib/useLessons";
+import { StudyStatus, loadStudyStatus, selectLesson } from "@/lib/vocabulary";
 
 // The saved level never changes while this page is open, so there is
 // nothing to listen to.
@@ -19,6 +23,20 @@ export default function Welcome() {
   // only exists in the browser, so on the server this is always null;
   // useSyncExternalStore handles that switch safely.
   const current = useSyncExternalStore(noSubscribe, loadLevel, () => null);
+
+  // Your progress in A1 (the only level with words so far), shown as a
+  // bar on its card once you have started. Hidden for new users.
+  const book = useBook();
+  const [studyStatus] = useState<StudyStatus>(loadStudyStatus);
+  const [reviewCards] = useState<ReviewCards>(loadReviewCards);
+  const progress = book
+    ? getProgress(
+        selectLesson(book.lessons, "all").vocabulary,
+        reviewCards,
+        studyStatus
+      )
+    : null;
+  const started = progress && progress.learned + progress.mastered > 0;
 
   function choose(level: LevelId) {
     saveLevel(level);
@@ -48,29 +66,45 @@ export default function Welcome() {
           <p className="text-pencil mt-3">Which level do you want to study?</p>
         </header>
 
-        {/* A1: the main choice, a big dark card */}
+        {/* A1: the main choice, a big dark card (with your progress bar
+            once you have started) */}
         <button
           onClick={() => choose(first.id)}
-          className="w-full flex items-center gap-4 p-4 rounded-2xl bg-graphite text-paper text-left shadow-[0_4px_0_#000] transition-[transform,box-shadow] duration-100 ease-out active:translate-y-1 active:shadow-none hover:bg-black"
+          className="w-full px-3.5 py-3 rounded-2xl bg-graphite text-paper text-left shadow-[0_4px_0_#000] transition-[transform,box-shadow] duration-100 ease-out active:translate-y-1 active:shadow-none hover:bg-black"
         >
-          <span className="shrink-0 w-14 h-14 rounded-xl bg-marker text-graphite font-serif text-2xl font-semibold flex items-center justify-center">
-            {first.id}
+          <span className="flex items-center gap-3">
+            <span className="shrink-0 w-11 h-11 rounded-xl bg-marker text-graphite font-serif text-xl font-semibold flex items-center justify-center">
+              {first.id}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold leading-snug">
+                {first.name}
+              </span>
+              <span className="block text-sm text-paper/80 leading-snug">
+                {first.text}
+              </span>
+            </span>
+            <span className="text-2xl" aria-hidden="true">
+              →
+            </span>
           </span>
-          <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-lg">{first.name}</span>
-            <span className="block text-sm text-paper/80">{first.text}</span>
-          </span>
-          <span className="text-2xl" aria-hidden="true">
-            →
-          </span>
+
+          {started && (
+            <ProgressBar progress={progress} onDark className="mt-2.5" />
+          )}
         </button>
 
-        <p className="text-sm text-pencil mt-2 mb-6">
-          Not sure? Start with A1, it begins from zero.
-        </p>
+        {/* Advice for new users only (not when changing level) */}
+        {!current && (
+          <p className="text-sm text-pencil mt-2">
+            Not sure? Start with A1, it begins from zero.
+          </p>
+        )}
 
         {/* The other levels: placeholders until they have words */}
-        <h2 className="font-serif text-xl font-semibold mb-2">Coming later</h2>
+        <h2 className="font-serif text-xl font-semibold mt-6 mb-2">
+          Coming later
+        </h2>
 
         <ul className="grid gap-2">
           {later.map((level) => (
