@@ -27,7 +27,7 @@ export const HINTS = {
     text: "Flashcard on hides the answer so you can test yourself. Tap “Show meaning” (or press Space) to check.",
   },
   "study-mastered": {
-    text: "Know this word well? Mark it as Mastered. Tap again to set it back to Learning.",
+    text: "Know this word well? Tap the star to mark it as Mastered. Tap it again to set it back to Learning.",
   },
   "review-answer": {
     text: "Be honest: “Again” brings the word back tomorrow, “Got it” moves it further away.",

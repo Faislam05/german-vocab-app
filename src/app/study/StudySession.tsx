@@ -271,31 +271,6 @@ export default function StudySession() {
             isEnglishToGerman={isEnglishToGerman}
             showAnswer={showAnswer}
             onReveal={() => setRevealedWord(word.word)}
-            actions={
-              /* One button: "Mark as Mastered" ⇄ "Mastered" (with a star) */
-              <div className="flex justify-center mb-3">
-                <Hint
-                  id="study-mastered"
-                  show={hints.current === "study-mastered"}
-                  onDismiss={() => hints.dismiss("study-mastered")}
-                  onSkipAll={hints.skipAll}
-                  className="flex"
-                >
-                  <button
-                    onClick={() =>
-                      updateStudyStatus(isMastered ? "learning" : "mastered")
-                    }
-                    aria-pressed={isMastered}
-                    className={`inline-flex items-center gap-1.5 px-5 py-1.5 text-sm ${
-                      isMastered ? "btn-primary" : "btn-secondary"
-                    }`}
-                  >
-                    <StarIcon filled={isMastered} />
-                    {isMastered ? "Mastered" : "Mark as Mastered"}
-                  </button>
-                </Hint>
-              </div>
-            }
           />
         </div>
 
@@ -311,6 +286,31 @@ export default function StudySession() {
             ←
           </button>
 
+          {/* Mastered: the outlined star marks the word as Mastered, the
+              filled star sets it back to Learning */}
+          <Hint
+            id="study-mastered"
+            show={hints.current === "study-mastered"}
+            placement="above"
+            onDismiss={() => hints.dismiss("study-mastered")}
+            onSkipAll={hints.skipAll}
+            className="flex shrink-0"
+          >
+            <button
+              onClick={() =>
+                updateStudyStatus(isMastered ? "learning" : "mastered")
+              }
+              aria-pressed={isMastered}
+              aria-label={isMastered ? "Mastered" : "Mark as Mastered"}
+              title={isMastered ? "Mastered" : "Mark as Mastered"}
+              className={`grid place-items-center w-12 h-11 ${
+                isMastered ? "btn-primary" : "btn-secondary"
+              }`}
+            >
+              <StarIcon filled={isMastered} />
+            </button>
+          </Hint>
+
           <button onClick={nextWord} className="btn-primary flex-1 h-11">
             Next →
           </button>
@@ -325,7 +325,7 @@ function StarIcon({ filled }: { filled: boolean }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="w-4 h-4"
+      className="w-5 h-5"
       fill={filled ? "currentColor" : "none"}
       stroke="currentColor"
       strokeWidth="2"

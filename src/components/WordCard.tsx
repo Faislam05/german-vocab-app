@@ -77,10 +77,6 @@ type WordCardProps = {
   // (Daily review draws its own button at the bottom instead.)
   onReveal?: () => void;
 
-  // Extra buttons shown under the answer, e.g. the Learning / Mastered
-  // switch on the Study screen
-  actions?: React.ReactNode;
-
   // Something shown for a moment over the picture, e.g. the fox saying
   // "Kein Problem!" in Daily review. It never takes clicks.
   overPicture?: React.ReactNode;
@@ -96,8 +92,7 @@ type WordCardProps = {
 //    and on the right the level and a big picture (emoji).
 //    English → German uses the same lines: the meaning is the question,
 //    lines 1 and 2 stay empty until revealed.
-// 2. under it: the reveal button or the actions, and the example
-//    sentences
+// 2. under it: the reveal button, or the example sentences
 // The screen around it decides what happens when you answer; this
 // component only shows the word.
 export default function WordCard({
@@ -105,7 +100,6 @@ export default function WordCard({
   isEnglishToGerman,
   showAnswer,
   onReveal,
-  actions,
   overPicture,
 }: WordCardProps) {
   // e.g. "Verb", "Question Word"
@@ -265,12 +259,10 @@ export default function WordCard({
         </div>
       )}
 
-      {/* Answer: actions (e.g. Learning / Mastered) and examples */}
+      {/* Answer: the example sentences */}
 
       {showAnswer && (
         <div className="reveal-fade">
-          {actions ?? <div className="h-1" />}
-
           <ExampleSentences examples={word.examples} />
         </div>
       )}

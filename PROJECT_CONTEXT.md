@@ -180,12 +180,11 @@ Each vocabulary card (see "Flashcard design") shows:
 After revealing (or always, when Flashcard mode is Off):
 
 - the English meaning and the plural ("N/A" when a word has none) on the dark card
-- one "☆ Mark as Mastered" / "★ Mastered" button (tap again to go back to Learning)
 - approximately three German example sentences with English translations (italic) and a listen button each, in a frosted panel
 
 Then:
 
-- ← (Previous, round) and Next buttons
+- ← (Previous, round), a round star and Next. The star marks the word as Mastered (outlined ☆ = Learning, filled ★ in the card's colour = Mastered; tap again to go back to Learning). It used to be a "Mark as Mastered" button between the card and the examples; it is always shown, so the buttons don't move when the answer is revealed.
 
 The card starts at the top of the screen (not vertically centred), so it stays in the same place when the next word has more or fewer example sentences. The Study screen is sized so a revealed card fits on one screen without scrolling on desktop (1440×800), normal phones (390×844) and small phones (375×667, iPhone SE), tested for all 183 words in both directions. All German words use the same font size, so every card looks the same; in English → German the English question is one size smaller than the German word. On very small phones one English → German card can need a tiny scroll if a meaning is long, so keep English meanings short (e.g. "program; TV channel"). Previous/Next stick to the bottom of the screen so they are always reachable. Only upright (portrait) phones are a target; sideways phones may scroll. Keep this in mind when adding content to the card.
 
@@ -572,7 +571,7 @@ The cards (Study and Daily review) follow a "dark word card" mockup made by the 
   - rows: WORD TYPE and PLURAL (shown once revealed)
   - right: the level badge (`cefr`) and the emoji, big, in a picture area that fills the rest of the right side. (Later idea: own pictures from a ChatGPT sheet, since emojis fill their box differently.)
   - English → German uses the same lines: the meaning is the question, the word's line shows a dashed blank until revealed.
-- **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, Mark as Mastered). "← Back" (Study) and "← Home" (Daily review) are white `btn-secondary` pills. Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on. Off the cards the accent is graphite (`:root`), so the Lesson screen uses graphite game buttons. On dark backgrounds (the done screen) there are `.btn-light` (white button) and `.btn-outline-light` (white outline).
+- **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, the star when not Mastered). "← Back" (Study) and "← Home" (Daily review) are white `btn-secondary` pills. Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on. Off the cards the accent is graphite (`:root`), so the Lesson screen uses graphite game buttons. On dark backgrounds (the done screen) there are `.btn-light` (white button) and `.btn-outline-light` (white outline).
 - **Examples panel:** frosted white panel with a small "EXAMPLE SENTENCES" heading, round listen button per sentence, German bold, English italic, thin dividers in the accent colour.
 - Pages without a word (e.g. "No words here") use the frosted card with a grey glow.
 
@@ -644,7 +643,7 @@ Small tips that explain a feature the first time you see it (`src/lib/hints.ts` 
 | Lesson | word type chips | Study just one kind of word, e.g. only verbs |
 | Lesson | the three study buttons | what Learning words / All words / Mastered words each mean |
 | Study | top bar (Flashcard switch) | Flashcard on hides the answer; Show meaning or Space to check |
-| Study | Mark as Mastered | (only once the answer is shown) mark it, tap again to undo |
+| Study | the star (bottom bar) | (only once the answer is shown) tap the star to mark it Mastered, tap again to undo |
 | Daily review | Again / Got it | (only once the answer is shown) Again = back tomorrow |
 
 - **One tip at a time** per screen, in the order above. A tip waits until the thing it points at is on screen (`ready`).
