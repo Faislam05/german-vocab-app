@@ -174,17 +174,14 @@ Top bar:
 
 Each vocabulary card (see "Flashcard design") shows:
 
-- the picture: a big emoji with sparkles and an "A1" badge (shows ❓ until the answer is revealed)
-- the German word in a white pill, with the Listen button inside it
-- a dark chip with the part of speech (e.g. "Verb")
+- a dark word card: the article and Listen button, the German word, the meaning, the word type and plural, the "A1" badge and a big emoji (❓ until the answer is revealed)
 - Show meaning button (in Flashcard mode, until revealed; shows a `Space` key hint on computers)
 
 After revealing (or always, when Flashcard mode is Off):
 
-- the English meaning as a light chip next to the part of speech
-- the plural on its own line (shows "Plural: N/A" when a word has none, so every card has the same layout)
+- the English meaning and the plural ("N/A" when a word has none) on the dark card
 - one "☆ Mark as Mastered" / "★ Mastered" button (tap again to go back to Learning)
-- approximately three German example sentences with English translations (italic) and a listen button each, in a white panel
+- approximately three German example sentences with English translations (italic) and a listen button each, in a frosted panel
 
 Then:
 
@@ -522,7 +519,7 @@ Do not tightly couple the vocabulary data to the current visual design.
 The look is based on German school squared paper (Karopapier), chosen with the help of Anthropic's `frontend-design` skill.
 
 - **Background:** faint 20px grid on paper white (in `src/app/globals.css`).
-- **Flashcards** have their own colourful "trading card" look (see "Flashcard design" below). Home and the Lesson screen sit directly on the paper.
+- **Flashcards** have their own frosted-glass look (see "Flashcard design" below). Home and the Lesson screen sit directly on the paper.
 - **Highlighter:** marker yellow shows what is selected on Home and the Lesson screen, and the light/dark yellow of the progress bar on Home.
 - **Colours** are defined once in `globals.css` and used as Tailwind classes:
 
@@ -554,24 +551,30 @@ For the der / die / das colours see "Article Colours".
 
 ## Flashcard design
 
-The cards (Study and Daily review) follow a trading-card mockup made by the user. Shared code: `src/components/WordCard.tsx` (card content, `cardStyle`, `cardFrame()`) and the "Flashcard art" and "Card buttons" parts of `globals.css`.
+The cards (Study and Daily review) follow a "dark word card" mockup made by the user. Shared code: `src/components/WordCard.tsx` (card content, `cardStyle`, `cardFrame()`) and the "Flashcard colours" and "Card buttons" parts of `globals.css`. (Earlier looks: a trading card with a coloured body, and glass cards, which are kept in a git stash.)
 
-- **Frame and body:** a thick white frame (10px, 12px on bigger screens) around a **plain, single-colour** background in the word's colour (`.card-art`). Dots, clouds and gradients were tried and removed for a calmer look.
-- **Colour themes** (`.theme-masculine`, `.theme-feminine`, `.theme-neuter`, `.theme-plural`, `.theme-other`): each sets `--card-bg` (the background) and `--card-accent` (dark colour). The accent is used for the badge, chips, listen buttons, progress bar and main buttons, so everything on a card changes colour with the word.
+- **Outer card:** frosted glass (`.card-frost`): see-through white with soft glows in the word's colour; the squared paper behind it is blurred. The same for every word. The examples panel is frosted white too. The bottom bar (← / Next) has no background of its own, so it doesn't show as a box.
+- **Colour themes** (`.theme-masculine`, `.theme-feminine`, `.theme-neuter`, `.theme-plural`, `.theme-other`): each sets `--card-accent` (dark colour) and `--card-bg` (light colour, for the glow). The accent fills the bar, article pill, speaker and A1 badge on the dark card, and colours the buttons, so everything on a card changes colour with the word.
 
-| Word | Accent | Body |
+| Word | Accent | Light |
 |---|---|---|
 | der (masculine) | navy `#1E3A8A` | blue `#E8EFFC` |
 | die (feminine) | maroon `#7F1D1D` | pink `#FBE8E8` |
 | das (neuter) | dark green `#166534` | green `#E4F5E9` |
-| plural-only nouns | dark amber `#92400E` | amber `#FBEED9` |
+| plural-only nouns | purple `#6B21A8` | lilac `#F3E8FF` |
 | all other words (verbs, adjectives, …) | dark mustard `#A16207` | yellow `#FBF3D2` |
 
-- **Picture:** the word's emoji, big, on a soft white spotlight (no sparkles), and the level badge (`cefr`, e.g. "A1"). Smaller on screens under 700px tall. Custom illustrations per word were discussed but not made (each word would need its own drawing).
-- **Word pill:** white pill with the speaker button inside (German only); the German word in Fraunces, the article keeps its colour. The English question (English → German) is smaller, in Figtree. Every pill has the **same width** (the card minus 44px on each side, word centred), so cards look alike and there is always room on the left for something beside the word (`besideWord`, used for the "Kein Problem!" fox). Long words that don't fit (stick out, or need more than 2 lines; the revealed answer in English → German: more than 1 line) **step down a text size by themselves**, up to 3 steps (`WORD_SIZES` in `WordCard.tsx`). On a small phone about 20 of 321 words get smaller text; on desktop none.
+- **Dark word card** (graphite), **always the same height** (210px on phones, all 321 words, both directions, before and after revealing). Every line has a fixed place, and hidden parts keep their space:
+  - a thin bar in the accent colour on the left
+  - line 1: the article in a filled pill + round speaker (empty when there is no article, or while the German is hidden)
+  - line 2: the word without its article, in Fraunces, **the same size for every word** (24px on phones, 30px on computers): the size at which the longest words (*Fernsehapparat*, *Waschmaschine*) still fit on one line. If longer words are added, check they fit.
+  - line 3: the meaning in italics, room for two lines. Only the **first meaning** is shown (`shortMeaning()`: "to hear; to listen" → "to hear"); a note in brackets or after a dash is smaller and grey ("your (informal singular)"). All meanings stay in the JSON.
+  - rows: WORD TYPE and PLURAL (shown once revealed)
+  - right: the level badge (`cefr`) and the emoji, big, in a picture area that fills the rest of the right side. (Later idea: own pictures from a ChatGPT sheet, since emojis fill their box differently.)
+  - English → German uses the same lines: the meaning is the question, the word's line shows a dashed blank until revealed.
 - **Buttons** (`.btn-primary` / `.btn-secondary`): fully rounded "game buttons" with a thicker bottom edge (hard shadow) that sink 4px when pressed. Primary = filled in the card's accent (Show meaning, Next, Got it); secondary = white with an accent border (←, Again, Mark as Mastered). "← Back" (Study) and "← Home" (Daily review) are white `btn-secondary` pills. Top-bar switches (shuffle, Flashcard) are white pills, filled with the accent when on. Off the cards the accent is graphite (`:root`), so the Lesson screen uses graphite game buttons. On dark backgrounds (the done screen) there are `.btn-light` (white button) and `.btn-outline-light` (white outline).
-- **Examples panel:** white panel, round listen button per sentence, German bold, English italic, thin dividers in the accent colour.
-- Pages without a word (e.g. "No words here") use plain cream paper (`.cardstock`, a creamy colour with a fine SVG paper grain).
+- **Examples panel:** frosted white panel with a small "EXAMPLE SENTENCES" heading, round listen button per sentence, German bold, English italic, thin dividers in the accent colour.
+- Pages without a word (e.g. "No words here") use the frosted card with a grey glow.
 
 ---
 
@@ -589,7 +592,7 @@ A friendly fox, used for **moments** (hello, well done, nothing to do), not on e
 | sleeping | Daily review "Nothing due right now" |
 | sleeping (small) | Home, on the Today card when all is done for today ("See you tomorrow, or learn more") |
 | reading | Home, on the dark Today card while there are words to learn or review ("Learn new words, repeat old ones") |
-| encouraging | Daily review, after **Again**: pops up left of the word saying "Kein Problem!" for about 1.5s, then fades away (`.fox-moment`); taps go through it |
+| encouraging | Daily review, after **Again**: pops up over the picture on the dark card saying "Kein Problem!" for about 1.5s, then fades away (`.fox-moment`, passed as `overPicture`); the card doesn't change size, and taps go through it |
 | head | Profile button on Home and the Profile cover (on dark yellow); also the future logo / app icon |
 
 Ready but not used yet (PNGs on the Desktop): peeking (over the Today card), presenting (for the tips), thinking (der/die/das quiz), neutral.
@@ -730,16 +733,16 @@ Learning/Mastered status is shared between both directions.
 
 # Article Colours
 
-The German word is shown with its article coloured by gender (`src/components/GermanWord.tsx`), in both study directions:
+The German word's article is shown in a pill filled with its gender colour (`WordCard.tsx`), in both study directions:
 
 | Article | Colour | Based on `gender` |
 |---|---|---|
 | der | navy | masculine |
 | die | maroon | feminine |
 | das | dark green | neuter |
-| die (plural-only nouns, e.g. die Eltern, die Leute) | dark amber | plural |
+| die (plural-only nouns, e.g. die Eltern, die Leute) | purple | plural |
 
-The same colours are used for the card themes (see "Flashcard design").
+These are the card themes' accent colours (see "Flashcard design").
 
 The colour comes from the `gender` field in the JSON, not from the article text, so plural-only "die" is not shown as feminine. Words without an article are shown unchanged.
 
@@ -859,7 +862,6 @@ german-vocab-app/
 │   │
 │   ├── components/               ← reusable pieces of the interface
 │   │   ├── ListenButton.tsx      ← 🔊 button (pill or icon-only)
-│   │   ├── GermanWord.tsx        ← German word with coloured article
 │   │   ├── ExampleSentences.tsx  ← example sentence list
 │   │   ├── Hint.tsx              ← first-time tip (spotlight + bubble)
 │   │   ├── StudyTopBar.tsx       ← Study top bar + progress bar

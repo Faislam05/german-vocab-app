@@ -302,7 +302,7 @@ export default function StudySession() {
         {/* Navigation (sticks to the bottom of the screen if the card is
             taller than the screen, so Next is always reachable) */}
 
-        <div className="sticky bottom-0 bg-(--card-bottom) flex gap-2.5 mt-2 pt-2.5 pb-1.5 border-t border-white/80">
+        <div className="sticky bottom-0 flex gap-2.5 mt-2 pt-2.5 pb-1.5">
           <button
             onClick={previousWord}
             aria-label="Previous word"

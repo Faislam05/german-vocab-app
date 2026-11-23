@@ -221,7 +221,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
     return (
       <main className="min-h-screen flex justify-center items-start px-4 pt-6 sm:pt-10">
         {/* Dark, like the Today card on Home and the lesson cover */}
-        <div className={`${cardStyle} bg-graphite text-white p-8 text-center`}>
+        <div className={`${cardStyle} bg-graphite text-white p-8 text-center shadow-[0_10px_28px_rgba(46,50,56,0.18)]`}>
           {/* The fox celebrates when you're done, or sleeps when there
               was nothing to do */}
           <div className="flex justify-center mb-4">
@@ -319,17 +319,26 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
             word={step.word}
             isEnglishToGerman={isEnglishToGerman}
             showAnswer={showAnswer}
-            besideWord={
-              // "Kein Problem!" after Again: the fox pops up next to the
-              // word for a moment, then fades away
+            overPicture={
+              // "Kein Problem!" after Again: the fox pops up over the
+              // picture for a moment, then fades away
               encourage !== null && (
-                <div key={encourage} className="fox-moment" aria-live="polite">
-                  <Fox
-                    pose="encouraging"
-                    height={50}
-                    says="Kein Problem!"
-                    pop
-                  />
+                <div
+                  key={encourage}
+                  className="fox-moment h-full flex flex-col items-end justify-end gap-1 p-1 bg-graphite"
+                  aria-live="polite"
+                >
+                  {/* Speech bubble, with its tail pointing down at the fox */}
+                  <span className="fox-bubble-pop relative whitespace-nowrap rounded-xl bg-white text-graphite font-serif font-semibold text-sm px-2.5 py-1">
+                    Kein Problem!
+                    <span
+                      className="absolute -bottom-1 left-1/2 w-2.5 h-2.5 -translate-x-1/2 rotate-45 bg-white"
+                      aria-hidden="true"
+                    />
+                  </span>
+
+                  <Fox pose="encouraging" height={84} pop className="self-center" />
+
                   <span className="sr-only">
                     No problem, you will see this word again at the end.
                   </span>
@@ -341,7 +350,7 @@ function ReviewRunner({ lessons }: { lessons: LessonData[] }) {
 
         {/* Bottom buttons (stick to the bottom of the screen) */}
 
-        <div className="sticky bottom-0 bg-(--card-bottom) flex gap-2.5 mt-2 pt-2.5 pb-2 border-t border-white/80">
+        <div className="sticky bottom-0 flex gap-2.5 mt-2 pt-2.5 pb-2">
           {step.kind === "meet" ? (
             <BigButton onClick={next} primary keyHint="Space">
               Next

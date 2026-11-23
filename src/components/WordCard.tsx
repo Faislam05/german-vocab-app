@@ -1,24 +1,21 @@
-import { useEffect, useRef, useState } from "react";
 import ExampleSentences from "@/components/ExampleSentences";
-import GermanWord from "@/components/GermanWord";
 import { SpeakerIcon, speakGerman } from "@/components/ListenButton";
 import { VocabularyCard, formatPartOfSpeech } from "@/lib/vocabulary";
 
 // Styles shared by the Study and Daily review screens.
 
-// The card's shape: rounded corners and a soft shadow. Its look (white
-// frame, coloured body) is added with cardFrame() below.
+// The card's shape: rounded corners and a soft shadow. Its look (frosted
+// glass) is added with cardFrame() below.
 export const cardStyle =
-  "overflow-clip rounded-[28px] shadow-[0_1px_2px_rgba(46,50,56,0.08),0_10px_28px_rgba(46,50,56,0.12)] w-full max-w-md sm:max-w-lg";
+  "overflow-clip rounded-[28px] w-full max-w-md sm:max-w-lg";
 
 // Small press feedback for buttons
 export const pressable =
   "transition-[transform,background-color] duration-150 ease-out active:scale-[0.97]";
 
-// Every card has a colour theme, like a trading card: the gender colour
-// for nouns (der navy, die maroon, das dark green, plural dark amber),
-// yellow for all other words. The colours themselves are in globals.css
-// (.theme-masculine, .theme-feminine, …).
+// Every word has a colour theme: the gender colour for nouns (der blue,
+// die red, das green, plural-only purple), yellow for all other words.
+// The colours themselves are in globals.css (.theme-masculine, …).
 function cardTheme(word: VocabularyCard) {
   switch (word.gender) {
     case "masculine":
@@ -34,120 +31,37 @@ function cardTheme(word: VocabularyCard) {
   }
 }
 
-// The card's look: a thick white frame around a plain background in the
-// word's colour (the "card-art" class in globals.css).
-// Without a word (e.g. "No words here") it is plain cream paper.
+// The card's look: frosted glass with a soft glow in the word's colour
+// (see .card-frost in globals.css). Without a word (e.g. "No words
+// here") the glow is grey.
 export function cardFrame(word?: VocabularyCard) {
-  return word
-    ? `card-art ${cardTheme(word)} border-[10px] sm:border-[12px] border-white ring-1 ring-graphite/10`
-    : "cardstock border border-graphite/10";
+  return word ? `card-frost ${cardTheme(word)}` : "card-frost";
 }
 
-// Text sizes for the word, largest first. If the word doesn't fit in
-// the pill, it steps down to the next size (see WordPill).
-const WORD_SIZES = [
-  "text-2xl sm:text-3xl",
-  "text-xl sm:text-2xl",
-  "text-lg sm:text-xl",
-  "text-base sm:text-lg", // only a few very long words on small phones
-];
-const SMALL_SIZES = [
-  "text-lg sm:text-2xl",
-  "text-base sm:text-xl",
-  "text-sm sm:text-lg",
-];
+// Splits "der Fernsehapparat" into the article and the word. Words
+// without an article (verbs, adjectives, names like "Deutschland") have
+// an empty article.
+function splitArticle(word: VocabularyCard) {
+  const prefix = word.article ? `${word.article} ` : "";
 
-// The word in a white pill. With `listen`, a speaker button sits inside
-// the pill on the left (only for German text). `heading` makes the text
-// the page's main heading (the question of the card).
-//
-// Every pill has the same width (the card minus a space on each side),
-// so cards look alike and there is always room on the left for
-// `beside` (e.g. the fox after "Again"). The word is centred in it.
-// Long words get smaller text: the pill checks whether the word sticks
-// out, or needs more lines than `maxLines`, and if so steps down a size. (Each word gets its own pill, see `key` below, so every
-// word starts again at the largest size.)
-function WordPill({
-  children,
-  listen,
-  heading = false,
-  small = false,
-  maxLines = 2,
-  beside,
-}: {
-  children: React.ReactNode;
-  listen?: string;
-  heading?: boolean;
-  small?: boolean; // smaller text, for the English question (EN → DE)
-  maxLines?: number; // more lines than this: smaller text
-  beside?: React.ReactNode; // shown in the space to the left of the pill
-}) {
-  const Text = heading ? "h1" : "span";
-  const sizes = small ? SMALL_SIZES : WORD_SIZES;
+  if (!prefix || !word.display.startsWith(prefix)) {
+    return { article: "", rest: word.display };
+  }
+  return { article: word.article!, rest: word.display.slice(prefix.length) };
+}
 
-  // Which text size is used (0 = the largest)
-  // (typed for both the <h1> and the <span> it can be)
-  const textRef = useRef<HTMLHeadingElement & HTMLSpanElement>(null);
-  const [sizeStep, setSizeStep] = useState(0);
+// The card shows only the first meaning, e.g. "to hear; to listen" →
+// "to hear". An explanation after it, in brackets or after a dash, is
+// returned separately so it can be shown smaller: "your (informal
+// singular)" → "your" + "(informal singular)". (All meanings stay in
+// the word data.)
+export function shortMeaning(english: string) {
+  const first = english.split(";")[0].trim();
+  const match = first.match(/^(.+?)\s*((?:\(|— ).*)$/);
 
-  // Checked whenever the word's size changes (ResizeObserver), so also
-  // again right after stepping down a size
-  useEffect(() => {
-    const text = textRef.current;
-    if (!text) return;
-
-    const observer = new ResizeObserver(() => {
-      const lineHeight = parseFloat(getComputedStyle(text).lineHeight);
-      const sticksOut = text.scrollWidth > text.clientWidth + 1;
-      const tooManyLines = text.offsetHeight > lineHeight * (maxLines + 0.5);
-
-      if (sticksOut || tooManyLines) {
-        setSizeStep((step) => Math.min(step + 1, sizes.length - 1));
-      }
-    });
-    observer.observe(text);
-    return () => observer.disconnect();
-  }, [sizes.length, maxLines]);
-
-  return (
-    <div className="flex justify-center mb-1.5">
-      <div className="relative flex items-center gap-2.5 w-[calc(100%-5.5rem)] pl-1.5 pr-5 py-1.5 rounded-full bg-white border-2 border-[color-mix(in_srgb,var(--card-accent)_30%,transparent)] shadow-sm">
-        {/* Something in the space left of the pill (never takes clicks).
-            Lined up with the pill's top, so anything above it (like the
-            fox's speech bubble) stays above the pill, even when a long
-            word makes the pill two lines tall. */}
-        {beside && (
-          <div className="absolute right-full top-0 mr-0.5 w-max pointer-events-none">
-            {beside}
-          </div>
-        )}
-
-        {listen ? (
-          <>
-            <button
-              onClick={() => speakGerman(listen)}
-              aria-label="Listen"
-              className={`shrink-0 grid place-items-center w-9 h-9 rounded-xl bg-(--card-accent) text-white hover:opacity-90 ${pressable}`}
-            >
-              <SpeakerIcon className="w-5 h-5" />
-            </button>
-            <span className="shrink-0 w-0.5 h-7 rounded-full bg-[color-mix(in_srgb,var(--card-accent)_25%,transparent)]" />
-          </>
-        ) : (
-          <span className="w-3" />
-        )}
-
-        <Text
-          ref={textRef}
-          className={`flex-1 min-w-0 text-center leading-tight ${
-            small ? "font-sans font-bold" : "font-serif font-semibold"
-          } ${sizes[sizeStep]}`}
-        >
-          {children}
-        </Text>
-      </div>
-    </div>
-  );
+  return match
+    ? { main: match[1], note: match[2] }
+    : { main: first, note: "" };
 }
 
 type WordCardProps = {
@@ -167,106 +81,176 @@ type WordCardProps = {
   // switch on the Study screen
   actions?: React.ReactNode;
 
-  // Something shown just to the left of the word, e.g. the fox saying
-  // "Kein Problem!" in Daily review
-  besideWord?: React.ReactNode;
+  // Something shown for a moment over the picture, e.g. the fox saying
+  // "Kein Problem!" in Daily review. It never takes clicks.
+  overPicture?: React.ReactNode;
 };
 
-// The content of one flashcard: the picture (emoji), the word, its type,
-// the answer (meaning, plural) and the example sentences. The screen
-// around it decides what happens when you answer; this component only
-// shows the word.
+// The content of one flashcard:
+// 1. a dark "word card" with the same lines for every word, so it is
+//    always the same size:
+//      line 1: the article (empty if there is none) and a speaker
+//      line 2: the word, the same size for every word
+//      line 3: the meaning
+//      rows:   word type and plural
+//    and on the right the level and a big picture (emoji).
+//    English → German uses the same lines: the meaning is the question,
+//    lines 1 and 2 stay empty until revealed.
+// 2. under it: the reveal button or the actions, and the example
+//    sentences
+// The screen around it decides what happens when you answer; this
+// component only shows the word.
 export default function WordCard({
   word,
   isEnglishToGerman,
   showAnswer,
   onReveal,
   actions,
-  besideWord,
+  overPicture,
 }: WordCardProps) {
   // e.g. "Verb", "Question Word"
   const partOfSpeech = formatPartOfSpeech(word.part_of_speech);
+  const { article, rest } = splitArticle(word);
+  const meaning = shortMeaning(word.english);
 
   // German → English: the picture is hidden until revealed, since it
   // hints at the meaning. English → German: always shown as a hint.
   const picture = showAnswer || isEnglishToGerman ? word.emoji || "📝" : "❓";
 
+  const germanVisible = !isEnglishToGerman || showAnswer;
+  const meaningVisible = isEnglishToGerman || showAnswer;
+
+  // Fades in when it appears (only when it is the revealed answer)
+  const revealGerman = isEnglishToGerman ? "reveal-fade" : "";
+  const revealMeaning = isEnglishToGerman ? "" : "reveal-fade";
+
   return (
     <>
-      {/* The picture: a big emoji on a soft white spotlight, and the
-          level badge (A1). Smaller on short screens. */}
+      {/* ---------- 1. The dark word card ---------- */}
 
-      <div className="relative h-20 sm:h-24 [@media(max-height:700px)]:h-16 mb-2 flex items-center justify-center">
-        <div className="absolute w-20 h-20 sm:w-24 sm:h-24 [@media(max-height:700px)]:w-16 [@media(max-height:700px)]:h-16 rounded-full bg-[radial-gradient(circle,rgb(255_255_255/0.9),rgb(255_255_255/0)_70%)]" />
+      <div className="relative rounded-3xl bg-graphite text-white p-3 sm:p-5 mb-3 shadow-[0_8px_24px_rgba(46,50,56,0.22)]">
+        <div className="flex gap-3">
+          {/* Left: the coloured bar and the lines */}
+          <div className="flex-1 min-w-0 flex gap-2.5">
+            <span
+              className="shrink-0 w-1 rounded-full bg-(--card-accent) ring-1 ring-white/15"
+              aria-hidden="true"
+            />
 
-        <span className="relative text-5xl sm:text-6xl [@media(max-height:700px)]:text-4xl drop-shadow-sm">
-          {picture}
-        </span>
+            <div className="flex-1 min-w-0">
+              {/* Line 1: the article and the speaker */}
+              <div className="h-8 flex items-center gap-2">
+                {germanVisible && (
+                  <div className={`flex items-center gap-2 ${revealGerman}`}>
+                    {article && (
+                      <span className="h-7 px-2.5 rounded-full bg-(--card-accent) ring-1 ring-white/15 font-serif font-semibold text-base leading-7">
+                        {article}
+                      </span>
+                    )}
+                    <button
+                      onClick={() => speakGerman(word.tts_text)}
+                      aria-label="Listen"
+                      className={`grid place-items-center w-8 h-8 rounded-full bg-(--card-accent) ring-1 ring-white/15 hover:brightness-110 ${pressable}`}
+                    >
+                      <SpeakerIcon className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
 
-        {/* Level badge */}
-        <span className="absolute right-0 top-0 grid place-items-center w-11 h-11 rounded-full bg-(--card-accent) text-white text-sm font-extrabold">
-          <span className="absolute inset-1 rounded-full border border-dashed border-white/60" />
-          {word.cefr || "A1"}
-        </span>
+              {/* Line 2: the word. Every word has the same size: the
+                  size at which the longest word still fits on one line */}
+              <h1 className="h-9 mt-0.5 font-serif font-semibold text-2xl sm:text-3xl leading-9 whitespace-nowrap">
+                {germanVisible ? (
+                  <span className={`block ${revealGerman}`}>{rest}</span>
+                ) : (
+                  // Placeholder for the hidden German word
+                  <>
+                    <span
+                      className="block w-3/5 h-full border-b-2 border-dashed border-white/20"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">German word hidden</span>
+                  </>
+                )}
+              </h1>
+
+              {/* Line 3: the meaning (room for two lines) */}
+              <p className="h-12 mt-0.5 text-[17px] leading-6 line-clamp-2">
+                {meaningVisible && (
+                  <span className={`italic text-white/80 ${revealMeaning}`}>
+                    {meaning.main}
+                    {meaning.note && (
+                      <span className="text-sm text-white/50">
+                        {" "}
+                        {meaning.note}
+                      </span>
+                    )}
+                  </span>
+                )}
+              </p>
+
+              {/* Rows: the word type, and the plural (N/A when there is
+                  none), which shows once revealed */}
+              <dl className="mt-2 text-sm">
+                <div className="flex items-baseline gap-2 py-1 border-b border-white/10">
+                  <dt className="w-[66px] shrink-0 whitespace-nowrap text-[11px] font-bold uppercase tracking-wide text-white/50">
+                    Word type
+                  </dt>
+                  <dd className="font-semibold truncate">{partOfSpeech}</dd>
+                </div>
+
+                <div className="flex items-baseline gap-2 py-1 border-b border-white/10">
+                  <dt className="w-[66px] shrink-0 whitespace-nowrap text-[11px] font-bold uppercase tracking-wide text-white/50">
+                    Plural
+                  </dt>
+                  <dd className="font-semibold truncate">
+                    {showAnswer ? (
+                      <span className="reveal-fade inline-block">
+                        {word.plural || "N/A"}
+                      </span>
+                    ) : (
+                      // keeps the row's height while it is empty
+                      <span className="invisible">–</span>
+                    )}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          {/* Right: the level and a big picture */}
+          <div className="relative shrink-0 w-[84px] sm:w-28 flex flex-col items-center gap-2">
+            <span className="self-end px-2 py-0.5 rounded-full bg-(--card-accent) ring-1 ring-white/15 text-xs font-extrabold">
+              {word.cefr || "A1"}
+            </span>
+
+            <span className="relative flex-1 w-full grid place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+              <span
+                className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle,rgb(255_255_255/0.14),rgb(255_255_255/0)_70%)]"
+                aria-hidden="true"
+              />
+              <span className="relative text-6xl leading-none drop-shadow-md">
+                {picture}
+              </span>
+            </span>
+
+            {/* Shown for a moment over the picture (e.g. the fox) */}
+            {overPicture && (
+              <div className="absolute -inset-1 pointer-events-none">
+                {overPicture}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Question: the German word (DE → EN) or the English meaning (EN → DE) */}
-
-      {isEnglishToGerman ? (
-        <WordPill key={word.word} heading small beside={besideWord}>
-          {word.english}
-        </WordPill>
-      ) : (
-        <WordPill
-          key={word.word}
-          listen={word.tts_text}
-          heading
-          beside={besideWord}
-        >
-          <GermanWord word={word} />
-        </WordPill>
-      )}
-
-      {/* English → German, once revealed: the German word in its own pill */}
-
-      {isEnglishToGerman && showAnswer && (
-        <div className="reveal-fade">
-          <WordPill key={word.word} listen={word.tts_text} maxLines={1}>
-            <GermanWord word={word} />
-          </WordPill>
-        </div>
-      )}
-
-      {/* Chips: the word type (dark) and, once revealed, the meaning
-          (light) */}
-
-      <div className="flex flex-wrap items-center justify-center gap-1.5 mb-1.5">
-        <span className="px-3 py-0.5 rounded-full bg-(--card-accent) text-white text-sm font-bold">
-          {partOfSpeech}
-        </span>
-
-        {showAnswer && !isEnglishToGerman && (
-          <span className="reveal-fade px-3.5 py-0.5 rounded-full bg-white/85 border border-white text-base font-bold">
-            {word.english}
-          </span>
-        )}
-      </div>
-
-      {/* The plural, always on its own line under the chips (N/A when
-          there is none), so every card has the same layout */}
-
-      {showAnswer && (
-        <div className="reveal-fade flex justify-center mb-2">
-          <span className="px-3 py-0.5 rounded-full bg-white/60 text-sm text-pencil font-semibold">
-            Plural: {word.plural || "N/A"}
-          </span>
-        </div>
-      )}
+      {/* ---------- 2. Under the word card ---------- */}
 
       {/* Reveal button (only while the answer is hidden) */}
 
       {!showAnswer && onReveal && (
-        <div className="text-center mt-2">
+        <div className="text-center mt-1">
           <button
             onClick={onReveal}
             className="btn-primary inline-flex items-center gap-2 px-7 py-2.5"
